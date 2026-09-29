@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Audiophile Music Player — Stitch Design Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#10131a",
+            "surface-dim": "#0b0e15",
+            "surface-container": "#191b23",
+            "surface-container-high": "#272a31",
+            "surface-container-highest": "#32353c",
+            primary: "#cabeff",
+            "primary-container": "#7c5cfc",
+            secondary: "#aac7ff",
+            tertiary: "#f6adff",
+            "on-surface": "#e0e2ec",
+            "on-surface-variant": "#c9c4d8"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #0b0e15;
+      color: #e0e2ec;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .phone-mockup {
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(124, 92, 252, 0.15);
+      border: 10px solid #1f232e;
+      border-radius: 46px;
+      overflow: hidden;
+      width: 400px;
+      height: 844px;
+      position: relative;
+    }
+    .glow-aura {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 92, 252, 0.22) 0%, rgba(78, 149, 255, 0.1) 40%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #272a31;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-primary-container selection:text-white">
+
+  <!-- Atmospheric Ambient Glows -->
+  <div class="glow-aura -top-40 -left-20"></div>
+  <div class="glow-aura top-1/2 -right-40"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-surface/80 border-b border-surface-container-high/60 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-primary-container to-secondary flex items-center justify-center shadow-lg shadow-primary-container/30">
+        <span class="material-symbols-outlined text-white text-2xl">graphic_eq</span>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="font-bold text-lg tracking-tight text-white">AURA Design Studio</h1>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest bg-primary/20 text-primary uppercase border border-primary/30">Stitch MCP Live</span>
+        </div>
+        <p class="text-xs text-on-surface-variant">Cinematic Audiophile Sound System &middot; 7 Screens Imported</p>
+      </div>
+    </div>
+
+    <!-- Mode Selector & External Links -->
+    <div class="flex items-center gap-3">
+      <div class="bg-surface-container rounded-full p-1 border border-surface-container-highest/40 flex items-center text-xs">
+        <button id="btn-device-mobile" onclick="setDeviceView('mobile')" class="px-3 py-1.5 rounded-full bg-primary text-black font-semibold flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-sm">smartphone</span> Mobile View
+        </button>
+        <button id="btn-device-full" onclick="setDeviceView('full')" class="px-3 py-1.5 rounded-full text-on-surface-variant hover:text-white flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-sm">open_in_full</span> Full Page
+        </button>
+      </div>
+      <a href="DESIGN_SYSTEM.md" target="_blank" class="px-3.5 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high border border-surface-container-highest/60 text-xs font-medium text-white flex items-center gap-1.5 transition-all">
+        <span class="material-symbols-outlined text-sm">palette</span> Design System
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Studio Workspace -->
+  <div class="flex-1 flex overflow-hidden">
+    
+    <!-- Sidebar Navigation: Screen Directory -->
+    <aside class="w-80 border-r border-surface-container-high/60 bg-surface/50 backdrop-blur-md flex flex-col p-4 z-10 custom-scroll overflow-y-auto">
+      <div class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/80 px-3 mb-2 flex items-center justify-between">
+        <span>Screens ({screens.length})</span>
+        <span class="text-primary font-mono">390 &times; 844</span>
+      </div>
+
+      <nav id="screen-list" class="space-y-1.5">
+        <!-- Injected via JavaScript -->
+      </nav>
+
+      <!-- Asset Preview Card -->
+      <div class="mt-6 pt-4 border-t border-surface-container-high/60">
+        <div class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/80 px-3 mb-3">
+          Imported High-Res Assets
+        </div>
+        <div class="grid grid-cols-3 gap-2 px-1">
+          <div class="group relative rounded-xl overflow-hidden aspect-square border border-white/10 hover:border-primary transition-all cursor-pointer" onclick="showAssetModal('assets/album_resonance.png', 'Resonance by Kaelen Vance')">
+            <img src="assets/album_resonance.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Resonance" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-[10px] text-white font-medium p-1 text-center">Resonance</div>
+          </div>
+          <div class="group relative rounded-xl overflow-hidden aspect-square border border-white/10 hover:border-primary transition-all cursor-pointer" onclick="showAssetModal('assets/album_velvet_eclipse.png', 'Velvet Eclipse')">
+            <img src="assets/album_velvet_eclipse.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Velvet Eclipse" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-[10px] text-white font-medium p-1 text-center">Velvet</div>
+          </div>
+          <div class="group relative rounded-xl overflow-hidden aspect-square border border-white/10 hover:border-primary transition-all cursor-pointer" onclick="showAssetModal('assets/album_solar_flare.png', 'Solar Flare')">
+            <img src="assets/album_solar_flare.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Solar Flare" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-[10px] text-white font-medium p-1 text-center">Solar</div>
+          </div>
+          <div class="group relative rounded-xl overflow-hidden aspect-square border border-white/10 hover:border-primary transition-all cursor-pointer" onclick="showAssetModal('assets/album_neon_horizons.png', 'Neon Horizons')">
+            <img src="assets/album_neon_horizons.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Neon Horizons" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-[10px] text-white font-medium p-1 text-center">Neon</div>
+          </div>
+          <div class="group relative rounded-xl overflow-hidden aspect-square border border-white/10 hover:border-primary transition-all cursor-pointer" onclick="showAssetModal('assets/user_avatar.png', 'Audiophile Listener Avatar')">
+            <img src="assets/user_avatar.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" alt="Avatar" />
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity text-[10px] text-white font-medium p-1 text-center">Avatar</div>
+          </div>
+          <div class="group relative rounded-xl overflow-hidden aspect-square border border-white/10 hover:border-primary transition-all cursor-pointer bg-surface-container flex items-center justify-center p-2" onclick="showAssetModal('assets/aura_logo.png', 'AURA Master Logo')">
+            <img src="assets/aura_logo.png" class="w-full h-full object-contain" alt="AURA Logo" />
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Preview Stage -->
+    <main class="flex-1 flex flex-col items-center justify-center p-6 relative overflow-hidden bg-gradient-to-b from-[#0b0e15] to-[#12151f]">
+      
+      <!-- Top Screen Bar -->
+      <div class="w-full max-w-4xl flex items-center justify-between mb-4 z-10 px-2">
+        <div>
+          <span id="current-screen-badge" class="text-xs uppercase tracking-widest text-primary font-bold">AURA Screen</span>
+          <h2 id="current-screen-title" class="text-xl font-bold text-white tracking-tight">Home</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <a id="btn-open-raw" href="screens/home.html" target="_blank" class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-surface-container-highest/60 text-xs font-semibold text-on-surface flex items-center gap-1.5 transition-colors">
+            <span class="material-symbols-outlined text-[16px]">open_in_new</span> Open File
+          </a>
+          <button onclick="refreshFrame()" class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-surface-container-highest/60 text-on-surface-variant hover:text-white transition-colors" title="Reload Frame">
+            <span class="material-symbols-outlined text-[18px]">refresh</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Preview Container -->
+      <div id="preview-wrapper" class="flex-1 w-full flex items-center justify-center z-10 transition-all duration-300">
+        <!-- Phone Frame View -->
+        <div id="phone-frame" class="phone-mockup bg-black transition-all duration-300">
+          <!-- Dynamic Island / Speaker Pill -->
+          <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-50 flex items-center justify-center">
+            <div class="w-3 h-3 rounded-full bg-[#121212] mr-2"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-[#1e2330]"></div>
+          </div>
+          <iframe id="screen-iframe" src="screens/home.html" class="w-full h-full border-0 bg-surface" title="AURA Screen Preview"></iframe>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const screens = [
+      { id: "home", title: "AURA - Home", file: "screens/home.html", icon: "home", desc: "Featured spotlight, mood filters, recent listening" },
+      { id: "now_playing", title: "AURA - Now Playing", file: "screens/now_playing.html", icon: "play_circle", desc: "Full-screen vinyl artwork, scrubber & transport" },
+      { id: "lyrics", title: "AURA - Live Lyrics", file: "screens/lyrics.html", icon: "lyrics", desc: "Synchronized karaoke vocals & ambient glow" },
+      { id: "search", title: "AURA - Search & Discover", file: "screens/search.html", icon: "search", desc: "Genres, acoustic tags & sound wave browsing" },
+      { id: "library", title: "AURA - Library", file: "screens/library.html", icon: "library_music", desc: "Curated playlists, FLAC albums & artists" },
+      { id: "settings", title: "AURA - Settings & DAC", file: "screens/settings.html", icon: "tune", desc: "Bit-perfect streaming, equalizer & audio engine" },
+      { id: "prototype_overview", title: "Audiophile Prototype View", file: "screens/prototype_overview.html", icon: "dashboard", desc: "Master layout with mobile shell & top bar" }
+    ];
+
+    let currentScreenIndex = 0;
+    let isFullView = false;
+
+    function renderScreenList() {
+      const nav = document.getElementById("screen-list");
+      nav.innerHTML = screens.map((screen, idx) => `
+        <button onclick="selectScreen(${idx})" class="w-full text-left p-3 rounded-2xl transition-all flex items-start gap-3 border ${
+          idx === currentScreenIndex 
+            ? "bg-surface-container border-primary/40 shadow-lg shadow-black/40 text-white" 
+            : "border-transparent hover:bg-surface-container/60 text-on-surface-variant hover:text-white"
+        }">
+          <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 ${
+            idx === currentScreenIndex ? "bg-primary text-black" : "bg-surface-container-high text-on-surface-variant"
+          }">
+            <span class="material-symbols-outlined text-[18px]">${screen.icon}</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-xs truncate ${idx === currentScreenIndex ? "text-primary" : "text-white"}">${screen.title}</div>
+            <div class="text-[11px] text-on-surface-variant/80 truncate mt-0.5">${screen.desc}</div>
+          </div>
+        </button>
+      `).join("");
+    }
+
+    function selectScreen(index) {
+      currentScreenIndex = index;
+      const screen = screens[index];
+      document.getElementById("current-screen-title").textContent = screen.title;
+      document.getElementById("current-screen-badge").textContent = `Screen ${index + 1} of ${screens.length}`;
+      document.getElementById("btn-open-raw").setAttribute("href", screen.file);
+      document.getElementById("screen-iframe").src = screen.file;
+      renderScreenList();
+    }
+
+    function setDeviceView(view) {
+      const wrapper = document.getElementById("preview-wrapper");
+      const phone = document.getElementById("phone-frame");
+      const btnMobile = document.getElementById("btn-device-mobile");
+      const btnFull = document.getElementById("btn-device-full");
+
+      if (view === 'full') {
+        isFullView = true;
+        phone.className = "w-full h-full max-w-5xl rounded-3xl border border-surface-container-high/60 overflow-hidden shadow-2xl transition-all duration-300";
+        btnFull.className = "px-3 py-1.5 rounded-full bg-primary text-black font-semibold flex items-center gap-1.5 transition-all";
+        btnMobile.className = "px-3 py-1.5 rounded-full text-on-surface-variant hover:text-white flex items-center gap-1.5 transition-all";
+      } else {
+        isFullView = false;
+        phone.className = "phone-mockup bg-black transition-all duration-300";
+        btnMobile.className = "px-3 py-1.5 rounded-full bg-primary text-black font-semibold flex items-center gap-1.5 transition-all";
+        btnFull.className = "px-3 py-1.5 rounded-full text-on-surface-variant hover:text-white flex items-center gap-1.5 transition-all";
+      }
+    }
+
+    function refreshFrame() {
+      const iframe = document.getElementById("screen-iframe");
+      iframe.src = iframe.src;
+    }
+
+    function showAssetModal(src, title) {
+      window.open(src, '_blank');
+    }
+
+    // Init
+    renderScreenList();
+  </script>
+</body>
+</html>

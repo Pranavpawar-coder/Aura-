@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AURA</string>
+    <string name="notification_channel_name">AURA Music Playback</string>
+    <string name="notification_channel_description">Controls and status for music playback in AURA</string>
+    <string name="widget_name_small">AURA Compact</string>
+    <string name="widget_name_medium">AURA Player</string>
+    <string name="widget_name_large">AURA SoundStage</string>
+    <string name="widget_name_responsive">AURA Dynamic</string>
+    <string name="widget_idle_title">AURA SoundStage</string>
+    <string name="widget_idle_artist">Tap to open library</string>
+    <string name="widget_default_title">Unknown Title</string>
+    <string name="widget_default_artist">Unknown Artist</string>
+    <string name="widget_quality_lossless">HI-RES LOSSLESS</string>
+    <string name="widget_quality_default">AURA 4D SOUNDSTAGE</string>
+    <string name="widget_action_play_pause">Play or Pause</string>
+    <string name="widget_action_next">Next Track</string>
+    <string name="widget_action_previous">Previous Track</string>
+    <string name="widget_action_open_player">Open AURA Player</string>
+</resources>

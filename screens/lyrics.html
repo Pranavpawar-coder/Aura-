@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Synchronized Lyrics - Espresso</title>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#080c16',
+            activeGlow: 'rgba(255, 255, 255, 0.95)',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style data-purpose="custom-styling">
+    /* Custom styling for waveform and lyrics glow */
+    .word-active {
+      color: #ffffff;
+      font-weight: 700;
+      text-shadow: 0 0 16px rgba(255, 255, 255, 0.45), 0 0 35px rgba(230, 200, 180, 0.2);
+    }
+    .word-inactive {
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 600;
+    }
+    .lyrics-mask {
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 75%, transparent 100%);
+    }
+    /* Waveform thumb styling */
+    .waveform-thumb {
+      filter: drop-shadow(0 0 6px rgba(252, 211, 203, 0.6));
+    }
+    /* Glassmorphism utility */
+    .glass-btn {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+  </style>
+</head>
+<body class="bg-black text-white antialiased select-none font-sans min-h-screen flex items-center justify-center p-0 m-0 overflow-hidden">
+<!-- BEGIN: MobileDeviceFrame -->
+<div class="relative w-full max-w-md h-[100dvh] bg-[#070b14] overflow-hidden flex flex-col justify-between shadow-2xl">
+<!-- BEGIN: BackgroundArtAndVignette -->
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" data-purpose="ambient-background">
+<!-- High-fidelity album art base with heavy cinematic blur -->
+<img alt="Album Artwork Background Blur" class="w-full h-full object-cover object-center scale-125 filter blur-[70px] opacity-45 brightness-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1vqtBgCpCNOjWeT1zm_Jr8LsKgNl97-c2DYi9pc6f6aeOPmw5wa9ZDhYTLapyNuKm6hoY1jDKPL5Qh7ZJCad5gvudpBbF4zC9PTDtnZ4mbL7UEVnFQLLkmkvq4Je7i0bkR4PE2aKMnSFfmlBrkW7vW0KJIWHYBBvUKfJj5e0naAeuLFBHHuJWZm4h7Md5bbsp8TsSoSvOKSgrRT9rumuIqx26VwPtzZ2T8E7tBaScPYVufJ5uVswMtYpVEPoBwSWTnWk"/>
+<!-- Midnight deep indigo/dark vignette overlay -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#0a1122]/90 via-[#070b14]/85 to-[#04060c]"></div>
+<!-- Subtle warm glow radiating from artwork tone -->
+<div class="absolute top-[28%] left-1/2 -translate-x-1/2 w-80 h-80 bg-amber-600/10 rounded-full blur-[90px] mix-blend-screen pointer-events-none"></div>
+</div>
+<!-- END: BackgroundArtAndVignette -->
+<!-- BEGIN: TopHeader -->
+<header class="relative z-20 pt-12 pb-3 px-5 flex flex-col items-center flex-shrink-0" data-purpose="app-header">
+<div class="w-full flex items-center justify-between">
+<!-- Navigation Back Button -->
+<button aria-label="Back to Player" class="w-11 h-11 rounded-full glass-btn flex items-center justify-center text-white active:scale-95 transition-transform">
+<i class="w-5 h-5 stroke-[2.2]" data-lucide="arrow-left"></i>
+</button>
+<!-- Song Metadata -->
+<div class="flex flex-col items-center text-center px-2 overflow-hidden">
+<span class="text-[11px] font-bold tracking-[0.22em] text-white/90 uppercase mb-0.5">Lyrics</span>
+<span class="text-xs font-medium text-neutral-300/80 truncate max-w-[210px] tracking-wide">
+            Espresso • Sabrina Carpenter
+          </span>
+</div>
+<!-- Options Menu Button -->
+<button aria-label="Lyrics Options" class="w-11 h-11 rounded-full glass-btn flex items-center justify-center text-white active:scale-95 transition-transform">
+<i class="w-5 h-5 stroke-[2]" data-lucide="more-horizontal"></i>
+</button>
+</div>
+<!-- Sync Provider / Offline Sub-badge -->
+<div class="mt-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/5 backdrop-blur-sm" data-purpose="sync-indicator">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="text-[10px] tracking-[0.16em] uppercase font-semibold text-neutral-300">
+          WORD SYNC • BetterLyrics
+        </span>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: LyricsCanvasArea -->
+<main class="relative z-10 flex-1 px-7 flex flex-col justify-center lyrics-mask overflow-hidden" data-purpose="synchronized-lyrics-flow">
+<div class="space-y-6 sm:space-y-7 text-left my-auto transition-all duration-500">
+<!-- Previous Lyric Line (Dimmed/Translucent) -->
+<p class="text-2xl sm:text-[28px] font-semibold text-neutral-400/50 leading-tight transition-opacity duration-300 hover:text-neutral-300/70 cursor-pointer">
+          act this way
+        </p>
+<!-- Current Active Line with Word-by-Word Sync Highlight -->
+<div class="text-3xl sm:text-[34px] tracking-tight leading-snug transition-transform duration-300 transform scale-[1.01] origin-left">
+<!-- Active Highlighted Part -->
+<span class="word-active">I know </span>
+<!-- Pending part of the active line -->
+<span class="word-inactive">I got'em</span>
+</div>
+<!-- Upcoming Line 1 -->
+<p class="text-2xl sm:text-[28px] font-semibold text-neutral-400/35 leading-tight hover:text-neutral-400/50 cursor-pointer transition-opacity">
+          Too bad your ex
+        </p>
+<!-- Upcoming Line 2 -->
+<p class="text-2xl sm:text-[28px] font-semibold text-neutral-400/25 leading-tight hover:text-neutral-400/40 cursor-pointer transition-opacity">
+          don't do it for ya
+        </p>
+<!-- Upcoming Line 3 -->
+<p class="text-2xl sm:text-[28px] font-semibold text-neutral-500/20 leading-tight hover:text-neutral-400/40 cursor-pointer transition-opacity">
+          Walked in and
+        </p>
+<!-- Upcoming Line 4 -->
+<p class="text-2xl sm:text-[28px] font-semibold text-neutral-600/15 leading-tight">
+          dream came
+        </p>
+<!-- Upcoming Line 5 -->
+<p class="text-2xl sm:text-[28px] font-semibold text-neutral-600/10 leading-tight">
+          trued it for ya
+        </p>
+</div>
+</main>
+<!-- END: LyricsCanvasArea -->
+<!-- BEGIN: BottomControlsAndPlayer -->
+<footer class="relative z-20 pb-10 pt-2 px-6 flex flex-col gap-3 flex-shrink-0" data-purpose="playback-controls">
+<!-- Lyrics Action Floating Utilities (Fullscreen / Expand Button) -->
+<div class="flex items-center justify-end w-full pr-1 mb-1">
+<button aria-label="Expand Lyrics View" class="w-10 h-10 rounded-full glass-btn flex items-center justify-center text-neutral-300 active:scale-95 hover:text-white transition-all shadow-lg" data-purpose="fullscreen-toggle">
+<i class="w-4 h-4 stroke-[2.2]" data-lucide="maximize-2"></i>
+</button>
+</div>
+<!-- Scrubber / Waveform Progress Section -->
+<div class="w-full flex flex-col gap-1.5" data-purpose="scrubber-container">
+<div class="relative w-full h-8 flex items-center cursor-pointer group">
+<!-- Background Inactive Track -->
+<div class="absolute w-full h-[3px] bg-white/20 rounded-full overflow-hidden"></div>
+<!-- Active Progress Line -->
+<div class="absolute left-0 h-[3px] w-[24%] bg-gradient-to-r from-rose-200/90 to-rose-300 rounded-full"></div>
+<!-- Liquid Organic Waveform Accent at Playhead Thumb -->
+<div class="absolute left-[24%] -translate-x-[75%] -translate-y-2 pointer-events-none flex items-end">
+<!-- Stylized waveform trace resembling audio resonance -->
+<svg class="w-16 h-5 waveform-thumb" fill="none" viewbox="0 0 64 20" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 16C12 16 16 3 28 3C36 3 40 16 48 16" stroke="rgba(255, 215, 210, 0.9)" stroke-linecap="round" stroke-width="1.6"></path>
+<path d="M6 16C14 16 20 8 30 8C38 8 44 16 52 16" stroke="rgba(255, 255, 255, 0.4)" stroke-linecap="round" stroke-width="1.2"></path>
+</svg>
+</div>
+<!-- Playhead Circular Thumb -->
+<div class="absolute left-[24%] -translate-x-1/2 w-3.5 h-3.5 bg-rose-200 rounded-full ring-4 ring-rose-200/20 shadow-md"></div>
+</div>
+<!-- Timestamps Row -->
+<div class="flex items-center justify-between text-[11px] font-semibold tracking-wider text-neutral-400/90 px-0.5 -mt-1">
+<span>0:45</span>
+<span>-2:09</span>
+</div>
+</div>
+<!-- Transport Controls: Previous, Play/Pause, Next -->
+<div class="flex items-center justify-center gap-7 pt-1 pb-1" data-purpose="transport-buttons">
+<!-- Previous Track Button -->
+<button aria-label="Previous Track" class="w-12 h-12 rounded-full glass-btn flex items-center justify-center text-neutral-200 hover:text-white active:scale-90 transition-transform">
+<i class="w-5 h-5 fill-current stroke-none" data-lucide="skip-back"></i>
+</button>
+<!-- Primary Pause Button -->
+<button aria-label="Pause" class="w-16 h-16 rounded-full bg-white/10 border border-white/25 flex items-center justify-center text-white active:scale-95 transition-all shadow-[0_4px_25px_rgba(0,0,0,0.5)] hover:bg-white/15">
+<div class="flex items-center justify-center gap-1.5">
+<span class="w-1.5 h-5 bg-white rounded-full"></span>
+<span class="w-1.5 h-5 bg-white rounded-full"></span>
+</div>
+</button>
+<!-- Next Track Button -->
+<button aria-label="Next Track" class="w-12 h-12 rounded-full glass-btn flex items-center justify-center text-neutral-200 hover:text-white active:scale-90 transition-transform">
+<i class="w-5 h-5 fill-current stroke-none" data-lucide="skip-forward"></i>
+</button>
+</div>
+<!-- Bottom Audio Quality / Offline Status Indicator -->
+<div class="flex items-center justify-center gap-2 pt-1 text-center" data-purpose="lossless-indicator">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-extrabold uppercase bg-white/10 text-neutral-300 tracking-wider border border-white/10">
+          Lossless
+        </span>
+<span class="text-[10px] font-medium text-neutral-400">24-bit • 96 kHz FLAC</span>
+</div>
+</footer>
+<!-- END: BottomControlsAndPlayer -->
+</div>
+<!-- END: MobileDeviceFrame -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="initialize-icons">
+    // Initialize feather/lucide icons
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+<!-- END: InteractiveScripts -->
+</body></html>

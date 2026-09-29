@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <!-- Artwork on Left with Badges Overlay -->
+    <FrameLayout
+        android:id="@+id/widget_artwork_container"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:layout_gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/widget_artwork"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/aura_logo" />
+
+        <!-- Lossless pill overlay -->
+        <TextView
+            android:id="@+id/widget_quality_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_margin="5dp"
+            android:background="@drawable/widget_pill_badge_bg"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="2dp"
+            android:text="LOSSLESS"
+            android:textColor="@color/widget_text_primary"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+
+        <!-- Spatial pill overlay -->
+        <TextView
+            android:id="@+id/widget_badge_spatial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="5dp"
+            android:background="@drawable/widget_pill_badge_bg"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="2dp"
+            android:text="SPATIAL"
+            android:textColor="@color/widget_text_primary"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Info & Controls on Right -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <!-- Title, Favorite & Lyrics Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/widget_track_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/widget_idle_title"
+                android:textColor="@color/widget_text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/widget_btn_favorite"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/widget_button_control"
+                android:contentDescription="@string/app_name"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_widget_heart" />
+
+            <TextView
+                android:id="@+id/widget_btn_lyrics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/widget_lyrics_pill_bg"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:text="❝ LYRICS"
+                android:textColor="@color/widget_text_primary"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Artist -->
+        <TextView
+            android:id="@+id/widget_track_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/widget_idle_artist"
+            android:textColor="@color/widget_text_secondary"
+            android:textSize="12sp" />
+
+        <!-- Progress Bar & Timestamps -->
+        <LinearLayout
+            android:id="@+id/widget_progress_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/widget_progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:max="1000"
+                android:progress="0"
+                android:progressDrawable="@drawable/widget_progress_bar" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:id="@+id/widget_time_current"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="0:00"
+                    android:textColor="@color/widget_text_muted"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/widget_time_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="-0:00"
+                    android:textColor="@color/widget_text_muted"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Controls Row: Shuffle, Prev, Lavender Play/Pause, Next, Repeat -->
+        <LinearLayout
+            android:id="@+id/widget_controls_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/widget_btn_shuffle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/widget_button_control"
+                android:contentDescription="Shuffle"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_widget_shuffle" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/widget_btn_previous"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/widget_button_control"
+                android:contentDescription="@string/widget_action_previous"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_widget_skip_previous" />
+
+            <ImageButton
+                android:id="@+id/widget_btn_play_pause"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/widget_button_play_pause"
+                android:contentDescription="@string/widget_action_play_pause"
+                android:padding="11dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_widget_play" />
+
+            <ImageButton
+                android:id="@+id/widget_btn_next"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/widget_button_control"
+                android:contentDescription="@string/widget_action_next"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_widget_skip_next" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/widget_btn_repeat"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/widget_button_control"
+                android:contentDescription="Repeat"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_widget_repeat" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

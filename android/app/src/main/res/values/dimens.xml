@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="widget_corner_radius">24dp</dimen>
+    <dimen name="widget_artwork_corner_radius">16dp</dimen>
+    <dimen name="widget_small_artwork_corner_radius">16dp</dimen>
+    <dimen name="widget_badge_corner_radius">100dp</dimen>
+    <dimen name="widget_padding_horizontal">16dp</dimen>
+    <dimen name="widget_padding_vertical">14dp</dimen>
+</resources>

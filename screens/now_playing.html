@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Offline Music Player - Espresso</title>
+<!-- Tailwind CSS v3 with Forms & Container Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Phosphor Icons for authentic iOS/Streaming player UI iconography -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<!-- Google Font: Plus Jakarta Sans for refined mobile typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            coffee: {
+              950: '#0c0706',
+              900: '#1b0d09',
+              800: '#38160d',
+              700: '#5c2213',
+              accent: '#d4653a',
+              rose: '#e48b78'
+            }
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="custom-layout">
+    body {
+      background-color: #050404;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    
+    /* Custom subtle glassmorphism utilities */
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    
+    .glass-card {
+      background: linear-gradient(180deg, rgba(35, 18, 14, 0.6) 0%, rgba(12, 7, 6, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 120, 80, 0.12);
+    }
+
+    /* Animated current lyric word gradient */
+    .lyric-highlight {
+      background: linear-gradient(90deg, #ffffff 0%, #ffdfd4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 24px rgba(255, 180, 160, 0.5);
+    }
+
+    /* Waveform track styling */
+    .wave-line {
+      stroke-dasharray: 2 1;
+    }
+    
+    /* Smooth transition helpers */
+    .view-panel {
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-0 sm:p-4 text-white selection:bg-amber-700">
+<!-- BEGIN: MobileDeviceFrame -->
+<main class="relative w-full max-w-[412px] h-[890px] sm:h-[860px] bg-black sm:rounded-[48px] overflow-hidden shadow-2xl flex flex-col justify-between border sm:border-zinc-800" data-purpose="mobile-player-container">
+<!-- Ambient Dynamic Glow Background Matching Album Cover Palette -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden" data-purpose="ambient-lighting">
+<div class="absolute -top-24 -left-20 w-80 h-80 rounded-full bg-blue-600/30 blur-[90px]"></div>
+<div class="absolute top-1/3 -right-24 w-96 h-96 rounded-full bg-coffee-accent/25 blur-[100px]"></div>
+<div class="absolute bottom-0 inset-x-0 h-96 bg-gradient-to-t from-[#0c0706] via-[#1b0d09]/90 to-transparent"></div>
+</div>
+<!-- BEGIN: TopBarHeader -->
+<header class="relative z-20 pt-8 px-5 flex items-center justify-between" data-purpose="header-navigation">
+<!-- Left: Dismiss / Minimize Sheet Button -->
+<button aria-label="Minimize player" class="w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white/90 active:scale-90 transition-transform shadow-lg" id="dismissBtn">
+<i class="ph ph-caret-down text-xl"></i>
+</button>
+<!-- Center: Track Status & Download Indicator -->
+<div class="text-center flex flex-col items-center">
+<span class="text-[10px] tracking-[0.22em] font-extrabold text-white/70 uppercase flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+          Now Playing (Offline)
+        </span>
+<div class="flex items-center gap-1 mt-0.5">
+<i class="ph-fill ph-check-circle text-emerald-400 text-xs"></i>
+<span class="text-[11px] font-medium text-white/50">100% Downloaded • Local FLAC</span>
+</div>
+</div>
+<!-- Right: Actions (View Switch & Overflow) -->
+<div class="flex items-center gap-2">
+<button aria-label="Toggle Lyrics View" class="w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white/90 active:scale-95 transition-transform" id="toggleLyricsHeaderBtn">
+<i class="ph-fill ph-quotes text-lg" id="lyricsToggleIcon"></i>
+</button>
+<button aria-label="Options menu" class="w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white/90 active:scale-95 transition-transform">
+<i class="ph-bold ph-dots-three text-lg"></i>
+</button>
+</div>
+</header>
+<!-- END: TopBarHeader -->
+<!-- BEGIN: CentralContentSwitch -->
+<section class="relative z-10 flex-1 flex flex-col justify-center px-6 overflow-hidden my-auto" data-purpose="media-display-area">
+<!-- MODE 1: Album Cover Showcase View (Active by default) -->
+<div class="view-panel w-full flex flex-col items-center justify-center" data-purpose="album-art-view" id="coverModeView">
+<div class="relative w-[285px] h-[285px] sm:w-[310px] sm:h-[310px] rounded-[32px] p-1.5 shadow-[0_20px_50px_rgba(212,101,58,0.28)] bg-gradient-to-b from-white/20 to-white/5">
+<!-- Album Cover Image -->
+<img alt="Espresso - Sabrina Carpenter" class="w-full h-full object-cover rounded-[28px] shadow-inner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPedAu9gjkuvFXoCHXOaQZJX7JhiPeNh3PbyNdmGI3sHzkP9QkKlV74ggE_fpd6Tz931uRUF3Kvj2UrKVV4qKhkeAzqodmG49U0si10DMos0MnFVCbDBFZMwyjJj8Sx_m61TFIL-uf0Ud5cfT_IXcQgJEHZc9-_4qGlJahYyPasxpU2bVYf4Zc5iPV-WuVZua6tfW7LJVNT7lnf1FoRBgbr-4GdZCcX95UCJagzZD_uzMZGd5yQjOkoCmcBjEexb-1Oic"/>
+<!-- Gloss reflection highlight -->
+<div class="absolute inset-0 rounded-[28px] pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
+<!-- Offline badge tag over cover -->
+<div class="absolute top-4 left-4 glass-pill px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-md">
+<i class="ph-fill ph-hard-drive text-amber-300 text-xs"></i>
+<span class="text-[10px] tracking-wide font-semibold text-white/90">OFFLINE CACHE</span>
+</div>
+</div>
+</div>
+<!-- MODE 2: BetterLyrics Word-Synced View (Hidden initially) -->
+<div class="view-panel hidden w-full h-[330px] flex-col justify-center text-left py-2 px-1 space-y-4" data-purpose="synced-lyrics-view" id="lyricsModeView">
+<!-- Word sync header attribution -->
+<div class="flex items-center justify-between pb-1 border-b border-white/10">
+<span class="text-[11px] font-bold tracking-widest uppercase text-white/60 flex items-center gap-1.5">
+<i class="ph-bold ph-waveform text-amber-400"></i> WORD SYNC • BetterLyrics
+          </span>
+<span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-white/70">Karaoke Synced</span>
+</div>
+<!-- Lyrics Container with Synced Focus -->
+<div class="space-y-4 font-bold select-none cursor-pointer">
+<!-- Past line -->
+<p class="text-2xl text-white/30 font-bold blur-[0.4px] transition-all duration-300">
+            act this way
+          </p>
+<!-- Active Line with word highlight style -->
+<div class="text-3xl sm:text-[34px] font-extrabold leading-tight tracking-tight">
+<span class="lyric-highlight">I know I got'em</span>
+</div>
+<!-- Upcoming lines -->
+<p class="text-2xl text-white/30 font-semibold transition-all duration-300">
+            Too bad your ex
+          </p>
+<p class="text-2xl text-white/20 font-semibold blur-[0.5px]">
+            don't do it for ya
+          </p>
+<p class="text-xl text-white/10 font-semibold blur-[1px]">
+            Walked in and dream came
+          </p>
+</div>
+</div>
+</section>
+<!-- END: CentralContentSwitch -->
+<!-- BEGIN: MetadataAndControlsSection -->
+<div class="relative z-20 px-6 pb-6 pt-2 bg-gradient-to-t from-[#0c0706] via-[#100908] to-transparent flex flex-col gap-4" data-purpose="playback-controls-container">
+<!-- Track Information Row -->
+<div class="flex items-center justify-between" data-purpose="track-meta">
+<div class="flex-1 min-w-0 pr-3">
+<h1 class="text-2xl sm:text-[26px] font-extrabold tracking-tight text-white truncate">
+            Espresso
+          </h1>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-sm sm:text-base font-semibold text-white/75 truncate">Sabrina Carpenter</p>
+<!-- Verified Artist Badge -->
+<span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-blue-500 text-[10px] text-white">
+<i class="ph-bold ph-check"></i>
+</span>
+</div>
+<!-- High-Res Audio Fidelity Pill -->
+<div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-white/10 border border-white/15">
+<span class="text-[9px] font-black tracking-wider uppercase text-amber-300">LOSSLESS</span>
+<span class="text-[10px] text-white/50">•</span>
+<span class="text-[10px] font-medium text-white/80">24-bit / 96kHz FLAC</span>
+</div>
+</div>
+<!-- Right Quick Actions: Favorite & Lyrics Bubble -->
+<div class="flex items-center gap-2">
+<!-- Favorite Heart Button -->
+<button aria-label="Favorite song" class="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-white/90 active:scale-90 transition group hover:border-pink-500/40" id="likeBtn">
+<i class="ph-bold ph-heart text-xl group-hover:text-pink-400" id="likeIcon"></i>
+</button>
+<!-- Lyrics Display Toggle Button -->
+<button aria-label="Toggle Lyrics Display" class="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-white/90 active:scale-90 transition bg-white/10 hover:bg-white/20" id="lyricsButton">
+<i class="ph-bold ph-quotes text-xl"></i>
+</button>
+</div>
+</div>
+<!-- BEGIN: CustomFluidWaveScrubber -->
+<div class="pt-2" data-purpose="scrubber-bar">
+<!-- Progress track container -->
+<div class="relative w-full h-8 flex items-center cursor-pointer group" id="progressBarContainer">
+<!-- Background waveform track base -->
+<div class="absolute inset-x-0 h-1 bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-rose-300 to-rose-100 rounded-full" id="progressFill" style="width: 20%;"></div>
+</div>
+<!-- Stylized Wave Graphic along Scrubber (Inspired by reference wave) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-80" preserveaspectratio="none" viewbox="0 0 350 32">
+<!-- Sine curve over active playback progress -->
+<path d="M 0 16 Q 30 16 50 12 T 70 8 T 85 16" fill="none" stroke="rgba(244, 185, 177, 0.7)" stroke-width="1.8"></path>
+<path d="M 10 16 Q 40 18 60 14 T 80 11 T 85 16" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1.2"></path>
+</svg>
+<!-- Scrubber Fluid Bubble/Bead -->
+<div class="absolute w-4 h-4 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.9)] border-2 border-rose-300 top-1/2 -translate-y-1/2 transition-transform duration-75 group-hover:scale-125" id="scrubberHandle" style="left: calc(20% - 8px);"></div>
+</div>
+<!-- Timestamp Indicator -->
+<div class="flex justify-between items-center text-xs font-semibold text-white/60 -mt-1 font-mono">
+<span id="currentTime">0:33</span>
+<span id="remainingTime">-2:22</span>
+</div>
+</div>
+<!-- END: CustomFluidWaveScrubber -->
+<!-- BEGIN: MainPlaybackControls -->
+<div class="flex items-center justify-between pt-1 pb-1" data-purpose="primary-controls">
+<!-- Shuffle Mode -->
+<button aria-label="Shuffle" class="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition">
+<i class="ph-bold ph-shuffle text-xl"></i>
+</button>
+<!-- Previous Track Button -->
+<button aria-label="Previous track" class="w-12 h-12 rounded-full flex items-center justify-center text-white/90 hover:text-white active:scale-90 transition bg-white/5 border border-white/5 shadow">
+<i class="ph-fill ph-caret-double-left text-2xl"></i>
+</button>
+<!-- Center Glowing Play / Pause Pill -->
+<button aria-label="Pause or Play" class="h-14 px-8 rounded-full bg-gradient-to-r from-coffee-800 via-coffee-700 to-coffee-800 border border-coffee-accent/40 shadow-[0_0_30px_rgba(212,101,58,0.35)] flex items-center justify-center gap-2.5 active:scale-95 transition-all text-white font-bold" id="playPauseBtn">
+<i class="ph-fill ph-pause text-2xl" id="playIcon"></i>
+<span class="text-sm tracking-wide" id="playText">Pause</span>
+</button>
+<!-- Next Track Button -->
+<button aria-label="Next track" class="w-12 h-12 rounded-full flex items-center justify-center text-white/90 hover:text-white active:scale-90 transition bg-white/5 border border-white/5 shadow">
+<i class="ph-fill ph-caret-double-right text-2xl"></i>
+</button>
+<!-- Repeat Mode -->
+<button aria-label="Repeat" class="w-10 h-10 flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition">
+<i class="ph-bold ph-repeat text-xl"></i>
+</button>
+</div>
+<!-- END: MainPlaybackControls -->
+<!-- BEGIN: BottomUtilityDock -->
+<!-- Secondary row inspired by reference: metrics, local playlist counter, casting, and EQ -->
+<footer class="glass-pill rounded-2xl py-2 px-4 flex items-center justify-between text-xs text-white/75 mt-1" data-purpose="player-utility-dock">
+<!-- Queue / Offline Songs Count -->
+<div class="flex items-center gap-1.5 font-medium">
+<i class="ph-bold ph-playlist text-sm text-white/60"></i>
+<span>Queue <b>327</b></span>
+</div>
+<div class="h-3 w-[1px] bg-white/20"></div>
+<!-- EQ Shortcut -->
+<button class="flex items-center gap-1 hover:text-white transition">
+<i class="ph-bold ph-sliders text-sm text-amber-400"></i>
+<span>Warm EQ</span>
+</button>
+<div class="h-3 w-[1px] bg-white/20"></div>
+<!-- Sleep Timer -->
+<button class="flex items-center gap-1 hover:text-white transition">
+<i class="ph-bold ph-timer text-sm"></i>
+<span>30m</span>
+</button>
+<div class="h-3 w-[1px] bg-white/20"></div>
+<!-- Local AirPlay / Output Target -->
+<button class="flex items-center gap-1 hover:text-white transition">
+<i class="ph-bold ph-speaker-high text-sm text-emerald-400"></i>
+<span>AirPods Pro</span>
+</button>
+</footer>
+<!-- END: BottomUtilityDock -->
+<!-- Bottom iOS Gesture Bar Indicator -->
+<div class="w-32 h-1 bg-white/25 rounded-full mx-auto mt-0.5"></div>
+</div>
+<!-- END: MetadataAndControlsSection -->
+</main>
+<!-- END: MobileDeviceFrame -->
+<!-- BEGIN: ClientSideLogic -->
+<script data-purpose="player-interactivity">
+    // DOM Elements
+    const coverView = document.getElementById('coverModeView');
+    const lyricsView = document.getElementById('lyricsModeView');
+    const lyricsToggleHeaderBtn = document.getElementById('toggleLyricsHeaderBtn');
+    const lyricsButton = document.getElementById('lyricsButton');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playText = document.getElementById('playText');
+    const likeBtn = document.getElementById('likeBtn');
+    const likeIcon = document.getElementById('likeIcon');
+    const progressBar = document.getElementById('progressBarContainer');
+    const progressFill = document.getElementById('progressFill');
+    const scrubberHandle = document.getElementById('scrubberHandle');
+    const currentTimeEl = document.getElementById('currentTime');
+
+    let isPlaying = true;
+    let isLiked = false;
+    let isLyricsMode = false;
+    let progressPercent = 20;
+
+    // Toggle between Album Art Mode and Word-Synced Lyrics Mode
+    function toggleDisplayMode() {
+      isLyricsMode = !isLyricsMode;
+      if (isLyricsMode) {
+        coverView.classList.add('hidden');
+        lyricsView.classList.remove('hidden');
+        lyricsView.classList.add('flex');
+        lyricsButton.classList.add('bg-white/30', 'text-amber-300');
+      } else {
+        lyricsView.classList.add('hidden');
+        lyricsView.classList.remove('flex');
+        coverView.classList.remove('hidden');
+        lyricsButton.classList.remove('bg-white/30', 'text-amber-300');
+      }
+    }
+
+    lyricsButton.addEventListener('click', toggleDisplayMode);
+    lyricsToggleHeaderBtn.addEventListener('click', toggleDisplayMode);
+
+    // Play/Pause toggling
+    playPauseBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        playIcon.className = 'ph-fill ph-pause text-2xl';
+        playText.textContent = 'Pause';
+        playPauseBtn.classList.remove('opacity-90');
+      } else {
+        playIcon.className = 'ph-fill ph-play text-2xl';
+        playText.textContent = 'Play';
+        playPauseBtn.classList.add('opacity-90');
+      }
+    });
+
+    // Favorite button toggle
+    likeBtn.addEventListener('click', () => {
+      isLiked = !isLiked;
+      if (isLiked) {
+        likeIcon.className = 'ph-fill ph-heart text-xl text-rose-500 animate-bounce';
+      } else {
+        likeIcon.className = 'ph-bold ph-heart text-xl text-white/90';
+      }
+    });
+
+    // Interactive scrubber click simulation
+    progressBar.addEventListener('click', (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const clampedPct = Math.min(Math.max((clickX / width) * 100, 0), 100);
+      
+      progressPercent = clampedPct;
+      progressFill.style.width = clampedPct + '%';
+      scrubberHandle.style.left = `calc(${clampedPct}% - 8px)`;
+
+      // Approximate time calculation (Song total = 175s)
+      const currentSeconds = Math.round((clampedPct / 100) * 175);
+      const mins = Math.floor(currentSeconds / 60);
+      const secs = String(currentSeconds % 60).padStart(2, '0');
+      currentTimeEl.textContent = `${mins}:${secs}`;
+    });
+  </script>
+<!-- END: ClientSideLogic -->
+</body></html>

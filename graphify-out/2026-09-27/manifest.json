@@ -1,0 +1,938 @@
+{
+  "android/app/build.gradle.kts": {
+    "mtime": 1790513459.0171819,
+    "seen": 1790513618.8220782,
+    "ast_hash": "54eb6a63f53e121d9e471ed1f69f999f",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/MainActivity.kt": {
+    "mtime": 1790452601.0902786,
+    "seen": 1790512260.0992835,
+    "ast_hash": "170edadb1e2d8574b9242082e3745aad",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AudioMetadataHelper.kt": {
+    "mtime": 1790512821.371817,
+    "seen": 1790513618.8220878,
+    "ast_hash": "86952562b851bdd660b0478262f17856",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AuraAudioService.kt": {
+    "mtime": 1790444613.5547602,
+    "seen": 1790445463.6704485,
+    "ast_hash": "a58f0a2a952c1d33b4f8b0a2095ec4d4",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AuraPlayerManager.kt": {
+    "mtime": 1790449023.0428379,
+    "seen": 1790449087.0699847,
+    "ast_hash": "e5f82749424b60fb5c67735c45927519",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/local/UserPreferences.kt": {
+    "mtime": 1790452387.0187254,
+    "seen": 1790512260.0993145,
+    "ast_hash": "72e716624780e0fdf87b684fefd01a79",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/local/dao/Daos.kt": {
+    "mtime": 1790512988.2607243,
+    "seen": 1790513618.822104,
+    "ast_hash": "d550e3181759381d9921c3a1ed312000",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/local/database/AuraDatabase.kt": {
+    "mtime": 1790512668.008422,
+    "seen": 1790513618.8221052,
+    "ast_hash": "03fe3d04ad858f80beca03eff10d0f85",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/local/entity/Entities.kt": {
+    "mtime": 1790513404.1234953,
+    "seen": 1790513618.8221061,
+    "ast_hash": "faa68d7b87d66026f970740f93740560",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/repository/MusicRepositoryImpl.kt": {
+    "mtime": 1790513090.1862981,
+    "seen": 1790513618.8221092,
+    "ast_hash": "37e469dc562e3a45c41d57e21ee3b52d",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/repository/PlaylistRepositoryImpl.kt": {
+    "mtime": 1790430834.6013846,
+    "seen": 1790431907.4045002,
+    "ast_hash": "ed9155eaf2396201830828f59033ee03",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/Lyrics.kt": {
+    "mtime": 1790444553.689226,
+    "seen": 1790445463.6704643,
+    "ast_hash": "55cf5d17afec7f931946ee6bf627a721",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/QueueState.kt": {
+    "mtime": 1790346245.709766,
+    "seen": 1790409288.1697128,
+    "ast_hash": "c2cda320b70d954e460a84cc149d7776",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/Song.kt": {
+    "mtime": 1790512599.63574,
+    "seen": 1790513618.8221178,
+    "ast_hash": "5ecd18c3ca23d95648f5a77f7feae467",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/SongSortOrder.kt": {
+    "mtime": 1790430729.5274827,
+    "seen": 1790431907.404508,
+    "ast_hash": "e874fbcd0daff0a6305f9c2243389975",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/repository/MusicRepository.kt": {
+    "mtime": 1790447689.1113424,
+    "seen": 1790449087.070011,
+    "ast_hash": "f24f44058f912abe270d9f360e6a7226",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/repository/PlaylistRepository.kt": {
+    "mtime": 1790430813.9372709,
+    "seen": 1790431907.40451,
+    "ast_hash": "3acd11fdd28168abea6c3feff2bf2e03",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/theme/Color.kt": {
+    "mtime": 1790452014.3820536,
+    "seen": 1790512260.0993428,
+    "ast_hash": "2b5d4eb33a08c8563f3695142b379708",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/theme/Theme.kt": {
+    "mtime": 1790452004.2225647,
+    "seen": 1790512260.0993435,
+    "ast_hash": "bd9367071d4a152d44fddd556f67d8b6",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/theme/Type.kt": {
+    "mtime": 1790344681.1283193,
+    "seen": 1790409288.169718,
+    "ast_hash": "e6e2704d06a1eef42fe1c842304b7ea0",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/Components.kt": {
+    "mtime": 1790453944.104116,
+    "seen": 1790512260.0993493,
+    "ast_hash": "1c5d2542a0b549be08a009810d6b8547",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/home/HomeScreen.kt": {
+    "mtime": 1790454128.1883905,
+    "seen": 1790512260.0993586,
+    "ast_hash": "48f4c2c7a98b97ebbf3371dad78b6f37",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/library/LibraryScreen.kt": {
+    "mtime": 1790454196.9631603,
+    "seen": 1790512260.09936,
+    "ast_hash": "e21cbac354ccafe8454c00f7196e8554",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/navigation/AuraNavigation.kt": {
+    "mtime": 1790454033.4684076,
+    "seen": 1790512260.099373,
+    "ast_hash": "1411ffb58b632e38c6da662cb2bfd507",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/nowplaying/NowPlayingScreen.kt": {
+    "mtime": 1790454652.2440476,
+    "seen": 1790512260.099374,
+    "ast_hash": "f6bd7a034eff9f77701173bbc34cda85",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/search/SearchScreen.kt": {
+    "mtime": 1790454329.404971,
+    "seen": 1790512260.0993757,
+    "ast_hash": "f4dc60e06251a3ffcbac5792ff45ca36",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/settings/SettingsScreen.kt": {
+    "mtime": 1790452534.8932307,
+    "seen": 1790512260.0993764,
+    "ast_hash": "cf642da4b184e4d11b360d5028ccee5c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/viewmodel/LibraryViewModel.kt": {
+    "mtime": 1790448142.7524786,
+    "seen": 1790449087.0700345,
+    "ast_hash": "796a81ed790e192563f6cda9878bd8c5",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/viewmodel/PlayerViewModel.kt": {
+    "mtime": 1790452471.6813226,
+    "seen": 1790512260.0993798,
+    "ast_hash": "49a8dcf6028402d4d12270ecab26d7f3",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/data/local/EntityMappingTest.kt": {
+    "mtime": 1790444190.962256,
+    "seen": 1790445463.670497,
+    "ast_hash": "b52598a504be46741cf321d55aa6fcf3",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/data/repository/MusicRepositoryTest.kt": {
+    "mtime": 1790513370.8024387,
+    "seen": 1790513618.822156,
+    "ast_hash": "39de9669c7cdaa355df5bfa09a6c57c3",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/LyricsTest.kt": {
+    "mtime": 1790362162.7745087,
+    "seen": 1790409288.1697264,
+    "ast_hash": "a19c6f5f2519fe680af8f2a62282c781",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/PlaybackStateTest.kt": {
+    "mtime": 1790346405.0120077,
+    "seen": 1790409288.1697273,
+    "ast_hash": "1feae8a5263b5ad2c36c784e3741284d",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/QueueStateTest.kt": {
+    "mtime": 1790346392.0185435,
+    "seen": 1790409288.169728,
+    "ast_hash": "495f20b799ea4e01d4d3476d62b7622e",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/SongSortTest.kt": {
+    "mtime": 1790362132.251959,
+    "seen": 1790409288.1697288,
+    "ast_hash": "1f9d298253fb31dd32d2d4ce463561d4",
+    "semantic_hash": ""
+  },
+  "android/build.gradle.kts": {
+    "mtime": 1790345733.9269834,
+    "seen": 1790409288.1697295,
+    "ast_hash": "1863cebb20414f88b8f8cddfff425f6f",
+    "semantic_hash": ""
+  },
+  "android/gradlew": {
+    "mtime": 1790344681.00203,
+    "seen": 1790409288.1697302,
+    "ast_hash": "857faf4b42fc9e324fb40b7223f2a94a",
+    "semantic_hash": ""
+  },
+  "android/settings.gradle.kts": {
+    "mtime": 1790344681.0290294,
+    "seen": 1790409288.1697311,
+    "ast_hash": "c141549e77a048fc8c2ca8c5e06dac37",
+    "semantic_hash": ""
+  },
+  "build_app.py": {
+    "mtime": 1790342940.0579004,
+    "seen": 1790409288.1697319,
+    "ast_hash": "0b87002407d133b0402638ae02cad1c3",
+    "semantic_hash": ""
+  },
+  "download_stitch.py": {
+    "mtime": 1790342492.6513886,
+    "seen": 1790409288.1697326,
+    "ast_hash": "c2cf44b043cbe4ad6b89e2e1cc581c15",
+    "semantic_hash": ""
+  },
+  "src/app.js": {
+    "mtime": 1790342897.2457943,
+    "seen": 1790409288.169733,
+    "ast_hash": "d2441a78f9eb0a4ece8a51d2e20a5411",
+    "semantic_hash": ""
+  },
+  "src/audio/AudioEngine.js": {
+    "mtime": 1790342856.1476405,
+    "seen": 1790409288.169734,
+    "ast_hash": "fec97938fba75b1ad7285c825398a990",
+    "semantic_hash": ""
+  },
+  "src/audio/sampleTracks.js": {
+    "mtime": 1790342835.9253104,
+    "seen": 1790409288.1697345,
+    "ast_hash": "fc04b781e72f558ef1250a3dc48619fe",
+    "semantic_hash": ""
+  },
+  "src/models/Queue.js": {
+    "mtime": 1790342822.932865,
+    "seen": 1790409288.1697357,
+    "ast_hash": "d710e39eb3cbd0438a7acafe9f6fb5b5",
+    "semantic_hash": ""
+  },
+  "src/models/Track.js": {
+    "mtime": 1790342812.281851,
+    "seen": 1790409288.1697364,
+    "ast_hash": "2cb0ad23972a08fe6b56dff856dde410",
+    "semantic_hash": ""
+  },
+  "src/ui/audioSync.js": {
+    "mtime": 1790342876.3313565,
+    "seen": 1790409288.1697369,
+    "ast_hash": "8ae11efa87d98c402f61713f144d4050",
+    "semantic_hash": ""
+  },
+  "src/ui/navigation.js": {
+    "mtime": 1790342887.839211,
+    "seen": 1790409288.1697378,
+    "ast_hash": "261088540a64dccaa98428f5ff1bb4c8",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1790409250.9216416,
+    "seen": 1790409288.1697385,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": ""
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1790409250.9231496,
+    "seen": 1790409288.1697392,
+    "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": ""
+  },
+  "DESIGN_SYSTEM.md": {
+    "mtime": 1790342538.4806402,
+    "seen": 1790409288.1697397,
+    "ast_hash": "d2c8410c04bd9dfe01136a887b7f6bad",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1790342950.9294796,
+    "seen": 1790409288.1697404,
+    "ast_hash": "ff7d5a34033a5c9678b72153784ba148",
+    "semantic_hash": ""
+  },
+  "screens/home.html": {
+    "mtime": 1790342519.1124537,
+    "seen": 1790409288.1697414,
+    "ast_hash": "9dd9d623ed1ec2f1fde8b65f937ba16c",
+    "semantic_hash": ""
+  },
+  "screens/library.html": {
+    "mtime": 1790342523.2394605,
+    "seen": 1790409288.1697419,
+    "ast_hash": "50062e3994901d4500b7ab26c15c72c0",
+    "semantic_hash": ""
+  },
+  "screens/lyrics.html": {
+    "mtime": 1790342520.795598,
+    "seen": 1790409288.1697426,
+    "ast_hash": "825ee38eed674e3ddb9233a40ddfe2ee",
+    "semantic_hash": ""
+  },
+  "screens/now_playing.html": {
+    "mtime": 1790342520.102072,
+    "seen": 1790409288.1697435,
+    "ast_hash": "f9b75bb1c9df8ad01fe1a52294453a76",
+    "semantic_hash": ""
+  },
+  "screens/prototype_overview.html": {
+    "mtime": 1790342526.3866062,
+    "seen": 1790409288.1697445,
+    "ast_hash": "9dd9d623ed1ec2f1fde8b65f937ba16c",
+    "semantic_hash": ""
+  },
+  "screens/search.html": {
+    "mtime": 1790342521.9847867,
+    "seen": 1790409288.169745,
+    "ast_hash": "bc0cb1143586d6780bcda55c1b922b50",
+    "semantic_hash": ""
+  },
+  "screens/settings.html": {
+    "mtime": 1790342524.4944434,
+    "seen": 1790409288.169746,
+    "ast_hash": "b7eb13b5bce24d97784b137cdbcc6b28",
+    "semantic_hash": ""
+  },
+  "studio.html": {
+    "mtime": 1790342568.6363318,
+    "seen": 1790409288.1697464,
+    "ast_hash": "5bdf8fbbe6f69e3de31820bed1e8dc30",
+    "semantic_hash": ""
+  },
+  "assets/album_neon_horizons.png": {
+    "mtime": 1790342537.6844294,
+    "seen": 1790409288.169754,
+    "ast_hash": "8209a5cdc85db8f39583919638d40a58",
+    "semantic_hash": ""
+  },
+  "assets/album_resonance.png": {
+    "mtime": 1790342536.1091456,
+    "seen": 1790409288.1697545,
+    "ast_hash": "d6b05f1957cf02539620a93adf78f674",
+    "semantic_hash": ""
+  },
+  "assets/album_solar_flare.png": {
+    "mtime": 1790342533.446298,
+    "seen": 1790409288.1697555,
+    "ast_hash": "4ed151fc24ed9d4d39ed3c7169d29cae",
+    "semantic_hash": ""
+  },
+  "assets/album_velvet_eclipse.png": {
+    "mtime": 1790342530.178848,
+    "seen": 1790409288.1697562,
+    "ast_hash": "70f6bb8d9c6e17207b31cf4e337d4715",
+    "semantic_hash": ""
+  },
+  "assets/aura_logo.png": {
+    "mtime": 1790512114.1404624,
+    "seen": 1790512260.0994391,
+    "ast_hash": "e5ed3379b81d7950bdb4a8225a6fdfc7",
+    "semantic_hash": ""
+  },
+  "assets/user_avatar.png": {
+    "mtime": 1790342531.5911155,
+    "seen": 1790409288.1697576,
+    "ast_hash": "1f7572ec674975039d16e80e5ed8e2a5",
+    "semantic_hash": ""
+  },
+  "scratch/aura_screen.png": {
+    "mtime": 1790359833.8001754,
+    "seen": 1790409288.1697583,
+    "ast_hash": "cba2217dd509fdcc65de40cd3b77250d",
+    "semantic_hash": ""
+  },
+  "scratch/audio/Aura_Resonance.wav": {
+    "mtime": 1790351326.7439988,
+    "seen": 1790409288.169759,
+    "ast_hash": "c715373dcf380d05c1dd9f6b7d6cc90c",
+    "semantic_hash": ""
+  },
+  "scratch/audio/Celestial_Drift.wav": {
+    "mtime": 1790351812.3323474,
+    "seen": 1790409288.1697595,
+    "ast_hash": "454c78f2acb217063bdc9d6e05fa3db4",
+    "semantic_hash": ""
+  },
+  "scratch/audio/Midnight_Echo.wav": {
+    "mtime": 1790351326.9533768,
+    "seen": 1790409288.1697602,
+    "ast_hash": "6111914f87c2fbc9af616a44697d4b08",
+    "semantic_hash": ""
+  },
+  "scratch/audio/Midnight_Echoes.wav": {
+    "mtime": 1790351812.6412222,
+    "seen": 1790409288.169761,
+    "ast_hash": "13bca8f0c9c0a75b75367fb6626cfb2d",
+    "semantic_hash": ""
+  },
+  "scratch/audio/Resonance.wav": {
+    "mtime": 1790351812.0037155,
+    "seen": 1790409288.169762,
+    "ast_hash": "ea96c736f239b9f2613202be2b72b40e",
+    "semantic_hash": ""
+  },
+  "scratch/audio/Solar_Waves.wav": {
+    "mtime": 1790351812.9473777,
+    "seen": 1790409288.1697624,
+    "ast_hash": "742435732cbb19e391a76b8941024bf4",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/data/audio/AudioFormatSupportTest.kt": {
+    "mtime": 1790444180.2166302,
+    "seen": 1790445463.6704946,
+    "ast_hash": "b7e1db019b7b34d567d3fccc46c88422",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/PlayerState.kt": {
+    "mtime": 1790414176.1100955,
+    "seen": 1790414757.2593215,
+    "ast_hash": "d9782137ee466f858750dfe62f18dc26",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/PlayerStateTest.kt": {
+    "mtime": 1790414668.9354663,
+    "seen": 1790414757.2593427,
+    "ast_hash": "67cac21c3daeb88760e4b1cf2baeb812",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/SearchResults.kt": {
+    "mtime": 1790430747.7290754,
+    "seen": 1790431907.4045048,
+    "ast_hash": "0c621746c415694e7827cc07a80a6959",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/theme/ArtworkColorExtractor.kt": {
+    "mtime": 1790452039.9625094,
+    "seen": 1790512260.09934,
+    "ast_hash": "c35e8324ae38964eac4ed87dadb2ec9c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/PlaylistSelectionDialog.kt": {
+    "mtime": 1790430989.5417714,
+    "seen": 1790431907.4045153,
+    "ast_hash": "c03c048f6e7c9e884993102d853c970c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/SongContextMenu.kt": {
+    "mtime": 1790454350.9667537,
+    "seen": 1790512260.0993545,
+    "ast_hash": "7d0fb3409c178c221e3aac4ab45ba329",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/TrackInfoDialog.kt": {
+    "mtime": 1790430971.7074337,
+    "seen": 1790431907.4045172,
+    "ast_hash": "d33892f0c3e72a586720a3e9d1cf20fd",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/library/DetailScreens.kt": {
+    "mtime": 1790454258.8779259,
+    "seen": 1790512260.0993593,
+    "ast_hash": "27277d97d4856c66c3367eeb9f8d1674",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/nowplaying/QueueBottomSheet.kt": {
+    "mtime": 1790453896.573498,
+    "seen": 1790512260.0993748,
+    "ast_hash": "0d90a1712032eb4c9045c0943faf1cca",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AudioOutputManager.kt": {
+    "mtime": 1790444519.6629088,
+    "seen": 1790445463.670447,
+    "ast_hash": "acbf75f63dda2f1e51d9b23110e2da70",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AuraHardwareEffectsManager.kt": {
+    "mtime": 1790444505.6656625,
+    "seen": 1790445463.6704497,
+    "ast_hash": "eb11883a052baf8a078d8214b37dae1a",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AuraSleepTimer.kt": {
+    "mtime": 1790447859.8952591,
+    "seen": 1790449087.0699856,
+    "ast_hash": "f742736c4d8a6836024a4524bf54106f",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/dsp/AuraAudioProcessor.kt": {
+    "mtime": 1790444492.1372094,
+    "seen": 1790445463.6704526,
+    "ast_hash": "3dbc0ced10b5753a114bb8a2467c6602",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/dsp/BiquadFilter.kt": {
+    "mtime": 1790445387.7630012,
+    "seen": 1790445463.6704535,
+    "ast_hash": "b215ad508f18d6ac64320c96177610a4",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/dsp/DynamicCompressor.kt": {
+    "mtime": 1790445393.6820738,
+    "seen": 1790445463.6704543,
+    "ast_hash": "ef7485f505b46f657950a57993d985ea",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/dsp/PeakLimiter.kt": {
+    "mtime": 1790445400.108533,
+    "seen": 1790445463.670455,
+    "ast_hash": "7cc0f454878f61f886a67805d2897974",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/dsp/Spatial4DEngine.kt": {
+    "mtime": 1790445166.008744,
+    "seen": 1790445463.6704557,
+    "ast_hash": "c1441a8f3005613344f0d33137cb921c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/audio/AudioEffectsState.kt": {
+    "mtime": 1790448766.3702507,
+    "seen": 1790449087.070009,
+    "ast_hash": "94ef440070484722f4b268c99f3d0072",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/audiofx/AudioEffectsScreen.kt": {
+    "mtime": 1790444782.9328606,
+    "seen": 1790445463.6704774,
+    "ast_hash": "d1ddd14683efa4a9ee131be763b03853",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/AuraVisualizerView.kt": {
+    "mtime": 1790444719.6567748,
+    "seen": 1790445463.670478,
+    "ast_hash": "42a04117f37d3894f83c2bb48a92c9c0",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/ParametricEqCurve.kt": {
+    "mtime": 1790444735.578508,
+    "seen": 1790445463.67048,
+    "ast_hash": "f597281040393adab096d4280ed606d7",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/SpatialPositionRadar.kt": {
+    "mtime": 1790444747.8544228,
+    "seen": 1790445463.670483,
+    "ast_hash": "c34b4b55816fdcf63d8e7a4b091f3b33",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/data/audio/SleepTimerTest.kt": {
+    "mtime": 1790445419.0465925,
+    "seen": 1790445463.6704953,
+    "ast_hash": "26d087802deea25c453d43e2ead3784b",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/data/audio/dsp/DspEngineTest.kt": {
+    "mtime": 1790445412.0341566,
+    "seen": 1790445463.670496,
+    "ast_hash": "759dcde5dd220a2f8e47f2330726abc0",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/LyricsSyncTest.kt": {
+    "mtime": 1790445336.238854,
+    "seen": 1790445463.6704988,
+    "ast_hash": "f75d2be299832f976f9a84c700c623b6",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/domain/model/audio/AudioEffectsStateTest.kt": {
+    "mtime": 1790445344.0272336,
+    "seen": 1790445463.6705048,
+    "ast_hash": "d83763dcfddad941a6b036d14bb94a4a",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/backup/AuraBackupManager.kt": {
+    "mtime": 1790447648.4579363,
+    "seen": 1790449087.0699916,
+    "ast_hash": "3646646b35560fbd5e3e5e50d73e5b6d",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/lyrics/LrcLibLyricsProvider.kt": {
+    "mtime": 1790512697.6909156,
+    "seen": 1790513618.8221068,
+    "ast_hash": "730f851d508a3dbb5351766e97677d76",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/lyrics/LyricsManager.kt": {
+    "mtime": 1790513474.7280521,
+    "seen": 1790513618.8221076,
+    "ast_hash": "3aaf8e9998f84eecec484a2a67c9ce97",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/metadata/MetadataEditor.kt": {
+    "mtime": 1790513029.4889092,
+    "seen": 1790513618.8221085,
+    "ast_hash": "ba90172834a6c13b9c4cc9f706a83486",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/stats/StatisticsEngine.kt": {
+    "mtime": 1790447661.948181,
+    "seen": 1790449087.070001,
+    "ast_hash": "afabc2104bd1cbc20788af99a909453b",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/ListeningStatistics.kt": {
+    "mtime": 1790447622.779515,
+    "seen": 1790449087.0700016,
+    "ast_hash": "3117a9df6fc1c4d815556595f6ff1aa8",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/SmartPlaylist.kt": {
+    "mtime": 1790450122.1845288,
+    "seen": 1790451076.5106628,
+    "ast_hash": "645721ea7851ea4cd8dd5d9b93dc14bd",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/settings/SettingsModels.kt": {
+    "mtime": 1790452363.825212,
+    "seen": 1790512260.0993364,
+    "ast_hash": "dd17f6b29f0eac3f3686cc6f17883b7a",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/MetadataEditorDialog.kt": {
+    "mtime": 1790447903.2055328,
+    "seen": 1790449087.0700188,
+    "ast_hash": "3fc028461ae44e802f86615256f3fdcb",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/SleepTimerBottomSheet.kt": {
+    "mtime": 1790450246.3705814,
+    "seen": 1790451076.5106783,
+    "ast_hash": "44b3a844fd673d6206e1890f7f8f3c0f",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/StarRatingBar.kt": {
+    "mtime": 1790447910.6285777,
+    "seen": 1790449087.0700243,
+    "ast_hash": "e14768424d481c29787c6df79f0d41a2",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/stats/StatisticsScreen.kt": {
+    "mtime": 1790447923.620008,
+    "seen": 1790449087.070033,
+    "ast_hash": "d4973d5178775e42c8d45e9b868fff2b",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/Phase4FeaturesTest.kt": {
+    "mtime": 1790448851.7735455,
+    "seen": 1790449087.0700357,
+    "ast_hash": "8eb03060dc0f6254ab6ec347625c69c5",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/theme/AuraMotion.kt": {
+    "mtime": 1790453519.138227,
+    "seen": 1790512260.0993419,
+    "ast_hash": "dd194a67589f81dce77af672366b7efe",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/AuraAnimatedComponents.kt": {
+    "mtime": 1790453721.7794611,
+    "seen": 1790512260.0993469,
+    "ast_hash": "2c432e5f3b1e9b06eaed18e1795a4753",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/splash/AuraSplashScreen.kt": {
+    "mtime": 1790512188.057326,
+    "seen": 1790512260.099377,
+    "ast_hash": "bb52b291b50a92dd2397b6fd5ebf80d4",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/drawable/aura_logo.png": {
+    "mtime": 1790512114.1345003,
+    "seen": 1790512260.0994196,
+    "ast_hash": "e5ed3379b81d7950bdb4a8225a6fdfc7",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-hdpi/ic_launcher.png": {
+    "mtime": 1790512114.1641908,
+    "seen": 1790512260.0994208,
+    "ast_hash": "2e1ba2c9ed33a0c7d3e4b04ba3fb5629",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png": {
+    "mtime": 1790512114.1458144,
+    "seen": 1790512260.0994217,
+    "ast_hash": "b0b6ab424bb1c4313b1297e7f6359ef5",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png": {
+    "mtime": 1790512114.1651344,
+    "seen": 1790512260.0994225,
+    "ast_hash": "6b1204b0a720b68bfdde31c033857322",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-mdpi/ic_launcher.png": {
+    "mtime": 1790512114.159613,
+    "seen": 1790512260.0994234,
+    "ast_hash": "5ea94fcd0d56fbd344ba8a859fb97ac9",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png": {
+    "mtime": 1790512114.1428084,
+    "seen": 1790512260.0994244,
+    "ast_hash": "98a483f2ce755f00a6a722d2a916f939",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png": {
+    "mtime": 1790512114.161618,
+    "seen": 1790512260.0994253,
+    "ast_hash": "02b514eff61e4cefe04e4916ed929dc0",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png": {
+    "mtime": 1790512114.1661282,
+    "seen": 1790512260.0994263,
+    "ast_hash": "f74b7d3777cf9c47bf280e78a39a44cd",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png": {
+    "mtime": 1790512114.148506,
+    "seen": 1790512260.099427,
+    "ast_hash": "15a21a14e88e61b1f7548038c04efd9c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png": {
+    "mtime": 1790512114.1676347,
+    "seen": 1790512260.099428,
+    "ast_hash": "378f90c7018548637f2c67c7b2d6f122",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png": {
+    "mtime": 1790512114.1697147,
+    "seen": 1790512260.0994287,
+    "ast_hash": "0578297430d33d81880a8601231425a5",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1790512114.1515853,
+    "seen": 1790512260.0994294,
+    "ast_hash": "898dc131fb6cb181affdf8785830bb7c",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png": {
+    "mtime": 1790512114.1742482,
+    "seen": 1790512260.0994303,
+    "ast_hash": "22bf3f335c8488d8cd7137cec5d9b790",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png": {
+    "mtime": 1790512114.1779337,
+    "seen": 1790512260.0994313,
+    "ast_hash": "c29ae84ce5d39d8d3694329aef8db131",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png": {
+    "mtime": 1790512114.1576054,
+    "seen": 1790512260.0994322,
+    "ast_hash": "25408924364d7ed617539b977ccc7024",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png": {
+    "mtime": 1790512114.179953,
+    "seen": 1790512260.099433,
+    "ast_hash": "726640fc61ab3f4166e1548236cee5c9",
+    "semantic_hash": ""
+  },
+  "scratch/aura_logo_512.png": {
+    "mtime": 1790511994.1169088,
+    "seen": 1790512260.0994408,
+    "ast_hash": "d805883dfc8b81da1592efe007c058f8",
+    "semantic_hash": ""
+  },
+  "scratch/aura_logo_badge_512.png": {
+    "mtime": 1790511994.124954,
+    "seen": 1790512260.0994418,
+    "ast_hash": "a2773d9a1d53bc423a3d4f3808616408",
+    "semantic_hash": ""
+  },
+  "scratch/comp_orig.png": {
+    "mtime": 1790512099.9051883,
+    "seen": 1790512260.0994437,
+    "ast_hash": "e4dba3bc269879894e459289da88c956",
+    "semantic_hash": ""
+  },
+  "scratch/comp_vibrant.png": {
+    "mtime": 1790512099.913223,
+    "seen": 1790512260.0994446,
+    "ast_hash": "fae245994aa6189bc969d5bbcdf5496c",
+    "semantic_hash": ""
+  },
+  "scratch/crop_raw.png": {
+    "mtime": 1790511799.7216716,
+    "seen": 1790512260.0994456,
+    "ast_hash": "10910ecb83b537f6eeaa2caaa782fa55",
+    "semantic_hash": ""
+  },
+  "scratch/crop_zoom.png": {
+    "mtime": 1790511939.606179,
+    "seen": 1790512260.099446,
+    "ast_hash": "ce54c974039f796f982222d056a171db",
+    "semantic_hash": ""
+  },
+  "scratch/extracted_logo.png": {
+    "mtime": 1790511832.1153698,
+    "seen": 1790512260.0994468,
+    "ast_hash": "140e08f69c34f22baa01e2ca3b017128",
+    "semantic_hash": ""
+  },
+  "scratch/logo_4x.png": {
+    "mtime": 1790511863.938541,
+    "seen": 1790512260.0994475,
+    "ast_hash": "9c9b1944bf877ce1707ce05439a8ce48",
+    "semantic_hash": ""
+  },
+  "scratch/logo_perfect.png": {
+    "mtime": 1790511983.1409307,
+    "seen": 1790512260.0994482,
+    "ast_hash": "bce483d4aa439258b952a3d00c6ccfc9",
+    "semantic_hash": ""
+  },
+  "scratch/m1_dark.png": {
+    "mtime": 1790512074.2230935,
+    "seen": 1790512260.0994492,
+    "ast_hash": "a7ff35ddbe4b2271497f971d2fb0a487",
+    "semantic_hash": ""
+  },
+  "scratch/m2_dark.png": {
+    "mtime": 1790512074.2409103,
+    "seen": 1790512260.0994496,
+    "ast_hash": "e4dba3bc269879894e459289da88c956",
+    "semantic_hash": ""
+  },
+  "scratch/method1.png": {
+    "mtime": 1790512066.2039864,
+    "seen": 1790512260.0994506,
+    "ast_hash": "811cde09f5239e943b1a3bec8b106b0e",
+    "semantic_hash": ""
+  },
+  "scratch/method2.png": {
+    "mtime": 1790512066.2113886,
+    "seen": 1790512260.0994513,
+    "ast_hash": "425cd857a1e7169b963e93ee12e8f777",
+    "semantic_hash": ""
+  },
+  "scratch/method2_vibrant.png": {
+    "mtime": 1790512099.8978484,
+    "seen": 1790512260.099452,
+    "ast_hash": "f3dd69c4196395e4cd379ce5aab629b3",
+    "semantic_hash": ""
+  },
+  "scratch/test_on_aura_dark.png": {
+    "mtime": 1790511983.1464646,
+    "seen": 1790512260.0994527,
+    "ast_hash": "19542d4d8ce5d0b96103a6502032d49c",
+    "semantic_hash": ""
+  },
+  "scratch/test_on_dark.png": {
+    "mtime": 1790511832.1419191,
+    "seen": 1790512260.0994534,
+    "ast_hash": "3851695dbd3442c405f08a4fca5e4caa",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/audio/AudioSourceNormalizer.kt": {
+    "mtime": 1790513485.5705748,
+    "seen": 1790513618.8220916,
+    "ast_hash": "c29ba26c79bbfa069ed286dcd761a766",
+    "semantic_hash": ""
+  },
+  "android/app/src/test/java/com/example/aura/data/repository/MusicImportAndLyricsTest.kt": {
+    "mtime": 1790513511.0036597,
+    "seen": 1790513618.822155,
+    "ast_hash": "17b4f7de1143fb62f2cd0e05f13af6e6",
+    "semantic_hash": ""
+  },
+  ".agents/rules/ponytail.md": {
+    "mtime": 1789235367.813058,
+    "seen": 1790513913.940597,
+    "ast_hash": "c015b34524a6b541eb95b792e6e61626",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ponytail-audit/SKILL.md": {
+    "mtime": 1789235367.9077818,
+    "seen": 1790513913.9405992,
+    "ast_hash": "741076540e91247a0bace7b89c27ac6b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ponytail-debt/SKILL.md": {
+    "mtime": 1789235367.9087868,
+    "seen": 1790513913.9406006,
+    "ast_hash": "19c1eef33c9b109abb5805a762a545c8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ponytail-gain/SKILL.md": {
+    "mtime": 1789235367.909787,
+    "seen": 1790513913.9406016,
+    "ast_hash": "8f9cd980326238785d2fc23a9cfddc96",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ponytail-help/SKILL.md": {
+    "mtime": 1789235367.909787,
+    "seen": 1790513913.9406023,
+    "ast_hash": "25b3214341fdc2f0805d2f8a5da6fefd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ponytail-review/SKILL.md": {
+    "mtime": 1789235367.9108095,
+    "seen": 1790513913.940603,
+    "ast_hash": "52f93e973047baa9a906c6dc5879a4a6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ponytail/SKILL.md": {
+    "mtime": 1789235367.911815,
+    "seen": 1790513913.9406042,
+    "ast_hash": "33f013ce03c8c66a6002ef941a433b81",
+    "semantic_hash": ""
+  }
+}

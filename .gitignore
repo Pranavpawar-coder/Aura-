@@ -1,0 +1,30 @@
+# Gradle and Android build outputs
+.gradle/
+**/build/
+build/
+*.iml
+.idea/
+**/.idea/
+
+# Android Studio / Local configuration
+local.properties
+**/local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Keystores & sensitive credentials
+*.jks
+*.keystore
+keystore.properties
+**/keystore.properties
+google-services.json
+
+# OS and system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Agent & graphify caches
+.system_generated/
+graphify-out/cache/

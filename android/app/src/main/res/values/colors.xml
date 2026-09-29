@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="widget_background">#0F1318</color>
+    <color name="widget_background_start">#11151C</color>
+    <color name="widget_background_end">#0A0D12</color>
+    <color name="widget_surface">#141820</color>
+    <color name="widget_surface_high">#1C222C</color>
+    <color name="widget_surface_highest">#252C39</color>
+    <color name="widget_border">#1E2530</color>
+    <color name="widget_border_subtle">#151B24</color>
+
+    <!-- Typography -->
+    <color name="widget_text_primary">#FFFFFF</color>
+    <color name="widget_text_secondary">#9BA5B4</color>
+    <color name="widget_text_muted">#7E8A9B</color>
+
+    <!-- Accents & Buttons -->
+    <color name="widget_accent_primary">#CABEFF</color>
+    <color name="widget_accent_secondary">#D0BCFF</color>
+    <color name="widget_accent_cyan">#4CD6FF</color>
+    <color name="widget_play_bg">#CABEFF</color>
+    <color name="widget_play_icon">#2B1B54</color>
+
+    <!-- Controls -->
+    <color name="widget_control_tint">#E0E4EC</color>
+    <color name="widget_control_secondary_tint">#7E8A9B</color>
+    <color name="widget_control_active_tint">#CABEFF</color>
+    <color name="widget_control_bg">#181E27</color>
+
+    <!-- Progress -->
+    <color name="widget_progress_track">#222834</color>
+    <color name="widget_progress_fill">#CABEFF</color>
+
+    <!-- Badges & Overlays -->
+    <color name="widget_pill_bg">#D90E1218</color>
+    <color name="widget_pill_border">#33FFFFFF</color>
+    <color name="widget_lyrics_bg">#1C222C</color>
+    <color name="widget_lyrics_border">#2C3544</color>
+    <color name="widget_card_bg">#13171F</color>
+    <color name="widget_card_border">#1D2430</color>
+    <color name="widget_scrim_bottom">#CC0A0D12</color>
+</resources>
