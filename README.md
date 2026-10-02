@@ -44,19 +44,18 @@ You can download the latest compiled builds directly from the [GitHub Releases](
 
 | Build Flavor | File | Description |
 | :--- | :--- | :--- |
-| **Release Build (Recommended)** | `Aura-release.apk` | ProGuard/R8 optimized & shrunk binary (17.9 MB) |
-| **Debug Build** | `Aura-debug.apk` | Development build with debug logging enabled (25.4 MB) |
+| **Release Build (Recommended)** | `Aura-release.apk` | ProGuard/R8 optimized & shrunk binary (~4.5 MB) |
+| **Debug Build** | `Aura-debug.apk` | Development build with debug logging enabled (~7.8 MB) |
 
-### Installation Instructions
-1. Download `Aura-release.apk` or `Aura-debug.apk` to your Android device.
-2. Tap the downloaded file in your browser downloads or file manager.
-3. If prompted, enable **"Install unknown apps"** for your browser / file manager in Android Settings.
-4. Tap **Install** and launch **AURA**.
-
+### Installation & Laptop Setup
+- **On Android Device:** Download `Aura-release.apk`, tap to install (allow "Install unknown apps" if prompted), and launch AURA.
+- **On Laptop / Desktop:**
+  - **Android Studio Emulator:** Drag-and-drop `Aura-release.apk` directly onto any running Android Virtual Device (AVD).
+  - **ADB Command Line:** Run `adb install Aura-release.apk` from PowerShell / terminal.
+  - **Windows Subsystem for Android (WSA):** Sideload with `adb connect 127.0.0.1:58526 && adb install Aura-release.apk`.
 
 ---
 
->>>>>>> 9c319dc (Final App)
 ## 🌟 Overview
 
 **AURA** is a modern music player crafted around **Atmospheric Glassmorphism** and **Cosmic Minimalism**. It breaks free from generic list-based audio players by turning music playback into an immersive, tactile art form.
@@ -70,6 +69,16 @@ AURA includes both:
 ---
 
 ## ✨ Key Features
+
+### ⚡ Cloud & Song Downloader (Lossless & Hi-Fi)
+- **Spotify & Universal URL Resolver:** Paste Spotify track, album, or playlist links—or search directly by song title and artist—to discover high-fidelity tracks.
+- **Multi-Quality Stream Engine:**
+  - 🎼 **FLAC Lossless (16-bit / 44.1kHz):** Pure CD-quality audio reproduction.
+  - 💎 **Hi-Res FLAC (24-bit / 96kHz):** Studio master dynamic fidelity.
+  - 🚀 **MP3 (320 kbps CBR & 192 kbps):** Compact, high-bitrate universal playback.
+- **High-Speed Downloader Engine:** Multi-task concurrent downloading with real-time speed readouts, download progress, and pause/resume support.
+- **Automated Metadata & Artwork Tagging:** Writes high-resolution album artwork, ID3 tags (artist, album, year, track number, ISRC), and synchronizes downloaded songs directly into AURA's local library and MediaStore.
+- **Live Synced Lyrics Retrieval:** Fetches and caches synchronized LRC lyrics during download.
 
 ### 🎛️ Studio-Grade DSP Audio Engine
 - **10-Band Parametric & Graphic Equalizer:** Precision band adjustments with rich audio presets (*Acoustic, Bass Boost, Classical, Dance, Deep, Electronic, Hip Hop, Jazz, Metal, Pop, Rock, Vocal*).
@@ -124,6 +133,8 @@ android/app/src/main/java/com/example/aura/
 ├── data/
 │   ├── audio/           # Media3 Player Manager, DSP Pipeline, Spatial 4D Engine, Metadata Helper
 │   ├── backup/          # Playlist & database export/import
+│   ├── cloud/           # Lossless Stream Resolver, Spotify Metadata API & CDN Resolvers
+│   ├── download/        # High-Speed Multi-Threaded Download Engine & ID3 Tagging
 │   ├── exclusion/       # Smart scan & directory exclusion filters
 │   ├── local/           # Room Database, DAOs, Entities, DataStore Preferences
 │   ├── lyrics/          # LRC parser, synchronizer & local cache
@@ -132,10 +143,12 @@ android/app/src/main/java/com/example/aura/
 │   └── stats/           # Playback statistics & history engine
 ├── domain/
 │   ├── model/           # Song, Playlist, QueueState, AudioEffectsState, Settings
+│   │   └── cloud/       # CloudTrack, CloudCollection, DownloadTask, AudioQuality
 │   └── repository/      # Abstract Repository Interfaces
 ├── theme/               # Cosmic Void colors, Typography, Glassmorphism modifiers
 ├── ui/
 │   ├── audiofx/         # Equalizer, Spatial 4D Radar, Audio Effects Studio
+│   ├── cloud/           # Cloud & Song Downloader Screen, Search, Quality Selection
 │   ├── components/      # Reusable Glass cards, MiniPlayer, Visualizers, Dialogs
 │   ├── home/            # Discovery screen, quick carousels, recent tracks
 │   ├── library/         # Song, Album, Artist, Folder, and Playlist screens
@@ -143,7 +156,7 @@ android/app/src/main/java/com/example/aura/
 │   ├── nowplaying/      # Now Playing player, lyrics view, queue bottom sheet
 │   ├── search/          # Instant search and filter chips
 │   ├── settings/        # Audiophile settings, scanner config, appearance
-│   └── viewmodel/       # PlayerViewModel, LibraryViewModel, StatsViewModel
+│   └── viewmodel/       # PlayerViewModel, LibraryViewModel, StatsViewModel, CloudDownloaderViewModel
 └── widget/              # AppWidget providers, RemoteViews layout managers
 ```
 
