@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/MainActivity.kt": {
-    "mtime": 1790623041.821425,
-    "seen": 1790623665.4681304,
-    "ast_hash": "4e78b22f95128422d637687471a39a07",
+    "mtime": 1790774839.49279,
+    "seen": 1790777363.345602,
+    "ast_hash": "57e21e85976dca000eb3e8bdffb80d53",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/audio/AudioMetadataHelper.kt": {
@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/local/UserPreferences.kt": {
-    "mtime": 1790710661.055453,
-    "seen": 1790711997.493971,
-    "ast_hash": "ec7dbb87ffd431c639e4aa97c4cec933",
+    "mtime": 1790746786.9335904,
+    "seen": 1790748395.914233,
+    "ast_hash": "63a7705996f12e5c864a92149ebc6b31",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/local/dao/Daos.kt": {
@@ -102,63 +102,63 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/theme/Color.kt": {
-    "mtime": 1790452014.3820536,
-    "seen": 1790512260.0993428,
-    "ast_hash": "2b5d4eb33a08c8563f3695142b379708",
+    "mtime": 1790778726.0684423,
+    "seen": 1790779194.779054,
+    "ast_hash": "302acaaf39f2128fdc8f1c09be211a5c",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/theme/Theme.kt": {
-    "mtime": 1790452004.2225647,
-    "seen": 1790512260.0993435,
-    "ast_hash": "bd9367071d4a152d44fddd556f67d8b6",
+    "mtime": 1790874474.1104615,
+    "seen": 1790875304.8993444,
+    "ast_hash": "8f8366e9b38ee38b4ab87152fdc53d11",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/theme/Type.kt": {
-    "mtime": 1790344681.1283193,
-    "seen": 1790409288.169718,
-    "ast_hash": "e6e2704d06a1eef42fe1c842304b7ea0",
+    "mtime": 1790744788.6356332,
+    "seen": 1790745677.2371526,
+    "ast_hash": "45cee60160ef2564c33339b49137b2d8",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/components/Components.kt": {
-    "mtime": 1790711690.7610343,
-    "seen": 1790711997.4940007,
-    "ast_hash": "2227c6ae53d594e7f8ceff4f2a940f41",
+    "mtime": 1790874517.8524215,
+    "seen": 1790875304.8993511,
+    "ast_hash": "4a32ee245c0c960cc2617fb05c030583",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/home/HomeScreen.kt": {
-    "mtime": 1790625184.5058618,
-    "seen": 1790625988.2451768,
-    "ast_hash": "2c66bedb43dfe42689757ce5db24bea2",
+    "mtime": 1790745915.5651927,
+    "seen": 1790748395.9142737,
+    "ast_hash": "7ec80662ef9ac6ebbcab32b0d48b7294",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/library/LibraryScreen.kt": {
-    "mtime": 1790625159.6163497,
-    "seen": 1790625988.2451787,
-    "ast_hash": "5c5fdca1cf61603db06c65aecd11076c",
+    "mtime": 1790778772.0715845,
+    "seen": 1790779194.7790713,
+    "ast_hash": "bdc6efa0ea686af668a38624a1963e0c",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/navigation/AuraNavigation.kt": {
-    "mtime": 1790625229.7960362,
-    "seen": 1790625988.2451797,
-    "ast_hash": "4a4ebc56c8ee5a48f386cb9ef013f10b",
+    "mtime": 1790874972.8983796,
+    "seen": 1790875304.8993614,
+    "ast_hash": "ae1ebbb41f59d06695493fbe4d6aa7a6",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/nowplaying/NowPlayingScreen.kt": {
-    "mtime": 1790711799.4240656,
-    "seen": 1790711997.4940124,
-    "ast_hash": "b0c9b18b49317cba6fbbd366d7c5d746",
+    "mtime": 1790874704.1331432,
+    "seen": 1790875304.8993623,
+    "ast_hash": "73d3f6df3c262816ecc604016427c643",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/search/SearchScreen.kt": {
-    "mtime": 1790625198.6231785,
-    "seen": 1790625988.2451823,
-    "ast_hash": "0c9b3beb5ac49f46c7eef7da0b4d9890",
+    "mtime": 1790745393.9212716,
+    "seen": 1790745677.2371821,
+    "ast_hash": "9752e8ba143cd18781e3e194f61196ff",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/settings/SettingsScreen.kt": {
-    "mtime": 1790625508.6666842,
-    "seen": 1790625988.245184,
-    "ast_hash": "d0fdba19511becf17f16db4c1a64df17",
+    "mtime": 1790874997.154011,
+    "seen": 1790875304.8993688,
+    "ast_hash": "808a07b3743e00f25c45ee6993359da3",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/viewmodel/LibraryViewModel.kt": {
@@ -414,9 +414,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/theme/ArtworkColorExtractor.kt": {
-    "mtime": 1790452039.9625094,
-    "seen": 1790512260.09934,
-    "ast_hash": "c35e8324ae38964eac4ed87dadb2ec9c",
+    "mtime": 1790744844.599744,
+    "seen": 1790745677.2371466,
+    "ast_hash": "138271c8c265051156cefcc82df31c7b",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/components/PlaylistSelectionDialog.kt": {
@@ -438,15 +438,15 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/library/DetailScreens.kt": {
-    "mtime": 1790454258.8779259,
-    "seen": 1790512260.0993593,
-    "ast_hash": "27277d97d4856c66c3367eeb9f8d1674",
+    "mtime": 1790745366.7746158,
+    "seen": 1790745677.2371755,
+    "ast_hash": "828437563f04569d5c342cb8a4f4bec9",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/nowplaying/QueueBottomSheet.kt": {
-    "mtime": 1790453896.573498,
-    "seen": 1790512260.0993748,
-    "ast_hash": "0d90a1712032eb4c9045c0943faf1cca",
+    "mtime": 1790745242.2273762,
+    "seen": 1790745677.237181,
+    "ast_hash": "e03ef87dc6c0d7470ccec0bc2061ce3f",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/audio/AudioOutputManager.kt": {
@@ -456,9 +456,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/audio/AuraHardwareEffectsManager.kt": {
-    "mtime": 1790619076.358245,
-    "seen": 1790619538.7793095,
-    "ast_hash": "60d498f5f05757e6524db08f256e3e7f",
+    "mtime": 1790778705.9067354,
+    "seen": 1790779194.779015,
+    "ast_hash": "cc809026ec1f4d63f36c39b8cd72b5a7",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/audio/AuraSleepTimer.kt": {
@@ -468,9 +468,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/audio/dsp/AuraAudioProcessor.kt": {
-    "mtime": 1790619045.9498317,
-    "seen": 1790619538.7793128,
-    "ast_hash": "20103ab6cf05ea77eb8fc91e23a591b8",
+    "mtime": 1790778666.9976304,
+    "seen": 1790779194.7790184,
+    "ast_hash": "f430d3ca0b1fcb1c89a189d688238342",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/data/audio/dsp/BiquadFilter.kt": {
@@ -504,9 +504,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/audiofx/AudioEffectsScreen.kt": {
-    "mtime": 1790619273.1200702,
-    "seen": 1790619538.7793446,
-    "ast_hash": "1bbd527b3a9061304d84987f67f122c5",
+    "mtime": 1790778929.7989335,
+    "seen": 1790779194.7790563,
+    "ast_hash": "661fddf701298832e165b6f126ae5f52",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/components/AuraVisualizerView.kt": {
@@ -594,9 +594,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/domain/model/settings/SettingsModels.kt": {
-    "mtime": 1790452363.825212,
-    "seen": 1790512260.0993364,
-    "ast_hash": "dd17f6b29f0eac3f3686cc6f17883b7a",
+    "mtime": 1790874851.8858273,
+    "seen": 1790875304.8993385,
+    "ast_hash": "9398cbf5eb7b1ac887b70925eedcc0ab",
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/components/MetadataEditorDialog.kt": {
@@ -618,9 +618,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/com/example/aura/ui/stats/StatisticsScreen.kt": {
-    "mtime": 1790447923.620008,
-    "seen": 1790449087.070033,
-    "ast_hash": "d4973d5178775e42c8d45e9b868fff2b",
+    "mtime": 1790778946.6399417,
+    "seen": 1790779194.779078,
+    "ast_hash": "f3179c8bd3a3105d9c73779d1202efd2",
     "semantic_hash": ""
   },
   "android/app/src/test/java/com/example/aura/Phase4FeaturesTest.kt": {
@@ -843,6 +843,2892 @@
     "mtime": 1790711174.9005892,
     "seen": 1790711997.493948,
     "ast_hash": "57f9d2b467eac7f2a22d07c07b89c4a5",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1790742944.815001,
+    "seen": 1790742963.3280694,
+    "ast_hash": "3310f8884d86c784215e70f978682ac4",
+    "semantic_hash": ""
+  },
+  ".github/workflows/release.yml": {
+    "mtime": 1790742924.5696027,
+    "seen": 1790742963.3280668,
+    "ast_hash": "ada9ff31335f23576661f5abec6fbe33",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude-plugin/marketplace.json": {
+    "mtime": 1790744097.4052758,
+    "seen": 1790745677.2367465,
+    "ast_hash": "93b1e328b52ea58e0df416fe3f45b116",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude-plugin/plugin.json": {
+    "mtime": 1790744097.4052758,
+    "seen": 1790745677.2367532,
+    "ast_hash": "a70f658961318ca01baf3124e42b213a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/scripts/extract-colors.cjs": {
+    "mtime": 1790744097.4143076,
+    "seen": 1790745677.236756,
+    "ast_hash": "79a37333321e1b7629a4e4788480626b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/scripts/inject-brand-context.cjs": {
+    "mtime": 1790744097.4143076,
+    "seen": 1790745677.2367578,
+    "ast_hash": "f64627ea05446a005c1ca227f57aa737",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/scripts/sync-brand-to-tokens.cjs": {
+    "mtime": 1790744097.415316,
+    "seen": 1790745677.2367592,
+    "ast_hash": "7d84891401b83201e20b327d255c83cb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/scripts/tests/test_sync_brand_to_tokens.py": {
+    "mtime": 1790744097.415316,
+    "seen": 1790745677.2367609,
+    "ast_hash": "f11805c7657248c35ad9ea59d260de69",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/scripts/validate-asset.cjs": {
+    "mtime": 1790744097.4163222,
+    "seen": 1790745677.2367623,
+    "ast_hash": "a3a41234dd691a682bc05721993b4832",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/embed-tokens.cjs": {
+    "mtime": 1790744097.4243512,
+    "seen": 1790745677.2367635,
+    "ast_hash": "be0fc8a2705aebc5271f653fb631e025",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/fetch-background.py": {
+    "mtime": 1790744097.4253592,
+    "seen": 1790745677.2367644,
+    "ast_hash": "806a79d344b0ea677c1e73b8ae8f5b31",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/generate-slide.py": {
+    "mtime": 1790744097.4253592,
+    "seen": 1790745677.2367659,
+    "ast_hash": "60458a8bbff2a61b7d029380d897f529",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/generate-tokens.cjs": {
+    "mtime": 1790744097.4253592,
+    "seen": 1790745677.2367673,
+    "ast_hash": "eacbe448852b7c1e4d67dfb31f4f1b72",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/html-token-validator.py": {
+    "mtime": 1790744097.4263575,
+    "seen": 1790745677.2367685,
+    "ast_hash": "89b53879460217cbb6ffd8266ef637a3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/search-slides.py": {
+    "mtime": 1790744097.4263575,
+    "seen": 1790745677.2367694,
+    "ast_hash": "8019a554210a2794bd735616c23c68a5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/slide-token-validator.py": {
+    "mtime": 1790744097.427366,
+    "seen": 1790745677.2367709,
+    "ast_hash": "5aba011bdeb4118c0d69dbedf8ce0292",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/slide_search_core.py": {
+    "mtime": 1790744097.427366,
+    "seen": 1790745677.2367718,
+    "ast_hash": "2613032ccc664e4a036f07e7851e796b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/tests/test_validate_tokens.py": {
+    "mtime": 1790744097.4283652,
+    "seen": 1790745677.236773,
+    "ast_hash": "bdfe5afeef4b32bd4d3c8dbf6d29f4a7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/scripts/validate-tokens.cjs": {
+    "mtime": 1790744097.4283652,
+    "seen": 1790745677.2367744,
+    "ast_hash": "1b7edced8fb463443495e6dab87133d5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/templates/design-tokens-starter.json": {
+    "mtime": 1790744097.4293654,
+    "seen": 1790745677.2367756,
+    "ast_hash": "db235f5430b60ee597ec7c6da7c641a2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/cip/core.py": {
+    "mtime": 1790744097.4409366,
+    "seen": 1790745677.236777,
+    "ast_hash": "97922bcc747a77d5564f2f67d8b4c7b9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/cip/generate.py": {
+    "mtime": 1790744097.4409366,
+    "seen": 1790745677.236778,
+    "ast_hash": "0a240b451c83b161db620bc9f9739e9e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/cip/render-html.py": {
+    "mtime": 1790744097.4409366,
+    "seen": 1790745677.2367792,
+    "ast_hash": "e0f4ec7de6cbfe51386e2b64ccd19c21",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/cip/search.py": {
+    "mtime": 1790744097.4409366,
+    "seen": 1790745677.2367804,
+    "ast_hash": "3c6a773330a5c317f6214da55b4077ff",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/icon/generate.py": {
+    "mtime": 1790744097.4424472,
+    "seen": 1790745677.2367814,
+    "ast_hash": "00856566d7283782e7a02c9c0c238cca",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/logo/core.py": {
+    "mtime": 1790744097.4452825,
+    "seen": 1790745677.2367826,
+    "ast_hash": "6f79fef275acb58f37a9c9746de9f157",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/logo/generate.py": {
+    "mtime": 1790744097.4502735,
+    "seen": 1790745677.2367835,
+    "ast_hash": "43fc5173ebec42c58e7f4ce2240b7f94",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/logo/search.py": {
+    "mtime": 1790744097.4517968,
+    "seen": 1790745677.2367847,
+    "ast_hash": "751a89ded37904135601234dd4f5ad21",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/scripts/logo/tests/test_generate.py": {
+    "mtime": 1790744097.455841,
+    "seen": 1790745677.2367857,
+    "ast_hash": "d3364fb634743cf8938cf6014ba25706",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/shadcn_add.py": {
+    "mtime": 1790744097.5656624,
+    "seen": 1790745677.2367866,
+    "ast_hash": "653cdb50b7acefe3631ce2ca7dbafa3b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/tailwind_config_gen.py": {
+    "mtime": 1790744097.5666628,
+    "seen": 1790745677.2367911,
+    "ast_hash": "d92accb7e87810eeab4b56fd6c74d8c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/tests/coverage-ui.json": {
+    "mtime": 1790744097.5666628,
+    "seen": 1790745677.2367923,
+    "ast_hash": "42c486def8b180c1e72b1e7b865b9607",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/tests/test_shadcn_add.py": {
+    "mtime": 1790744097.5676608,
+    "seen": 1790745677.2367933,
+    "ast_hash": "e1c19ceeb7aa7478d232cd5e4eec1713",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py": {
+    "mtime": 1790744097.5676608,
+    "seen": 1790745677.2367945,
+    "ast_hash": "885d48e24c9a02fd98d88756dae3ed89",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/data/catalog-summary.json": {
+    "mtime": 1790744097.5696702,
+    "seen": 1790745677.2367954,
+    "ast_hash": "eec8c8c02189850e824f3b08999056a2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/data/data-provenance.json": {
+    "mtime": 1790744097.5706685,
+    "seen": 1790745677.2367966,
+    "ast_hash": "41746a212544275a499cf33d658767d9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/data/google-font-licenses.json": {
+    "mtime": 1790744097.5731888,
+    "seen": 1790745677.2367978,
+    "ast_hash": "b5306352a8f70990df4a5c78356d35f0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json": {
+    "mtime": 1790744097.580712,
+    "seen": 1790745677.2367988,
+    "ast_hash": "4b14f80c98453cd4b8361ffab7c49bbf",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1790744097.6031575,
+    "seen": 1790745677.2368,
+    "ast_hash": "f31c721b6943bc5f34dd8a79ed46e661",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1790744097.6046693,
+    "seen": 1790745677.236801,
+    "ast_hash": "1a66a8527db3c6dd4f230a1b9a144d5c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/reasoning_contract.py": {
+    "mtime": 1790744097.6046693,
+    "seen": 1790745677.236802,
+    "ast_hash": "653e45c1072a3662322d66a81c89d548",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1790744097.6046693,
+    "seen": 1790745677.236803,
+    "ast_hash": "0998767ebe8de2d056a9cdfa91e68b71",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json": {
+    "mtime": 1790744097.6056664,
+    "seen": 1790745677.236804,
+    "ast_hash": "acedfec7aee587a0065e307a8b2f132a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json": {
+    "mtime": 1790744097.6066658,
+    "seen": 1790745677.2368054,
+    "ast_hash": "2e660fd742966d40dab168ed519c977d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json": {
+    "mtime": 1790744097.6066658,
+    "seen": 1790745677.2368064,
+    "ast_hash": "79a378691078056fc266904e68ca1f38",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json": {
+    "mtime": 1790744097.607666,
+    "seen": 1790745677.2368076,
+    "ast_hash": "511f348199c83cdc4e5f10ff6e3efcd7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json": {
+    "mtime": 1790744097.607666,
+    "seen": 1790745677.2368088,
+    "ast_hash": "fe4fdaccc9f1c1072a61045de5f31c94",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json": {
+    "mtime": 1790744097.6086657,
+    "seen": 1790745677.2368097,
+    "ast_hash": "423791591c1f81a9afe0668d3c8ad549",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json": {
+    "mtime": 1790744097.6086657,
+    "seen": 1790745677.2368107,
+    "ast_hash": "1a9f76802073ab9c19741026089a1519",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json": {
+    "mtime": 1790744097.6086657,
+    "seen": 1790745677.236812,
+    "ast_hash": "2e0d66bcbe622e1edbfbbcd49f681ef0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json": {
+    "mtime": 1790744097.6096659,
+    "seen": 1790745677.236813,
+    "ast_hash": "ee4474437e1d8a0fa1b2a159aab33d85",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json": {
+    "mtime": 1790744097.6106658,
+    "seen": 1790745677.236814,
+    "ast_hash": "a8f0c47e5e96ac2cf7efb2c7c49f52e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json": {
+    "mtime": 1790744097.6106658,
+    "seen": 1790745677.2368152,
+    "ast_hash": "d82720ba442086ca1dc5cbd89e0c3b11",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py": {
+    "mtime": 1790744097.6106658,
+    "seen": 1790745677.2368162,
+    "ast_hash": "fbf0e330d0f949e1a6ab72b5e6ef9083",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py": {
+    "mtime": 1790744097.6106658,
+    "seen": 1790745677.2368171,
+    "ast_hash": "8a5e4bdde1e3f2acabfbe7a5a908f382",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_core.py": {
+    "mtime": 1790744097.6121686,
+    "seen": 1790745677.236818,
+    "ast_hash": "1ff514f53f20f2fb0239e15ce9a1d7c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py": {
+    "mtime": 1790744097.6121686,
+    "seen": 1790745677.2368195,
+    "ast_hash": "ba36618da592989e75420cbb0d7ac13c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py": {
+    "mtime": 1790744097.6131716,
+    "seen": 1790745677.2368205,
+    "ast_hash": "03e87e8ffa0c20f42fb342c5038a8f6f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py": {
+    "mtime": 1790744097.6131716,
+    "seen": 1790745677.2368214,
+    "ast_hash": "52f887a45931fcad38b04bf508281e8e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_design_system_stack.py": {
+    "mtime": 1790744097.6141725,
+    "seen": 1790745677.2368228,
+    "ast_hash": "e70276086496f6c075b2bae176288133",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py": {
+    "mtime": 1790744097.6141725,
+    "seen": 1790745677.2368238,
+    "ast_hash": "8bf3a83850e18f4150a0f8e2eafe8c14",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py": {
+    "mtime": 1790744097.6141725,
+    "seen": 1790745677.2368248,
+    "ast_hash": "f976384d686802fd2ea0ae806965c38d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py": {
+    "mtime": 1790744097.6155107,
+    "seen": 1790745677.2368262,
+    "ast_hash": "430fb0f2e1790c05baa93622a753a61c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py": {
+    "mtime": 1790744097.616168,
+    "seen": 1790745677.2368274,
+    "ast_hash": "00df6840db7177e5e1c17745db356bf6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py": {
+    "mtime": 1790744097.6166813,
+    "seen": 1790745677.2368283,
+    "ast_hash": "3db737530578556a377d542c6fc910c1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py": {
+    "mtime": 1790744097.6166813,
+    "seen": 1790745677.2368295,
+    "ast_hash": "96664c7fae2eb3d7393b91e0e5958366",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/scripts/validate_data.py": {
+    "mtime": 1790744097.6176972,
+    "seen": 1790745677.2368307,
+    "ast_hash": "e26c33d4272866a8b1e67dc228a39bc2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.releaserc.json": {
+    "mtime": 1790744097.6232138,
+    "seen": 1790745677.2368314,
+    "ast_hash": "743e1816dc94071d4b9224ba294daa8a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/data/catalog-summary.json": {
+    "mtime": 1790744097.6307254,
+    "seen": 1790745677.2368329,
+    "ast_hash": "eec8c8c02189850e824f3b08999056a2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/data/data-provenance.json": {
+    "mtime": 1790744097.6322308,
+    "seen": 1790745677.2368338,
+    "ast_hash": "41746a212544275a499cf33d658767d9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/data/google-font-licenses.json": {
+    "mtime": 1790744097.634246,
+    "seen": 1790745677.2368348,
+    "ast_hash": "b5306352a8f70990df4a5c78356d35f0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/data/phosphor-icons-upstream.json": {
+    "mtime": 1790744097.640763,
+    "seen": 1790745677.236836,
+    "ast_hash": "4b14f80c98453cd4b8361ffab7c49bbf",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/core.py": {
+    "mtime": 1790744097.6575189,
+    "seen": 1790745677.236837,
+    "ast_hash": "f31c721b6943bc5f34dd8a79ed46e661",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/design_system.py": {
+    "mtime": 1790744097.65852,
+    "seen": 1790745677.2368379,
+    "ast_hash": "1a66a8527db3c6dd4f230a1b9a144d5c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/reasoning_contract.py": {
+    "mtime": 1790744097.65852,
+    "seen": 1790745677.236839,
+    "ast_hash": "653e45c1072a3662322d66a81c89d548",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/search.py": {
+    "mtime": 1790744097.6595175,
+    "seen": 1790745677.2368402,
+    "ast_hash": "0998767ebe8de2d056a9cdfa91e68b71",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/google-api.json": {
+    "mtime": 1790744097.6595175,
+    "seen": 1790745677.2368412,
+    "ast_hash": "acedfec7aee587a0065e307a8b2f132a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/google-catalog.json": {
+    "mtime": 1790744097.6605177,
+    "seen": 1790745677.2368422,
+    "ast_hash": "2e660fd742966d40dab168ed519c977d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/google-metadata.json": {
+    "mtime": 1790744097.6605177,
+    "seen": 1790745677.2368436,
+    "ast_hash": "79a378691078056fc266904e68ca1f38",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/google-overrides.json": {
+    "mtime": 1790744097.662032,
+    "seen": 1790745677.2368445,
+    "ast_hash": "511f348199c83cdc4e5f10ff6e3efcd7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/phosphor-core.json": {
+    "mtime": 1790744097.662032,
+    "seen": 1790745677.2368455,
+    "ast_hash": "fe4fdaccc9f1c1072a61045de5f31c94",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/phosphor-package.json": {
+    "mtime": 1790744097.6630409,
+    "seen": 1790745677.2368467,
+    "ast_hash": "423791591c1f81a9afe0668d3c8ad549",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/phosphor-react-exports.json": {
+    "mtime": 1790744097.6630409,
+    "seen": 1790745677.2368476,
+    "ast_hash": "1a9f76802073ab9c19741026089a1519",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/catalogs/phosphor-react-package.json": {
+    "mtime": 1790744097.6630409,
+    "seen": 1790745677.2368488,
+    "ast_hash": "2e0d66bcbe622e1edbfbbcd49f681ef0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/relevance-baseline.json": {
+    "mtime": 1790744097.6640408,
+    "seen": 1790745677.23685,
+    "ast_hash": "ee4474437e1d8a0fa1b2a159aab33d85",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/relevance-cases.json": {
+    "mtime": 1790744097.6645596,
+    "seen": 1790745677.2368512,
+    "ast_hash": "a8f0c47e5e96ac2cf7efb2c7c49f52e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/fixtures/relevance-thresholds.json": {
+    "mtime": 1790744097.6645596,
+    "seen": 1790745677.2368522,
+    "ast_hash": "d82720ba442086ca1dc5cbd89e0c3b11",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_catalog_refresh.py": {
+    "mtime": 1790744097.665558,
+    "seen": 1790745677.2368534,
+    "ast_hash": "fbf0e330d0f949e1a6ab72b5e6ef9083",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_catalog_summary_line_endings.py": {
+    "mtime": 1790744097.665558,
+    "seen": 1790745677.2368543,
+    "ast_hash": "8a5e4bdde1e3f2acabfbe7a5a908f382",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_core.py": {
+    "mtime": 1790744097.665558,
+    "seen": 1790745677.2368555,
+    "ast_hash": "1ff514f53f20f2fb0239e15ce9a1d7c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_core_data_quality.py": {
+    "mtime": 1790744097.6665642,
+    "seen": 1790745677.2368565,
+    "ast_hash": "ba36618da592989e75420cbb0d7ac13c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_data_contracts.py": {
+    "mtime": 1790744097.6665642,
+    "seen": 1790745677.2368577,
+    "ast_hash": "03e87e8ffa0c20f42fb342c5038a8f6f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_design_system_mode.py": {
+    "mtime": 1790744097.6675644,
+    "seen": 1790745677.2368586,
+    "ast_hash": "52f887a45931fcad38b04bf508281e8e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_design_system_stack.py": {
+    "mtime": 1790744097.6675644,
+    "seen": 1790745677.2368596,
+    "ast_hash": "e70276086496f6c075b2bae176288133",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_native_desktop_stack_freshness.py": {
+    "mtime": 1790744097.6675644,
+    "seen": 1790745677.2368608,
+    "ast_hash": "8bf3a83850e18f4150a0f8e2eafe8c14",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_relevance_evaluator.py": {
+    "mtime": 1790744097.6685646,
+    "seen": 1790745677.236862,
+    "ast_hash": "f976384d686802fd2ea0ae806965c38d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_skill_script_paths.py": {
+    "mtime": 1790744097.6685646,
+    "seen": 1790745677.236863,
+    "ast_hash": "430fb0f2e1790c05baa93622a753a61c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_style_taxonomy.py": {
+    "mtime": 1790744097.669564,
+    "seen": 1790745677.236864,
+    "ast_hash": "00df6840db7177e5e1c17745db356bf6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_text_layout_resilience.py": {
+    "mtime": 1790744097.669564,
+    "seen": 1790745677.236865,
+    "ast_hash": "3db737530578556a377d542c6fc910c1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/tests/test_web_stack_freshness.py": {
+    "mtime": 1790744097.669564,
+    "seen": 1790745677.2368662,
+    "ast_hash": "96664c7fae2eb3d7393b91e0e5958366",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/scripts/validate_data.py": {
+    "mtime": 1790744097.6705654,
+    "seen": 1790745677.2368674,
+    "ast_hash": "e26c33d4272866a8b1e67dc228a39bc2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/scripts/extract-colors.cjs": {
+    "mtime": 1790744097.6785977,
+    "seen": 1790745677.2368684,
+    "ast_hash": "79a37333321e1b7629a4e4788480626b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/scripts/inject-brand-context.cjs": {
+    "mtime": 1790744097.6795974,
+    "seen": 1790745677.2368758,
+    "ast_hash": "f64627ea05446a005c1ca227f57aa737",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/scripts/sync-brand-to-tokens.cjs": {
+    "mtime": 1790744097.6795974,
+    "seen": 1790745677.236877,
+    "ast_hash": "7d84891401b83201e20b327d255c83cb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/scripts/tests/test_sync_brand_to_tokens.py": {
+    "mtime": 1790744097.6806047,
+    "seen": 1790745677.2368782,
+    "ast_hash": "f11805c7657248c35ad9ea59d260de69",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/scripts/validate-asset.cjs": {
+    "mtime": 1790744097.6806047,
+    "seen": 1790745677.236879,
+    "ast_hash": "a3a41234dd691a682bc05721993b4832",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/embed-tokens.cjs": {
+    "mtime": 1790744097.6886458,
+    "seen": 1790745677.2368803,
+    "ast_hash": "be0fc8a2705aebc5271f653fb631e025",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/fetch-background.py": {
+    "mtime": 1790744097.6896453,
+    "seen": 1790745677.2368815,
+    "ast_hash": "806a79d344b0ea677c1e73b8ae8f5b31",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/generate-slide.py": {
+    "mtime": 1790744097.6896453,
+    "seen": 1790745677.2368827,
+    "ast_hash": "60458a8bbff2a61b7d029380d897f529",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/generate-tokens.cjs": {
+    "mtime": 1790744097.6906378,
+    "seen": 1790745677.2368839,
+    "ast_hash": "eacbe448852b7c1e4d67dfb31f4f1b72",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/html-token-validator.py": {
+    "mtime": 1790744097.6906378,
+    "seen": 1790745677.236885,
+    "ast_hash": "89b53879460217cbb6ffd8266ef637a3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/search-slides.py": {
+    "mtime": 1790744097.6906378,
+    "seen": 1790745677.2368863,
+    "ast_hash": "8019a554210a2794bd735616c23c68a5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/slide-token-validator.py": {
+    "mtime": 1790744097.6906378,
+    "seen": 1790745677.2368875,
+    "ast_hash": "5aba011bdeb4118c0d69dbedf8ce0292",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/slide_search_core.py": {
+    "mtime": 1790744097.692148,
+    "seen": 1790745677.2368886,
+    "ast_hash": "2613032ccc664e4a036f07e7851e796b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/tests/test_validate_tokens.py": {
+    "mtime": 1790744097.692148,
+    "seen": 1790745677.2368898,
+    "ast_hash": "bdfe5afeef4b32bd4d3c8dbf6d29f4a7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/scripts/validate-tokens.cjs": {
+    "mtime": 1790744097.6931632,
+    "seen": 1790745677.2368908,
+    "ast_hash": "1b7edced8fb463443495e6dab87133d5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/templates/design-tokens-starter.json": {
+    "mtime": 1790744097.69467,
+    "seen": 1790745677.2368922,
+    "ast_hash": "db235f5430b60ee597ec7c6da7c641a2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/cip/core.py": {
+    "mtime": 1790744097.7067282,
+    "seen": 1790745677.2368934,
+    "ast_hash": "97922bcc747a77d5564f2f67d8b4c7b9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/cip/generate.py": {
+    "mtime": 1790744097.7067282,
+    "seen": 1790745677.2368946,
+    "ast_hash": "0a240b451c83b161db620bc9f9739e9e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/cip/render-html.py": {
+    "mtime": 1790744097.7077277,
+    "seen": 1790745677.2368958,
+    "ast_hash": "e0f4ec7de6cbfe51386e2b64ccd19c21",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/cip/search.py": {
+    "mtime": 1790744097.7084248,
+    "seen": 1790745677.2368968,
+    "ast_hash": "3c6a773330a5c317f6214da55b4077ff",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/icon/generate.py": {
+    "mtime": 1790744097.7089376,
+    "seen": 1790745677.2368977,
+    "ast_hash": "00856566d7283782e7a02c9c0c238cca",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/logo/core.py": {
+    "mtime": 1790744097.7089376,
+    "seen": 1790745677.2368994,
+    "ast_hash": "6f79fef275acb58f37a9c9746de9f157",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/logo/generate.py": {
+    "mtime": 1790744097.7099545,
+    "seen": 1790745677.2369006,
+    "ast_hash": "43fc5173ebec42c58e7f4ce2240b7f94",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/logo/search.py": {
+    "mtime": 1790744097.7099545,
+    "seen": 1790745677.2369015,
+    "ast_hash": "751a89ded37904135601234dd4f5ad21",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/scripts/logo/tests/test_generate.py": {
+    "mtime": 1790744097.7109537,
+    "seen": 1790745677.236903,
+    "ast_hash": "d3364fb634743cf8938cf6014ba25706",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/shadcn_add.py": {
+    "mtime": 1790744097.71899,
+    "seen": 1790745677.2369037,
+    "ast_hash": "653cdb50b7acefe3631ce2ca7dbafa3b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/tailwind_config_gen.py": {
+    "mtime": 1790744097.71899,
+    "seen": 1790745677.236905,
+    "ast_hash": "d92accb7e87810eeab4b56fd6c74d8c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/tests/coverage-ui.json": {
+    "mtime": 1790744097.71999,
+    "seen": 1790745677.2369063,
+    "ast_hash": "42c486def8b180c1e72b1e7b865b9607",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/tests/test_shadcn_add.py": {
+    "mtime": 1790744097.71999,
+    "seen": 1790745677.2369072,
+    "ast_hash": "e1c19ceeb7aa7478d232cd5e4eec1713",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/tests/test_tailwind_config_gen.py": {
+    "mtime": 1790744097.72099,
+    "seen": 1790745677.2369082,
+    "ast_hash": "885d48e24c9a02fd98d88756dae3ed89",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/agent.json": {
+    "mtime": 1790744097.7226775,
+    "seen": 1790745677.2369094,
+    "ast_hash": "bb966d6ff644e209d9a5359ce973008d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/augment.json": {
+    "mtime": 1790744097.7226775,
+    "seen": 1790745677.2369106,
+    "ast_hash": "71302d4876e96d189c909efcf1f66403",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/claude.json": {
+    "mtime": 1790744097.7226775,
+    "seen": 1790745677.2369115,
+    "ast_hash": "fed2c3f467538bfbac823e672f6ceaa2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/codebuddy.json": {
+    "mtime": 1790744097.7226775,
+    "seen": 1790745677.2369127,
+    "ast_hash": "7bd3e4eaac6afe3d37ffc4bf639c38e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/codewhale.json": {
+    "mtime": 1790744097.724265,
+    "seen": 1790745677.2369137,
+    "ast_hash": "47e5d313e68a264307ca1a708c9f92cc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/codex.json": {
+    "mtime": 1790744097.725281,
+    "seen": 1790745677.2369146,
+    "ast_hash": "fa6d44db988f03a92584f057fd6ee382",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/continue.json": {
+    "mtime": 1790744097.725281,
+    "seen": 1790745677.2369158,
+    "ast_hash": "aff8c9954a41bfaebc83c424f9c0f2e5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/copilot.json": {
+    "mtime": 1790744097.7262788,
+    "seen": 1790745677.2369168,
+    "ast_hash": "442536442de32674822037790aafa715",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/cursor.json": {
+    "mtime": 1790744097.7262788,
+    "seen": 1790745677.236918,
+    "ast_hash": "b0f0e7238a921954beee6e7c7ceca2cb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/droid.json": {
+    "mtime": 1790744097.7272778,
+    "seen": 1790745677.236919,
+    "ast_hash": "91d9cba01e0e9d1f3ea119be7aafe29c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/gemini.json": {
+    "mtime": 1790744097.7272778,
+    "seen": 1790745677.23692,
+    "ast_hash": "18968d8d2a981892d851cfa7ccbd9fac",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/kilocode.json": {
+    "mtime": 1790744097.7272778,
+    "seen": 1790745677.236921,
+    "ast_hash": "0cd332b4b36faa551a67c843cd405f23",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/kiro.json": {
+    "mtime": 1790744097.7272778,
+    "seen": 1790745677.236922,
+    "ast_hash": "8c674625498d7de899de8684c3e783d1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/opencode.json": {
+    "mtime": 1790744097.7282777,
+    "seen": 1790745677.2369235,
+    "ast_hash": "d423872e0a62105e486d5d9da5d5b148",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/qoder.json": {
+    "mtime": 1790744097.7282777,
+    "seen": 1790745677.2369244,
+    "ast_hash": "516fe632cb2f18a691742934bbd35457",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/roocode.json": {
+    "mtime": 1790744097.7282777,
+    "seen": 1790745677.2369254,
+    "ast_hash": "1b3abc7a24244643589f128e44ffae6f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/trae.json": {
+    "mtime": 1790744097.7292857,
+    "seen": 1790745677.2369266,
+    "ast_hash": "69c0d880fe0169e968539596455dabbc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/universal.json": {
+    "mtime": 1790744097.7292857,
+    "seen": 1790745677.2369275,
+    "ast_hash": "9f8699dcd24ec5e8bcdca6a50db7cb70",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/warp.json": {
+    "mtime": 1790744097.730286,
+    "seen": 1790745677.2369285,
+    "ast_hash": "5e07ba93488df55787fad74cf72b0b0e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/windsurf.json": {
+    "mtime": 1790744097.730286,
+    "seen": 1790745677.2369297,
+    "ast_hash": "77bda535b7573f1b5531ca841a1b78ce",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/platforms/zcode.json": {
+    "mtime": 1790744097.731278,
+    "seen": 1790745677.2369308,
+    "ast_hash": "9def43b4596de2e9dcc761814069d6e5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/package.json": {
+    "mtime": 1790744097.732279,
+    "seen": 1790745677.2369318,
+    "ast_hash": "efd83606b4c7055f12818851d4f64e0d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/playwright.config.ts": {
+    "mtime": 1790744097.732279,
+    "seen": 1790745677.2369328,
+    "ast_hash": "de4c9bf795b6afa9bb3bdf409ac3be34",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/scripts/build.mjs": {
+    "mtime": 1790744097.7334933,
+    "seen": 1790745677.236934,
+    "ast_hash": "fabdbe62c91c65a0177ecadb40d2b69f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/scripts/run-python.mjs": {
+    "mtime": 1790744097.733998,
+    "seen": 1790745677.236935,
+    "ast_hash": "07c67581f5b616f25b46ae606b0fcfe4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/scripts/sync-assets.mjs": {
+    "mtime": 1790744097.733998,
+    "seen": 1790745677.2369359,
+    "ast_hash": "bedfae4c7ec8f92881afac1bb744f097",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/commands/init.ts": {
+    "mtime": 1790744097.735003,
+    "seen": 1790745677.2369373,
+    "ast_hash": "93d3cc3c6073c1fa2eb909ec89d16628",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/commands/uninstall.ts": {
+    "mtime": 1790744097.735003,
+    "seen": 1790745677.2369382,
+    "ast_hash": "c1916d7386b0e189212513031c5fde8f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/commands/update.ts": {
+    "mtime": 1790744097.7360022,
+    "seen": 1790745677.2369392,
+    "ast_hash": "9415f7fe53335606a238b6b304a6b090",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/commands/versions.ts": {
+    "mtime": 1790744097.7360022,
+    "seen": 1790745677.2369404,
+    "ast_hash": "c3822522126a1f54dd52f4327ba79df7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/index.ts": {
+    "mtime": 1790744097.7360022,
+    "seen": 1790745677.2369416,
+    "ast_hash": "ccd1b28db22e4b9c8ff1456891272fcd",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/types/index.ts": {
+    "mtime": 1790744097.7370086,
+    "seen": 1790745677.2369425,
+    "ast_hash": "1ff08142e2d62945839d608ee3b66ff2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/utils/detect.ts": {
+    "mtime": 1790744097.7380059,
+    "seen": 1790745677.2369437,
+    "ast_hash": "866d6e48bfd0595aaf12a0aa442749d6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/utils/extract.ts": {
+    "mtime": 1790744097.7380059,
+    "seen": 1790745677.2369447,
+    "ast_hash": "f9e84e45a521a2fc41a838e56c34c4f0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/utils/github.ts": {
+    "mtime": 1790744097.7380059,
+    "seen": 1790745677.2369459,
+    "ast_hash": "812303ff35aba507d6121193f8cceabf",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/utils/logger.ts": {
+    "mtime": 1790744097.739006,
+    "seen": 1790745677.236947,
+    "ast_hash": "efccc9f9d33a43147825403052b3230f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/src/utils/template.ts": {
+    "mtime": 1790744097.739006,
+    "seen": 1790745677.236948,
+    "ast_hash": "8e1ef6c5680e1bc4821a496ee180760c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/tests/e2e/agent-query-contract.spec.ts": {
+    "mtime": 1790744097.7403703,
+    "seen": 1790745677.236949,
+    "ast_hash": "0ecf4a08282633771bf4a06b6fb323a0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/tests/e2e/banner-design-path-contract.spec.ts": {
+    "mtime": 1790744097.7434096,
+    "seen": 1790745677.2369502,
+    "ast_hash": "25e550e0da3c04b9f7ad17321d989292",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/tests/e2e/dry-run.spec.ts": {
+    "mtime": 1790744097.745919,
+    "seen": 1790745677.2369514,
+    "ast_hash": "8bb879f1a2a458ea7f27a5f496ad66a7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/tests/e2e/preview.spec.ts": {
+    "mtime": 1790744097.7479086,
+    "seen": 1790745677.2369523,
+    "ast_hash": "1afabec36df95b9db666117bbe559024",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/tests/e2e/template-script-paths.spec.ts": {
+    "mtime": 1790744097.7479086,
+    "seen": 1790745677.2369533,
+    "ast_hash": "80206d1e05e62bf4086154fd32f2d5f3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/tsconfig.json": {
+    "mtime": 1790744097.7499192,
+    "seen": 1790745677.2369547,
+    "ast_hash": "e837ef9ba550eaf043dc4d5f2ca9808c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/app/layout.tsx": {
+    "mtime": 1790744097.767876,
+    "seen": 1790745677.2369556,
+    "ast_hash": "b337de64359143dadcb32f8f960d3663",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/app/page.tsx": {
+    "mtime": 1790744097.7708828,
+    "seen": 1790745677.2369566,
+    "ast_hash": "11c49b773e7e4937812a70e4f452fe94",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/app/providers.tsx": {
+    "mtime": 1790744097.7733996,
+    "seen": 1790745677.2369578,
+    "ast_hash": "8397ee726e5d860f763480bc3d64cb8b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/CodeSnippet.tsx": {
+    "mtime": 1790744097.774399,
+    "seen": 1790745677.236959,
+    "ast_hash": "5b424e7d1bf6663ec78abb2ba9f6c461",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/ColorPalette.tsx": {
+    "mtime": 1790744097.775925,
+    "seen": 1790745677.23696,
+    "ast_hash": "fa13ccd3402fc74b415caa83c56d4123",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/DarkModeToggle.tsx": {
+    "mtime": 1790744097.7779217,
+    "seen": 1790745677.2369611,
+    "ast_hash": "8ae43694ee17d8af0f43370724881cb9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/ExpandableSection.tsx": {
+    "mtime": 1790744097.7779217,
+    "seen": 1790745677.236962,
+    "ast_hash": "4e1d432b91567c24e3387f106be410a9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/FilterBar.tsx": {
+    "mtime": 1790744097.7799218,
+    "seen": 1790745677.2369633,
+    "ast_hash": "43e721fc3846480a456e6325d49fe8e0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/GalleryGrid.tsx": {
+    "mtime": 1790744097.7824337,
+    "seen": 1790745677.2369645,
+    "ast_hash": "bfeb0a7dc6daa6b87935cf216e9c26c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/InteractiveChecklist.tsx": {
+    "mtime": 1790744097.7844493,
+    "seen": 1790745677.2369654,
+    "ast_hash": "acac275037ef4eb57d41a1f89df8ac4e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/MetadataBadges.tsx": {
+    "mtime": 1790744097.7866783,
+    "seen": 1790745677.2369666,
+    "ast_hash": "27ed94edab2da0462a6fc42bcde7c38a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/PhoneMockup.tsx": {
+    "mtime": 1790744097.7876782,
+    "seen": 1790745677.2369676,
+    "ast_hash": "0bd7133a77cd6681002fadb08c31fd4a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/SearchInput.tsx": {
+    "mtime": 1790744097.789678,
+    "seen": 1790745677.2369688,
+    "ast_hash": "c48f83a353f479e17e1c8a1baf51f9c2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/StyleCard.tsx": {
+    "mtime": 1790744097.793212,
+    "seen": 1790745677.2369697,
+    "ast_hash": "1f01fd153caebc26edec15750aa52a1c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/StyleDetailModal.tsx": {
+    "mtime": 1790744097.7942064,
+    "seen": 1790745677.236971,
+    "ast_hash": "bc0207e243978de62cb198287e59a517",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/StylePreview.tsx": {
+    "mtime": 1790744097.7975857,
+    "seen": 1790745677.236972,
+    "ast_hash": "f9529b95460f1e063c76cfa8d85f7d21",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/UIControlsShowcase.tsx": {
+    "mtime": 1790744097.7995856,
+    "seen": 1790745677.236973,
+    "ast_hash": "d3cc5ccf5ebaa72cb40edaebaa0560fb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/components/metadata-badges.test.tsx": {
+    "mtime": 1790744097.8020978,
+    "seen": 1790745677.236975,
+    "ast_hash": "21187d9becd94d9ebf9676760b0afcae",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/lib/colorExtractor.ts": {
+    "mtime": 1790744097.8044746,
+    "seen": 1790745677.236976,
+    "ast_hash": "5716a726bb3987dfc384b4fba40e19b2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/lib/cssGenerator.ts": {
+    "mtime": 1790744097.806736,
+    "seen": 1790745677.2369769,
+    "ast_hash": "fa916a2cc1a36ed32965f05562cc8e14",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/lib/filterStyles.ts": {
+    "mtime": 1790744097.808737,
+    "seen": 1790745677.2369778,
+    "ast_hash": "869b8528fb9fbfeb82ed85b7d37c1b32",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/lib/parseStyles.test.ts": {
+    "mtime": 1790744097.808737,
+    "seen": 1790745677.2369792,
+    "ast_hash": "f88ed5d524ceb955f48899a54b163914",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/lib/parseStyles.ts": {
+    "mtime": 1790744097.8097365,
+    "seen": 1790745677.2369802,
+    "ast_hash": "e5af8249f92ce0b1748cd67cd5454847",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/lib/types.ts": {
+    "mtime": 1790744097.812246,
+    "seen": 1790745677.2369812,
+    "ast_hash": "4351c8254e58fb50f978ae30b6d1125b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/next-env.d.ts": {
+    "mtime": 1790744097.8147752,
+    "seen": 1790745677.2369823,
+    "ast_hash": "187b4b5b507c358a018aeeadd81abe57",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/next.config.js": {
+    "mtime": 1790744097.8157806,
+    "seen": 1790745677.2369833,
+    "ast_hash": "1e0cb7bf8a323f9759175690ef3ec32e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/package.json": {
+    "mtime": 1790744097.8207862,
+    "seen": 1790745677.2369843,
+    "ast_hash": "e8a81b9ceb322f142e6813ffc24c4cc8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/postcss.config.js": {
+    "mtime": 1790744097.8233166,
+    "seen": 1790745677.236989,
+    "ast_hash": "9a248c780e4c76f85b0f492f63a3d417",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/tailwind.config.ts": {
+    "mtime": 1790744097.825836,
+    "seen": 1790745677.2369902,
+    "ast_hash": "05b659381a783acb9f8a191fc27f9800",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/tsconfig.json": {
+    "mtime": 1790744097.8278327,
+    "seen": 1790745677.2369912,
+    "ast_hash": "a91a6bdac865397a8af6fdc55c8f924a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/gallery/tsconfig.test.json": {
+    "mtime": 1790744097.829826,
+    "seen": 1790745677.2369924,
+    "ast_hash": "30a1a75d454f7ec991cde3e378cc2f55",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/evaluate-relevance.py": {
+    "mtime": 1790744097.8466613,
+    "seen": 1790745677.2369933,
+    "ast_hash": "82ceac570a5f1bdcf9765022912fef0f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/generate-catalog-summary.py": {
+    "mtime": 1790744097.8476582,
+    "seen": 1790745677.2369943,
+    "ast_hash": "7f925cd28b8dfc02d8d898724c1acd52",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/refresh-google-fonts.py": {
+    "mtime": 1790744097.8486502,
+    "seen": 1790745677.2369957,
+    "ast_hash": "cb55e82d0cdf6b5b84da518e17d34207",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/refresh-icon-catalog.py": {
+    "mtime": 1790744097.8496616,
+    "seen": 1790745677.2369967,
+    "ast_hash": "e642d2786591131b414072b6c0ccc38c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/relevance_metrics.py": {
+    "mtime": 1790744097.850652,
+    "seen": 1790745677.2369976,
+    "ast_hash": "1a78368cbb68afc96caf6be6a51e21fa",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/smoke-domains.sh": {
+    "mtime": 1790744097.853203,
+    "seen": 1790745677.2369988,
+    "ast_hash": "cb3270f23397642c92e8cb4a8a44cb73",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/smoke-stacks.sh": {
+    "mtime": 1790744097.8542016,
+    "seen": 1790745677.2369998,
+    "ast_hash": "733c7732e393dc8be9d7cb81023d3ec6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/sync-release-version.mjs": {
+    "mtime": 1790744097.8547122,
+    "seen": 1790745677.237001,
+    "ast_hash": "fb7e6991e51b94d6aaab2122034bb1bb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/validate-agent-guide.py": {
+    "mtime": 1790744097.8547122,
+    "seen": 1790745677.237002,
+    "ast_hash": "56116f991a2958b18738eb25e50b122c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/scripts/validate-csv.py": {
+    "mtime": 1790744097.858713,
+    "seen": 1790745677.237003,
+    "ast_hash": "4da56eeee7288c34278d632b8e82895b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/skill.json": {
+    "mtime": 1790744097.8597224,
+    "seen": 1790745677.237004,
+    "ast_hash": "401783e2517352a432e51cbda754e609",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/data/catalog-summary.json": {
+    "mtime": 1790744097.8622181,
+    "seen": 1790745677.2370052,
+    "ast_hash": "6185a0fc8447d487988074b7f4eb4219",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/data/data-provenance.json": {
+    "mtime": 1790744097.867745,
+    "seen": 1790745677.2370062,
+    "ast_hash": "4f0fbe5f16c919f87170d6f493fad5e3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/data/google-font-licenses.json": {
+    "mtime": 1790744097.8707364,
+    "seen": 1790745677.2370074,
+    "ast_hash": "c6f70c775c4b6ac26441cf1b0022ad71",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/data/phosphor-icons-upstream.json": {
+    "mtime": 1790744097.8812053,
+    "seen": 1790745677.2370083,
+    "ast_hash": "933217ce321daf2458d12c41e5f19cb1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/core.py": {
+    "mtime": 1790744097.930556,
+    "seen": 1790745677.2370095,
+    "ast_hash": "f31c721b6943bc5f34dd8a79ed46e661",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/design_system.py": {
+    "mtime": 1790744097.930556,
+    "seen": 1790745677.2370105,
+    "ast_hash": "1a66a8527db3c6dd4f230a1b9a144d5c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/reasoning_contract.py": {
+    "mtime": 1790744097.9320602,
+    "seen": 1790745677.2370117,
+    "ast_hash": "653e45c1072a3662322d66a81c89d548",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/search.py": {
+    "mtime": 1790744097.9320602,
+    "seen": 1790745677.2370126,
+    "ast_hash": "0998767ebe8de2d056a9cdfa91e68b71",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json": {
+    "mtime": 1790744097.9330723,
+    "seen": 1790745677.2370138,
+    "ast_hash": "acedfec7aee587a0065e307a8b2f132a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json": {
+    "mtime": 1790744097.9330723,
+    "seen": 1790745677.2370148,
+    "ast_hash": "2e660fd742966d40dab168ed519c977d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json": {
+    "mtime": 1790744097.9340694,
+    "seen": 1790745677.2370157,
+    "ast_hash": "79a378691078056fc266904e68ca1f38",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json": {
+    "mtime": 1790744097.9350736,
+    "seen": 1790745677.2370172,
+    "ast_hash": "511f348199c83cdc4e5f10ff6e3efcd7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json": {
+    "mtime": 1790744097.9360857,
+    "seen": 1790745677.237018,
+    "ast_hash": "fe4fdaccc9f1c1072a61045de5f31c94",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json": {
+    "mtime": 1790744097.9360857,
+    "seen": 1790745677.237019,
+    "ast_hash": "423791591c1f81a9afe0668d3c8ad549",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json": {
+    "mtime": 1790744097.9360857,
+    "seen": 1790745677.2370222,
+    "ast_hash": "1a9f76802073ab9c19741026089a1519",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json": {
+    "mtime": 1790744097.9370818,
+    "seen": 1790745677.2370236,
+    "ast_hash": "2e0d66bcbe622e1edbfbbcd49f681ef0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json": {
+    "mtime": 1790744097.9370818,
+    "seen": 1790745677.2370245,
+    "ast_hash": "ee4474437e1d8a0fa1b2a159aab33d85",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json": {
+    "mtime": 1790744097.9380789,
+    "seen": 1790745677.2370255,
+    "ast_hash": "a8f0c47e5e96ac2cf7efb2c7c49f52e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json": {
+    "mtime": 1790744097.9380789,
+    "seen": 1790745677.237027,
+    "ast_hash": "d82720ba442086ca1dc5cbd89e0c3b11",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py": {
+    "mtime": 1790744097.9380789,
+    "seen": 1790745677.237028,
+    "ast_hash": "fbf0e330d0f949e1a6ab72b5e6ef9083",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py": {
+    "mtime": 1790744097.939472,
+    "seen": 1790745677.2370288,
+    "ast_hash": "8a5e4bdde1e3f2acabfbe7a5a908f382",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_core.py": {
+    "mtime": 1790744097.939472,
+    "seen": 1790745677.2370298,
+    "ast_hash": "1ff514f53f20f2fb0239e15ce9a1d7c5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_core_data_quality.py": {
+    "mtime": 1790744097.939472,
+    "seen": 1790745677.237031,
+    "ast_hash": "ba36618da592989e75420cbb0d7ac13c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_data_contracts.py": {
+    "mtime": 1790744097.9408953,
+    "seen": 1790745677.237032,
+    "ast_hash": "03e87e8ffa0c20f42fb342c5038a8f6f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_design_system_mode.py": {
+    "mtime": 1790744097.9408953,
+    "seen": 1790745677.2370331,
+    "ast_hash": "52f887a45931fcad38b04bf508281e8e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_design_system_stack.py": {
+    "mtime": 1790744097.9424002,
+    "seen": 1790745677.237034,
+    "ast_hash": "e70276086496f6c075b2bae176288133",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py": {
+    "mtime": 1790744097.9459403,
+    "seen": 1790745677.2370353,
+    "ast_hash": "8bf3a83850e18f4150a0f8e2eafe8c14",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py": {
+    "mtime": 1790744097.9509332,
+    "seen": 1790745677.2370362,
+    "ast_hash": "f976384d686802fd2ea0ae806965c38d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py": {
+    "mtime": 1790744097.9509332,
+    "seen": 1790745677.2370374,
+    "ast_hash": "430fb0f2e1790c05baa93622a753a61c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py": {
+    "mtime": 1790744097.9519267,
+    "seen": 1790745677.2370384,
+    "ast_hash": "00df6840db7177e5e1c17745db356bf6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py": {
+    "mtime": 1790744097.952431,
+    "seen": 1790745677.2370396,
+    "ast_hash": "3db737530578556a377d542c6fc910c1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py": {
+    "mtime": 1790744097.952431,
+    "seen": 1790745677.2370403,
+    "ast_hash": "96664c7fae2eb3d7393b91e0e5958366",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/scripts/validate_data.py": {
+    "mtime": 1790744097.952431,
+    "seen": 1790745677.2370417,
+    "ast_hash": "e26c33d4272866a8b1e67dc228a39bc2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/agent.json": {
+    "mtime": 1790744097.9549563,
+    "seen": 1790745677.2370427,
+    "ast_hash": "bb966d6ff644e209d9a5359ce973008d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/augment.json": {
+    "mtime": 1790744097.9559574,
+    "seen": 1790745677.2370436,
+    "ast_hash": "71302d4876e96d189c909efcf1f66403",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/claude.json": {
+    "mtime": 1790744097.9559574,
+    "seen": 1790745677.2370448,
+    "ast_hash": "fed2c3f467538bfbac823e672f6ceaa2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/codebuddy.json": {
+    "mtime": 1790744097.9559574,
+    "seen": 1790745677.2370458,
+    "ast_hash": "7bd3e4eaac6afe3d37ffc4bf639c38e9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/codewhale.json": {
+    "mtime": 1790744097.9569674,
+    "seen": 1790745677.2370467,
+    "ast_hash": "47e5d313e68a264307ca1a708c9f92cc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/codex.json": {
+    "mtime": 1790744097.9569674,
+    "seen": 1790745677.237048,
+    "ast_hash": "fa6d44db988f03a92584f057fd6ee382",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/continue.json": {
+    "mtime": 1790744097.9581995,
+    "seen": 1790745677.237049,
+    "ast_hash": "aff8c9954a41bfaebc83c424f9c0f2e5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/copilot.json": {
+    "mtime": 1790744097.9581995,
+    "seen": 1790745677.23705,
+    "ast_hash": "442536442de32674822037790aafa715",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/cursor.json": {
+    "mtime": 1790744097.9587152,
+    "seen": 1790745677.2370512,
+    "ast_hash": "b0f0e7238a921954beee6e7c7ceca2cb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/droid.json": {
+    "mtime": 1790744097.9587152,
+    "seen": 1790745677.2370522,
+    "ast_hash": "91d9cba01e0e9d1f3ea119be7aafe29c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/gemini.json": {
+    "mtime": 1790744097.9587152,
+    "seen": 1790745677.2370534,
+    "ast_hash": "18968d8d2a981892d851cfa7ccbd9fac",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/kilocode.json": {
+    "mtime": 1790744097.9597266,
+    "seen": 1790745677.2370543,
+    "ast_hash": "0cd332b4b36faa551a67c843cd405f23",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/kiro.json": {
+    "mtime": 1790744097.9597266,
+    "seen": 1790745677.2370555,
+    "ast_hash": "8c674625498d7de899de8684c3e783d1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/opencode.json": {
+    "mtime": 1790744097.9607263,
+    "seen": 1790745677.2370565,
+    "ast_hash": "d423872e0a62105e486d5d9da5d5b148",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/qoder.json": {
+    "mtime": 1790744097.9607263,
+    "seen": 1790745677.2370574,
+    "ast_hash": "516fe632cb2f18a691742934bbd35457",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/roocode.json": {
+    "mtime": 1790744097.9607263,
+    "seen": 1790745677.2370589,
+    "ast_hash": "1b3abc7a24244643589f128e44ffae6f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/trae.json": {
+    "mtime": 1790744097.9622304,
+    "seen": 1790745677.2370598,
+    "ast_hash": "69c0d880fe0169e968539596455dabbc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/universal.json": {
+    "mtime": 1790744097.9622304,
+    "seen": 1790745677.237061,
+    "ast_hash": "9f8699dcd24ec5e8bcdca6a50db7cb70",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/warp.json": {
+    "mtime": 1790744097.9622304,
+    "seen": 1790745677.2370622,
+    "ast_hash": "5e07ba93488df55787fad74cf72b0b0e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/windsurf.json": {
+    "mtime": 1790744097.9622304,
+    "seen": 1790745677.2370632,
+    "ast_hash": "77bda535b7573f1b5531ca841a1b78ce",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/platforms/zcode.json": {
+    "mtime": 1790744097.9635913,
+    "seen": 1790745677.2370641,
+    "ast_hash": "9def43b4596de2e9dcc761814069d6e5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/.claude/settings.json": {
+    "mtime": 1790744097.965116,
+    "seen": 1790745677.2370656,
+    "ast_hash": "d094ea0e9b1a71ecf663504ba145c5c9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/.mcp.json": {
+    "mtime": 1790744097.9671235,
+    "seen": 1790745677.2370665,
+    "ast_hash": "60310021924a3015407ebd0335b142b5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/report.json": {
+    "mtime": 1790744097.9701223,
+    "seen": 1790745677.2370675,
+    "ast_hash": "24149e6f5429baad71a1d51da87a8acc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/package.json": {
+    "mtime": 1790744097.989069,
+    "seen": 1790745677.2370687,
+    "ast_hash": "c74a94755ccfe7848c447197f2578f5f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/scripts/design-audit.mjs": {
+    "mtime": 1790744097.9900692,
+    "seen": 1790745677.2370696,
+    "ast_hash": "04e4f4f33986e6d41549c9857c179532",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/scripts/setup.sh": {
+    "mtime": 1790744097.99107,
+    "seen": 1790745677.2370706,
+    "ast_hash": "9e3a9a09b6e5c01d30e37171aa39b54d",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/components/AuraGlassComponents.kt": {
+    "mtime": 1790744863.3781576,
+    "seen": 1790745677.237157,
+    "ast_hash": "17f58ae73f48b49ca27cc427f599a989",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/banner-design/SKILL.md": {
+    "mtime": 1790744097.4062836,
+    "seen": 1790745677.2372544,
+    "ast_hash": "5ac854e863cfac432257d2383a9f2f47",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/banner-design/references/banner-sizes-and-styles.md": {
+    "mtime": 1790744097.407282,
+    "seen": 1790745677.2372556,
+    "ast_hash": "d77cc03e8ce1a2621dd8d6e565d2a835",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/SKILL.md": {
+    "mtime": 1790744097.408282,
+    "seen": 1790745677.2372572,
+    "ast_hash": "76ddf2d7cea9b832568a95a9e18cae24",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/approval-checklist.md": {
+    "mtime": 1790744097.408282,
+    "seen": 1790745677.2372584,
+    "ast_hash": "b787775054ea6d69442412c738951097",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/asset-organization.md": {
+    "mtime": 1790744097.4092746,
+    "seen": 1790745677.2372596,
+    "ast_hash": "3fd34bbdbcb6f7d6bc3e3b54291c1f81",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/brand-guideline-template.md": {
+    "mtime": 1790744097.4092746,
+    "seen": 1790745677.2372608,
+    "ast_hash": "a105e4b545d7ee596951e5a942941f52",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/color-palette-management.md": {
+    "mtime": 1790744097.4102817,
+    "seen": 1790745677.237262,
+    "ast_hash": "ff5b9d16adfa70735bfaaf86c092cff2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/consistency-checklist.md": {
+    "mtime": 1790744097.4102817,
+    "seen": 1790745677.2372634,
+    "ast_hash": "1508efecb7217da592bacbe5dd8453c3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/logo-usage-rules.md": {
+    "mtime": 1790744097.4112747,
+    "seen": 1790745677.2372646,
+    "ast_hash": "880c7a7461a816256d1eb29a4c9a45a1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/messaging-framework.md": {
+    "mtime": 1790744097.4112747,
+    "seen": 1790745677.2372658,
+    "ast_hash": "57f14bdc36a88948ac5da2927dd478ba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/typography-specifications.md": {
+    "mtime": 1790744097.4122753,
+    "seen": 1790745677.237267,
+    "ast_hash": "e977a8b6c3f3cce2c300db34b5c478d4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/update.md": {
+    "mtime": 1790744097.4127955,
+    "seen": 1790745677.2372682,
+    "ast_hash": "4618128178899dcc5635f12283050700",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/visual-identity.md": {
+    "mtime": 1790744097.4127955,
+    "seen": 1790745677.2372694,
+    "ast_hash": "222cd317fcd2fd46c1c9771da9dd28f8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/references/voice-framework.md": {
+    "mtime": 1790744097.4127955,
+    "seen": 1790745677.2372706,
+    "ast_hash": "e3ec9108522055fa2a7a3b6e390a1b48",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/brand/templates/brand-guidelines-starter.md": {
+    "mtime": 1790744097.4163222,
+    "seen": 1790745677.2372718,
+    "ast_hash": "9dcc6005ce27b600247070138aa815c6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/SKILL.md": {
+    "mtime": 1790744097.4173224,
+    "seen": 1790745677.2372727,
+    "ast_hash": "37e7fbda7ea5734e4868d9fb9b3ec729",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/component-specs.md": {
+    "mtime": 1790744097.4213145,
+    "seen": 1790745677.2372742,
+    "ast_hash": "800d64833545996f7c61af874ea0c66e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/component-tokens.md": {
+    "mtime": 1790744097.4223218,
+    "seen": 1790745677.2372751,
+    "ast_hash": "c7acadf3787aad400831c355b19f0471",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/primitive-tokens.md": {
+    "mtime": 1790744097.4228394,
+    "seen": 1790745677.2372763,
+    "ast_hash": "ae8bbb7dbf88e23b59396e380b1ece0b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/semantic-tokens.md": {
+    "mtime": 1790744097.4228394,
+    "seen": 1790745677.2372775,
+    "ast_hash": "7f646cd1f434d55e27973f56d65d4828",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/states-and-variants.md": {
+    "mtime": 1790744097.4228394,
+    "seen": 1790745677.2372787,
+    "ast_hash": "7c9ea66af1b4b2df9b1cb585d9d67d84",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/tailwind-integration.md": {
+    "mtime": 1790744097.4228394,
+    "seen": 1790745677.2372797,
+    "ast_hash": "d8cbd2666cd878b35bee5ea2dc25e4e0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design-system/references/token-architecture.md": {
+    "mtime": 1790744097.4243512,
+    "seen": 1790745677.237281,
+    "ast_hash": "da908dc8722cd5c21b75f1ceab8431c7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/SKILL.md": {
+    "mtime": 1790744097.4293654,
+    "seen": 1790745677.2372823,
+    "ast_hash": "8211692b6fec803fd155b7fea34ec09e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/banner-sizes-and-styles.md": {
+    "mtime": 1790744097.4333913,
+    "seen": 1790745677.2372832,
+    "ast_hash": "d77cc03e8ce1a2621dd8d6e565d2a835",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/cip-deliverable-guide.md": {
+    "mtime": 1790744097.4344003,
+    "seen": 1790745677.2372847,
+    "ast_hash": "f553a691a1feeda942a1ad7a8e7fa14f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/cip-design.md": {
+    "mtime": 1790744097.4349108,
+    "seen": 1790745677.2372856,
+    "ast_hash": "d8a6a0e88135e7a587bd9c09cedb71ab",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/cip-prompt-engineering.md": {
+    "mtime": 1790744097.4349108,
+    "seen": 1790745677.2372868,
+    "ast_hash": "c37289aaaa114caa03642c3e582b8363",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/cip-style-guide.md": {
+    "mtime": 1790744097.4349108,
+    "seen": 1790745677.2372882,
+    "ast_hash": "af22ac3b3af8c0845e9e20216adc0ca5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/design-routing.md": {
+    "mtime": 1790744097.4359224,
+    "seen": 1790745677.2372892,
+    "ast_hash": "e706f3b8f77301257a380253c2700f04",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/icon-design.md": {
+    "mtime": 1790744097.4359224,
+    "seen": 1790745677.2372904,
+    "ast_hash": "f5a3aa76b4f36a2395f84fb88380097c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/logo-color-psychology.md": {
+    "mtime": 1790744097.4359224,
+    "seen": 1790745677.2372918,
+    "ast_hash": "ea8820f66e2ea82d52acc70ec8fa2211",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/logo-design.md": {
+    "mtime": 1790744097.4369328,
+    "seen": 1790745677.2372928,
+    "ast_hash": "9803dbd9ee2c056bae41c2d5cb03ddbb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/logo-prompt-engineering.md": {
+    "mtime": 1790744097.4369328,
+    "seen": 1790745677.2372942,
+    "ast_hash": "42ac71a96a568ba6d151ab2b512c59c4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/logo-style-guide.md": {
+    "mtime": 1790744097.4369328,
+    "seen": 1790745677.2372952,
+    "ast_hash": "71429dc380a3c5a731c8654addb467c6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/slides-copywriting-formulas.md": {
+    "mtime": 1790744097.4379332,
+    "seen": 1790745677.2372963,
+    "ast_hash": "0be2fa17086e66e9e4512f7f4519a463",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/slides-create.md": {
+    "mtime": 1790744097.4379332,
+    "seen": 1790745677.2372973,
+    "ast_hash": "477752a5cc080a9ce932b02ba961a0d8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/slides-html-template.md": {
+    "mtime": 1790744097.4389331,
+    "seen": 1790745677.2372987,
+    "ast_hash": "f72faaf4f650dfc05550619a42fae258",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/slides-layout-patterns.md": {
+    "mtime": 1790744097.4389331,
+    "seen": 1790745677.2372997,
+    "ast_hash": "74903a26887f910f24fc26f0d4669656",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/slides-strategies.md": {
+    "mtime": 1790744097.4389331,
+    "seen": 1790745677.2373009,
+    "ast_hash": "d5ec2d4e2f19745d90e93f97f8283687",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/slides.md": {
+    "mtime": 1790744097.439932,
+    "seen": 1790745677.2373023,
+    "ast_hash": "90e3b6463ed33d5bb87556cf69873705",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/design/references/social-photos-design.md": {
+    "mtime": 1790744097.439932,
+    "seen": 1790745677.2373033,
+    "ast_hash": "c5b45fe5d7964918c85d8be574b53bd6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/slides/SKILL.md": {
+    "mtime": 1790744097.4588294,
+    "seen": 1790745677.2373047,
+    "ast_hash": "a8fb01478746ff1cfb34ef8ebf7eb89d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/slides/references/copywriting-formulas.md": {
+    "mtime": 1790744097.4598298,
+    "seen": 1790745677.2373056,
+    "ast_hash": "0be2fa17086e66e9e4512f7f4519a463",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/slides/references/create.md": {
+    "mtime": 1790744097.4598298,
+    "seen": 1790745677.2373066,
+    "ast_hash": "477752a5cc080a9ce932b02ba961a0d8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/slides/references/html-template.md": {
+    "mtime": 1790744097.4608293,
+    "seen": 1790745677.2373078,
+    "ast_hash": "f72faaf4f650dfc05550619a42fae258",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/slides/references/layout-patterns.md": {
+    "mtime": 1790744097.4608293,
+    "seen": 1790745677.2373092,
+    "ast_hash": "74903a26887f910f24fc26f0d4669656",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/slides/references/slide-strategies.md": {
+    "mtime": 1790744097.463367,
+    "seen": 1790745677.2373102,
+    "ast_hash": "d5ec2d4e2f19745d90e93f97f8283687",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/LICENSE.txt": {
+    "mtime": 1790744097.4668932,
+    "seen": 1790745677.2373116,
+    "ast_hash": "0ba5044c64ef53cb0189c9546081e228",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/SKILL.md": {
+    "mtime": 1790744097.4678953,
+    "seen": 1790745677.2373128,
+    "ast_hash": "2cf9bef18146b46fd0d6e8263346cd8f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/ArsenalSC-OFL.txt": {
+    "mtime": 1790744097.4693744,
+    "seen": 1790745677.2373137,
+    "ast_hash": "055bd399651c728b58127489b203a607",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/BigShoulders-OFL.txt": {
+    "mtime": 1790744097.475995,
+    "seen": 1790745677.2373152,
+    "ast_hash": "b0ec6188dddb41bf5044b09a7491debc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Boldonse-OFL.txt": {
+    "mtime": 1790744097.4790008,
+    "seen": 1790745677.2373161,
+    "ast_hash": "854766d78df004c93bb082be848947b9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/BricolageGrotesque-OFL.txt": {
+    "mtime": 1790744097.4841235,
+    "seen": 1790745677.2373173,
+    "ast_hash": "bd05ea51cf13ec198f9133c1f1f64da0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/CrimsonPro-OFL.txt": {
+    "mtime": 1790744097.4904418,
+    "seen": 1790745677.2373188,
+    "ast_hash": "333ff51d7c275eb19f486ec9abbf21af",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/DMMono-OFL.txt": {
+    "mtime": 1790744097.491441,
+    "seen": 1790745677.23732,
+    "ast_hash": "b03164427c6f0defd4796fd3f3fb0cf4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/EricaOne-OFL.txt": {
+    "mtime": 1790744097.49296,
+    "seen": 1790745677.2373211,
+    "ast_hash": "9ad51b36a93965acb98cf1c652c60970",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/GeistMono-OFL.txt": {
+    "mtime": 1790744097.495482,
+    "seen": 1790745677.2373223,
+    "ast_hash": "f07afc995766b888767e16ae8d119901",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Gloock-OFL.txt": {
+    "mtime": 1790744097.4964898,
+    "seen": 1790745677.2373235,
+    "ast_hash": "3fcad5713c9b110fddef500d051ac585",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/IBMPlexMono-OFL.txt": {
+    "mtime": 1790744097.5004883,
+    "seen": 1790745677.2373247,
+    "ast_hash": "992dcb568e1ffac11f740ee2fa1f028b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/InstrumentSans-OFL.txt": {
+    "mtime": 1790744097.5120473,
+    "seen": 1790745677.2373261,
+    "ast_hash": "030a9e886b4fe2e1720b5db020eca3ad",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Italiana-OFL.txt": {
+    "mtime": 1790744097.5175743,
+    "seen": 1790745677.237327,
+    "ast_hash": "4447ac843a769071814ae5cab23693ec",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/JetBrainsMono-OFL.txt": {
+    "mtime": 1790744097.5202563,
+    "seen": 1790745677.2373283,
+    "ast_hash": "d91d325d953444833285afa3b119e0fa",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Jura-OFL.txt": {
+    "mtime": 1790744097.5244045,
+    "seen": 1790745677.2373295,
+    "ast_hash": "5aaa855638a6f50828766d1e9c876f4c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/LibreBaskerville-OFL.txt": {
+    "mtime": 1790744097.5254176,
+    "seen": 1790745677.2373307,
+    "ast_hash": "585261c25563d76996884860f128bcf1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Lora-OFL.txt": {
+    "mtime": 1790744097.5331893,
+    "seen": 1790745677.2373319,
+    "ast_hash": "65d41d82ac358216fb2707da15c1d3fb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/NationalPark-OFL.txt": {
+    "mtime": 1790744097.5381548,
+    "seen": 1790745677.2373333,
+    "ast_hash": "367777dbf9fa1d1ef152fd06b5e08fc6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/NothingYouCouldDo-OFL.txt": {
+    "mtime": 1790744097.539264,
+    "seen": 1790745677.2373345,
+    "ast_hash": "42a7c035f1ddb3fcda7ddf746519b017",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Outfit-OFL.txt": {
+    "mtime": 1790744097.541243,
+    "seen": 1790745677.2373354,
+    "ast_hash": "af9efd1ed592546b9477763b02d684c1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/PixelifySans-OFL.txt": {
+    "mtime": 1790744097.542853,
+    "seen": 1790745677.2373369,
+    "ast_hash": "24ba91e15992e8bbd5a20db081d4d92f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/PoiretOne-OFL.txt": {
+    "mtime": 1790744097.542853,
+    "seen": 1790745677.2373378,
+    "ast_hash": "3d4cab0d7b79e053c1a40dab710bfc95",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/RedHatMono-OFL.txt": {
+    "mtime": 1790744097.545414,
+    "seen": 1790745677.2373388,
+    "ast_hash": "ef29b840f660a62db32c43d71a7280c0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Silkscreen-OFL.txt": {
+    "mtime": 1790744097.5474129,
+    "seen": 1790745677.2373402,
+    "ast_hash": "6bd21d8f9817d19bb012997a9726d968",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/SmoochSans-OFL.txt": {
+    "mtime": 1790744097.54845,
+    "seen": 1790745677.2373414,
+    "ast_hash": "79208bd389da9f263bc0b3d79aaaa3f6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/Tektur-OFL.txt": {
+    "mtime": 1790744097.5504923,
+    "seen": 1790745677.2373428,
+    "ast_hash": "5bf5c4d52bb660a0b29f6ca8d1d5b892",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/WorkSans-OFL.txt": {
+    "mtime": 1790744097.5567272,
+    "seen": 1790745677.2373438,
+    "ast_hash": "e5dd6bfc16fb9c9713dce1e02d877c90",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/canvas-fonts/YoungSerif-OFL.txt": {
+    "mtime": 1790744097.5586452,
+    "seen": 1790745677.237345,
+    "ast_hash": "016f9e9ecf329086639c0e1b542bf9a6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/canvas-design-system.md": {
+    "mtime": 1790744097.5606446,
+    "seen": 1790745677.2373464,
+    "ast_hash": "31a5d5a6e020a02a32415ad17067da24",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/shadcn-accessibility.md": {
+    "mtime": 1790744097.5606446,
+    "seen": 1790745677.2373476,
+    "ast_hash": "5158549b94aaae3326b7e7854d51dc06",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/shadcn-components.md": {
+    "mtime": 1790744097.5621488,
+    "seen": 1790745677.2373486,
+    "ast_hash": "7dfd7e872df6c607a571dbeeb59e1789",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/shadcn-theming.md": {
+    "mtime": 1790744097.5621488,
+    "seen": 1790745677.2373497,
+    "ast_hash": "80597d1759014fe29c7cbee37bc5caf9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/tailwind-customization.md": {
+    "mtime": 1790744097.563154,
+    "seen": 1790745677.237351,
+    "ast_hash": "c2366766ac4d6183eae1fddcc45f3c29",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/tailwind-responsive.md": {
+    "mtime": 1790744097.563154,
+    "seen": 1790745677.2373521,
+    "ast_hash": "4bd3c15e0828b65f646e248a4e6c67a8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/references/tailwind-utilities.md": {
+    "mtime": 1790744097.564154,
+    "seen": 1790745677.2373533,
+    "ast_hash": "b0a93822074b869ebe3c6647acffa733",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/requirements.txt": {
+    "mtime": 1790744097.5656624,
+    "seen": 1790745677.2373545,
+    "ast_hash": "d2f397f72424decd5aca67cc7c28dc4c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-styling/scripts/tests/requirements.txt": {
+    "mtime": 1790744097.5676608,
+    "seen": 1790745677.2373557,
+    "ast_hash": "d60e024efe9d4a8d1d065ec333260210",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/SKILL.md": {
+    "mtime": 1790744097.5686686,
+    "seen": 1790745677.237357,
+    "ast_hash": "4a1d318eaaa775c7b36d2c4df1bf2c6d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/references/pro-rules.md": {
+    "mtime": 1790744097.6021419,
+    "seen": 1790745677.237358,
+    "ast_hash": "09930cd335a0c214a382ed1559add8ea",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.claude/skills/ui-ux-pro-max/references/quick-reference.md": {
+    "mtime": 1790744097.6031575,
+    "seen": 1790745677.237359,
+    "ast_hash": "8f2640b17bff62ca22892d5c4da5eafe",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/ISSUE_TEMPLATE/bug_report.yml": {
+    "mtime": 1790744097.6186972,
+    "seen": 1790745677.2373605,
+    "ast_hash": "ab63edf9a00a4b9324580186fc556d6e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/ISSUE_TEMPLATE/feature_request.yml": {
+    "mtime": 1790744097.619697,
+    "seen": 1790745677.2373614,
+    "ast_hash": "af58ced2c24f627bf559f6a0745de56b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/PULL_REQUEST_TEMPLATE.md": {
+    "mtime": 1790744097.619697,
+    "seen": 1790745677.2373626,
+    "ast_hash": "50c2beffc244231fdd67f7dc027481a8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/workflows/bump-versions.yml": {
+    "mtime": 1790744097.6206892,
+    "seen": 1790745677.237364,
+    "ast_hash": "7e2e5a84bff2b53acb47bb57fac02b1a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/workflows/check-asset-sync.yml": {
+    "mtime": 1790744097.6206892,
+    "seen": 1790745677.2373652,
+    "ast_hash": "74ed0111d6517772caa10ee1a844f308",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/workflows/refresh-catalogs.yml": {
+    "mtime": 1790744097.6206892,
+    "seen": 1790745677.2373662,
+    "ast_hash": "a23fc01d0cb823d129c368b2876003c6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/workflows/release.yml": {
+    "mtime": 1790744097.6206892,
+    "seen": 1790745677.2373676,
+    "ast_hash": "958ae8d90324cc3bd1338be03377aa76",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/workflows/smoke-stacks.yml": {
+    "mtime": 1790744097.6221993,
+    "seen": 1790745677.2373686,
+    "ast_hash": "72b739d890753d9d1651dbcadae9add5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/.github/workflows/tests.yml": {
+    "mtime": 1790744097.6221993,
+    "seen": 1790745677.2373698,
+    "ast_hash": "4f1471c82a2ce2a7d5912ce8a9337a34",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/CLAUDE.md": {
+    "mtime": 1790744097.6232138,
+    "seen": 1790745677.2373712,
+    "ast_hash": "1c08a3c8bc160fd59199f56ccaa62f1c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/CODE_OF_CONDUCT.md": {
+    "mtime": 1790744097.624217,
+    "seen": 1790745677.2373724,
+    "ast_hash": "8f9ce9501b7ee9de02e14d858c0071ac",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/CONTRIBUTING.md": {
+    "mtime": 1790744097.624217,
+    "seen": 1790745677.2373736,
+    "ast_hash": "cee194d7ed05e42de3cff1de75633251",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/README.id.md": {
+    "mtime": 1790744097.624722,
+    "seen": 1790745677.2373748,
+    "ast_hash": "e56d3cc487635810208348568ee76084",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/README.ko.md": {
+    "mtime": 1790744097.6257336,
+    "seen": 1790745677.237376,
+    "ast_hash": "2f92a8c03394111fb7bb2fd98032cd04",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/README.md": {
+    "mtime": 1790744097.6267312,
+    "seen": 1790745677.2373772,
+    "ast_hash": "c33d2017c629de10bd14df3a562fd25d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/README.vi.md": {
+    "mtime": 1790744097.6267312,
+    "seen": 1790745677.2373786,
+    "ast_hash": "199fdfc4aeb237af53f8e9c4f5466cac",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/README.zh.md": {
+    "mtime": 1790744097.6277306,
+    "seen": 1790745677.2373798,
+    "ast_hash": "d9c320372f182666b4599210cf8480ab",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/SECURITY.md": {
+    "mtime": 1790744097.6277306,
+    "seen": 1790745677.2373812,
+    "ast_hash": "cef01f200237d0f6aad37726f2f6da9a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/README.md": {
+    "mtime": 1790744097.6287322,
+    "seen": 1790745677.2373822,
+    "ast_hash": "10630da95ed4e31fa43d59ab5b4d5b90",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/banner-design/SKILL.md": {
+    "mtime": 1790744097.6705654,
+    "seen": 1790745677.2373834,
+    "ast_hash": "5ac854e863cfac432257d2383a9f2f47",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/banner-design/references/banner-sizes-and-styles.md": {
+    "mtime": 1790744097.6705654,
+    "seen": 1790745677.2373848,
+    "ast_hash": "d77cc03e8ce1a2621dd8d6e565d2a835",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/SKILL.md": {
+    "mtime": 1790744097.6720707,
+    "seen": 1790745677.2373857,
+    "ast_hash": "76ddf2d7cea9b832568a95a9e18cae24",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/approval-checklist.md": {
+    "mtime": 1790744097.6720707,
+    "seen": 1790745677.237387,
+    "ast_hash": "b787775054ea6d69442412c738951097",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/asset-organization.md": {
+    "mtime": 1790744097.6730814,
+    "seen": 1790745677.2373884,
+    "ast_hash": "3fd34bbdbcb6f7d6bc3e3b54291c1f81",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/brand-guideline-template.md": {
+    "mtime": 1790744097.6746001,
+    "seen": 1790745677.2373896,
+    "ast_hash": "a105e4b545d7ee596951e5a942941f52",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/color-palette-management.md": {
+    "mtime": 1790744097.6746001,
+    "seen": 1790745677.2373908,
+    "ast_hash": "ff5b9d16adfa70735bfaaf86c092cff2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/consistency-checklist.md": {
+    "mtime": 1790744097.6755986,
+    "seen": 1790745677.237392,
+    "ast_hash": "1508efecb7217da592bacbe5dd8453c3",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/logo-usage-rules.md": {
+    "mtime": 1790744097.6765978,
+    "seen": 1790745677.2373931,
+    "ast_hash": "880c7a7461a816256d1eb29a4c9a45a1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/messaging-framework.md": {
+    "mtime": 1790744097.6765978,
+    "seen": 1790745677.237394,
+    "ast_hash": "57f14bdc36a88948ac5da2927dd478ba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/typography-specifications.md": {
+    "mtime": 1790744097.6776054,
+    "seen": 1790745677.2373958,
+    "ast_hash": "e977a8b6c3f3cce2c300db34b5c478d4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/update.md": {
+    "mtime": 1790744097.6776054,
+    "seen": 1790745677.237397,
+    "ast_hash": "4618128178899dcc5635f12283050700",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/visual-identity.md": {
+    "mtime": 1790744097.6776054,
+    "seen": 1790745677.237398,
+    "ast_hash": "222cd317fcd2fd46c1c9771da9dd28f8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/references/voice-framework.md": {
+    "mtime": 1790744097.6785977,
+    "seen": 1790745677.2373993,
+    "ast_hash": "e3ec9108522055fa2a7a3b6e390a1b48",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/brand/templates/brand-guidelines-starter.md": {
+    "mtime": 1790744097.6806047,
+    "seen": 1790745677.2374003,
+    "ast_hash": "9dcc6005ce27b600247070138aa815c6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/SKILL.md": {
+    "mtime": 1790744097.6821165,
+    "seen": 1790745677.2374015,
+    "ast_hash": "37e7fbda7ea5734e4868d9fb9b3ec729",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/component-specs.md": {
+    "mtime": 1790744097.685649,
+    "seen": 1790745677.237403,
+    "ast_hash": "800d64833545996f7c61af874ea0c66e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/component-tokens.md": {
+    "mtime": 1790744097.686638,
+    "seen": 1790745677.237404,
+    "ast_hash": "c7acadf3787aad400831c355b19f0471",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/primitive-tokens.md": {
+    "mtime": 1790744097.686638,
+    "seen": 1790745677.2374053,
+    "ast_hash": "ae8bbb7dbf88e23b59396e380b1ece0b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/semantic-tokens.md": {
+    "mtime": 1790744097.6876483,
+    "seen": 1790745677.2374065,
+    "ast_hash": "7f646cd1f434d55e27973f56d65d4828",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/states-and-variants.md": {
+    "mtime": 1790744097.6876483,
+    "seen": 1790745677.2374074,
+    "ast_hash": "7c9ea66af1b4b2df9b1cb585d9d67d84",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/tailwind-integration.md": {
+    "mtime": 1790744097.6876483,
+    "seen": 1790745677.2374084,
+    "ast_hash": "d8cbd2666cd878b35bee5ea2dc25e4e0",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design-system/references/token-architecture.md": {
+    "mtime": 1790744097.6886458,
+    "seen": 1790745677.2374098,
+    "ast_hash": "da908dc8722cd5c21b75f1ceab8431c7",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/SKILL.md": {
+    "mtime": 1790744097.6956859,
+    "seen": 1790745677.237411,
+    "ast_hash": "8211692b6fec803fd155b7fea34ec09e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/banner-sizes-and-styles.md": {
+    "mtime": 1790744097.699678,
+    "seen": 1790745677.2374125,
+    "ast_hash": "d77cc03e8ce1a2621dd8d6e565d2a835",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/cip-deliverable-guide.md": {
+    "mtime": 1790744097.699678,
+    "seen": 1790745677.2374134,
+    "ast_hash": "f553a691a1feeda942a1ad7a8e7fa14f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/cip-design.md": {
+    "mtime": 1790744097.7006779,
+    "seen": 1790745677.2374146,
+    "ast_hash": "d8a6a0e88135e7a587bd9c09cedb71ab",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/cip-prompt-engineering.md": {
+    "mtime": 1790744097.7006779,
+    "seen": 1790745677.237416,
+    "ast_hash": "c37289aaaa114caa03642c3e582b8363",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/cip-style-guide.md": {
+    "mtime": 1790744097.7006779,
+    "seen": 1790745677.237417,
+    "ast_hash": "af22ac3b3af8c0845e9e20216adc0ca5",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/design-routing.md": {
+    "mtime": 1790744097.7006779,
+    "seen": 1790745677.2374182,
+    "ast_hash": "e706f3b8f77301257a380253c2700f04",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/icon-design.md": {
+    "mtime": 1790744097.7021916,
+    "seen": 1790745677.2374196,
+    "ast_hash": "f5a3aa76b4f36a2395f84fb88380097c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/logo-color-psychology.md": {
+    "mtime": 1790744097.7021916,
+    "seen": 1790745677.2374206,
+    "ast_hash": "ea8820f66e2ea82d52acc70ec8fa2211",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/logo-design.md": {
+    "mtime": 1790744097.7021916,
+    "seen": 1790745677.2374218,
+    "ast_hash": "9803dbd9ee2c056bae41c2d5cb03ddbb",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/logo-prompt-engineering.md": {
+    "mtime": 1790744097.7032063,
+    "seen": 1790745677.2374232,
+    "ast_hash": "42ac71a96a568ba6d151ab2b512c59c4",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/logo-style-guide.md": {
+    "mtime": 1790744097.7032063,
+    "seen": 1790745677.2374244,
+    "ast_hash": "71429dc380a3c5a731c8654addb467c6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/slides-copywriting-formulas.md": {
+    "mtime": 1790744097.7032063,
+    "seen": 1790745677.2374253,
+    "ast_hash": "0be2fa17086e66e9e4512f7f4519a463",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/slides-create.md": {
+    "mtime": 1790744097.7042072,
+    "seen": 1790745677.2374268,
+    "ast_hash": "477752a5cc080a9ce932b02ba961a0d8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/slides-html-template.md": {
+    "mtime": 1790744097.7047231,
+    "seen": 1790745677.237428,
+    "ast_hash": "f72faaf4f650dfc05550619a42fae258",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/slides-layout-patterns.md": {
+    "mtime": 1790744097.7047231,
+    "seen": 1790745677.237429,
+    "ast_hash": "74903a26887f910f24fc26f0d4669656",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/slides-strategies.md": {
+    "mtime": 1790744097.7047231,
+    "seen": 1790745677.2374303,
+    "ast_hash": "d5ec2d4e2f19745d90e93f97f8283687",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/slides.md": {
+    "mtime": 1790744097.7057307,
+    "seen": 1790745677.2374313,
+    "ast_hash": "90e3b6463ed33d5bb87556cf69873705",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/design/references/social-photos-design.md": {
+    "mtime": 1790744097.7057307,
+    "seen": 1790745677.2374325,
+    "ast_hash": "c5b45fe5d7964918c85d8be574b53bd6",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/slides/SKILL.md": {
+    "mtime": 1790744097.7109537,
+    "seen": 1790745677.237434,
+    "ast_hash": "a8fb01478746ff1cfb34ef8ebf7eb89d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/slides/references/copywriting-formulas.md": {
+    "mtime": 1790744097.7119539,
+    "seen": 1790745677.237435,
+    "ast_hash": "0be2fa17086e66e9e4512f7f4519a463",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/slides/references/create.md": {
+    "mtime": 1790744097.712472,
+    "seen": 1790745677.237436,
+    "ast_hash": "477752a5cc080a9ce932b02ba961a0d8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/slides/references/html-template.md": {
+    "mtime": 1790744097.712472,
+    "seen": 1790745677.2374375,
+    "ast_hash": "f72faaf4f650dfc05550619a42fae258",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/slides/references/layout-patterns.md": {
+    "mtime": 1790744097.7134771,
+    "seen": 1790745677.2374387,
+    "ast_hash": "74903a26887f910f24fc26f0d4669656",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/slides/references/slide-strategies.md": {
+    "mtime": 1790744097.7134771,
+    "seen": 1790745677.2374396,
+    "ast_hash": "d5ec2d4e2f19745d90e93f97f8283687",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/LICENSE.txt": {
+    "mtime": 1790744097.7144766,
+    "seen": 1790745677.237441,
+    "ast_hash": "0ba5044c64ef53cb0189c9546081e228",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/SKILL.md": {
+    "mtime": 1790744097.7149813,
+    "seen": 1790745677.2374423,
+    "ast_hash": "2cf9bef18146b46fd0d6e8263346cd8f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/canvas-design-system.md": {
+    "mtime": 1790744097.7149813,
+    "seen": 1790745677.2374437,
+    "ast_hash": "31a5d5a6e020a02a32415ad17067da24",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/shadcn-accessibility.md": {
+    "mtime": 1790744097.715993,
+    "seen": 1790745677.2374597,
+    "ast_hash": "5158549b94aaae3326b7e7854d51dc06",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/shadcn-components.md": {
+    "mtime": 1790744097.715993,
+    "seen": 1790745677.2374613,
+    "ast_hash": "7dfd7e872df6c607a571dbeeb59e1789",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/shadcn-theming.md": {
+    "mtime": 1790744097.715993,
+    "seen": 1790745677.2374625,
+    "ast_hash": "80597d1759014fe29c7cbee37bc5caf9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/tailwind-customization.md": {
+    "mtime": 1790744097.7169905,
+    "seen": 1790745677.2374637,
+    "ast_hash": "c2366766ac4d6183eae1fddcc45f3c29",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/tailwind-responsive.md": {
+    "mtime": 1790744097.7169905,
+    "seen": 1790745677.2374651,
+    "ast_hash": "4bd3c15e0828b65f646e248a4e6c67a8",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/references/tailwind-utilities.md": {
+    "mtime": 1790744097.7179904,
+    "seen": 1790745677.237466,
+    "ast_hash": "b0a93822074b869ebe3c6647acffa733",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/requirements.txt": {
+    "mtime": 1790744097.7179904,
+    "seen": 1790745677.2374673,
+    "ast_hash": "d2f397f72424decd5aca67cc7c28dc4c",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/skills/ui-styling/scripts/tests/requirements.txt": {
+    "mtime": 1790744097.71999,
+    "seen": 1790745677.2374687,
+    "ast_hash": "d60e024efe9d4a8d1d065ec333260210",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/base/quick-reference.md": {
+    "mtime": 1790744097.72099,
+    "seen": 1790745677.2374697,
+    "ast_hash": "4d67e220e885862b6ac300e72f552624",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/cli/assets/templates/base/skill-content.md": {
+    "mtime": 1790744097.7220843,
+    "seen": 1790745677.2374709,
+    "ast_hash": "4d895f12817783d79f0054394ea691bc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/docs/journals/260812-1844-search-data-quality-planning.md": {
+    "mtime": 1790744097.752448,
+    "seen": 1790745677.2374723,
+    "ast_hash": "f3c5f5f0972e12f72d61584ce7886417",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/docs/journals/260813-0816-phase-6-accessibility-refresh.md": {
+    "mtime": 1790744097.7541344,
+    "seen": 1790745677.2374735,
+    "ast_hash": "a84b85f47f33c20615415a67b83de9ba",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/docs/journals/260813-1622-phase-7-web-stack-freshness.md": {
+    "mtime": 1790744097.756156,
+    "seen": 1790745677.2374744,
+    "ast_hash": "d8445b16cba08d7b7179ec24882c3240",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/docs/journals/260813-1800-search-data-overhaul-completion.md": {
+    "mtime": 1790744097.7571507,
+    "seen": 1790745677.2374759,
+    "ast_hash": "09229870923f546cb1c3cdfe9d50517f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/docs/\u4e09\u4e2a data-scripts-templates \u7684\u533a\u522b.md": {
+    "mtime": 1790744097.7601428,
+    "seen": 1790745677.2374785,
+    "ast_hash": "c15d827f18cc49c5e457fd0328423cd1",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/preview/xiaomaomi-app.html": {
+    "mtime": 1790744097.832346,
+    "seen": 1790745677.2374797,
+    "ast_hash": "643fedb89962b1ead6a197d5128b1d42",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/projects/healthcare-dashboard/index.html": {
+    "mtime": 1790744097.834355,
+    "seen": 1790745677.2374809,
+    "ast_hash": "4cce6d46f6d78d2d6881ba44a9c93366",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/projects/portfolio-dark/index.html": {
+    "mtime": 1790744097.835611,
+    "seen": 1790745677.237482,
+    "ast_hash": "7a4e6caee594f2583ed4036ed8c2fb88",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/projects/saas-landing/index.html": {
+    "mtime": 1790744097.8366141,
+    "seen": 1790745677.2374833,
+    "ast_hash": "8f15795ccbe05eb473fb90da035dd681",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/base/quick-reference.md": {
+    "mtime": 1790744097.9539473,
+    "seen": 1790745677.2374845,
+    "ast_hash": "4d67e220e885862b6ac300e72f552624",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/src/ui-ux-pro-max/templates/base/skill-content.md": {
+    "mtime": 1790744097.9549563,
+    "seen": 1790745677.237486,
+    "ast_hash": "4d895f12817783d79f0054394ea691bc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/.claude/agents/design-review.md": {
+    "mtime": 1790744097.9641008,
+    "seen": 1790745677.237487,
+    "ast_hash": "945cfa4919b629b5b030620ff2be827f",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/.claude/commands/design-plan.md": {
+    "mtime": 1790744097.965116,
+    "seen": 1790745677.237488,
+    "ast_hash": "7af29fc88bbaff9ccf2026be2cdb4867",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/.claude/commands/design-review.md": {
+    "mtime": 1790744097.965116,
+    "seen": 1790745677.2374895,
+    "ast_hash": "5b767c8109c464f854dbd0c8729abd8a",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/.github/workflows/design-review.yml": {
+    "mtime": 1790744097.9661136,
+    "seen": 1790745677.2374904,
+    "ast_hash": "34d8608770d76f70ba4a42f82061178d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/CLAUDE.md": {
+    "mtime": 1790744097.9671235,
+    "seen": 1790745677.2374916,
+    "ast_hash": "d0fb3613d9b169ef812d070d0ed66f7d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/README.md": {
+    "mtime": 1790744097.9671235,
+    "seen": 1790745677.237493,
+    "ast_hash": "8a3d76aca26aeedf9f067cb56a4882a2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/docs/SETUP.md": {
+    "mtime": 1790744097.9681234,
+    "seen": 1790745677.2374942,
+    "ast_hash": "85275fe070c754ce29f9c5d4b025ac57",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/docs/STACK.md": {
+    "mtime": 1790744097.9681234,
+    "seen": 1790745677.2374957,
+    "ast_hash": "26a7a193668a6fa26a01c423020e24ed",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/docs/WORKFLOW.md": {
+    "mtime": 1790744097.9691238,
+    "seen": 1790745677.2374966,
+    "ast_hash": "aec93b332959b88906bbf99cb3324d08",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/README.md": {
+    "mtime": 1790744097.9691238,
+    "seen": 1790745677.2374978,
+    "ast_hash": "1fc2d920dfeee298685572c108e35fd2",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/report.md": {
+    "mtime": 1790744097.9701223,
+    "seen": 1790745677.237499,
+    "ast_hash": "a595ed404e2af68577f4b50675c830c9",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/screenshots/website.png": {
+    "mtime": 1790744097.8441405,
+    "seen": 1790745677.2375224,
+    "ast_hash": "e31f3d6be53491d545dbfad528e7fa7b",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/screenshots/desktop-1440.png": {
+    "mtime": 1790744097.9741418,
+    "seen": 1790745677.2375238,
+    "ast_hash": "4725ab55d102a03b1f2c329395774ddc",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/screenshots/laptop-1024.png": {
+    "mtime": 1790744097.9771466,
+    "seen": 1790745677.237525,
+    "ast_hash": "ab37dddc386afc2ef527375142aa1e62",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/screenshots/mobile-360.png": {
+    "mtime": 1790744097.9781485,
+    "seen": 1790745677.237526,
+    "ast_hash": "0b29ce7399f66badad3a31603f33644e",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/screenshots/mobile-390.png": {
+    "mtime": 1790744097.9821472,
+    "seen": 1790745677.2375274,
+    "ast_hash": "0422d0a456092a72a9067cc277597d8d",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/screenshots/tablet-768.png": {
+    "mtime": 1790744097.9840539,
+    "seen": 1790745677.2375286,
+    "ast_hash": "28e718580c04d40de952264674358c60",
+    "semantic_hash": ""
+  },
+  ".agents/skills/ui-ux-pro-max-temp/stack/examples/juniper-audit/screenshots/wide-1920.png": {
+    "mtime": 1790744097.9880757,
+    "seen": 1790745677.2375298,
+    "ast_hash": "343e9d1eae571446bc5e557a65873d1b",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/cloud/LosslessStreamResolver.kt": {
+    "mtime": 1790776609.1270545,
+    "seen": 1790777363.345626,
+    "ast_hash": "f6de8085db010b8f3dc9d7c255a6a2ed",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/cloud/SpotifyMetadataResolver.kt": {
+    "mtime": 1790776653.178079,
+    "seen": 1790777363.3456275,
+    "ast_hash": "6dcf1749187faabab2b3645e418ae911",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/data/download/AuraDownloadEngine.kt": {
+    "mtime": 1790777219.8330462,
+    "seen": 1790777363.3456295,
+    "ast_hash": "25e441c089ea8ef8f1f74aacc53247c1",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/domain/model/cloud/CloudModels.kt": {
+    "mtime": 1790774574.5936441,
+    "seen": 1790777363.3456628,
+    "ast_hash": "f4460cb361de295e8b4a86ca72a40bf1",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/cloud/CloudDownloaderScreen.kt": {
+    "mtime": 1790774692.9957056,
+    "seen": 1790777363.3456798,
+    "ast_hash": "cc39f1d23fb73a51ff564ca258cf16b1",
+    "semantic_hash": ""
+  },
+  "android/app/src/main/java/com/example/aura/ui/viewmodel/CloudDownloaderViewModel.kt": {
+    "mtime": 1790774652.1627395,
+    "seen": 1790777363.3457203,
+    "ast_hash": "cbb9f54cc21b1fce3c1256a463c60ee0",
     "semantic_hash": ""
   }
 }

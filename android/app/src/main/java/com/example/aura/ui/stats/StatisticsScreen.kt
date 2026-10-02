@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aura.domain.model.ListeningStatistics
 import com.example.aura.domain.model.Song
+import com.example.aura.theme.AuraDeepBlack
 import com.example.aura.theme.AuraOnPrimary
 import com.example.aura.theme.AuraOnSurface
 import com.example.aura.theme.AuraOnSurfaceVariant
@@ -55,6 +56,8 @@ import com.example.aura.theme.AuraSecondary
 import com.example.aura.theme.AuraSurface
 import com.example.aura.theme.AuraSurfaceContainer
 import com.example.aura.theme.AuraSurfaceContainerHigh
+
+import androidx.activity.compose.BackHandler
 
 @Composable
 fun StatisticsScreen(
@@ -66,10 +69,15 @@ fun StatisticsScreen(
 ) {
     var showConfirmClear by remember { mutableStateOf(false) }
 
+    BackHandler(enabled = showConfirmClear) {
+        showConfirmClear = false
+    }
+    BackHandler(enabled = !showConfirmClear, onBack = onBack)
+
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface)
+            .background(AuraDeepBlack)
     ) {
         // Top Bar
         Row(

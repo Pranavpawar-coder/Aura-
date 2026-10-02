@@ -11,11 +11,18 @@
   </p>
 
   <p>
+    <a href="#-download-apk">Download APK</a> •
     <a href="#key-features">Key Features</a> •
     <a href="#architecture--tech-stack">Architecture</a> •
     <a href="#getting-started">Getting Started</a> •
     <a href="#web-prototype">Web Prototype</a> •
     <a href="#design-system">Design System</a>
+  </p>
+
+  <p>
+    <a href="https://github.com/Pranavpawar-coder/Aura-/releases/latest">
+      <img src="https://img.shields.io/badge/Download_APK-v1.2_Latest-7C5CFC?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
+    </a>
   </p>
 
   <p>
@@ -31,6 +38,25 @@
 
 ---
 
+## 📥 Download APK
+
+You can download the latest compiled builds directly from the [GitHub Releases](https://github.com/Pranavpawar-coder/Aura-/releases/latest) section:
+
+| Build Flavor | File | Description |
+| :--- | :--- | :--- |
+| **Release Build (Recommended)** | `Aura-release.apk` | ProGuard/R8 optimized & shrunk binary (17.9 MB) |
+| **Debug Build** | `Aura-debug.apk` | Development build with debug logging enabled (25.4 MB) |
+
+### Installation Instructions
+1. Download `Aura-release.apk` or `Aura-debug.apk` to your Android device.
+2. Tap the downloaded file in your browser downloads or file manager.
+3. If prompted, enable **"Install unknown apps"** for your browser / file manager in Android Settings.
+4. Tap **Install** and launch **AURA**.
+
+
+---
+
+>>>>>>> 9c319dc (Final App)
 ## 🌟 Overview
 
 **AURA** is a modern music player crafted around **Atmospheric Glassmorphism** and **Cosmic Minimalism**. It breaks free from generic list-based audio players by turning music playback into an immersive, tactile art form.

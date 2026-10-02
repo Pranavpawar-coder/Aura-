@@ -82,12 +82,14 @@ import com.example.aura.domain.model.audio.ReverbPreset
 import com.example.aura.domain.model.audio.SpatialMovementMode
 import com.example.aura.domain.model.audio.SpatialPreset
 import com.example.aura.domain.model.audio.VisualizerStyle
+import com.example.aura.theme.AuraDeepBlack
 import com.example.aura.theme.AuraOnPrimary
 import com.example.aura.theme.AuraOnSurface
 import com.example.aura.theme.AuraOnSurfaceVariant
 import com.example.aura.theme.AuraOutline
 import com.example.aura.theme.AuraPrimary
 import com.example.aura.theme.AuraSurface
+import com.example.aura.theme.AuraSurfaceBlack
 import com.example.aura.theme.AuraSurfaceContainer
 import com.example.aura.theme.AuraSurfaceContainerHigh
 import com.example.aura.theme.AuraSurfaceContainerHighest
@@ -96,6 +98,8 @@ import com.example.aura.ui.components.ParametricEqCurve
 import com.example.aura.ui.components.SpatialPositionRadar
 import com.example.aura.ui.viewmodel.PlayerViewModel
 
+import androidx.activity.compose.BackHandler
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AudioEffectsScreen(
@@ -103,6 +107,8 @@ fun AudioEffectsScreen(
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    BackHandler(onBack = onDismiss)
+
     val effectsState by viewModel.audioEffectsState.collectAsState()
     val visualizerData by viewModel.visualizerData.collectAsState()
     val sleepTimer by viewModel.sleepTimerSettings.collectAsState()
@@ -113,7 +119,7 @@ fun AudioEffectsScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface)
+            .background(AuraDeepBlack)
             .statusBarsPadding()
             .navigationBarsPadding()
     ) {
@@ -156,7 +162,7 @@ fun AudioEffectsScreen(
         // Navigation Tabs
         ScrollableTabRow(
             selectedTabIndex = selectedTab,
-            containerColor = AuraSurface,
+            containerColor = AuraDeepBlack,
             contentColor = AuraPrimary,
             edgePadding = 16.dp,
             divider = {}

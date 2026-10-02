@@ -1,12 +1,12 @@
-# Graph Report - Aura  (2026-10-01)
+# Graph Report - Aura  (2026-09-30)
 
 ## Corpus Check
-- 537 files · ~939,546 words
+- 537 files · ~938,515 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 256 file(s) not represented in the graph (top: .csv 144, .ttf 54, .xml 38)
 
 ## Summary
-- 8242 nodes · 13652 edges · 526 communities (376 shown, 150 thin omitted)
+- 8240 nodes · 13640 edges · 533 communities (379 shown, 154 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 119 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
@@ -22,17 +22,17 @@
 - CloudDownloaderScreen.kt
 - LibraryScreen.kt
 - Theme.kt
-- AuraNavigation.kt
+- Components.kt
 - SongSortOrder
 - pathlib
 - AuraDatabase.kt
 - EqualizerPreset
-- AuraGlassComponents.kt
+- ParametricEqCurve.kt
 - Song
 - AuraPlayerManager
-- assets/skills/design/scripts/logo/generate.py
+- skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py
 - PlayerViewModel
-- PlaybackState
+- NowPlayingScreen.kt
 - MusicImportAndLyricsTest.kt
 - MusicRepositoryImpl
 - SortCriterion
@@ -42,7 +42,7 @@
 - .normalizeSourceString
 - Aura Cinematic Sound — Design System
 - SongEntity
-- Playlist
+- PlaylistRepository
 - SmartScanSettings
 - LibraryViewModel
 - MusicRepositoryImpl.kt
@@ -50,8 +50,8 @@
 - arrowforward
 - aurasecondarycontainer
 - .claude/skills/design-system/scripts/html-token-validator.py
-- .updateAllWidgets
-- ExcludedItemsScreen.kt
+- AuraWidgetProvider.kt
+- ExcludedItemsScreen
 - assets/scripts/core.py
 - src/ui-ux-pro-max/scripts/core.py
 - Ponytail
@@ -68,12 +68,12 @@
 - spatialtracking
 - nightlight
 - AuraPlayerManager.kt
-- ReverbPreset
+- AudioEffectsState.kt
 - gray
 - Ponytail Help
-- BM25
-- Spatial4DSettings
-- AuraDownloadEngine
+- AuraAudioProcessor
+- BiquadFilter
+- AuraAudioService
 - assets/scripts/design_system.py
 - UserPreferences
 - .claude/skills/design/scripts/cip/generate.py
@@ -84,8 +84,8 @@
 - PlaylistDao
 - SpatialPreset
 - LyricsState
-- LosslessStreamResolver
-- SpotifyMetadataResolver
+- SmartPlaylistType
+- SongSortTest
 - src/ui-ux-pro-max/scripts/validate_data.py
 - ponytail-audit/SKILL.md
 - QueueState
@@ -95,28 +95,28 @@
 - Tailwind CSS Utility Reference
 - ponytail-review/SKILL.md
 - skills/ui-ux-pro-max/scripts/design_system.py
-- .claude/skills/design/scripts/icon/generate.py
+- os
 - format_ascii_box
 - ponytail-debt/SKILL.md
 - src/ui-ux-pro-max/scripts/design_system.py
-- AudioQuality
+- QueueDao
 - AudioDeviceType
 - [UI UX Pro Max](https://uupm.cc)
 - TailwindConfigGenerator
 - sparkles
 - SettingsScreen.kt
 - TailwindConfigGenerator
-- os
+- datetime
 - Brand Guidelines v1.0
 - Brand Guidelines v1.0
-- src/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py
+- AuraGlassComponents.kt
 - ponytail.md
 - folderopen
 - Design
-- AuraSplashScreen.kt
+- format_ascii_box
 - .claude/skills/design-system/scripts/slide_search_core.py
 - defaultrenderersfactory
-- CloudDownloaderViewModel
+- graphicslayer
 - Design
 - Canvas Design System
 - Canvas Design System
@@ -126,7 +126,7 @@
 - view
 - DesignSystemGenerator
 - Prerequisites
-- BM25
+- .updateAllWidgets
 - read_rows
 - read_rows
 - assets/skills/brand/scripts/tests/test_sync_brand_to_tokens.py
@@ -138,7 +138,7 @@
 - Form & Input Components
 - Tailwind CSS Responsive Design
 - Typography Specifications
-- TestGeneratedConfigIsValidJs
+- AuraWidgetManager.kt
 - skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py
 - assets/scripts/tests/test_design_system_mode.py
 - Typography Specifications
@@ -188,8 +188,8 @@
 - spacing
 - [UI UX Pro Max](https://uupm.cc)
 - refresh-google-fonts.py
-- assets/scripts/tests/test_core.py
-- re
+- TestDomainDetection
+- .claude/skills/design/scripts/cip/core.py
 - src/ui-ux-pro-max/scripts/tests/test_core.py
 - Routing by Task Type
 - .claude/skills/design-system/scripts/fetch-background.py
@@ -279,18 +279,18 @@
 - Pre-Delivery Checklist (canonical — the only one)
 - Quick Reference
 - TestDomainDetection
-- DownloadStatus
+- AudioQuality
 - .generate
 - .generate
 - assets/skills/brand/references/update.md
 - Logo Design Reference
 - Token Architecture
 - assets/skills/design-system/templates/design-tokens-starter.json
-- TestGeneratedConfigIsValidJs
+- PlaybackState
 - compilerOptions
-- generate_logo
+- BM25
 - TestDomainDetection
-- generate_logo
+- DesignSystemGenerator
 - Primitive Tokens
 - .claude/skills/design-system/scripts/validate-tokens.cjs
 - card
@@ -335,7 +335,7 @@
 - Slide Strategies
 - TestShadcnInstaller
 - SearchInput.tsx
-- Khắc phục sự cố
+- BiquadFilter.kt
 - math
 - patch
 - skills/ui-ux-pro-max/scripts/reasoning_contract.py
@@ -344,15 +344,15 @@
 - persist_design_system
 - .claude/skills/brand/scripts/tests/test_sync_brand_to_tokens.py
 - patch
-- generate_html
+- src/ui-ux-pro-max/scripts/reasoning_contract.py
 - Planning Stopped Us from Making Search Worse
 - Phase 7 Nearly Shipped Fresh Labels on Stale Framework Advice
 - MetadataBadges.tsx
 - format_page_override_md
 - Claude Website Design Stack
 - input
-- Cách sử dụng
-- unittest
+- Usage
+- re
 - input
 - ui-ux-pro-max-cli
 - Contributor Covenant Code of Conduct
@@ -360,11 +360,11 @@
 - _resolve_color_mode
 - 사용법
 - 문제 해결
-- VisualizerStyle
+- Penggunaan
 - 故障排查
-- settings.json
+- TestThresholdGate
 - The Stack — why each tool is here
-- TestFixtureValidation
+- ContextMenuItem
 - format_page_override_md
 - Slides Reference
 - HTML Slide Template
@@ -372,8 +372,7 @@
 - Slides
 - _resolve_color_mode
 - validate-agent-guide.py
-- _SafeRedirectHandler
-- load_env
+- Arsitektur & Kontribusi
 - Slides Reference
 - HTML Slide Template
 - HTML Slide Template
@@ -381,7 +380,7 @@
 - Phase 6 Passed Only After the Review Found What Gates Missed
 - Search and Data Overhaul Finished, but Green Was Not Enough
 - layout.tsx
-- load_env
+- .generate
 - src/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py
 - assets/scripts/tests/test_text_layout_resilience.py
 - 使用方式
@@ -392,12 +391,15 @@
 - radius
 - lg
 - sm
+- assets/scripts/tests/test_skill_script_paths.py
+- Spatial4DSettings
 - TestStackFlagWithDesignSystem
 - Brand Guidelines Template
 - $type
 - radius
-- NowPlayingScreen.kt
+- CenterDisplayMode
 - 三处 data / scripts / templates 的区别
+- json
 - Security Policy
 - TestStackFlagWithDesignSystem
 - agents/design-review.md
@@ -418,6 +420,7 @@
 - ring
 - secondary-foreground
 - .temp_project
+- assets/scripts/reasoning_contract.py
 - assets/skills/design/scripts/cip/search.py
 - destructive
 - destructive-foreground
@@ -529,6 +532,10 @@
 - .test_add_colors
 - next-env.d.ts
 - aurasurfacecontainerlowest
+- persist_design_system
+- format_page_override_md
+- _resolve_color_mode
+- assets/scripts/tests/test_core.py
 - lg
 - sm
 - xl
@@ -565,94 +572,94 @@
 ## Import Cycles
 - None detected.
 
-## Communities (526 total, 150 thin omitted)
+## Communities (533 total, 154 thin omitted)
 
 ### Community 0 - "audioEngine"
 Cohesion: 0.05
 Nodes (6): audioEngine, SAMPLE_TRACKS, Queue, Track, AudioSync, NavigationController
 
 ### Community 3 - "CloudDownloaderScreen.kt"
-Cohesion: 0.06
-Nodes (50): album, alertdialog, ImageVector, Modifier, StatisticsScreen(), StatMetricCard(), TopRankItem(), animatedvisibility (+42 more)
+Cohesion: 0.04
+Nodes (62): activityresultcontracts, enableAllProjectMcpServers, permissions, allow, $schema, AuraApp(), com, Modifier (+54 more)
 
 ### Community 4 - "LibraryScreen.kt"
-Cohesion: 0.10
-Nodes (42): add, AuraTypography, arrowback, aspectratio, auraelevated1, auraglassborderdefault, auraglasshighlightdefault, auraglasssurfacedefault (+34 more)
+Cohesion: 0.08
+Nodes (71): album, Album, Artist, FolderGroup, Genre, Playlist, AuraAnimatedFavoriteButton(), AuraAnimatedPlayPauseButton() (+63 more)
 
 ### Community 5 - "Theme.kt"
 Cohesion: 0.21
 Nodes (16): AuraColorScheme, auraDarkColorScheme(), auraLightColorScheme(), AuraRadius, AuraSpacing, AuraTheme(), createAuraDarkColors(), createAuraLightColors() (+8 more)
 
-### Community 6 - "AuraNavigation.kt"
-Cohesion: 0.05
-Nodes (59): activityresultcontracts, AuraMotion, auraPressable(), auraShimmer(), Color, Modifier, AuraAnimatedFavoriteButton(), AuraAnimatedPlayPauseButton() (+51 more)
+### Community 6 - "Components.kt"
+Cohesion: 0.04
+Nodes (68): alpha, RepeatMode, ALL, OFF, ONE, AuraMotion, auraPressable(), auraShimmer() (+60 more)
 
 ### Community 7 - "SongSortOrder"
 Cohesion: 0.11
 Nodes (16): SongSortOrder, ALBUM_AZ, ALBUM_ZA, ARTIST_AZ, ARTIST_ZA, DATE_ADDED, DATE_ADDED_OLD, DURATION_ASC (+8 more)
 
 ### Community 8 - "pathlib"
-Cohesion: 0.03
-Nodes (77): main(), Slide Token Validator (Legacy Wrapper) Now delegates to html-token-validator.py…, Delegate to unified html-token-validator.py with --type slides., CompletedProcess, Path, Regression tests for validate-tokens.cjs. The validator used to skip any line…, A hardcoded hex on the same line as a var() token is still a violation., A line that references only tokens produces no false positives. (+69 more)
+Cohesion: 0.05
+Nodes (51): Offline contract tests for deterministic upstream catalog refreshes., Regression tests for the dropped --stack flag in --design-system mode (issue…, Freshness and migration contracts for native, desktop, and 3D stacks., Regression tests for the public style taxonomy and search contract., Freshness and generation-isolation contracts for web stack guidance., Offline contract tests for deterministic upstream catalog refreshes., Regression tests for the dropped --stack flag in --design-system mode (issue…, Freshness and migration contracts for native, desktop, and 3D stacks. (+43 more)
 
 ### Community 9 - "AuraDatabase.kt"
-Cohesion: 0.03
-Nodes (30): FavoriteDao, com, ListeningHistoryDao, LyricsCacheDao, MusicFolderDao, QueueDao, SongRatingDao, AuraDatabase (+22 more)
+Cohesion: 0.04
+Nodes (28): FavoriteDao, com, ListeningHistoryDao, LyricsCacheDao, MusicFolderDao, SongRatingDao, AuraDatabase, Context (+20 more)
 
 ### Community 10 - "EqualizerPreset"
-Cohesion: 0.08
-Nodes (19): AudioOutputInfo, EqualizerBand, EqualizerPreset, ACOUSTIC, BASS, BASS_BOOST, CLASSICAL, CUSTOM (+11 more)
+Cohesion: 0.12
+Nodes (15): EqualizerPreset, ACOUSTIC, BASS, BASS_BOOST, CLASSICAL, CUSTOM, DANCE, DEEP (+7 more)
 
-### Community 11 - "AuraGlassComponents.kt"
-Cohesion: 0.10
-Nodes (41): AuraAtmosphericBackground(), AuraGlassBottomBar(), AuraGlassButton(), AuraGlassControl(), AuraGlassPill(), AuraGlassSurface(), AuraProgressBar(), Color (+33 more)
+### Community 11 - "ParametricEqCurve.kt"
+Cohesion: 0.09
+Nodes (30): abs, SpatialMovementMode, CUSTOM, FAST_ORBIT, MEDIUM_ORBIT, SLOW_ORBIT, STATIC, AuraVisualizerView() (+22 more)
 
 ### Community 12 - "Song"
 Cohesion: 0.04
-Nodes (11): PlayerState, SearchResults, Song, com, Flow, Uri, MusicRepository, MetadataEditorDialog() (+3 more)
+Nodes (9): PlayerState, Song, com, Flow, Uri, MusicRepository, MetadataEditorDialog(), EntityMappingTest (+1 more)
 
 ### Community 13 - "AuraPlayerManager"
-Cohesion: 0.07
-Nodes (8): AuraPlayerManager, Listener, AuraPlayerSingleton, androidx, FloatArray, Listener, MediaItem, Player
+Cohesion: 0.06
+Nodes (9): AuraPlayerManager, Listener, androidx, FloatArray, Listener, EqualizerBand, EqualizerSettings, MediaItem (+1 more)
 
-### Community 14 - "assets/skills/design/scripts/logo/generate.py"
-Cohesion: 0.20
-Nodes (18): _atlas_prediction_data(), _download_atlas_image(), _download_image(), _download_muapi_image(), _generate_with_atlas(), _generate_with_muapi(), _json_request(), _muapi_error() (+10 more)
+### Community 14 - "skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py"
+Cohesion: 0.12
+Nodes (4): Unit tests for metric math and relevance fixture validation., TestFixtureValidation, TestMetricMath, TestThresholdGate
 
 ### Community 15 - "PlayerViewModel"
 Cohesion: 0.04
-Nodes (4): ParametricBand, android, FloatArray, PlayerViewModel
+Nodes (3): android, FloatArray, PlayerViewModel
 
-### Community 16 - "PlaybackState"
-Cohesion: 0.06
-Nodes (36): PlaybackState, PlaybackStatus, BUFFERING, ENDED, ERROR, IDLE, PAUSED, PLAYING (+28 more)
+### Community 16 - "NowPlayingScreen.kt"
+Cohesion: 0.08
+Nodes (42): PlaybackStatus, BUFFERING, ENDED, ERROR, IDLE, PAUSED, PLAYING, SleepTimerBottomSheet() (+34 more)
 
 ### Community 17 - "MusicImportAndLyricsTest.kt"
-Cohesion: 0.11
-Nodes (15): SleepTimerTest, SongSortTest, assertequals, assertfalse, assertnotequals, assertnotnull, assertnull, asserttrue (+7 more)
+Cohesion: 0.12
+Nodes (16): SleepTimerSettings, SleepTimerTest, Phase4FeaturesTest, assertequals, assertfalse, assertnotequals, assertnotnull, assertnull (+8 more)
 
 ### Community 18 - "MusicRepositoryImpl"
 Cohesion: 0.07
-Nodes (5): SongRatingEntity, DiscoveredTrack, Flow, Uri, MusicRepositoryImpl
+Nodes (4): DiscoveredTrack, Flow, Uri, MusicRepositoryImpl
 
 ### Community 19 - "SortCriterion"
 Cohesion: 0.12
 Nodes (16): SortCriterion, ALBUM, ALBUM_ARTIST, ARTIST, DATE_ADDED, DURATION, FILE_SIZE, GENRE (+8 more)
 
 ### Community 20 - "AuraAudioService.kt"
-Cohesion: 0.08
-Nodes (25): AuraAudioService, Callback, DefaultRenderersFactory, Listener, Context, Intent, ListenableFuture, Listener (+17 more)
+Cohesion: 0.12
+Nodes (16): DefaultRenderersFactory, Context, audioattributes, AudioSink, bundle, commandbutton, defaultaudiosink, defaultextractorsfactory (+8 more)
 
 ### Community 21 - "argparse"
-Cohesion: 0.04
-Nodes (51): format_output(), generate_design_brief(), Format results for Claude consumption (token-optimized), Logo Design Search - CLI for searching logo design guidelines Usage: python…, Generate a comprehensive logo design brief based on query, format_context(), format_result(), main() (+43 more)
+Cohesion: 0.05
+Nodes (49): format_output(), generate_design_brief(), Format results for Claude consumption (token-optimized), Logo Design Search - CLI for searching logo design guidelines Usage: python…, Generate a comprehensive logo design brief based on query, format_context(), format_result(), main() (+41 more)
 
 ### Community 22 - "AudioMetadataHelper.kt"
-Cohesion: 0.19
+Cohesion: 0.18
 Nodes (8): AudioMetadataHelper, AudioTechnicalDetails, Context, Uri, AudioFormatSupportTest, mediaextractor, mediaformat, mediametadataretriever
 
 ### Community 23 - ".normalizeSourceString"
-Cohesion: 0.19
+Cohesion: 0.18
 Nodes (5): AudioSourceNormalizer, Context, Uri, NormalizedAudioSource, MusicImportAndLyricsTest
 
 ### Community 24 - "Aura Cinematic Sound — Design System"
@@ -663,45 +670,37 @@ Nodes (11): 1. Brand & Style, 2. Color Palette & Surface Tokens, 3. Typography (
 Cohesion: 0.05
 Nodes (10): Flow, RecentlyPlayedDao, SongDao, RecentlyPlayedEntity, SongEntity, FakeFavoriteDao, FakeRecentlyPlayedDao, FakeSongDao (+2 more)
 
-### Community 26 - "Playlist"
-Cohesion: 0.09
-Nodes (30): Playlist, Flow, PlaylistRepository, AuraFallbackArtwork(), AuraGlassPillButton(), Dp, PlaylistSelectionDialog(), HideFromLibraryDialog() (+22 more)
-
 ### Community 27 - "SmartScanSettings"
-Cohesion: 0.12
-Nodes (7): LibraryExclusionFilter, ExcludedFolderRule, FilenamePatternRule, HiddenTrackItem, JSONObject, SmartScanSettings, MusicExclusionAndFilteringTest
-
-### Community 28 - "LibraryViewModel"
-Cohesion: 0.05
-Nodes (11): ListeningStatistics, Album, Artist, FolderGroup, Genre, StateFlow, Uri, ViewModel (+3 more)
+Cohesion: 0.11
+Nodes (9): Uri, LibraryExclusionFilter, ExcludedFolderRule, FilenamePatternRule, HiddenTrackItem, JSONObject, SmartScanSettings, MusicExclusionAndFilteringTest (+1 more)
 
 ### Community 29 - "MusicRepositoryImpl.kt"
-Cohesion: 0.04
-Nodes (60): JSONObject, JSONObject, StateFlow, Uri, MetadataEditor, DatabaseIntegrityReport, LyricsParser, SmartPlaylist (+52 more)
+Cohesion: 0.05
+Nodes (47): JSONObject, JSONObject, Context, StateFlow, MetadataEditor, DatabaseIntegrityReport, StatisticsEngine, ListeningStatistics (+39 more)
 
 ### Community 30 - "skills/ui-ux-pro-max/scripts/core.py"
-Cohesion: 0.06
-Nodes (59): BM25, _contains_phrase(), detect_domain(), _domain_keywords(), _exact_match_diagnostic(), _exact_row_identity(), _exact_stack_identifier(), _file_signature() (+51 more)
+Cohesion: 0.07
+Nodes (53): _contains_phrase(), detect_domain(), _domain_keywords(), _exact_match_diagnostic(), _exact_row_identity(), _exact_stack_identifier(), _file_signature(), _get_bm25() (+45 more)
 
 ### Community 33 - ".claude/skills/design-system/scripts/html-token-validator.py"
 Cohesion: 0.11
 Nodes (25): get_context(), is_allowed_exception(), is_allowed_rgba(), is_inside_block(), load_css_variables(), main(), print_result(), print_summary() (+17 more)
 
-### Community 34 - ".updateAllWidgets"
-Cohesion: 0.16
-Nodes (18): AuraWidgetManager, Bundle, Context, AuraBaseWidgetProvider, AuraLargeWidgetProvider, AuraMediumWidgetProvider, AuraResponsiveWidgetProvider, AuraSmallWidgetProvider (+10 more)
+### Community 34 - "AuraWidgetProvider.kt"
+Cohesion: 0.22
+Nodes (13): AuraBaseWidgetProvider, AuraLargeWidgetProvider, AuraMediumWidgetProvider, AuraResponsiveWidgetProvider, AuraSmallWidgetProvider, AuraWidgetActionReceiver, AppWidgetManager, Bundle (+5 more)
 
-### Community 35 - "ExcludedItemsScreen.kt"
-Cohesion: 0.14
-Nodes (23): EmptyCardMessage(), ExcludedItemsScreen(), FilterChipItem(), FolderExclusionRow(), FormatToggleChip(), HiddenTrackRow(), Color, ImageVector (+15 more)
+### Community 35 - "ExcludedItemsScreen"
+Cohesion: 0.27
+Nodes (11): EmptyCardMessage(), ExcludedItemsScreen(), FilterChipItem(), FolderExclusionRow(), FormatToggleChip(), HiddenTrackRow(), Color, ImageVector (+3 more)
 
 ### Community 36 - "assets/scripts/core.py"
-Cohesion: 0.08
-Nodes (47): _contains_phrase(), detect_domain(), _domain_keywords(), _exact_match_diagnostic(), _exact_stack_identifier(), _file_signature(), _get_bm25(), _legacy_successor_guidance() (+39 more)
+Cohesion: 0.06
+Nodes (60): BM25, _contains_phrase(), detect_domain(), _domain_keywords(), _exact_match_diagnostic(), _exact_row_identity(), _exact_stack_identifier(), _file_signature() (+52 more)
 
 ### Community 37 - "src/ui-ux-pro-max/scripts/core.py"
 Cohesion: 0.06
-Nodes (60): BM25, _contains_phrase(), detect_domain(), _domain_keywords(), _exact_match_diagnostic(), _exact_row_identity(), _exact_stack_identifier(), _file_signature() (+52 more)
+Nodes (59): BM25, _contains_phrase(), detect_domain(), _domain_keywords(), _exact_match_diagnostic(), _exact_row_identity(), _exact_stack_identifier(), _file_signature() (+51 more)
 
 ### Community 38 - "Ponytail"
 Cohesion: 0.22
@@ -724,12 +723,12 @@ Cohesion: 0.12
 Nodes (18): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+10 more)
 
 ### Community 53 - "AuraPlayerManager.kt"
-Cohesion: 0.05
-Nodes (32): Context, Job, ListenableFuture, StateFlow, AuraSleepTimer, Job, StateFlow, AudioProfile (+24 more)
+Cohesion: 0.07
+Nodes (32): Context, Job, ListenableFuture, StateFlow, AuraSleepTimer, Job, StateFlow, LoudnessSettings (+24 more)
 
-### Community 54 - "ReverbPreset"
-Cohesion: 0.22
-Nodes (9): ReverbPreset, CONCERT, HALL, LARGE_HALL, LARGE_ROOM, OFF, ROOM, SMALL_ROOM (+1 more)
+### Community 54 - "AudioEffectsState.kt"
+Cohesion: 0.04
+Nodes (36): AudioOutputInfo, AudioProfile, BalanceSettings, BassTrebleSettings, CompressorSettings, FilterType, HIGH_PASS, HIGH_SHELF (+28 more)
 
 ### Community 55 - "gray"
 Cohesion: 0.05
@@ -739,21 +738,25 @@ Nodes (53): $type, $value, $type, $value, $type, $value, $type, $value (+45 more
 Cohesion: 0.25
 Nodes (7): Configure Default Mode, Deactivate, Levels, More, Ponytail Help, Skills, Update
 
-### Community 57 - "BM25"
-Cohesion: 0.13
-Nodes (12): BM25, _exact_row_identity(), BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes., Suggest complete public identities so a retry can bypass score thresholds. (+4 more)
+### Community 57 - "AuraAudioProcessor"
+Cohesion: 0.18
+Nodes (9): AuraAudioProcessor, FloatArray, AudioProcessor, BaseAudioProcessor, ByteBuffer, byteorder, c, optin (+1 more)
 
-### Community 58 - "Spatial4DSettings"
-Cohesion: 0.05
-Nodes (26): AuraAudioProcessor, FloatArray, BiquadFilter, Coefficients, DynamicCompressor, PeakLimiter, Spatial4DEngine, FilterType (+18 more)
+### Community 58 - "BiquadFilter"
+Cohesion: 0.12
+Nodes (5): BiquadFilter, Coefficients, DynamicCompressor, PeakLimiter, DspEngineTest
+
+### Community 59 - "AuraAudioService"
+Cohesion: 0.15
+Nodes (9): AuraAudioService, Callback, Listener, Intent, ListenableFuture, Listener, ExoPlayer, MediaSession (+1 more)
 
 ### Community 60 - "assets/scripts/design_system.py"
 Cohesion: 0.16
 Nodes (17): _button_outline_text_color(), _contrast_ratio(), _derive_dark_palette(), format_master_md(), _palette_is_dark(), Format design system as MASTER.md with hierarchical override logic., WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface. (+9 more)
 
 ### Community 61 - "UserPreferences"
-Cohesion: 0.06
-Nodes (34): Flow, UserPreferences, BassTrebleSettings, ParametricSettings, AnimationSettings, AppearanceSettings, BluetoothGestureSettings, GesturesSettings (+26 more)
+Cohesion: 0.07
+Nodes (29): Flow, UserPreferences, AnimationSettings, AppearanceSettings, BluetoothGestureSettings, GesturesSettings, HapticSettings, LibrarySettings (+21 more)
 
 ### Community 62 - ".claude/skills/design/scripts/cip/generate.py"
 Cohesion: 0.19
@@ -777,23 +780,19 @@ Nodes (44): _catalog_date(), _check_app_interface_contract(), _check_catalog_con
 
 ### Community 67 - "PlaylistDao"
 Cohesion: 0.05
-Nodes (11): AuraBackupManager, Uri, PlaylistDao, PlaylistEntity, PlaylistSongCrossRef, Flow, PlaylistRepositoryImpl, FakePlaylistDao (+3 more)
+Nodes (10): AuraBackupManager, Uri, PlaylistDao, PlaylistEntity, PlaylistSongCrossRef, Flow, PlaylistRepositoryImpl, FakePlaylistDao (+2 more)
 
 ### Community 68 - "SpatialPreset"
-Cohesion: 0.07
-Nodes (27): abs, SpatialMovementMode, CUSTOM, FAST_ORBIT, MEDIUM_ORBIT, SLOW_ORBIT, STATIC, SpatialPreset (+19 more)
+Cohesion: 0.18
+Nodes (10): SpatialPreset, CINEMA, CONCERT, FOUR_D, FOUR_D_FAST, FOUR_D_SLOW, NORMAL, STUDIO (+2 more)
 
 ### Community 69 - "LyricsState"
-Cohesion: 0.10
-Nodes (11): LyricsCacheEntity, LrcLibLyricsProvider, Uri, LyricsManager, Loading, LyricLine, LyricsState, Success (+3 more)
+Cohesion: 0.11
+Nodes (10): LrcLibLyricsProvider, Uri, LyricsManager, Loading, LyricLine, LyricsState, Success, Unavailable (+2 more)
 
-### Community 70 - "LosslessStreamResolver"
-Cohesion: 0.36
-Nodes (3): Result, LosslessStreamResolver, ResolvedStream
-
-### Community 71 - "SpotifyMetadataResolver"
-Cohesion: 0.47
-Nodes (3): Result, SpotifyMetadataResolver, CloudCollection
+### Community 70 - "SmartPlaylistType"
+Cohesion: 0.20
+Nodes (9): SmartPlaylist, SmartPlaylistType, FAVORITES, HIGH_QUALITY, LONG_TRACKS, MOST_PLAYED, NEVER_PLAYED, RECENTLY_ADDED (+1 more)
 
 ### Community 72 - "src/ui-ux-pro-max/scripts/validate_data.py"
 Cohesion: 0.09
@@ -804,8 +803,8 @@ Cohesion: 0.40
 Nodes (4): Boundaries, Hunt, Output, Tags
 
 ### Community 75 - "SettingsCategory"
-Cohesion: 0.12
-Nodes (16): SettingsCategory, ABOUT, ACCESSIBILITY, ADVANCED, APPEARANCE, AUDIO, BACKUP, BLUETOOTH (+8 more)
+Cohesion: 0.11
+Nodes (19): SettingsCategory, ABOUT, ACCESSIBILITY, ADVANCED, APPEARANCE, AUDIO, BACKUP, BLUETOOTH (+11 more)
 
 ### Community 76 - "Tailwind CSS Utility Reference"
 Cohesion: 0.05
@@ -824,12 +823,12 @@ Cohesion: 0.40
 Nodes (4): Boundaries, Examples, Format, Scoring
 
 ### Community 80 - "skills/ui-ux-pro-max/scripts/design_system.py"
-Cohesion: 0.04
-Nodes (65): ansi_ljust(), _button_outline_text_color(), _contrast_ratio(), _derive_dark_palette(), DesignSystemGenerator, _detect_page_type(), _filter_anti_patterns_for_mode(), format_ascii_box() (+57 more)
+Cohesion: 0.16
+Nodes (17): _button_outline_text_color(), _contrast_ratio(), _derive_dark_palette(), format_master_md(), _palette_is_dark(), Format design system as MASTER.md with hierarchical override logic., WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface. (+9 more)
 
-### Community 81 - ".claude/skills/design/scripts/icon/generate.py"
-Cohesion: 0.08
-Nodes (35): apply_color(), apply_viewbox_size(), extract_svgs(), generate_batch(), generate_icon(), generate_sizes(), load_env(), main() (+27 more)
+### Community 81 - "os"
+Cohesion: 0.07
+Nodes (36): apply_color(), apply_viewbox_size(), extract_svgs(), generate_batch(), generate_icon(), generate_sizes(), load_env(), main() (+28 more)
 
 ### Community 82 - "format_ascii_box"
 Cohesion: 0.14
@@ -843,33 +842,33 @@ Nodes (3): Boundaries, Output, Scan
 Cohesion: 0.16
 Nodes (17): _button_outline_text_color(), _contrast_ratio(), _derive_dark_palette(), format_master_md(), _palette_is_dark(), Format design system as MASTER.md with hierarchical override logic., WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface. (+9 more)
 
-### Community 85 - "AudioQuality"
-Cohesion: 0.21
-Nodes (10): AudioQuality, HIGH_MP3, HIRES_FLAC, LOSSLESS_FLAC, STANDARD_MP3, CloudTrack, CloudTrackRow(), CollectionHeaderCard() (+2 more)
+### Community 85 - "QueueDao"
+Cohesion: 0.18
+Nodes (3): QueueDao, QueueEntity, FakeQueueDao
 
 ### Community 86 - "AudioDeviceType"
 Cohesion: 0.14
 Nodes (11): AudioOutputManager, AudioDeviceCallback, Quad, AudioDeviceType, BLUETOOTH_HEADPHONES, BLUETOOTH_SPEAKER, OTHER, PHONE_SPEAKER (+3 more)
 
 ### Community 87 - "[UI UX Pro Max](https://uupm.cc)"
-Cohesion: 0.06
-Nodes (33): 192 Industry-Specific Reasoning Rules, Architecture & Contributing, Automated Releases, 🟢 Basic Version (This Repository), 💎 Basic vs. Premium Version Comparison, Catalog provenance and refresh, Compatible Agents, Design System Command (Advanced) (+25 more)
+Cohesion: 0.07
+Nodes (27): 192 Industry-Specific Reasoning Rules, Architecture & Contributing, Automated Releases, 🟢 Basic Version (This Repository), 💎 Basic vs. Premium Version Comparison, Catalog provenance and refresh, Compatible Agents, Design System Command (Advanced) (+19 more)
 
 ### Community 88 - "TailwindConfigGenerator"
 Cohesion: 0.06
 Nodes (22): Any, Path, Add full color palette (50-950 shades) for a base color. Args: name: Color name…, Add custom font families. Args: fonts: Dict of font_type: [font_names] e.g.,…, Add custom spacing values. Args: spacing: Dict of name: value e.g., {'18':…, Add custom breakpoints. Args: breakpoints: Dict of name: width e.g., {'3xl':…, Add plugin requirements. Args: plugins: List of plugin names e.g.,…, Get plugin recommendations based on configuration. Returns: List of recommended… (+14 more)
 
 ### Community 90 - "SettingsScreen.kt"
-Cohesion: 0.06
-Nodes (78): SleepTimerBottomSheet(), SleepTimerOptionRow(), ContextMenuItem(), HideOptionCard(), androidx, ImageVector, Color, Dp (+70 more)
+Cohesion: 0.07
+Nodes (102): add, alertdialog, alignment, Color, Modifier, SpatialPositionRadar(), arrangement, arrowback (+94 more)
 
 ### Community 91 - "TailwindConfigGenerator"
 Cohesion: 0.06
 Nodes (24): main(), Any, Path, Add full color palette (50-950 shades) for a base color. Args: name: Color name…, Add custom font families. Args: fonts: Dict of font_type: [font_names] e.g.,…, Add custom spacing values. Args: spacing: Dict of name: value e.g., {'18':…, Add custom breakpoints. Args: breakpoints: Dict of name: width e.g., {'3xl':…, Add plugin requirements. Args: plugins: List of plugin names e.g.,… (+16 more)
 
-### Community 92 - "os"
-Cohesion: 0.11
-Nodes (26): CIP HTML Presentation Renderer Generates a professional HTML presentation from…, generate_html(), get_deliverable_info(), get_image_base64(), main(), Convert image to base64 for embedding in HTML, Extract deliverable type from filename and get info, Generate HTML presentation from CIP images (+18 more)
+### Community 92 - "datetime"
+Cohesion: 0.12
+Nodes (20): generate_html(), get_deliverable_info(), get_image_base64(), main(), Convert image to base64 for embedding in HTML, Extract deliverable type from filename and get info, Generate HTML presentation from CIP images, CIP HTML Presentation Renderer Generates a professional HTML presentation from… (+12 more)
 
 ### Community 93 - "Brand Guidelines v1.0"
 Cohesion: 0.05
@@ -879,25 +878,21 @@ Nodes (37): 1. Color Palette, 2. Typography, 3. Logo Usage, 4. Voice & Tone, 5. 
 Cohesion: 0.05
 Nodes (37): 1. Color Palette, 2. Typography, 3. Logo Usage, 4. Voice & Tone, 5. Imagery Guidelines, 6. Design Components, Accessibility, AI Image Generation (+29 more)
 
-### Community 95 - "src/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py"
-Cohesion: 0.18
-Nodes (5): Canonical regression contracts for resilient UI text layouts., read_rows(), TestTextLayoutDataContracts, TestTextLayoutRetrieval, ambiguous_python_import_01e6039fd45b
+### Community 95 - "AuraGlassComponents.kt"
+Cohesion: 0.10
+Nodes (31): AuraTypography, AuraAtmosphericBackground(), AuraGlassBottomBar(), AuraGlassButton(), AuraGlassPill(), AuraGlassSurface(), AuraProgressBar(), Color (+23 more)
 
 ### Community 98 - "Design"
 Cohesion: 0.05
 Nodes (36): Banner Design (Built-in), Banner: Design Rules, Banner: Quick Size Reference, Banner: Top Art Styles, Banner: Workflow, CIP Design (Built-in), CIP: Generate Brief, CIP: Generate Mockups (+28 more)
 
-### Community 99 - "AuraSplashScreen.kt"
-Cohesion: 0.23
-Nodes (11): alignment, alpha, AuraSplashScreen(), Color, Modifier, SplashEqualizerBars(), Animatable, arrangement (+3 more)
+### Community 99 - "format_ascii_box"
+Cohesion: 0.14
+Nodes (16): ansi_ljust(), format_ascii_box(), add_wrapped(), wrap_text(), format_markdown(), generate_design_system(), hex_to_ansi(), _mode_support_labels() (+8 more)
 
 ### Community 100 - ".claude/skills/design-system/scripts/slide_search_core.py"
 Cohesion: 0.08
 Nodes (32): BM25, calculate_pattern_break(), detect_domain(), get_background_config(), get_color_for_emotion(), get_layout_for_goal(), get_typography_for_slide(), _load_csv() (+24 more)
-
-### Community 102 - "CloudDownloaderViewModel"
-Cohesion: 0.18
-Nodes (3): CloudDownloaderViewModel, StateFlow, ViewModel
 
 ### Community 103 - "Design"
 Cohesion: 0.05
@@ -931,9 +926,9 @@ Nodes (6): DesignSystemGenerator, Generates design system recommendations from a
 Cohesion: 0.06
 Nodes (34): Accessibility, Available Domains, Available Stacks, Common Rules for Professional UI, Common Sticking Points, Example Workflow, How to Use This Skill, Icons & Visual Elements (+26 more)
 
-### Community 112 - "BM25"
-Cohesion: 0.28
-Nodes (5): BM25, BM25 ranking algorithm for text search, Lowercase, split, remove punctuation, filter short words, Build BM25 index from documents, Score all documents against query
+### Community 112 - ".updateAllWidgets"
+Cohesion: 0.41
+Nodes (5): AuraWidgetManager, Bundle, Context, Bitmap, RemoteViews
 
 ### Community 113 - "read_rows"
 Cohesion: 0.09
@@ -948,8 +943,8 @@ Cohesion: 0.09
 Nodes (33): CompletedProcess, Path, Regression test for sync-brand-to-tokens.cjs. The color parser required a…, The missing-guidelines path is the one that breaks a locale-decoded pipe. It is…, A first sync should create assets/ instead of failing with ENOENT., The script must not silently replace its own existing token source., Common app CSS token sources must be named instead of duplicated., A :root selector list is still an existing project token source. (+25 more)
 
 ### Community 116 - ".claude/skills/design/scripts/logo/generate.py"
-Cohesion: 0.19
-Nodes (19): _atlas_prediction_data(), _download_atlas_image(), _download_image(), _download_muapi_image(), _generate_with_atlas(), _generate_with_muapi(), _json_request(), _muapi_error() (+11 more)
+Cohesion: 0.06
+Nodes (60): _atlas_prediction_data(), _download_atlas_image(), _download_image(), _download_muapi_image(), enhance_prompt(), generate_batch(), generate_logo(), _generate_with_atlas() (+52 more)
 
 ### Community 117 - "read_rows"
 Cohesion: 0.09
@@ -975,9 +970,9 @@ Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at B
 Cohesion: 0.06
 Nodes (30): Accessibility, Base System, Best Practices, Clean & Modern, Common Font Pairings, Contrast Requirements, CSS Implementation, Editorial (+22 more)
 
-### Community 124 - "TestGeneratedConfigIsValidJs"
-Cohesion: 0.25
-Nodes (7): parametrize, Reduce a generated TS/JS config to a bare assignable object so it can be handed…, Regression guard for the missing-comma bug between the ``theme`` block and…, The property preceding ``plugins`` must end with a comma (pure-Python check, so…, The emitted config parses as valid JS via ``node --check``., _strip_to_object(), TestGeneratedConfigIsValidJs
+### Community 124 - "AuraWidgetManager.kt"
+Cohesion: 0.13
+Nodes (13): AuraPlayerSingleton, AppWidgetManager, bitmapshader, componentname, contextcompat, intent, lineargradient, lrucache (+5 more)
 
 ### Community 125 - "skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py"
 Cohesion: 0.05
@@ -1040,16 +1035,16 @@ Cohesion: 0.08
 Nodes (32): BM25, calculate_pattern_break(), detect_domain(), get_background_config(), get_color_for_emotion(), get_layout_for_goal(), get_typography_for_slide(), _load_csv() (+24 more)
 
 ### Community 140 - "[UI UX Pro Max](https://uupm.cc)"
-Cohesion: 0.05
-Nodes (41): 192 Aturan Penalaran Khusus Industri, Agent yang Kompatibel, Arsitektur & Kontribusi, Cara Kerja Pembuatan Design System, Cara Kerjanya, Command CLI Lainnya, Command Design System (Lanjutan), Contoh Prompt (+33 more)
+Cohesion: 0.06
+Nodes (31): 192 Aturan Penalaran Khusus Industri, Agent yang Kompatibel, Cara Kerja Pembuatan Design System, Command CLI Lainnya, Command Design System (Lanjutan), Dialog "Upload a skill" Claude.ai menampilkan "Zip contains too many files (maximum 200)", Fitur, Instalasi (+23 more)
 
 ### Community 141 - "cli/package.json"
 Cohesion: 0.07
 Nodes (26): author, bin, uipro, dependencies, chalk, commander, ora, prompts (+18 more)
 
 ### Community 142 - "[UI UX Pro Max](https://uupm.cc)"
-Cohesion: 0.07
-Nodes (27): 192 quy tắc suy luận dành riêng cho từng ngành, Cài đặt, Cài đặt toàn hệ thống (dùng cho mọi dự án), Các agent tương thích, Các lệnh CLI khác, Cách hệ thống thiết kế được tạo ra, Có gì mới trong v2.0, Dành cho người dùng (+19 more)
+Cohesion: 0.05
+Nodes (41): 192 quy tắc suy luận dành riêng cho từng ngành, Chế độ Kỹ năng (tự động kích hoạt), Chế độ Quy trình (lệnh slash), Cài đặt, Cài đặt qua Claude Marketplace thất bại với lỗi "Zip file contains a symbolic link", Cài đặt toàn hệ thống (dùng cho mọi dự án), Các agent tương thích, Các lệnh CLI khác (+33 more)
 
 ### Community 143 - "Asset Approval Checklist"
 Cohesion: 0.08
@@ -1175,13 +1170,9 @@ Nodes (27): 192 条行业特定推理规则, Catalog provenance 与刷新流程,
 Cohesion: 0.23
 Nodes (21): change_report(), checked_date(), fail(), fetch_live_catalog(), load_existing(), load_overrides(), main(), metadata_from_repository() (+13 more)
 
-### Community 174 - "assets/scripts/tests/test_core.py"
-Cohesion: 0.04
-Nodes (11): Stdlib-only regression tests for core.py / design_system.py (unittest, not…, TestBm25CoreBehavior, TestDiagnosticsContracts, TestDomainDetection, TestPersistence, TestReasoningMatch, TestSearchDomains, TestTokenizer (+3 more)
-
-### Community 175 - "re"
-Cohesion: 0.05
-Nodes (43): detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection, Search across all domains and combine results (+35 more)
+### Community 175 - ".claude/skills/design/scripts/cip/core.py"
+Cohesion: 0.12
+Nodes (18): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+10 more)
 
 ### Community 176 - "src/ui-ux-pro-max/scripts/tests/test_core.py"
 Cohesion: 0.08
@@ -1272,8 +1263,8 @@ Cohesion: 0.11
 Nodes (17): Accent, Applying Semantic Tokens, Background & Foreground, Border & Ring, Color Semantics, Dark Mode Overrides, Destructive, Interactive States (+9 more)
 
 ### Community 198 - "ShadcnInstaller"
-Cohesion: 0.15
-Nodes (12): main(), Path, Add all available shadcn/ui components. Args: overwrite: If True, overwrite…, Handle shadcn/ui component installation., List installed components. Returns: Tuple of (success, message with component…, shadcn/ui Component Installer Add shadcn/ui components to project with…, Initialize installer. Args: project_root: Project root directory (default:…, Check if shadcn is initialized in project. Returns: True if components.json… (+4 more)
+Cohesion: 0.14
+Nodes (13): main(), Path, Add all available shadcn/ui components. Args: overwrite: If True, overwrite…, Handle shadcn/ui component installation., List installed components. Returns: Tuple of (success, message with component…, shadcn/ui Component Installer Add shadcn/ui components to project with…, Initialize installer. Args: project_root: Project root directory (default:…, Check if shadcn is initialized in project. Returns: True if components.json… (+5 more)
 
 ### Community 199 - "UI/UX Pro Max - Design Intelligence"
 Cohesion: 0.11
@@ -1483,10 +1474,6 @@ Nodes (14): $type, $value, $type, $value, $type, $value, primitive, radius (+6 m
 Cohesion: 0.14
 Nodes (13): Card Styles, Component Variants, CSS Structures, Feature Grid (3 columns), Layout Decision Flow, Layout Patterns, Layout Selection by Use Case, Metric Styles (+5 more)
 
-### Community 256 - "TestWebStackFreshness"
-Cohesion: 0.14
-Nodes (5): Freshness and generation-isolation contracts for web stack guidance., _rows(), TestWebStackFreshness, ambiguous_python_import_008cf0ce9d02, ambiguous_python_import_ab1273400399
-
 ### Community 257 - "skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py"
 Cohesion: 0.18
 Nodes (5): Canonical regression contracts for resilient UI text layouts., read_rows(), TestTextLayoutDataContracts, TestTextLayoutRetrieval, ambiguous_python_import_f078d73644ca
@@ -1515,9 +1502,9 @@ Nodes (12): Accessibility, Common Rules for Professional UI + Pre-Delivery Check
 Cohesion: 0.15
 Nodes (12): 10. Charts & Data (LOW), 1. Accessibility (CRITICAL), 2. Touch & Interaction (CRITICAL), 3. Performance (HIGH), 4. Style Selection (HIGH), 5. Layout & Responsive (HIGH), 6. Typography & Color (MEDIUM), 7. Animation (MEDIUM) (+4 more)
 
-### Community 265 - "DownloadStatus"
-Cohesion: 0.13
-Nodes (16): DownloadStatus, CANCELLED, COMPLETED, DOWNLOADING, FAILED, PAUSED, QUEUED, RESOLVING (+8 more)
+### Community 265 - "AudioQuality"
+Cohesion: 0.05
+Nodes (36): Result, LosslessStreamResolver, ResolvedStream, Result, SpotifyMetadataResolver, AuraDownloadEngine, AudioQuality, HIGH_MP3 (+28 more)
 
 ### Community 266 - ".generate"
 Cohesion: 0.20
@@ -1543,21 +1530,21 @@ Nodes (12): Categories, Dark Mode, File Organization, Layer 1: Primitive Tokens,
 Cohesion: 0.15
 Nodes (12): component, $type, $value, dark, semantic, $schema, $type, $value (+4 more)
 
-### Community 272 - "TestGeneratedConfigIsValidJs"
-Cohesion: 0.25
-Nodes (7): parametrize, Reduce a generated TS/JS config to a bare assignable object so it can be handed…, Regression guard for the missing-comma bug between the ``theme`` block and…, The property preceding ``plugins`` must end with a comma (pure-Python check, so…, The emitted config parses as valid JS via ``node --check``., _strip_to_object(), TestGeneratedConfigIsValidJs
+### Community 272 - "PlaybackState"
+Cohesion: 0.20
+Nodes (3): PlaybackState, PlaybackStateTest, AuraWidgetIntegrationTest
 
 ### Community 273 - "compilerOptions"
 Cohesion: 0.15
 Nodes (12): compilerOptions, baseUrl, esModuleInterop, jsx, module, moduleResolution, outDir, paths (+4 more)
 
-### Community 274 - "generate_logo"
-Cohesion: 0.29
-Nodes (8): enhance_prompt(), generate_batch(), generate_logo(), _generate_with_gemini(), main(), Enhance the logo prompt with style and industry modifiers, Generate a logo using Gemini, Atlas Cloud, or MuAPI image generation. Args:…, Generate multiple logo variants with different styles
+### Community 274 - "BM25"
+Cohesion: 0.22
+Nodes (6): BM25, BM25 ranking algorithm for text search, Lowercase, normalize synonyms, split, remove punctuation, filter stopwords, Build BM25 index from documents, Score all documents against query, All indexed terms, for suggestion/typo-recovery purposes.
 
-### Community 276 - "generate_logo"
-Cohesion: 0.29
-Nodes (8): enhance_prompt(), generate_batch(), generate_logo(), _generate_with_gemini(), main(), Enhance the logo prompt with style and industry modifiers, Generate a logo using Gemini, Atlas Cloud, or MuAPI image generation. Args:…, Generate multiple logo variants with different styles
+### Community 276 - "DesignSystemGenerator"
+Cohesion: 0.20
+Nodes (6): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords.
 
 ### Community 277 - "Primitive Tokens"
 Cohesion: 0.17
@@ -1707,9 +1694,9 @@ Nodes (9): Common Structures, Duarte Sparkline Pattern, Matching Strategy to Con
 Cohesion: 0.20
 Nodes (6): Test ShadcnInstaller class., Test adding all components without config., Test listing installed components when none exist., Test getting installed components without config., Test adding components with empty list., TestShadcnInstaller
 
-### Community 321 - "Khắc phục sự cố"
-Cohesion: 0.25
-Nodes (8): Cài đặt qua Claude Marketplace thất bại với lỗi "Zip file contains a symbolic link", Hộp thoại "Upload a skill" của Claude.ai báo "Zip contains too many files (maximum 200)", Không tìm thấy Python khi chạy lệnh tạo hệ thống thiết kế, Khắc phục sự cố, `npm install -g ui-ux-pro-max-cli` thất bại do lỗi quyền truy cập, `uipro uninstall` báo "No installed AI skill directories detected", `uipro: unknown command 'uninstall'` hoặc `unknown command 'update'`, Đầu ra hệ thống thiết kế bị cắt hoặc thiếu trường
+### Community 321 - "BiquadFilter.kt"
+Cohesion: 0.24
+Nodes (8): exp, ln, log10, max, pow, sinh, sqrt, tanh
 
 ### Community 322 - "math"
 Cohesion: 0.12
@@ -1736,16 +1723,16 @@ Cohesion: 0.29
 Nodes (7): persist_design_system(), Path, Persist design system to design-system/<project>/ folder using Master +…, Slugify a name into a single safe path segment. Only [a-z0-9_-] survives; every…, Write fully to a temp file, then publish atomically., safe_slug(), _write_persisted_file()
 
 ### Community 328 - ".claude/skills/brand/scripts/tests/test_sync_brand_to_tokens.py"
-Cohesion: 0.09
-Nodes (33): CompletedProcess, Path, Regression test for sync-brand-to-tokens.cjs. The color parser required a…, The missing-guidelines path is the one that breaks a locale-decoded pipe. It is…, A first sync should create assets/ instead of failing with ENOENT., The script must not silently replace its own existing token source., Common app CSS token sources must be named instead of duplicated., A :root selector list is still an existing project token source. (+25 more)
+Cohesion: 0.03
+Nodes (77): CompletedProcess, Path, Regression test for sync-brand-to-tokens.cjs. The color parser required a…, The missing-guidelines path is the one that breaks a locale-decoded pipe. It is…, A first sync should create assets/ instead of failing with ENOENT., The script must not silently replace its own existing token source., Common app CSS token sources must be named instead of duplicated., A :root selector list is still an existing project token source. (+69 more)
 
 ### Community 329 - "patch"
 Cohesion: 0.22
 Nodes (5): patch, Test successful component addition., Test component addition with subprocess error., Test component addition when npx is not found., Test successful addition of all components.
 
-### Community 330 - "generate_html"
-Cohesion: 0.29
-Nodes (7): generate_html(), get_deliverable_info(), get_image_base64(), main(), Convert image to base64 for embedding in HTML, Extract deliverable type from filename and get info, Generate HTML presentation from CIP images
+### Community 330 - "src/ui-ux-pro-max/scripts/reasoning_contract.py"
+Cohesion: 0.32
+Nodes (7): apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation., _validate_action()
 
 ### Community 331 - "Planning Stopped Us from Making Search Worse"
 Cohesion: 0.22
@@ -1771,13 +1758,13 @@ Nodes (8): Claude Website Design Stack, License, Quickstart, Requirements, Stand
 Cohesion: 0.29
 Nodes (8): padding-x, input, $type, $value, focus-ring, padding-x, $type, $value
 
-### Community 337 - "Cách sử dụng"
+### Community 337 - "Usage"
 Cohesion: 0.33
-Nodes (6): Chế độ Kỹ năng (tự động kích hoạt), Chế độ Quy trình (lệnh slash), Các stack được hỗ trợ, Cách hoạt động, Cách sử dụng, Prompt mẫu
+Nodes (6): Example Prompts, How It Works, Skill Mode (Auto-activate), Supported Stacks, Usage, Workflow Mode (Slash Command)
 
-### Community 338 - "unittest"
-Cohesion: 0.03
-Nodes (44): CatalogSummaryLineEndingsTest, _load_generator(), The catalog snapshot must not depend on the checkout's line endings. Regression…, Simulate a Windows checkout: the recorded hashes must still validate., Cross-file semantic contracts for curated design data., Unit tests for metric math and relevance fixture validation., TestFixtureValidation, TestMetricMath (+36 more)
+### Community 338 - "re"
+Cohesion: 0.05
+Nodes (38): main(), Tailwind CSS Configuration Generator Generate tailwind.config.js/ts with custom…, Cross-file semantic contracts for curated design data., Every script invocation in the shipped skill markdown resolves from the skill…, Return (target, None) for a skill-relative path, or (None, reason)., resolve(), shipped_invocations(), SkillScriptPathsTest (+30 more)
 
 ### Community 339 - "input"
 Cohesion: 0.29
@@ -1803,21 +1790,21 @@ Nodes (6): 사용법, 스킬 모드(자동 활성화), 워크플로 모드(슬�
 Cohesion: 0.25
 Nodes (8): Claude.ai의 "Upload a skill" 대화상자에서 "Zip contains too many files (maximum 200)"가 표시되는 경우, Claude Marketplace 설치가 "Zip file contains a symbolic link" 오류로 실패하는 경우, `npm install -g ui-ux-pro-max-cli` 명령이 권한 오류로 실패하는 경우, `uipro uninstall` 실행 시 "No installed AI skill directories detected"가 표시되는 경우, `uipro: unknown command 'uninstall'` 또는 `unknown command 'update'`, 디자인 시스템 명령어 실행 시 Python을 찾을 수 없는 경우, 디자인 시스템 출력 또는 필드가 잘리는 경우, 문제 해결
 
-### Community 346 - "VisualizerStyle"
+### Community 346 - "Penggunaan"
 Cohesion: 0.33
-Nodes (6): VisualizerStyle, BARS, CIRCULAR, MINIMAL, SPECTRUM, WAVEFORM
+Nodes (6): Cara Kerjanya, Contoh Prompt, Mode Skill (Aktif Otomatis), Mode Workflow (Slash Command), Penggunaan, Stack yang Didukung
 
 ### Community 347 - "故障排查"
 Cohesion: 0.25
 Nodes (8): Claude.ai 的“上传技能”对话框提示 "Zip contains too many files (maximum 200)", Claude Marketplace 安装失败，提示 "Zip file contains a symbolic link", `npm install -g ui-ux-pro-max-cli` 失败，提示权限错误, `uipro uninstall` 提示 "No installed AI skill directories detected", `uipro: unknown command 'uninstall'` 或 `unknown command 'update'`, 故障排查, 设计系统输出被截断 / 字段不完整, 运行设计系统命令时找不到 Python
 
-### Community 348 - "settings.json"
-Cohesion: 0.40
-Nodes (4): enableAllProjectMcpServers, permissions, allow, $schema
-
 ### Community 349 - "The Stack — why each tool is here"
 Cohesion: 0.25
 Nodes (7): ✅ Automated review — `design-review` subagent, 🧩 Components — shadcn MCP, 🧠 Knowledge — `ui-ux-pro-max`, Optional add-ons (not in default `.mcp.json`), 🎨 Taste — `frontend-design` (official Anthropic), The Stack — why each tool is here, 👁️ Visual feedback — Playwright MCP + Chrome DevTools MCP
+
+### Community 350 - "ContextMenuItem"
+Cohesion: 0.40
+Nodes (5): ContextMenuItem(), HideFromLibraryDialog(), HideOptionCard(), androidx, ImageVector
 
 ### Community 351 - "format_page_override_md"
 Cohesion: 0.33
@@ -1847,9 +1834,9 @@ Nodes (6): _query_wants_dark(), True when a styles.csv row describes itself as d
 Cohesion: 0.36
 Nodes (10): expected_description(), Validate agent guide claims and run its locked semantic examples., row_count(), run_json(), stack_names(), style_counts(), validate(), validate_commands() (+2 more)
 
-### Community 358 - "_SafeRedirectHandler"
+### Community 358 - "Arsitektur & Kontribusi"
 Cohesion: 0.50
-Nodes (3): HTTPRedirectHandler, Reject redirects to non-public or non-HTTPS destinations., _SafeRedirectHandler
+Nodes (4): Arsitektur & Kontribusi, Provenance dan Refresh Katalog, Untuk Kontributor, Untuk Pengguna
 
 ### Community 360 - "Slides Reference"
 Cohesion: 0.29
@@ -1878,6 +1865,10 @@ Nodes (6): Context, Decisions, Next, Reflection, Search and Data Overhaul Finish
 ### Community 366 - "layout.tsx"
 Cohesion: 0.33
 Nodes (4): agents_skills_ui_ux_pro_max_temp_gallery_app_globals, metadata, Providers(), next
+
+### Community 367 - ".generate"
+Cohesion: 0.20
+Nodes (7): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., Execute searches across multiple domains., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial()
 
 ### Community 368 - "src/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py"
 Cohesion: 0.12
@@ -1919,6 +1910,10 @@ Nodes (5): lg, $type, $value, lg, lg
 Cohesion: 0.60
 Nodes (5): sm, sm, sm, $type, $value
 
+### Community 379 - "assets/scripts/tests/test_skill_script_paths.py"
+Cohesion: 0.23
+Nodes (6): TestStackFlagWithDesignSystem, Every script invocation in the shipped skill markdown resolves from the skill…, Return (target, None) for a skill-relative path, or (None, reason)., resolve(), shipped_invocations(), SkillScriptPathsTest
+
 ### Community 382 - "Brand Guidelines Template"
 Cohesion: 0.40
 Nodes (4): Brand Guidelines Template, Document Structure, Extractable Fields, Usage
@@ -1931,13 +1926,17 @@ Nodes (5): $type, $value, border, border, border
 Cohesion: 0.60
 Nodes (5): radius, radius, radius, $type, $value
 
-### Community 385 - "NowPlayingScreen.kt"
-Cohesion: 0.05
-Nodes (55): RepeatMode, ALL, OFF, ONE, AnimatedEqualizerBars(), AuraHeader(), AuraScrubber(), Color (+47 more)
+### Community 385 - "CenterDisplayMode"
+Cohesion: 0.50
+Nodes (4): CenterDisplayMode, ARTWORK, LYRICS, VISUALIZER
 
 ### Community 387 - "三处 data / scripts / templates 的区别"
 Cohesion: 0.40
 Nodes (4): 三处 data / scripts / templates 的区别, 三处分别是什么, 可以只保留一个吗？, 推荐工作流
+
+### Community 388 - "json"
+Cohesion: 0.06
+Nodes (29): CatalogSummaryLineEndingsTest, _load_generator(), The catalog snapshot must not depend on the checkout's line endings. Regression…, Simulate a Windows checkout: the recorded hashes must still validate., CatalogSummaryLineEndingsTest, _load_generator(), The catalog snapshot must not depend on the checkout's line endings. Regression…, Simulate a Windows checkout: the recorded hashes must still validate. (+21 more)
 
 ### Community 390 - "Security Policy"
 Cohesion: 0.40
@@ -2011,6 +2010,10 @@ Nodes (3): ring, $type, $value
 Cohesion: 0.67
 Nodes (3): secondary-foreground, $type, $value
 
+### Community 418 - "assets/scripts/reasoning_contract.py"
+Cohesion: 0.32
+Nodes (7): apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Closed, non-executable grammar for design-system decision rules., Parse the canonical condition -> action-array representation., _validate_action()
+
 ### Community 420 - "assets/skills/design/scripts/cip/search.py"
 Cohesion: 0.32
 Nodes (7): format_brief(), format_results(), main(), Format search results for display, CIP Design Search CLI - Search corporate identity design guidelines, Format CIP brief for display, ambiguous_python_import_155255f53148
@@ -2038,6 +2041,22 @@ Nodes (3): ring, $type, $value
 ### Community 426 - "secondary-foreground"
 Cohesion: 0.67
 Nodes (3): secondary-foreground, $type, $value
+
+### Community 535 - "persist_design_system"
+Cohesion: 0.29
+Nodes (7): persist_design_system(), Path, Persist design system to design-system/<project>/ folder using Master +…, Slugify a name into a single safe path segment. Only [a-z0-9_-] survives; every…, Write fully to a temp file, then publish atomically., safe_slug(), _write_persisted_file()
+
+### Community 536 - "format_page_override_md"
+Cohesion: 0.33
+Nodes (6): _detect_page_type(), format_page_override_md(), _generate_intelligent_overrides(), Format a page-specific override file with intelligent AI-generated content., Generate intelligent overrides based on page type using layered search. Uses…, Detect page type from context and search results.
+
+### Community 537 - "_resolve_color_mode"
+Cohesion: 0.33
+Nodes (6): _query_wants_dark(), True when a styles.csv row describes itself as dark-first., True when the query explicitly asks for a dark theme., Resolve the mode the rest of the output has to agree with., _resolve_color_mode(), _style_is_dark_primary()
+
+### Community 543 - "assets/scripts/tests/test_core.py"
+Cohesion: 0.08
+Nodes (9): Stdlib-only regression tests for core.py / design_system.py (unittest, not…, TestBm25CoreBehavior, TestDiagnosticsContracts, TestPersistence, TestReasoningMatch, TestTokenizer, ambiguous_python_import_0e981ac9f6e2, ambiguous_python_import_4b8c5e0d91a6 (+1 more)
 
 ### Community 544 - "lg"
 Cohesion: 0.60
@@ -2073,17 +2092,17 @@ Nodes (3): $type, $value, 8
 
 ## Knowledge Gaps
 - **2547 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+2542 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 4313 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **150 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 4312 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **154 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Song` connect `Song` to `NowPlayingScreen.kt`, `CloudDownloaderScreen.kt`, `LibraryScreen.kt`, `AuraDatabase.kt`, `AuraPlayerManager`, `PlayerViewModel`, `PlaybackState`, `MusicImportAndLyricsTest.kt`, `MusicRepositoryImpl`, `.normalizeSourceString`, `SongEntity`, `Playlist`, `SmartScanSettings`, `LibraryViewModel`, `MusicRepositoryImpl.kt`, `AuraPlayerManager.kt`, `UserPreferences`, `PlaylistDao`, `LyricsState`, `QueueState`, `AudioDeviceType`, `SettingsScreen.kt`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `AudioQuality` connect `AudioQuality` to `CloudDownloaderScreen.kt`, `LosslessStreamResolver`, `CloudDownloaderViewModel`, `DownloadStatus`, `AuraPlayerManager.kt`, `AuraDownloadEngine`, `MusicRepositoryImpl.kt`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **Why does `UserPreferences` connect `UserPreferences` to `AudioEffectsState`, `SettingsScreen.kt`, `AuraNavigation.kt`, `SongSortOrder`, `EqualizerPreset`, `AuraPlayerManager`, `PlayerViewModel`, `.onCreate`, `AuraPlayerManager.kt`, `Spatial4DSettings`, `SmartScanSettings`, `LibraryViewModel`, `MusicRepositoryImpl.kt`?**
+- **Why does `AudioQuality` connect `AudioQuality` to `AuraPlayerManager.kt`, `CloudDownloaderScreen.kt`, `MusicRepositoryImpl.kt`?**
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `Song` connect `Song` to `CloudDownloaderScreen.kt`, `LibraryScreen.kt`, `AuraDatabase.kt`, `AuraPlayerManager`, `PlayerViewModel`, `NowPlayingScreen.kt`, `MusicImportAndLyricsTest.kt`, `MusicRepositoryImpl`, `PlaybackState`, `AudioMetadataHelper.kt`, `.normalizeSourceString`, `SongEntity`, `PlaylistRepository`, `SmartScanSettings`, `LibraryViewModel`, `MusicRepositoryImpl.kt`, `AuraPlayerManager.kt`, `UserPreferences`, `PlaylistDao`, `LyricsState`, `SongSortTest`, `QueueState`, `QueueDao`, `AudioDeviceType`, `SettingsScreen.kt`, `ContextMenuItem`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **Why does `CloudTrack` connect `AudioQuality` to `AuraPlayerManager.kt`, `CloudDownloaderScreen.kt`, `MusicRepositoryImpl.kt`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Are the 7 inferred relationships involving `Song` (e.g. with `.testSongFormattedDuration()` and `.testMinimizeTransitionState()`) actually correct?**
   _`Song` has 7 INFERRED edges - model-reasoned connections that need verification._

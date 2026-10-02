@@ -5,6 +5,7 @@ import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -28,6 +29,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.QueueMusic
 import androidx.compose.material.icons.filled.Favorite
@@ -62,6 +66,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 import com.example.aura.ui.audiofx.AudioEffectsScreen
+import com.example.aura.ui.cloud.CloudDownloaderScreen
 import com.example.aura.ui.components.AuraHeader
 import com.example.aura.ui.components.MiniPlayer
 import com.example.aura.ui.home.HomeScreen
@@ -70,21 +75,36 @@ import com.example.aura.ui.nowplaying.NowPlayingScreen
 import com.example.aura.ui.search.SearchScreen
 import com.example.aura.ui.settings.SettingsScreen
 import com.example.aura.ui.stats.StatisticsScreen
+import com.example.aura.ui.viewmodel.CloudDownloaderViewModel
 import com.example.aura.ui.viewmodel.LibraryViewModel
 import com.example.aura.ui.viewmodel.PlayerViewModel
+import androidx.compose.foundation.border
+import androidx.compose.material.icons.filled.CloudDownload
+import com.example.aura.theme.AuraDeepBlack
+import com.example.aura.theme.AuraGlassBorderDefault
+import com.example.aura.theme.AuraGlassSurfaceDefault
 import com.example.aura.theme.AuraOnPrimary
 import com.example.aura.theme.AuraOnSurface
 import com.example.aura.theme.AuraOnSurfaceVariant
 import com.example.aura.theme.AuraPrimary
+import com.example.aura.theme.AuraSoftBlack
 import com.example.aura.theme.AuraSurface
+import com.example.aura.theme.AuraSurfaceBlack
 import com.example.aura.theme.AuraSurfaceContainerHigh
+import com.example.aura.theme.AuraTextDisabled
+import com.example.aura.theme.AuraTextPrimary
+import com.example.aura.theme.AuraTextSecondary
+import com.example.aura.theme.AuraTextTertiary
+
+import androidx.activity.compose.BackHandler
 
 sealed class AuraScreen(val route: String, val title: String, val icon: ImageVector) {
     object Home : AuraScreen("home", "Home", Icons.Default.Home)
     object Library : AuraScreen("library", "Library", Icons.Default.LibraryMusic)
+    object Cloud : AuraScreen("cloud", "Lossless", Icons.Default.CloudDownload)
+    object Search : AuraScreen("search", "Search", Icons.Default.Search)
     object Playlists : AuraScreen("playlists", "Playlists", Icons.AutoMirrored.Filled.QueueMusic)
     object Favorites : AuraScreen("favorites", "Favorites", Icons.Default.Favorite)
-    object Search : AuraScreen("search", "Search", Icons.Default.Search)
     object Settings : AuraScreen("settings", "Settings", Icons.Default.Tune)
 }
 
@@ -92,6 +112,7 @@ sealed class AuraScreen(val route: String, val title: String, val icon: ImageVec
 fun AuraApp(
     playerViewModel: PlayerViewModel,
     libraryViewModel: LibraryViewModel,
+    cloudDownloaderViewModel: CloudDownloaderViewModel? = null,
     userPreferences: com.example.aura.data.local.UserPreferences? = null,
     modifier: Modifier = Modifier
 ) {
@@ -137,6 +158,27 @@ fun AuraApp(
     val sortOrder by libraryViewModel.sortOrder.collectAsState()
     val musicFolders by libraryViewModel.musicFolders.collectAsState()
 
+    // Back Navigation hierarchy to ensure Back button never unexpectedly closes the app
+    BackHandler(enabled = isAudioEffectsOpen) {
+        playerViewModel.closeAudioEffects()
+    }
+
+    BackHandler(enabled = showStatisticsScreen && !isAudioEffectsOpen) {
+        showStatisticsScreen = false
+    }
+
+    BackHandler(enabled = playerState.isFullPlayerOpen && !isAudioEffectsOpen && !showStatisticsScreen) {
+        playerViewModel.collapseToMiniPlayer()
+    }
+
+    BackHandler(enabled = currentTab == AuraScreen.Settings && !playerState.isFullPlayerOpen && !isAudioEffectsOpen && !showStatisticsScreen) {
+        currentTab = AuraScreen.Home
+    }
+
+    BackHandler(enabled = currentTab != AuraScreen.Home && !playerState.isFullPlayerOpen && !isAudioEffectsOpen && !showStatisticsScreen) {
+        currentTab = AuraScreen.Home
+    }
+
     // Permission handling
     val context = androidx.compose.ui.platform.LocalContext.current
     val audioPermission = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -178,109 +220,65 @@ fun AuraApp(
         }
     }
 
-    Box(modifier = modifier.fillMaxSize().background(AuraSurface)) {
+    val currentAppearance = com.example.aura.theme.LocalAuraAppearance.current
+    val currentBgStyle = currentAppearance.backgroundStyle
+    val currentSong = playbackState.currentSong
+    var ambientPalette by remember { mutableStateOf(com.example.aura.theme.ArtworkPalette()) }
+    LaunchedEffect(currentSong?.artworkUri) {
+        if (currentSong?.artworkUri != null) {
+            ambientPalette = com.example.aura.theme.ArtworkColorExtractor.extractColors(context, currentSong.artworkUri)
+        }
+    }
+    val ambientColor by animateColorAsState(
+        targetValue = if (currentSong != null) ambientPalette.accent.copy(alpha = 0.12f) else activeAccent.copy(alpha = 0.06f),
+        animationSpec = tween(500),
+        label = "ambient_bg"
+    )
+
+    val auraColors = com.example.aura.theme.LocalAuraColors.current
+
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(auraColors.deepBlack)
+            .then(
+                when (currentBgStyle) {
+                    "Adaptive Gradient" -> Modifier.background(
+                        Brush.verticalGradient(
+                            listOf(
+                                ambientColor,
+                                Color.Transparent,
+                                ambientColor.copy(alpha = ambientColor.alpha * 0.5f)
+                            )
+                        )
+                    )
+                    "Minimal Dark" -> Modifier.background(
+                        Brush.radialGradient(
+                            listOf(
+                                activeAccent.copy(alpha = 0.04f),
+                                Color.Transparent
+                            )
+                        )
+                    )
+                    else -> Modifier // "Deep Black" is pure solid AuraDeepBlack
+                }
+            )
+    ) {
         Scaffold(
             topBar = {
-                AuraHeader(title = currentTab.title)
-            },
-            bottomBar = {
-                Column {
-                    // Floating Mini-Player (Single Source of Playback State)
-                    if (playerState.isMiniPlayerVisible) {
-                        MiniPlayer(
-                            playbackState = playbackState,
-                            onPlayPause = { playerViewModel.togglePlayPause() },
-                            onNext = { playerViewModel.next() },
-                            onPrevious = { playerViewModel.previous() },
-                            onToggleFavorite = {
-                                playbackState.currentSong?.let { playerViewModel.toggleFavorite(it) }
-                            },
-                            onClick = { playerViewModel.openFullPlayer() },
-                            onSwipeUp = { playerViewModel.openFullPlayer() },
-                            onSwipeDown = { playerViewModel.pause() }
-                        )
+                AuraHeader(
+                    title = currentTab.title,
+                    onSettingsClick = {
+                        currentTab = AuraScreen.Settings
                     }
-
-                    // Bottom Navigation Bar with 6 standard tabs (Section 9)
-                    NavigationBar(
-                        containerColor = AuraSurface.copy(alpha = 0.95f),
-                        tonalElevation = 8.dp,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .navigationBarsPadding()
-                    ) {
-                        val navItems = listOf(
-                            AuraScreen.Home,
-                            AuraScreen.Library,
-                            AuraScreen.Playlists,
-                            AuraScreen.Favorites,
-                            AuraScreen.Search,
-                            AuraScreen.Settings
-                        )
-                        navItems.forEach { screen ->
-                            val isSelected = currentTab == screen
-                            val iconScale by animateFloatAsState(
-                                targetValue = if (isSelected) 1.12f else 1.0f,
-                                animationSpec = tween(
-                                    durationMillis = AuraMotion.DurationQuick,
-                                    easing = AuraMotion.CinematicEasing
-                                ),
-                                label = "nav_scale"
-                            )
-
-                            NavigationBarItem(
-                                selected = isSelected,
-                                onClick = {
-                                    if (currentTab == screen) {
-                                        coroutineScope.launch {
-                                            when (screen) {
-                                                AuraScreen.Home -> homeListState.animateScrollToItem(0)
-                                                AuraScreen.Library -> libraryListState.animateScrollToItem(0)
-                                                AuraScreen.Playlists -> playlistsListState.animateScrollToItem(0)
-                                                AuraScreen.Favorites -> favoritesListState.animateScrollToItem(0)
-                                                AuraScreen.Search -> searchListState.animateScrollToItem(0)
-                                                AuraScreen.Settings -> settingsListState.animateScrollToItem(0)
-                                            }
-                                        }
-                                    } else {
-                                        currentTab = screen
-                                    }
-                                },
-                                icon = {
-                                    Icon(
-                                        imageVector = screen.icon,
-                                        contentDescription = screen.title,
-                                        modifier = Modifier
-                                            .size(22.dp)
-                                            .scale(iconScale)
-                                    )
-                                },
-                                label = {
-                                    Text(
-                                        text = screen.title,
-                                        fontSize = 10.sp,
-                                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                                        maxLines = 1
-                                    )
-                                },
-                                colors = NavigationBarItemDefaults.colors(
-                                    selectedIconColor = activeAccent,
-                                    selectedTextColor = activeAccent,
-                                    unselectedIconColor = AuraOnSurfaceVariant,
-                                    unselectedTextColor = AuraOnSurfaceVariant,
-                                    indicatorColor = activeAccent.copy(alpha = 0.12f)
-                                )
-                            )
-                        }
-                    }
-                }
+                )
             },
-            containerColor = AuraSurface
+            containerColor = Color.Transparent
         ) { paddingValues ->
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(paddingValues)
+                    .padding(top = paddingValues.calculateTopPadding())
             ) {
                 if (!hasPermission && songs.isEmpty()) {
                     // Modern Permission Handling Empty State
@@ -295,41 +293,42 @@ fun AuraApp(
                             modifier = Modifier
                                 .size(64.dp)
                                 .clip(CircleShape)
-                                .background(AuraSurfaceContainerHigh),
+                                .background(AuraSurfaceBlack)
+                                .border(1.dp, AuraGlassBorderDefault, CircleShape),
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Lock,
                                 contentDescription = null,
-                                tint = AuraPrimary,
-                                modifier = Modifier.size(32.dp)
+                                tint = activeAccent,
+                                modifier = Modifier.size(30.dp)
                             )
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
                             text = "Audio Permission Required",
-                            color = AuraOnSurface,
+                            color = AuraTextPrimary,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = "AURA needs permission to access and play audio files stored on your device.",
-                            color = AuraOnSurfaceVariant,
+                            color = AuraTextSecondary,
                             fontSize = 13.sp,
                             modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                             textAlign = TextAlign.Center
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(18.dp))
                         Box(
                             modifier = Modifier
                                 .clip(CircleShape)
-                                .background(AuraPrimary)
+                                .background(activeAccent)
                                 .clickable { launcher.launch(permissionsToRequest) }
                                 .padding(horizontal = 24.dp, vertical = 12.dp)
                         ) {
                             Text(
                                 text = "Grant Permission",
-                                color = AuraOnPrimary,
+                                color = AuraDeepBlack,
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -489,10 +488,40 @@ fun AuraApp(
                                 listState = searchListState
                             )
                         }
+                        AuraScreen.Cloud -> {
+                            if (cloudDownloaderViewModel != null) {
+                                CloudDownloaderScreen(
+                                    viewModel = cloudDownloaderViewModel,
+                                    onPlayDownloadedTrack = { filePath ->
+                                        val song = songs.find { it.filePath == filePath }
+                                        if (song != null) {
+                                            playerViewModel.play(song, songs)
+                                        } else {
+                                            val f = java.io.File(filePath)
+                                            val fileUri = android.net.Uri.fromFile(f).toString()
+                                            val directSong = com.example.aura.domain.model.Song(
+                                                id = com.example.aura.data.audio.AudioSourceNormalizer.generateStableTrackId("file://${f.absolutePath}"),
+                                                sourceUri = "file://${f.absolutePath}",
+                                                title = f.nameWithoutExtension.substringAfter(" - ").ifBlank { f.nameWithoutExtension },
+                                                artist = f.nameWithoutExtension.substringBefore(" - ").ifBlank { "Unknown Artist" },
+                                                album = "Aura Downloads",
+                                                durationMs = 0L,
+                                                mediaUri = fileUri,
+                                                filePath = filePath
+                                            )
+                                            playerViewModel.play(directSong, listOf(directSong))
+                                            libraryViewModel.scanMusic()
+                                        }
+                                    }
+                                )
+                            }
+                        }
                         AuraScreen.Settings -> {
                             SettingsScreen(
                                 folders = musicFolders,
                                 userPreferences = userPreferences,
+                                playbackDspSettings = effectsState.playback,
+                                onUpdatePlaybackSettings = { playerViewModel.setPlaybackSettings(it) },
                                 onAddFolder = { libraryViewModel.addMusicFolder(it) },
                                 onRemoveFolder = { libraryViewModel.removeMusicFolder(it) },
                                 onRescanFolder = { libraryViewModel.rescanFolder(it) },
@@ -513,6 +542,106 @@ fun AuraApp(
                             )
                         }
                     }
+                }
+            }
+        }
+
+        // Floating Bottom Controls: Translucent Glass Mini-Player + Independent Glass Bottom Navigation Bar
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+        ) {
+            // Floating Translucent Glass Mini-Player
+            AnimatedVisibility(
+                visible = playerState.isMiniPlayerVisible,
+                enter = slideInVertically(initialOffsetY = { it }) + fadeIn(tween(200)),
+                exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(tween(200))
+            ) {
+                MiniPlayer(
+                    playbackState = playbackState,
+                    onPlayPause = { playerViewModel.togglePlayPause() },
+                    onNext = { playerViewModel.next() },
+                    onPrevious = { playerViewModel.previous() },
+                    onToggleFavorite = {
+                        playbackState.currentSong?.let { playerViewModel.toggleFavorite(it) }
+                    },
+                    onClick = { playerViewModel.openFullPlayer() },
+                    onSwipeUp = { playerViewModel.openFullPlayer() },
+                    onSwipeDown = { playerViewModel.pause() },
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+            }
+
+            // Translucent Floating Glass Bottom Navigation Bar
+            NavigationBar(
+                containerColor = AuraSurfaceBlack.copy(alpha = 0.85f),
+                tonalElevation = 0.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                    .border(width = 1.dp, color = AuraGlassBorderDefault, shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                    .navigationBarsPadding()
+            ) {
+                val navItems = listOf(
+                    AuraScreen.Home,
+                    AuraScreen.Library,
+                    AuraScreen.Cloud,
+                    AuraScreen.Search
+                )
+                navItems.forEach { screen ->
+                    val isSelected = currentTab == screen
+                    val iconScale by animateFloatAsState(
+                        targetValue = if (isSelected) 1.15f else 1.0f,
+                        animationSpec = tween(
+                            durationMillis = AuraMotion.DurationQuick,
+                            easing = AuraMotion.CinematicEasing
+                        ),
+                        label = "nav_scale"
+                    )
+
+                    NavigationBarItem(
+                        selected = isSelected,
+                        onClick = {
+                            if (currentTab == screen) {
+                                coroutineScope.launch {
+                                    when (screen) {
+                                        AuraScreen.Home -> homeListState.animateScrollToItem(0)
+                                        AuraScreen.Library -> libraryListState.animateScrollToItem(0)
+                                        AuraScreen.Cloud -> {}
+                                        AuraScreen.Search -> searchListState.animateScrollToItem(0)
+                                        else -> {}
+                                    }
+                                }
+                            } else {
+                                currentTab = screen
+                            }
+                        },
+                        icon = {
+                            Icon(
+                                imageVector = screen.icon,
+                                contentDescription = screen.title,
+                                modifier = Modifier
+                                    .size(22.dp)
+                                    .scale(iconScale)
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = screen.title,
+                                fontSize = 11.sp,
+                                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                                maxLines = 1
+                            )
+                        },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = activeAccent,
+                            selectedTextColor = activeAccent,
+                            unselectedIconColor = AuraTextTertiary,
+                            unselectedTextColor = AuraTextTertiary,
+                            indicatorColor = activeAccent.copy(alpha = 0.14f)
+                        )
+                    )
                 }
             }
         }
@@ -640,10 +769,10 @@ fun AuraApp(
                 )
             } else {
                 Box(
-                    modifier = Modifier.fillMaxSize().background(AuraSurface),
+                    modifier = Modifier.fillMaxSize().background(AuraDeepBlack),
                     contentAlignment = Alignment.Center
                 ) {
-                    androidx.compose.material3.CircularProgressIndicator(color = AuraPrimary)
+                    androidx.compose.material3.CircularProgressIndicator(color = activeAccent)
                 }
             }
         }

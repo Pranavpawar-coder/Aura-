@@ -14,12 +14,15 @@ import java.io.InputStream
 import java.util.concurrent.ConcurrentHashMap
 
 data class ArtworkPalette(
+    val primary: Color = Color(0xFF7C5CFC),
+    val secondary: Color = Color(0xFFE48B78),
     val accent: Color = Color(0xFF7C5CFC),
     val onAccent: Color = Color.White,
-    val surfaceTint: Color = Color(0xFF191B23),
-    val glowColor: Color = Color(0xFF7C5CFC).copy(alpha = 0.35f),
-    val gradientStart: Color = Color(0xFF0B0E15),
-    val gradientEnd: Color = Color(0xFF10131A)
+    val surfaceTint: Color = Color(0xFF101010),
+    val glowColor: Color = Color(0xFF7C5CFC).copy(alpha = 0.28f),
+    val gradientStart: Color = Color(0xFF1A1218),
+    val gradientMid: Color = Color(0xFF0C090D),
+    val gradientEnd: Color = Color(0xFF050505)
 )
 
 object ArtworkColorExtractor {
@@ -43,7 +46,7 @@ object ArtworkColorExtractor {
                 context.contentResolver.openInputStream(uri)
             }
 
-            // Downsample bitmap for fast palette generation
+            // Downsample bitmap for fast, performant palette generation
             val options = BitmapFactory.Options().apply {
                 inSampleSize = 4
                 inPreferredConfig = Bitmap.Config.RGB_565
@@ -55,47 +58,64 @@ object ArtworkColorExtractor {
                     .maximumColorCount(16)
                     .generate()
 
-                val dominantSwatch = palette.vibrantSwatch
-                    ?: palette.dominantSwatch
-                    ?: palette.mutedSwatch
-                    ?: palette.lightVibrantSwatch
-                    ?: palette.darkVibrantSwatch
+                val vibrant = palette.vibrantSwatch
+                val muted = palette.mutedSwatch
+                val dominant = palette.dominantSwatch
+                val lightVibrant = palette.lightVibrantSwatch
+                val darkVibrant = palette.darkVibrantSwatch
 
-                val rawAccentArgb = dominantSwatch?.rgb ?: AuraPrimaryAccentDefault.toArgb()
+                val rawPrimary = (dominant ?: vibrant ?: muted)?.rgb ?: AuraPrimaryAccentDefault.toArgb()
+                val rawAccent = (vibrant ?: lightVibrant ?: dominant)?.rgb ?: rawPrimary
+                val rawSecondary = (muted ?: darkVibrant ?: dominant)?.rgb ?: rawPrimary
 
-                // Ensure accent has enough brightness for dark theme readability
-                val hsl = FloatArray(3)
-                ColorUtils.colorToHSL(rawAccentArgb, hsl)
-                // If too dark for our dark theme, boost lightness to at least 0.55
-                if (hsl[2] < 0.45f) {
-                    hsl[2] = 0.55f
-                }
-                // Cap saturation if too oversaturated
-                hsl[1] = hsl[1].coerceIn(0.4f, 0.85f)
-                val adjustedAccentArgb = ColorUtils.HSLToColor(hsl)
+                // Saturation & Brightness Control (Section 4):
+                // Prevent extreme saturation from creating aggressive visuals
+                val hslAccent = FloatArray(3)
+                ColorUtils.colorToHSL(rawAccent, hslAccent)
+                hslAccent[1] = hslAccent[1].coerceIn(0.35f, 0.72f) // restrained saturation
+                hslAccent[2] = hslAccent[2].coerceIn(0.48f, 0.68f) // soft, readable brightness
+                val adjustedAccentArgb = ColorUtils.HSLToColor(hslAccent)
+
+                val hslPrimary = FloatArray(3)
+                ColorUtils.colorToHSL(rawPrimary, hslPrimary)
+                hslPrimary[1] = hslPrimary[1].coerceIn(0.30f, 0.65f)
+                hslPrimary[2] = hslPrimary[2].coerceIn(0.40f, 0.62f)
+                val adjustedPrimaryArgb = ColorUtils.HSLToColor(hslPrimary)
+
+                val hslSecondary = FloatArray(3)
+                ColorUtils.colorToHSL(rawSecondary, hslSecondary)
+                hslSecondary[1] = hslSecondary[1].coerceIn(0.25f, 0.60f)
+                hslSecondary[2] = hslSecondary[2].coerceIn(0.50f, 0.75f)
+                val adjustedSecondaryArgb = ColorUtils.HSLToColor(hslSecondary)
 
                 val accentColor = Color(adjustedAccentArgb)
-                val isLight = ColorUtils.calculateLuminance(adjustedAccentArgb) > 0.45
-                val onAccentColor = if (isLight) Color(0xFF10131A) else Color(0xFFFFFFFF)
+                val primaryColor = Color(adjustedPrimaryArgb)
+                val secondaryColor = Color(adjustedSecondaryArgb)
 
-                // Background gradient start tinted subtly with dominant color
-                val bgStartArgb = ColorUtils.blendARGB(0xFF0B0E15.toInt(), adjustedAccentArgb, 0.18f)
-                val bgEndArgb = ColorUtils.blendARGB(0xFF10131A.toInt(), adjustedAccentArgb, 0.08f)
+                val isLight = ColorUtils.calculateLuminance(adjustedAccentArgb) > 0.45
+                val onAccentColor = if (isLight) Color(0xFF090909) else Color(0xFFFFFFFF)
+
+                // Atmospheric Background Gradients fading down to Deep Black (#050505)
+                val bgStartArgb = ColorUtils.blendARGB(0xFF140E14.toInt(), adjustedPrimaryArgb, 0.22f)
+                val bgMidArgb = ColorUtils.blendARGB(0xFF090909.toInt(), adjustedPrimaryArgb, 0.10f)
 
                 val result = ArtworkPalette(
+                    primary = primaryColor,
+                    secondary = secondaryColor,
                     accent = accentColor,
                     onAccent = onAccentColor,
-                    surfaceTint = Color(bgEndArgb),
-                    glowColor = accentColor.copy(alpha = 0.35f),
+                    surfaceTint = Color(bgMidArgb),
+                    glowColor = accentColor.copy(alpha = 0.28f),
                     gradientStart = Color(bgStartArgb),
-                    gradientEnd = Color(bgEndArgb)
+                    gradientMid = Color(bgMidArgb),
+                    gradientEnd = Color(0xFF050505)
                 )
 
                 cache[artworkUri] = result
                 return@withContext result
             }
         } catch (_: Exception) {
-            // Fall back gracefully to standard AURA theme
+            // Graceful fallback to default palette
         } finally {
             try {
                 inputStream?.close()

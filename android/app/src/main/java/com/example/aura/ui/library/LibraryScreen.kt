@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -71,21 +72,27 @@ import com.example.aura.domain.model.Genre
 import com.example.aura.domain.model.Playlist
 import com.example.aura.domain.model.Song
 import com.example.aura.domain.model.SongSortOrder
-import com.example.aura.theme.AuraOnPrimary
-import com.example.aura.theme.AuraOnSurface
-import com.example.aura.theme.AuraOnSurfaceVariant
-import com.example.aura.theme.AuraOutline
-import com.example.aura.theme.AuraPrimary
-import com.example.aura.theme.AuraSecondary
-import com.example.aura.theme.AuraSurface
-import com.example.aura.theme.AuraSurfaceContainer
-import com.example.aura.theme.AuraSurfaceContainerHigh
-import com.example.aura.theme.AuraSurfaceContainerHighest
-import com.example.aura.theme.AuraSurfaceContainerLow
+import com.example.aura.theme.AuraDeepBlack
+import com.example.aura.theme.AuraElevated1
+import com.example.aura.theme.AuraGlassBorderDefault
+import com.example.aura.theme.AuraGlassHighlightDefault
+import com.example.aura.theme.AuraGlassSurfaceDefault
+import com.example.aura.theme.AuraSoftBlack
+import com.example.aura.theme.AuraSurfaceBlack
+import com.example.aura.theme.AuraTextDisabled
+import com.example.aura.theme.AuraTextPrimary
+import com.example.aura.theme.AuraTextSecondary
+import com.example.aura.theme.AuraTextTertiary
+import com.example.aura.theme.LocalAuraAccent
 import com.example.aura.theme.auraPressable
 import com.example.aura.ui.components.AuraAnimatedFavoriteButton
 import com.example.aura.ui.components.AuraFallbackArtwork
+import com.example.aura.ui.components.AuraGlassButton
+import com.example.aura.ui.components.AuraGlassControl
+import com.example.aura.ui.components.AuraGlassPill
 import com.example.aura.ui.components.SongContextMenuBottomSheet
+
+import androidx.activity.compose.BackHandler
 
 @Composable
 fun LibraryScreen(
@@ -118,6 +125,7 @@ fun LibraryScreen(
     listState: LazyListState = rememberLazyListState(),
     modifier: Modifier = Modifier
 ) {
+    val currentAccent = LocalAuraAccent.current
     var selectedFilter by remember { mutableStateOf(initialFilter) }
     var showSortSheet by remember { mutableStateOf(false) }
 
@@ -129,6 +137,26 @@ fun LibraryScreen(
 
     // Context Menu Target
     var menuSong by remember { mutableStateOf<Song?>(null) }
+
+    // Back button handling within LibraryScreen
+    BackHandler(enabled = menuSong != null) {
+        menuSong = null
+    }
+    BackHandler(enabled = showSortSheet && menuSong == null) {
+        showSortSheet = false
+    }
+    BackHandler(enabled = activeAlbum != null && menuSong == null && !showSortSheet) {
+        activeAlbum = null
+    }
+    BackHandler(enabled = activeArtist != null && menuSong == null && !showSortSheet) {
+        activeArtist = null
+    }
+    BackHandler(enabled = activeFolder != null && menuSong == null && !showSortSheet) {
+        activeFolder = null
+    }
+    BackHandler(enabled = activePlaylist != null && menuSong == null && !showSortSheet) {
+        activePlaylist = null
+    }
 
     LaunchedEffect(initialFilter) {
         selectedFilter = initialFilter
@@ -243,7 +271,7 @@ fun LibraryScreen(
 
     val filters = listOf("Songs", "Albums", "Artists", "Genres", "Folders", "Playlists", "Favorites")
 
-    Box(modifier = modifier.fillMaxSize().background(AuraSurface)) {
+    Box(modifier = modifier.fillMaxSize().background(AuraDeepBlack)) {
         LazyColumn(
             state = listState,
             modifier = Modifier.fillMaxSize(),
@@ -254,50 +282,70 @@ fun LibraryScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                        .padding(horizontal = 20.dp, vertical = 14.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(
-                        text = "Your Library",
-                        color = AuraOnSurface,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold
-                    )
+                    Column {
+                        Text(
+                            text = "COLLECTION",
+                            color = AuraTextTertiary,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                            letterSpacing = 2.sp
+                        )
+                        Spacer(modifier = Modifier.height(2.dp))
+                        Text(
+                            text = "Your Library",
+                            color = AuraTextPrimary,
+                            fontSize = 28.sp,
+                            fontWeight = FontWeight.Bold,
+                            letterSpacing = (-0.8).sp
+                        )
+                    }
 
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        // Rescan Button
-                        IconButton(onClick = onRescan, modifier = Modifier.size(32.dp)) {
+                        // Rescan Button Glass Pill
+                        Box(
+                            modifier = Modifier
+                                .size(38.dp)
+                                .clip(CircleShape)
+                                .background(AuraGlassSurfaceDefault)
+                                .border(1.dp, AuraGlassBorderDefault, CircleShape)
+                                .auraPressable(onClick = onRescan),
+                            contentAlignment = Alignment.Center
+                        ) {
                             if (isScanning) {
-                                CircularProgressIndicator(color = AuraPrimary, modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
+                                CircularProgressIndicator(color = currentAccent, modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
                             } else {
-                                Icon(imageVector = Icons.Default.Refresh, contentDescription = "Rescan", tint = AuraOnSurfaceVariant, modifier = Modifier.size(20.dp))
+                                Icon(imageVector = Icons.Default.Refresh, contentDescription = "Rescan", tint = AuraTextSecondary, modifier = Modifier.size(18.dp))
                             }
                         }
 
-                        Spacer(modifier = Modifier.width(4.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
 
-                        // Sort Button Pill
+                        // Sort Button Glass Pill
                         Row(
                             modifier = Modifier
                                 .clip(CircleShape)
-                                .background(AuraSurfaceContainerHigh)
-                                .clickable { showSortSheet = true }
-                                .padding(horizontal = 12.dp, vertical = 6.dp),
+                                .background(AuraGlassSurfaceDefault)
+                                .border(1.dp, AuraGlassBorderDefault, CircleShape)
+                                .auraPressable { showSortSheet = true }
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Icon(imageVector = Icons.AutoMirrored.Filled.Sort, contentDescription = "Sort", tint = AuraPrimary, modifier = Modifier.size(16.dp))
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Text(text = sortOrder.displayName, color = AuraOnSurface, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                            Icon(imageVector = Icons.AutoMirrored.Filled.Sort, contentDescription = "Sort", tint = currentAccent, modifier = Modifier.size(14.dp))
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(text = sortOrder.displayName, color = AuraTextSecondary, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
                         }
                     }
                 }
             }
 
-            // Filter Tabs Row
+            // Filter Tabs Row (Translucent Glass Pills)
             item {
                 LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
+                    contentPadding = PaddingValues(horizontal = 20.dp, vertical = 6.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(filters, key = { it }) { f ->
@@ -305,18 +353,23 @@ fun LibraryScreen(
                         Box(
                             modifier = Modifier
                                 .clip(CircleShape)
-                                .background(if (isSel) AuraPrimary else AuraSurfaceContainer)
+                                .background(if (isSel) currentAccent else AuraGlassSurfaceDefault)
+                                .border(
+                                    1.dp,
+                                    if (isSel) currentAccent.copy(alpha = 0.5f) else AuraGlassBorderDefault,
+                                    CircleShape
+                                )
                                 .clickable {
                                     selectedFilter = f
                                     onFilterSelected(f)
                                 }
-                                .padding(horizontal = 14.dp, vertical = 8.dp)
+                                .padding(horizontal = 16.dp, vertical = 8.dp)
                         ) {
                             Text(
                                 text = f,
-                                color = if (isSel) AuraOnPrimary else AuraOnSurfaceVariant,
+                                color = if (isSel) AuraDeepBlack else AuraTextSecondary,
                                 fontSize = 12.sp,
-                                fontWeight = FontWeight.SemiBold
+                                fontWeight = if (isSel) FontWeight.Bold else FontWeight.Medium
                             )
                         }
                     }
@@ -334,31 +387,42 @@ fun LibraryScreen(
                     ) {
                         Box(
                             modifier = Modifier
-                                .size(56.dp)
+                                .size(60.dp)
                                 .clip(CircleShape)
-                                .background(AuraSurfaceContainerHigh),
+                                .background(AuraSurfaceBlack)
+                                .border(1.dp, AuraGlassBorderDefault, CircleShape),
                             contentAlignment = Alignment.Center
                         ) {
-                            Icon(imageVector = Icons.Default.LibraryMusic, contentDescription = null, tint = AuraOutline, modifier = Modifier.size(28.dp))
+                            Icon(imageVector = Icons.Default.LibraryMusic, contentDescription = null, tint = AuraTextTertiary, modifier = Modifier.size(28.dp))
                         }
-                        Spacer(modifier = Modifier.height(14.dp))
-                        Text(text = "No music in library", color = AuraOnSurface, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                        Spacer(modifier = Modifier.height(16.dp))
+                        Text(text = "No music in library", color = AuraTextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                         Text(
                             text = "Add music folders in Settings or tap Rescan to discover local audio files.",
-                            color = AuraOnSurfaceVariant,
+                            color = AuraTextSecondary,
                             fontSize = 13.sp,
                             textAlign = TextAlign.Center,
-                            modifier = Modifier.padding(top = 4.dp)
+                            modifier = Modifier.padding(top = 6.dp)
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
-                        Box(
-                            modifier = Modifier
-                                .clip(CircleShape)
-                                .background(AuraPrimary)
-                                .clickable(onClick = onRescan)
-                                .padding(horizontal = 20.dp, vertical = 10.dp)
+                        Spacer(modifier = Modifier.height(20.dp))
+                        AuraGlassControl(
+                            onClick = onRescan,
+                            backgroundColor = currentAccent,
+                            borderColor = currentAccent
                         ) {
-                            Text(text = "Rescan Library", color = AuraOnPrimary, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                            Icon(
+                                imageVector = Icons.Default.Refresh,
+                                contentDescription = "Rescan",
+                                tint = AuraDeepBlack,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Rescan Library",
+                                color = AuraDeepBlack,
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.Bold
+                            )
                         }
                     }
                 }
@@ -368,10 +432,10 @@ fun LibraryScreen(
                         item {
                             Text(
                                 text = "All Songs (${songs.size})",
-                                color = AuraOnSurface,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp)
+                                color = AuraTextPrimary,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)
                             )
                         }
                         items(songs, key = { it.id }, contentType = { "song" }) { song ->
@@ -388,25 +452,28 @@ fun LibraryScreen(
                         item {
                             Text(
                                 text = "Albums (${albums.size})",
-                                color = AuraOnSurface,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp)
+                                color = AuraTextPrimary,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)
                             )
                         }
                         items(albums, key = { it.id }) { album ->
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clickable { activeAlbum = album }
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                    .padding(horizontal = 14.dp, vertical = 3.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .auraPressable(pressedScale = 0.985f) { activeAlbum = album }
+                                    .padding(horizontal = 8.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .size(52.dp)
-                                        .clip(RoundedCornerShape(10.dp))
-                                        .background(AuraSurfaceContainerHigh),
+                                        .size(54.dp)
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(AuraSurfaceBlack)
+                                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     if (album.artworkUri != null) {
@@ -419,17 +486,17 @@ fun LibraryScreen(
                                     } else {
                                         AuraFallbackArtwork(
                                             modifier = Modifier.fillMaxSize(),
-                                            cornerRadius = 10.dp,
+                                            cornerRadius = 12.dp,
                                             iconSize = 24.dp
                                         )
                                     }
                                 }
                                 Spacer(modifier = Modifier.width(14.dp))
                                 Column {
-                                    Text(text = album.title, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                    Text(text = album.title, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
                                     Text(
                                         text = "${album.artist} • ${album.trackCount} tracks" + (album.year?.let { " • $it" } ?: ""),
-                                        color = AuraOnSurfaceVariant,
+                                        color = AuraTextSecondary,
                                         fontSize = 12.sp,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis
@@ -443,25 +510,28 @@ fun LibraryScreen(
                         item {
                             Text(
                                 text = "Artists (${artists.size})",
-                                color = AuraOnSurface,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp)
+                                color = AuraTextPrimary,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)
                             )
                         }
                         items(artists, key = { it.id }) { artist ->
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clickable { activeArtist = artist }
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                    .padding(horizontal = 14.dp, vertical = 3.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .auraPressable(pressedScale = 0.985f) { activeArtist = artist }
+                                    .padding(horizontal = 8.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .size(52.dp)
+                                        .size(54.dp)
                                         .clip(CircleShape)
-                                        .background(AuraSurfaceContainerHigh),
+                                        .background(AuraSurfaceBlack)
+                                        .border(1.dp, AuraGlassBorderDefault, CircleShape),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     if (artist.artworkUri != null) {
@@ -472,13 +542,13 @@ fun LibraryScreen(
                                             modifier = Modifier.fillMaxSize()
                                         )
                                     } else {
-                                        Icon(imageVector = Icons.Default.Person, contentDescription = null, tint = AuraOutline, modifier = Modifier.size(24.dp))
+                                        Icon(imageVector = Icons.Default.Person, contentDescription = null, tint = AuraTextTertiary, modifier = Modifier.size(24.dp))
                                     }
                                 }
                                 Spacer(modifier = Modifier.width(14.dp))
                                 Column {
-                                    Text(text = artist.name, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                    Text(text = "${artist.trackCount} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                    Text(text = artist.name, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                    Text(text = "${artist.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp)
                                 }
                             }
                         }
@@ -488,10 +558,10 @@ fun LibraryScreen(
                         item {
                             Text(
                                 text = "Genres (${genres.size})",
-                                color = AuraOnSurface,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp)
+                                color = AuraTextPrimary,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)
                             )
                         }
                         items(genres, key = { it.name }) { genre ->
@@ -499,23 +569,26 @@ fun LibraryScreen(
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clickable { if (genreSongs.isNotEmpty()) onPlayAll(genreSongs) }
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                    .padding(horizontal = 14.dp, vertical = 3.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .auraPressable(pressedScale = 0.985f) { if (genreSongs.isNotEmpty()) onPlayAll(genreSongs) }
+                                    .padding(horizontal = 8.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .size(52.dp)
-                                        .clip(RoundedCornerShape(10.dp))
-                                        .background(AuraSurfaceContainerHigh),
+                                        .size(54.dp)
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(AuraSurfaceBlack)
+                                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
                                     contentAlignment = Alignment.Center
                                 ) {
-                                    Icon(imageVector = Icons.Default.AutoAwesome, contentDescription = null, tint = AuraPrimary, modifier = Modifier.size(24.dp))
+                                    Icon(imageVector = Icons.Default.AutoAwesome, contentDescription = null, tint = currentAccent, modifier = Modifier.size(24.dp))
                                 }
                                 Spacer(modifier = Modifier.width(14.dp))
                                 Column {
-                                    Text(text = genre.name, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-                                    Text(text = "${genre.trackCount} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                    Text(text = genre.name, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                                    Text(text = "${genre.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp)
                                 }
                             }
                         }
@@ -525,33 +598,36 @@ fun LibraryScreen(
                         item {
                             Text(
                                 text = "Folders (${folderGroups.size})",
-                                color = AuraOnSurface,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp)
+                                color = AuraTextPrimary,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)
                             )
                         }
                         items(folderGroups, key = { it.path }) { folder ->
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clickable { activeFolder = folder }
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                    .padding(horizontal = 14.dp, vertical = 3.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .auraPressable(pressedScale = 0.985f) { activeFolder = folder }
+                                    .padding(horizontal = 8.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .size(52.dp)
-                                        .clip(RoundedCornerShape(10.dp))
-                                        .background(AuraSurfaceContainerHigh),
+                                        .size(54.dp)
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(AuraSurfaceBlack)
+                                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
                                     contentAlignment = Alignment.Center
                                 ) {
-                                    Icon(imageVector = Icons.Default.Folder, contentDescription = null, tint = AuraPrimary, modifier = Modifier.size(24.dp))
+                                    Icon(imageVector = Icons.Default.Folder, contentDescription = null, tint = currentAccent, modifier = Modifier.size(24.dp))
                                 }
                                 Spacer(modifier = Modifier.width(14.dp))
                                 Column {
-                                    Text(text = folder.displayName, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-                                    Text(text = "${folder.trackCount} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                    Text(text = folder.displayName, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                                    Text(text = "${folder.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp)
                                 }
                             }
                         }
@@ -562,27 +638,29 @@ fun LibraryScreen(
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp),
+                                    .padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp),
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
                                     text = "Playlists (${playlists.size})",
-                                    color = AuraOnSurface,
-                                    fontSize = 15.sp,
-                                    fontWeight = FontWeight.SemiBold
+                                    color = AuraTextPrimary,
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold
                                 )
-                                Row(
+                                Box(
                                     modifier = Modifier
                                         .clip(CircleShape)
-                                        .background(AuraPrimary)
-                                        .clickable(onClick = onNewPlaylist)
+                                        .background(currentAccent)
+                                        .auraPressable(onClick = onNewPlaylist)
                                         .padding(horizontal = 12.dp, vertical = 6.dp),
-                                    verticalAlignment = Alignment.CenterVertically
+                                    contentAlignment = Alignment.Center
                                 ) {
-                                    Icon(imageVector = Icons.Default.Add, contentDescription = null, tint = AuraOnPrimary, modifier = Modifier.size(16.dp))
-                                    Spacer(modifier = Modifier.width(4.dp))
-                                    Text(text = "New Playlist", color = AuraOnPrimary, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Icon(imageVector = Icons.Default.Add, contentDescription = null, tint = AuraDeepBlack, modifier = Modifier.size(14.dp))
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        Text(text = "New", color = AuraDeepBlack, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                    }
                                 }
                             }
                         }
@@ -590,23 +668,26 @@ fun LibraryScreen(
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .clickable { activePlaylist = playlist }
-                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                    .padding(horizontal = 14.dp, vertical = 3.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .auraPressable(pressedScale = 0.985f) { activePlaylist = playlist }
+                                    .padding(horizontal = 8.dp, vertical = 6.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .size(52.dp)
-                                        .clip(RoundedCornerShape(10.dp))
-                                        .background(AuraSurfaceContainerHigh),
+                                        .size(54.dp)
+                                        .clip(RoundedCornerShape(12.dp))
+                                        .background(AuraSurfaceBlack)
+                                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
                                     contentAlignment = Alignment.Center
                                 ) {
-                                    Icon(imageVector = Icons.AutoMirrored.Filled.QueueMusic, contentDescription = null, tint = AuraPrimary, modifier = Modifier.size(24.dp))
+                                    Icon(imageVector = Icons.AutoMirrored.Filled.QueueMusic, contentDescription = null, tint = currentAccent, modifier = Modifier.size(24.dp))
                                 }
                                 Spacer(modifier = Modifier.width(14.dp))
                                 Column {
-                                    Text(text = playlist.name, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-                                    Text(text = "Custom playlist", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                    Text(text = playlist.name, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                                    Text(text = "Custom playlist", color = AuraTextSecondary, fontSize = 12.sp)
                                 }
                             }
                         }
@@ -616,10 +697,10 @@ fun LibraryScreen(
                         item {
                             Text(
                                 text = "Favorites (${favorites.size})",
-                                color = AuraOnSurface,
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 6.dp)
+                                color = AuraTextPrimary,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)
                             )
                         }
                         items(favorites, key = { it.id }, contentType = { "song" }) { song ->
@@ -645,9 +726,10 @@ fun LibraryScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
-                    .background(AuraSurfaceContainer)
-                    .padding(20.dp)
+                    .clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
+                    .background(AuraSurfaceBlack)
+                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp))
+                    .padding(24.dp)
                     .navigationBarsPadding()
             ) {
                 Column {
@@ -656,13 +738,13 @@ fun LibraryScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(text = "Sort Library By", color = AuraOnSurface, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                        Text(text = "Sort Library By", color = AuraTextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                         IconButton(onClick = { showSortSheet = false }) {
-                            Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint = AuraOutline)
+                            Icon(imageVector = Icons.Default.Close, contentDescription = "Close", tint = AuraTextSecondary)
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
                     val allOrders = SongSortOrder.values()
                     allOrders.forEach { order ->
@@ -670,8 +752,8 @@ fun LibraryScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
-                                .background(if (isSelected) AuraSurfaceContainerHigh else Color.Transparent)
+                                .clip(RoundedCornerShape(14.dp))
+                                .background(if (isSelected) Color.White.copy(alpha = 0.06f) else Color.Transparent)
                                 .clickable {
                                     onSortOrderChanged(order)
                                     showSortSheet = false
@@ -682,12 +764,12 @@ fun LibraryScreen(
                         ) {
                             Text(
                                 text = order.displayName,
-                                color = if (isSelected) AuraPrimary else AuraOnSurface,
+                                color = if (isSelected) currentAccent else AuraTextPrimary,
                                 fontSize = 14.sp,
                                 fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                             )
                             if (isSelected) {
-                                Icon(imageVector = Icons.Default.Check, contentDescription = "Selected", tint = AuraPrimary, modifier = Modifier.size(18.dp))
+                                Icon(imageVector = Icons.Default.Check, contentDescription = "Selected", tint = currentAccent, modifier = Modifier.size(18.dp))
                             }
                         }
                     }
@@ -704,12 +786,15 @@ private fun SongRowItem(
     onToggleFavorite: (Song) -> Unit,
     onMenuClick: () -> Unit
 ) {
+    val currentAccent = LocalAuraAccent.current
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .auraPressable(pressedScale = 0.98f) { onSongClick(song) }
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 14.dp, vertical = 3.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .auraPressable(pressedScale = 0.985f) { onSongClick(song) }
+            .padding(horizontal = 8.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -719,9 +804,10 @@ private fun SongRowItem(
         ) {
             Box(
                 modifier = Modifier
-                    .size(48.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(AuraSurfaceContainerHigh),
+                    .size(50.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(AuraSurfaceBlack)
+                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 if (song.artworkUri != null) {
@@ -734,7 +820,7 @@ private fun SongRowItem(
                 } else {
                     AuraFallbackArtwork(
                         modifier = Modifier.fillMaxSize(),
-                        cornerRadius = 10.dp,
+                        cornerRadius = 12.dp,
                         iconSize = 24.dp
                     )
                 }
@@ -745,40 +831,59 @@ private fun SongRowItem(
             Column {
                 Text(
                     text = song.title,
-                    color = AuraOnSurface,
+                    color = AuraTextPrimary,
                     fontSize = 15.sp,
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.SemiBold,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(
-                    text = "${song.artist} • ${song.formattedDuration}",
-                    color = AuraOnSurfaceVariant,
-                    fontSize = 12.sp,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (song.isLossless) {
+                        Text(
+                            text = "FLAC",
+                            color = Color(0xFF34D399),
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(3.dp))
+                                .background(Color(0xFF34D399).copy(alpha = 0.12f))
+                                .padding(horizontal = 4.dp, vertical = 1.dp)
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                    }
+                    Text(
+                        text = "${song.artist} • ${song.formattedDuration}",
+                        color = AuraTextSecondary,
+                        fontSize = 12.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
             }
         }
 
         Row(verticalAlignment = Alignment.CenterVertically) {
-            AuraAnimatedFavoriteButton(
-                isFavorite = song.isFavorite,
+            IconButton(
                 onClick = { onToggleFavorite(song) },
-                size = 36.dp,
-                iconSize = 18.dp
-            )
+                modifier = Modifier.size(34.dp)
+            ) {
+                Icon(
+                    imageVector = if (song.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    contentDescription = "Favorite",
+                    tint = if (song.isFavorite) currentAccent else AuraTextTertiary,
+                    modifier = Modifier.size(18.dp)
+                )
+            }
 
             IconButton(
                 onClick = onMenuClick,
-                modifier = Modifier
-                    .size(36.dp)
-                    .auraPressable(pressedScale = 0.88f) { onMenuClick() }
+                modifier = Modifier.size(34.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.MoreVert,
                     contentDescription = "Options",
-                    tint = AuraOutline,
+                    tint = AuraTextTertiary,
                     modifier = Modifier.size(18.dp)
                 )
             }

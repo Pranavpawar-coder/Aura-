@@ -9,6 +9,38 @@ val AuraPrimaryAccentDefault = Color(0xFF7C5CFC)
 // Dynamic Color Tokens routed directly through LocalAuraColors
 // Every Composable reading these tokens will instantly react to System/Light/Dark Theme and Accent Color changes!
 
+val AuraDeepBlack: Color
+    @Composable get() = LocalAuraColors.current.deepBlack
+val AuraSoftBlack: Color
+    @Composable get() = LocalAuraColors.current.softBlack
+val AuraSurfaceBlack: Color
+    @Composable get() = LocalAuraColors.current.surfaceBlack
+val AuraElevated1: Color
+    @Composable get() = LocalAuraColors.current.surfaceContainerHigh
+val AuraElevated2: Color
+    @Composable get() = LocalAuraColors.current.surfaceContainerHighest
+val AuraElevated3: Color
+    @Composable get() = LocalAuraColors.current.surfaceBright
+
+val AuraTextPrimary: Color
+    @Composable get() = LocalAuraColors.current.textPrimary
+val AuraTextSecondary: Color
+    @Composable get() = LocalAuraColors.current.textSecondary
+val AuraTextTertiary: Color
+    @Composable get() = LocalAuraColors.current.textTertiary
+val AuraTextDisabled: Color
+    @Composable get() = LocalAuraColors.current.textDisabled
+
+val AuraGlassSurfaceDefault: Color
+    @Composable get() = LocalAuraColors.current.glassSurface
+val AuraGlassBorderDefault: Color
+    @Composable get() = LocalAuraColors.current.glassBorder
+val AuraGlassHighlightDefault: Color
+    @Composable get() = LocalAuraColors.current.glassHighlight
+
+// Dynamic Color Tokens routed directly through LocalAuraColors
+// Every Composable reading these tokens will instantly react to System/Light/Dark Theme and Accent Color changes!
+
 val AuraSurface: Color
     @Composable get() = LocalAuraColors.current.surface
 
@@ -98,3 +130,4 @@ val AuraGlassBorder: Color
 
 val AuraScrim: Color
     @Composable get() = LocalAuraColors.current.scrim
+

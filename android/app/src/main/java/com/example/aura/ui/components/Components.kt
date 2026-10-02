@@ -38,6 +38,8 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
+import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -80,24 +82,32 @@ import com.example.aura.theme.AuraTertiary
 @Composable
 fun AuraHeader(
     title: String,
+    onSettingsClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
+    val activeAccent = com.example.aura.theme.LocalAuraAccent.current
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .background(AuraSurface.copy(alpha = 0.85f))
+            .background(com.example.aura.theme.AuraDeepBlack.copy(alpha = 0.85f))
+            .border(
+                width = 1.dp,
+                color = com.example.aura.theme.AuraGlassBorderDefault,
+                shape = RoundedCornerShape(bottomStart = 0.dp, bottomEnd = 0.dp)
+            )
             .statusBarsPadding()
-            .height(56.dp)
-            .padding(horizontal = 16.dp),
+            .height(58.dp)
+            .padding(horizontal = 20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
-                    .size(32.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(AuraSurfaceContainerHighest),
+                    .size(34.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(com.example.aura.theme.AuraGlassSurfaceDefault)
+                    .border(1.dp, com.example.aura.theme.AuraGlassBorderDefault, RoundedCornerShape(10.dp)),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
@@ -108,44 +118,31 @@ fun AuraHeader(
                         .clip(CircleShape)
                 )
             }
-            Spacer(modifier = Modifier.width(10.dp))
+            Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = title,
-                color = AuraOnSurface,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.SemiBold,
-                letterSpacing = (-0.2).sp
+                color = com.example.aura.theme.AuraTextPrimary,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = (-0.3).sp
             )
         }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(
-                onClick = {},
-                modifier = Modifier.auraPressable(pressedScale = 0.90f) {}
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Cast,
-                    contentDescription = "Cast",
-                    tint = AuraOnSurfaceVariant,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .size(28.dp)
-                    .clip(CircleShape)
-                    .background(AuraSurfaceContainerHighest)
-                    .auraPressable(pressedScale = 0.90f, hapticFeedback = true) {},
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.aura_logo),
-                    contentDescription = "AURA",
-                    modifier = Modifier
-                        .size(20.dp)
-                        .clip(CircleShape)
-                )
-            }
+        Box(
+            modifier = Modifier
+                .size(38.dp)
+                .clip(CircleShape)
+                .background(com.example.aura.theme.AuraGlassSurfaceDefault)
+                .border(1.dp, com.example.aura.theme.AuraGlassBorderDefault, CircleShape)
+                .auraPressable(pressedScale = 0.90f, hapticFeedback = true, onClick = onSettingsClick),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = androidx.compose.material.icons.Icons.Default.Tune,
+                contentDescription = "Settings",
+                tint = com.example.aura.theme.AuraTextPrimary,
+                modifier = Modifier.size(20.dp)
+            )
         }
     }
 }
@@ -169,11 +166,18 @@ fun MiniPlayer(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 6.dp)
-            .height(64.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .background(AuraSurfaceContainer.copy(alpha = 0.95f))
-            .border(1.dp, AuraGlassBorder, RoundedCornerShape(16.dp))
+            .padding(horizontal = 14.dp, vertical = 4.dp)
+            .height(66.dp)
+            .shadow(
+                elevation = 10.dp,
+                shape = RoundedCornerShape(20.dp),
+                spotColor = accentColor.copy(alpha = 0.22f),
+                ambientColor = Color.Black.copy(alpha = 0.35f)
+            )
+            .clip(RoundedCornerShape(20.dp))
+            .background(com.example.aura.theme.AuraSurfaceBlack.copy(alpha = 0.82f))
+            .background(accentColor.copy(alpha = 0.06f))
+            .border(1.dp, com.example.aura.theme.AuraGlassBorderDefault, RoundedCornerShape(20.dp))
             .pointerInput(Unit) {
                 var totalDragY = 0f
                 var totalDragX = 0f
@@ -200,19 +204,26 @@ fun MiniPlayer(
             }
             .auraPressable(pressedScale = 0.99f, onClick = onClick)
     ) {
-        // Scrubber Hairline along bottom
+        // Scrubber Hairline along bottom (Section 10 & 11)
         Box(
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .fillMaxWidth()
-                .height(2.dp)
-                .background(AuraSurfaceContainerHighest)
+                .height(2.5.dp)
+                .background(Color.White.copy(alpha = 0.10f))
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth(playbackState.progressPercent)
-                    .height(2.dp)
-                    .background(accentColor)
+                    .height(2.5.dp)
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(
+                                accentColor.copy(alpha = 0.50f),
+                                accentColor
+                            )
+                        )
+                    )
             )
         }
 
@@ -230,10 +241,10 @@ fun MiniPlayer(
                 // Cover Art
                 Box(
                     modifier = Modifier
-                        .size(44.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(AuraSurfaceContainerHigh)
-                        .shadow(4.dp, RoundedCornerShape(10.dp)),
+                        .size(46.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(Color(0xFF161616))
+                        .border(1.dp, Color.White.copy(alpha = 0.10f), RoundedCornerShape(12.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     if (song.artworkUri != null) {
@@ -246,7 +257,7 @@ fun MiniPlayer(
                     } else {
                         AuraFallbackArtwork(
                             modifier = Modifier.fillMaxSize(),
-                            cornerRadius = 10.dp,
+                            cornerRadius = 12.dp,
                             iconSize = 22.dp
                         )
                     }
@@ -257,16 +268,17 @@ fun MiniPlayer(
                 Column(modifier = Modifier.weight(1f, fill = false)) {
                     Text(
                         text = song.title,
-                        color = AuraOnSurface,
+                        color = com.example.aura.theme.AuraTextPrimary,
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold,
+                        fontWeight = FontWeight.Bold,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = song.artist,
-                        color = AuraOnSurfaceVariant,
+                        color = com.example.aura.theme.AuraTextSecondary,
                         fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -290,7 +302,7 @@ fun MiniPlayer(
                     Icon(
                         imageVector = Icons.Default.SkipPrevious,
                         contentDescription = "Previous",
-                        tint = AuraOnSurfaceVariant,
+                        tint = com.example.aura.theme.AuraTextSecondary,
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -299,7 +311,7 @@ fun MiniPlayer(
                     onClick = onPlayPause,
                     size = 38.dp,
                     iconSize = 22.dp,
-                    tint = AuraOnSurface
+                    tint = Color.White
                 )
                 IconButton(
                     onClick = onNext,
@@ -310,7 +322,7 @@ fun MiniPlayer(
                     Icon(
                         imageVector = Icons.Default.SkipNext,
                         contentDescription = "Next",
-                        tint = AuraOnSurfaceVariant,
+                        tint = com.example.aura.theme.AuraTextSecondary,
                         modifier = Modifier.size(20.dp)
                     )
                 }
@@ -318,6 +330,7 @@ fun MiniPlayer(
         }
     }
 }
+
 
 @Composable
 fun AuraScrubber(

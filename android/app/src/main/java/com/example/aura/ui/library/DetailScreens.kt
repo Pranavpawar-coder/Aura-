@@ -1,6 +1,7 @@
 package com.example.aura.ui.library
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -51,6 +52,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -61,20 +63,22 @@ import com.example.aura.domain.model.Artist
 import com.example.aura.domain.model.FolderGroup
 import com.example.aura.domain.model.Playlist
 import com.example.aura.domain.model.Song
-import com.example.aura.theme.AuraOnPrimary
-import com.example.aura.theme.AuraOnSurface
-import com.example.aura.theme.AuraOnSurfaceVariant
-import com.example.aura.theme.AuraOutline
-import com.example.aura.theme.AuraPrimary
-import com.example.aura.theme.AuraPrimaryAccent
-import com.example.aura.theme.AuraPrimaryContainer
-import com.example.aura.theme.AuraSurface
-import com.example.aura.theme.AuraSurfaceContainer
-import com.example.aura.theme.AuraSurfaceContainerHigh
-import com.example.aura.theme.AuraSurfaceContainerLowest
+import com.example.aura.theme.AuraDeepBlack
+import com.example.aura.theme.AuraElevated1
+import com.example.aura.theme.AuraGlassBorderDefault
+import com.example.aura.theme.AuraGlassHighlightDefault
+import com.example.aura.theme.AuraGlassSurfaceDefault
+import com.example.aura.theme.AuraSoftBlack
+import com.example.aura.theme.AuraSurfaceBlack
+import com.example.aura.theme.AuraTextDisabled
+import com.example.aura.theme.AuraTextPrimary
+import com.example.aura.theme.AuraTextSecondary
+import com.example.aura.theme.AuraTextTertiary
+import com.example.aura.theme.LocalAuraAccent
 import com.example.aura.theme.auraPressable
 import com.example.aura.ui.components.AuraAnimatedFavoriteButton
 import com.example.aura.ui.components.AuraFallbackArtwork
+import com.example.aura.ui.components.AuraGlassPillButton
 import com.example.aura.ui.components.SongContextMenuBottomSheet
 
 @Composable
@@ -91,6 +95,7 @@ fun AlbumDetailScreen(
     onCreatePlaylist: (String, Song) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val currentAccent = LocalAuraAccent.current
     var menuSong by remember { mutableStateOf<Song?>(null) }
 
     if (menuSong != null) {
@@ -114,7 +119,7 @@ fun AlbumDetailScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface),
+            .background(AuraDeepBlack),
         contentPadding = PaddingValues(bottom = 120.dp)
     ) {
         // Hero Header
@@ -122,8 +127,8 @@ fun AlbumDetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
-                    .background(AuraSurfaceContainerLowest)
+                    .height(310.dp)
+                    .background(AuraElevated1)
             ) {
                 if (album.artworkUri != null) {
                     AsyncImage(
@@ -140,34 +145,35 @@ fun AlbumDetailScreen(
                     )
                 }
 
-                // Gradient scrim overlay
+                // Cinematic gradient scrim overlay
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(
                             Brush.verticalGradient(
                                 listOf(
-                                    Color.Black.copy(alpha = 0.4f),
+                                    Color.Black.copy(alpha = 0.50f),
                                     Color.Transparent,
-                                    AuraSurface
+                                    AuraDeepBlack.copy(alpha = 0.70f),
+                                    AuraDeepBlack
                                 )
                             )
                         )
                 )
 
-                // Back Button
-                IconButton(
+                // Translucent Glass Back Button
+                AuraGlassPillButton(
                     onClick = onBack,
+                    size = 40.dp,
                     modifier = Modifier
-                        .padding(start = 16.dp, top = 16.dp)
-                        .clip(CircleShape)
-                        .background(AuraSurface.copy(alpha = 0.7f))
-                        .size(40.dp)
+                        .padding(start = 20.dp, top = 20.dp)
+                        .align(Alignment.TopStart)
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = AuraOnSurface
+                        tint = AuraTextPrimary,
+                        modifier = Modifier.size(20.dp)
                     )
                 }
 
@@ -178,17 +184,26 @@ fun AlbumDetailScreen(
                         .padding(horizontal = 20.dp, vertical = 14.dp)
                 ) {
                     Text(
-                        text = album.title,
-                        color = AuraOnSurface,
-                        fontSize = 24.sp,
+                        text = "ALBUM",
+                        color = AuraTextTertiary,
+                        fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
+                        letterSpacing = 2.sp
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = album.title,
+                        color = AuraTextPrimary,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = (-0.6).sp,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = "${album.artist} • ${songs.size} songs • $formattedTotalDuration" +
                                 (album.year?.let { " • $it" } ?: ""),
-                        color = AuraOnSurfaceVariant,
+                        color = AuraTextSecondary,
                         fontSize = 13.sp,
                         modifier = Modifier.padding(top = 4.dp)
                     )
@@ -196,7 +211,7 @@ fun AlbumDetailScreen(
             }
         }
 
-        // Action Buttons: Play & Shuffle
+        // Action Buttons: Play & Shuffle Glass Capsules
         item {
             Row(
                 modifier = Modifier
@@ -204,36 +219,37 @@ fun AlbumDetailScreen(
                     .padding(horizontal = 20.dp, vertical = 12.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Play Button
+                // Play Accent Button
                 Row(
                     modifier = Modifier
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(Brush.horizontalGradient(listOf(AuraPrimary, AuraPrimaryContainer)))
+                        .background(currentAccent)
                         .clickable { if (songs.isNotEmpty()) onPlayAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraOnPrimary, modifier = Modifier.size(20.dp))
+                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraDeepBlack, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Play", color = AuraOnPrimary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Play All", color = AuraDeepBlack, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                 }
 
-                // Shuffle Button
+                // Shuffle Glass Button
                 Row(
                     modifier = Modifier
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(AuraSurfaceContainerHigh)
+                        .background(AuraGlassSurfaceDefault)
+                        .border(1.dp, AuraGlassBorderDefault, CircleShape)
                         .clickable { if (songs.isNotEmpty()) onShuffleAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = AuraPrimary, modifier = Modifier.size(18.dp))
+                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = currentAccent, modifier = Modifier.size(18.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Shuffle", color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = "Shuffle", color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }
@@ -267,6 +283,7 @@ fun ArtistDetailScreen(
     onCreatePlaylist: (String, Song) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val currentAccent = LocalAuraAccent.current
     var menuSong by remember { mutableStateOf<Song?>(null) }
 
     if (menuSong != null) {
@@ -287,7 +304,7 @@ fun ArtistDetailScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface),
+            .background(AuraDeepBlack),
         contentPadding = PaddingValues(bottom = 120.dp)
     ) {
         // Header
@@ -295,8 +312,8 @@ fun ArtistDetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(240.dp)
-                    .background(AuraSurfaceContainerLowest)
+                    .height(260.dp)
+                    .background(AuraElevated1)
             ) {
                 if (artist.artworkUri != null) {
                     AsyncImage(
@@ -313,7 +330,7 @@ fun ArtistDetailScreen(
                         Icon(
                             imageVector = Icons.Default.Person,
                             contentDescription = null,
-                            tint = AuraOutline,
+                            tint = AuraTextTertiary,
                             modifier = Modifier.size(80.dp)
                         )
                     }
@@ -325,26 +342,27 @@ fun ArtistDetailScreen(
                         .background(
                             Brush.verticalGradient(
                                 listOf(
-                                    Color.Black.copy(alpha = 0.3f),
+                                    Color.Black.copy(alpha = 0.45f),
                                     Color.Transparent,
-                                    AuraSurface
+                                    AuraDeepBlack.copy(alpha = 0.70f),
+                                    AuraDeepBlack
                                 )
                             )
                         )
                 )
 
-                IconButton(
+                AuraGlassPillButton(
                     onClick = onBack,
+                    size = 40.dp,
                     modifier = Modifier
-                        .padding(start = 16.dp, top = 16.dp)
-                        .clip(CircleShape)
-                        .background(AuraSurface.copy(alpha = 0.7f))
-                        .size(40.dp)
+                        .padding(start = 20.dp, top = 20.dp)
+                        .align(Alignment.TopStart)
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = AuraOnSurface
+                        tint = AuraTextPrimary,
+                        modifier = Modifier.size(20.dp)
                     )
                 }
 
@@ -354,16 +372,25 @@ fun ArtistDetailScreen(
                         .padding(horizontal = 20.dp, vertical = 14.dp)
                 ) {
                     Text(
-                        text = artist.name,
-                        color = AuraOnSurface,
-                        fontSize = 26.sp,
+                        text = "ARTIST",
+                        color = AuraTextTertiary,
+                        fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
+                        letterSpacing = 2.sp
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = artist.name,
+                        color = AuraTextPrimary,
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = (-0.8).sp,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                     Text(
                         text = "${albums.size} albums • ${songs.size} tracks",
-                        color = AuraOnSurfaceVariant,
+                        color = AuraTextSecondary,
                         fontSize = 13.sp,
                         modifier = Modifier.padding(top = 2.dp)
                     )
@@ -384,14 +411,14 @@ fun ArtistDetailScreen(
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(Brush.horizontalGradient(listOf(AuraPrimary, AuraPrimaryContainer)))
+                        .background(currentAccent)
                         .clickable { if (songs.isNotEmpty()) onPlayAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraOnPrimary, modifier = Modifier.size(20.dp))
+                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraDeepBlack, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Play All", color = AuraOnPrimary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Play All", color = AuraDeepBlack, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                 }
 
                 Row(
@@ -399,14 +426,15 @@ fun ArtistDetailScreen(
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(AuraSurfaceContainerHigh)
+                        .background(AuraGlassSurfaceDefault)
+                        .border(1.dp, AuraGlassBorderDefault, CircleShape)
                         .clickable { if (songs.isNotEmpty()) onShuffleAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = AuraPrimary, modifier = Modifier.size(18.dp))
+                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = currentAccent, modifier = Modifier.size(18.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Shuffle", color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = "Shuffle", color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }
@@ -416,26 +444,27 @@ fun ArtistDetailScreen(
             item {
                 Text(
                     text = "Albums (${albums.size})",
-                    color = AuraOnSurface,
-                    fontSize = 16.sp,
+                    color = AuraTextPrimary,
+                    fontSize = 17.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 8.dp, bottom = 6.dp)
+                    modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 8.dp)
                 )
                 LazyRow(
                     contentPadding = PaddingValues(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    horizontalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
                     items(albums, key = { it.id }) { album ->
                         Column(
                             modifier = Modifier
-                                .width(120.dp)
-                                .clickable { onAlbumClick(album) }
+                                .width(128.dp)
+                                .auraPressable(pressedScale = 0.96f) { onAlbumClick(album) }
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .size(120.dp)
-                                    .clip(RoundedCornerShape(14.dp))
-                                    .background(AuraSurfaceContainerHigh)
+                                    .size(128.dp)
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .background(AuraSurfaceBlack)
+                                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(16.dp))
                             ) {
                                 if (album.artworkUri != null) {
                                     AsyncImage(
@@ -446,22 +475,22 @@ fun ArtistDetailScreen(
                                     )
                                 } else {
                                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                        Icon(imageVector = Icons.Default.Album, contentDescription = null, tint = AuraOutline, modifier = Modifier.size(36.dp))
+                                        Icon(imageVector = Icons.Default.Album, contentDescription = null, tint = AuraTextTertiary, modifier = Modifier.size(36.dp))
                                     }
                                 }
                             }
+                            Spacer(modifier = Modifier.height(6.dp))
                             Text(
                                 text = album.title,
-                                color = AuraOnSurface,
+                                color = AuraTextPrimary,
                                 fontSize = 13.sp,
-                                fontWeight = FontWeight.Medium,
+                                fontWeight = FontWeight.SemiBold,
                                 maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                                modifier = Modifier.padding(top = 6.dp)
+                                overflow = TextOverflow.Ellipsis
                             )
                             Text(
                                 text = "${album.trackCount} tracks",
-                                color = AuraOnSurfaceVariant,
+                                color = AuraTextSecondary,
                                 fontSize = 11.sp,
                                 maxLines = 1
                             )
@@ -475,10 +504,10 @@ fun ArtistDetailScreen(
         item {
             Text(
                 text = "Songs (${songs.size})",
-                color = AuraOnSurface,
-                fontSize = 16.sp,
+                color = AuraTextPrimary,
+                fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 6.dp)
+                modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 22.dp, bottom = 8.dp)
             )
         }
 
@@ -508,6 +537,7 @@ fun FolderDetailScreen(
     onCreatePlaylist: (String, Song) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val currentAccent = LocalAuraAccent.current
     var menuSong by remember { mutableStateOf<Song?>(null) }
 
     if (menuSong != null) {
@@ -528,23 +558,33 @@ fun FolderDetailScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface),
+            .background(AuraDeepBlack),
         contentPadding = PaddingValues(bottom = 120.dp)
     ) {
         item {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    .padding(horizontal = 20.dp, vertical = 18.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = onBack) {
-                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = AuraOnSurface)
+                AuraGlassPillButton(
+                    onClick = onBack,
+                    size = 40.dp
+                ) {
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = AuraTextPrimary, modifier = Modifier.size(20.dp))
                 }
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(14.dp))
                 Column {
-                    Text(text = folder.displayName, color = AuraOnSurface, fontSize = 20.sp, fontWeight = FontWeight.Bold, maxLines = 1)
-                    Text(text = "${songs.size} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                    Text(
+                        text = "FOLDER",
+                        color = AuraTextTertiary,
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 1.8.sp
+                    )
+                    Text(text = folder.displayName, color = AuraTextPrimary, fontSize = 22.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+                    Text(text = "${songs.size} tracks", color = AuraTextSecondary, fontSize = 12.sp)
                 }
             }
         }
@@ -553,7 +593,7 @@ fun FolderDetailScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 12.dp),
+                    .padding(horizontal = 20.dp, vertical = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Row(
@@ -561,14 +601,14 @@ fun FolderDetailScreen(
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(Brush.horizontalGradient(listOf(AuraPrimary, AuraPrimaryContainer)))
+                        .background(currentAccent)
                         .clickable { if (songs.isNotEmpty()) onPlayAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraOnPrimary, modifier = Modifier.size(20.dp))
+                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraDeepBlack, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Play All", color = AuraOnPrimary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Play All", color = AuraDeepBlack, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                 }
 
                 Row(
@@ -576,14 +616,15 @@ fun FolderDetailScreen(
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(AuraSurfaceContainerHigh)
+                        .background(AuraGlassSurfaceDefault)
+                        .border(1.dp, AuraGlassBorderDefault, CircleShape)
                         .clickable { if (songs.isNotEmpty()) onShuffleAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = AuraPrimary, modifier = Modifier.size(18.dp))
+                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = currentAccent, modifier = Modifier.size(18.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Shuffle", color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = "Shuffle", color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }
@@ -615,6 +656,7 @@ fun PlaylistDetailScreen(
     onMoveSong: (fromIndex: Int, toIndex: Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val currentAccent = LocalAuraAccent.current
     var menuSong by remember { mutableStateOf<Song?>(null) }
 
     if (menuSong != null) {
@@ -635,7 +677,7 @@ fun PlaylistDetailScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface),
+            .background(AuraDeepBlack),
         contentPadding = PaddingValues(bottom = 120.dp)
     ) {
         // Top Bar
@@ -643,34 +685,49 @@ fun PlaylistDetailScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 16.dp, top = 16.dp, end = 16.dp),
+                    .padding(horizontal = 20.dp, vertical = 18.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = onBack) {
-                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = AuraOnSurface)
+                AuraGlassPillButton(
+                    onClick = onBack,
+                    size = 40.dp
+                ) {
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = AuraTextPrimary, modifier = Modifier.size(20.dp))
                 }
-                IconButton(onClick = onDeletePlaylist) {
-                    Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete Playlist", tint = AuraOutline)
+                AuraGlassPillButton(
+                    onClick = onDeletePlaylist,
+                    size = 40.dp
+                ) {
+                    Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete Playlist", tint = AuraTextTertiary, modifier = Modifier.size(18.dp))
                 }
             }
         }
 
         // Playlist Title Info
         item {
-            Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp)) {
+            Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)) {
+                Text(
+                    text = "PLAYLIST",
+                    color = AuraTextTertiary,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 2.sp
+                )
+                Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     text = playlist.name,
-                    color = AuraOnSurface,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
+                    color = AuraTextPrimary,
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = (-0.8).sp
                 )
                 val totalDuration = formatTotalDuration(songs.sumOf { it.durationMs })
                 Text(
                     text = "${songs.size} tracks • $totalDuration",
-                    color = AuraOnSurfaceVariant,
+                    color = AuraTextSecondary,
                     fontSize = 13.sp,
-                    modifier = Modifier.padding(top = 2.dp)
+                    modifier = Modifier.padding(top = 4.dp)
                 )
             }
         }
@@ -688,14 +745,14 @@ fun PlaylistDetailScreen(
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(Brush.horizontalGradient(listOf(AuraPrimary, AuraPrimaryContainer)))
+                        .background(currentAccent)
                         .clickable { if (songs.isNotEmpty()) onPlayAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraOnPrimary, modifier = Modifier.size(20.dp))
+                    Icon(imageVector = Icons.Default.PlayArrow, contentDescription = "Play", tint = AuraDeepBlack, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Play", color = AuraOnPrimary, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                    Text(text = "Play All", color = AuraDeepBlack, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                 }
 
                 Row(
@@ -703,14 +760,15 @@ fun PlaylistDetailScreen(
                         .weight(1f)
                         .height(48.dp)
                         .clip(CircleShape)
-                        .background(AuraSurfaceContainerHigh)
+                        .background(AuraGlassSurfaceDefault)
+                        .border(1.dp, AuraGlassBorderDefault, CircleShape)
                         .clickable { if (songs.isNotEmpty()) onShuffleAll(songs) },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = AuraPrimary, modifier = Modifier.size(18.dp))
+                    Icon(imageVector = Icons.Default.Shuffle, contentDescription = "Shuffle", tint = currentAccent, modifier = Modifier.size(18.dp))
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Shuffle", color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                    Text(text = "Shuffle", color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }
@@ -720,22 +778,26 @@ fun PlaylistDetailScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onSongClick(song) }
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                    .padding(horizontal = 14.dp, vertical = 3.dp)
+                    .clip(RoundedCornerShape(14.dp))
+                    .auraPressable(pressedScale = 0.985f) { onSongClick(song) }
+                    .padding(horizontal = 8.dp, vertical = 6.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = "${index + 1}",
-                    color = AuraOutline,
-                    fontSize = 13.sp,
+                    color = AuraTextTertiary,
+                    fontSize = 12.sp,
+                    fontFamily = FontFamily.Monospace,
                     modifier = Modifier.width(28.dp)
                 )
 
                 Box(
                     modifier = Modifier
-                        .size(46.dp)
-                        .clip(RoundedCornerShape(10.dp))
-                        .background(AuraSurfaceContainerHigh),
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(AuraSurfaceBlack)
+                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
                     contentAlignment = Alignment.Center
                 ) {
                     if (song.artworkUri != null) {
@@ -746,15 +808,15 @@ fun PlaylistDetailScreen(
                             modifier = Modifier.fillMaxSize()
                         )
                     } else {
-                        Icon(imageVector = Icons.Default.Headphones, contentDescription = null, tint = AuraOutline, modifier = Modifier.size(22.dp))
+                        Icon(imageVector = Icons.Default.Headphones, contentDescription = null, tint = AuraTextTertiary, modifier = Modifier.size(22.dp))
                     }
                 }
 
-                Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.width(14.dp))
 
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = song.title, color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                    Text(text = "${song.artist} • ${song.formattedDuration}", color = AuraOnSurfaceVariant, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(text = song.title, color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(text = "${song.artist} • ${song.formattedDuration}", color = AuraTextSecondary, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
 
                 // Reorder Buttons
@@ -763,7 +825,7 @@ fun PlaylistDetailScreen(
                         onClick = { onMoveSong(index, index - 1) },
                         modifier = Modifier.size(32.dp)
                     ) {
-                        Icon(imageVector = Icons.Default.KeyboardArrowUp, contentDescription = "Move Up", tint = AuraOutline, modifier = Modifier.size(18.dp))
+                        Icon(imageVector = Icons.Default.KeyboardArrowUp, contentDescription = "Move Up", tint = AuraTextTertiary, modifier = Modifier.size(18.dp))
                     }
                 }
                 if (index < songs.size - 1) {
@@ -771,7 +833,7 @@ fun PlaylistDetailScreen(
                         onClick = { onMoveSong(index, index + 1) },
                         modifier = Modifier.size(32.dp)
                     ) {
-                        Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Move Down", tint = AuraOutline, modifier = Modifier.size(18.dp))
+                        Icon(imageVector = Icons.Default.KeyboardArrowDown, contentDescription = "Move Down", tint = AuraTextTertiary, modifier = Modifier.size(18.dp))
                     }
                 }
 
@@ -779,7 +841,7 @@ fun PlaylistDetailScreen(
                     onClick = { menuSong = song },
                     modifier = Modifier.size(32.dp)
                 ) {
-                    Icon(imageVector = Icons.Default.MoreVert, contentDescription = "Options", tint = AuraOutline, modifier = Modifier.size(18.dp))
+                    Icon(imageVector = Icons.Default.MoreVert, contentDescription = "Options", tint = AuraTextTertiary, modifier = Modifier.size(18.dp))
                 }
             }
         }
@@ -794,26 +856,31 @@ private fun DetailSongRow(
     onMenuClick: () -> Unit,
     onToggleFavorite: () -> Unit
 ) {
+    val currentAccent = LocalAuraAccent.current
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .auraPressable(pressedScale = 0.98f, onClick = onSongClick)
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 14.dp, vertical = 3.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .auraPressable(pressedScale = 0.985f, onClick = onSongClick)
+            .padding(horizontal = 8.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = "$index",
-            color = AuraOutline,
-            fontSize = 13.sp,
+            color = AuraTextTertiary,
+            fontSize = 12.sp,
+            fontFamily = FontFamily.Monospace,
             modifier = Modifier.width(28.dp)
         )
 
         Box(
             modifier = Modifier
-                .size(46.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(AuraSurfaceContainerHigh),
+                .size(48.dp)
+                .clip(RoundedCornerShape(12.dp))
+                .background(AuraSurfaceBlack)
+                .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(12.dp)),
             contentAlignment = Alignment.Center
         ) {
             if (song.artworkUri != null) {
@@ -826,36 +893,50 @@ private fun DetailSongRow(
             } else {
                 AuraFallbackArtwork(
                     modifier = Modifier.fillMaxSize(),
-                    cornerRadius = 10.dp,
+                    cornerRadius = 12.dp,
                     iconSize = 22.dp
                 )
             }
         }
 
-        Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.width(14.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(text = song.title, color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            Text(text = "${song.artist} • ${song.formattedDuration}", color = AuraOnSurfaceVariant, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(text = song.title, color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Spacer(modifier = Modifier.height(2.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (song.isLossless) {
+                    Text(
+                        text = "FLAC",
+                        color = Color(0xFF34D399),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(3.dp))
+                            .background(Color(0xFF34D399).copy(alpha = 0.12f))
+                            .padding(horizontal = 4.dp, vertical = 1.dp)
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                }
+                Text(text = "${song.artist} • ${song.formattedDuration}", color = AuraTextSecondary, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            }
         }
 
         AuraAnimatedFavoriteButton(
             isFavorite = song.isFavorite,
             onClick = onToggleFavorite,
-            size = 36.dp,
+            size = 34.dp,
             iconSize = 18.dp
         )
 
         IconButton(
             onClick = onMenuClick,
-            modifier = Modifier
-                .size(36.dp)
-                .auraPressable(pressedScale = 0.88f, onClick = onMenuClick)
+            modifier = Modifier.size(34.dp)
         ) {
             Icon(
                 imageVector = Icons.Default.MoreVert,
                 contentDescription = "Options",
-                tint = AuraOutline,
+                tint = AuraTextTertiary,
                 modifier = Modifier.size(18.dp)
             )
         }

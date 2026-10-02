@@ -1,6 +1,7 @@
 package com.example.aura.ui.search
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,6 +24,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Album
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -52,8 +54,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.aura.theme.auraPressable
-import com.example.aura.ui.components.AuraFallbackArtwork
 import com.example.aura.domain.model.Album
 import com.example.aura.domain.model.Artist
 import com.example.aura.domain.model.FolderGroup
@@ -61,14 +61,18 @@ import com.example.aura.domain.model.Genre
 import com.example.aura.domain.model.Playlist
 import com.example.aura.domain.model.SearchResults
 import com.example.aura.domain.model.Song
-import com.example.aura.theme.AuraOnPrimary
-import com.example.aura.theme.AuraOnSurface
-import com.example.aura.theme.AuraOnSurfaceVariant
-import com.example.aura.theme.AuraOutline
-import com.example.aura.theme.AuraPrimary
-import com.example.aura.theme.AuraSurface
-import com.example.aura.theme.AuraSurfaceContainer
-import com.example.aura.theme.AuraSurfaceContainerHigh
+import com.example.aura.theme.AuraDeepBlack
+import com.example.aura.theme.AuraGlassBorderDefault
+import com.example.aura.theme.AuraGlassSurfaceDefault
+import com.example.aura.theme.AuraSurfaceBlack
+import com.example.aura.theme.AuraTextDisabled
+import com.example.aura.theme.AuraTextPrimary
+import com.example.aura.theme.AuraTextSecondary
+import com.example.aura.theme.AuraTextTertiary
+import com.example.aura.theme.LocalAuraAccent
+import com.example.aura.theme.auraPressable
+import com.example.aura.ui.components.AuraAnimatedFavoriteButton
+import com.example.aura.ui.components.AuraFallbackArtwork
 import com.example.aura.ui.components.SongContextMenuBottomSheet
 
 @Composable
@@ -92,6 +96,7 @@ fun SearchScreen(
     listState: LazyListState = rememberLazyListState(),
     modifier: Modifier = Modifier
 ) {
+    val currentAccent = LocalAuraAccent.current
     var selectedCategory by remember { mutableStateOf("All") }
     var menuSong by remember { mutableStateOf<Song?>(null) }
 
@@ -118,31 +123,51 @@ fun SearchScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface)
-            .padding(horizontal = 16.dp)
+            .background(AuraDeepBlack)
+            .padding(horizontal = 20.dp)
     ) {
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
-        // Search Bar Pill
+        // Search Header Title
+        Text(
+            text = "SEARCH",
+            color = AuraTextTertiary,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = 2.sp
+        )
+        Spacer(modifier = Modifier.height(2.dp))
+        Text(
+            text = "Explore Library",
+            color = AuraTextPrimary,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            letterSpacing = (-0.8).sp
+        )
+
+        Spacer(modifier = Modifier.height(14.dp))
+
+        // Translucent Glass Search Bar
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(54.dp)
+                .height(52.dp)
                 .clip(CircleShape)
-                .background(AuraSurfaceContainer.copy(alpha = 0.85f)),
+                .background(AuraGlassSurfaceDefault)
+                .border(1.dp, AuraGlassBorderDefault, CircleShape),
             contentAlignment = Alignment.CenterStart
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(horizontal = 14.dp),
+                    .padding(horizontal = 16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = "Search",
-                    tint = AuraOnSurfaceVariant,
-                    modifier = Modifier.size(22.dp)
+                    tint = AuraTextSecondary,
+                    modifier = Modifier.size(20.dp)
                 )
 
                 TextField(
@@ -150,8 +175,8 @@ fun SearchScreen(
                     onValueChange = onQueryChange,
                     placeholder = {
                         Text(
-                            text = "Search songs, albums, artists, genres...",
-                            color = AuraOutline,
+                            text = "Tracks, artists, albums, folders...",
+                            color = AuraTextTertiary,
                             fontSize = 14.sp
                         )
                     },
@@ -160,9 +185,9 @@ fun SearchScreen(
                         unfocusedContainerColor = Color.Transparent,
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
-                        focusedTextColor = AuraOnSurface,
-                        unfocusedTextColor = AuraOnSurface,
-                        cursorColor = AuraPrimary
+                        focusedTextColor = AuraTextPrimary,
+                        unfocusedTextColor = AuraTextPrimary,
+                        cursorColor = currentAccent
                     ),
                     singleLine = true,
                     modifier = Modifier.weight(1f)
@@ -176,7 +201,7 @@ fun SearchScreen(
                         Icon(
                             imageVector = Icons.Default.Close,
                             contentDescription = "Clear search",
-                            tint = AuraOnSurfaceVariant,
+                            tint = AuraTextSecondary,
                             modifier = Modifier.size(18.dp)
                         )
                     }
@@ -196,15 +221,20 @@ fun SearchScreen(
                 Box(
                     modifier = Modifier
                         .clip(CircleShape)
-                        .background(if (isSelected) AuraPrimary else AuraSurfaceContainerHigh)
+                        .background(if (isSelected) currentAccent else AuraGlassSurfaceDefault)
+                        .border(
+                            1.dp,
+                            if (isSelected) currentAccent.copy(alpha = 0.5f) else AuraGlassBorderDefault,
+                            CircleShape
+                        )
                         .clickable { selectedCategory = category }
-                        .padding(horizontal = 14.dp, vertical = 7.dp)
+                        .padding(horizontal = 16.dp, vertical = 7.dp)
                 ) {
                     Text(
                         text = category,
-                        color = if (isSelected) AuraOnPrimary else AuraOnSurfaceVariant,
+                        color = if (isSelected) AuraDeepBlack else AuraTextSecondary,
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.SemiBold
+                        fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
                     )
                 }
             }
@@ -221,23 +251,32 @@ fun SearchScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = null,
-                        tint = AuraOutline.copy(alpha = 0.6f),
-                        modifier = Modifier.size(48.dp)
-                    )
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .size(56.dp)
+                            .clip(CircleShape)
+                            .background(AuraSurfaceBlack)
+                            .border(1.dp, AuraGlassBorderDefault, CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null,
+                            tint = AuraTextTertiary,
+                            modifier = Modifier.size(26.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(14.dp))
                     Text(
                         text = "Global Library Search",
-                        color = AuraOnSurface,
-                        fontSize = 16.sp,
+                        color = AuraTextPrimary,
+                        fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
                         text = "Search across tracks, artists, albums, and local folders.",
-                        color = AuraOnSurfaceVariant,
-                        fontSize = 12.sp,
+                        color = AuraTextSecondary,
+                        fontSize = 13.sp,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(top = 4.dp)
                     )
@@ -252,15 +291,15 @@ fun SearchScreen(
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
-                        text = "No results found for \"$searchQuery\"",
-                        color = AuraOnSurface,
-                        fontSize = 16.sp,
+                        text = "No results for \"$searchQuery\"",
+                        color = AuraTextPrimary,
+                        fontSize = 17.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = "Check your spelling or try searching another title, album or artist.",
-                        color = AuraOnSurfaceVariant,
-                        fontSize = 12.sp,
+                        text = "Check your spelling or try searching another title or artist.",
+                        color = AuraTextSecondary,
+                        fontSize = 13.sp,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(top = 4.dp)
                     )
@@ -282,16 +321,17 @@ fun SearchScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
+                                .clip(RoundedCornerShape(14.dp))
                                 .clickable { onArtistClick(artist) }
-                                .padding(vertical = 8.dp, horizontal = 4.dp),
+                                .padding(vertical = 6.dp, horizontal = 4.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .size(44.dp)
+                                    .size(46.dp)
                                     .clip(CircleShape)
-                                    .background(AuraSurfaceContainerHigh),
+                                    .background(AuraSurfaceBlack)
+                                    .border(1.dp, AuraGlassBorderDefault, CircleShape),
                                 contentAlignment = Alignment.Center
                             ) {
                                 if (artist.artworkUri != null) {
@@ -302,13 +342,13 @@ fun SearchScreen(
                                         modifier = Modifier.fillMaxSize()
                                     )
                                 } else {
-                                    Icon(imageVector = Icons.Default.Person, contentDescription = null, tint = AuraOutline, modifier = Modifier.size(22.dp))
+                                    Icon(imageVector = Icons.Default.Person, contentDescription = null, tint = AuraTextTertiary, modifier = Modifier.size(22.dp))
                                 }
                             }
-                            Spacer(modifier = Modifier.width(12.dp))
+                            Spacer(modifier = Modifier.width(14.dp))
                             Column {
-                                Text(text = artist.name, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-                                Text(text = "${artist.trackCount} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                Text(text = artist.name, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                                Text(text = "${artist.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp)
                             }
                         }
                     }
@@ -323,16 +363,17 @@ fun SearchScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
+                                .clip(RoundedCornerShape(14.dp))
                                 .clickable { onAlbumClick(album) }
-                                .padding(vertical = 8.dp, horizontal = 4.dp),
+                                .padding(vertical = 6.dp, horizontal = 4.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .size(44.dp)
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .background(AuraSurfaceContainerHigh),
+                                    .size(48.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(AuraSurfaceBlack)
+                                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(10.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 if (album.artworkUri != null) {
@@ -345,15 +386,15 @@ fun SearchScreen(
                                 } else {
                                     AuraFallbackArtwork(
                                         modifier = Modifier.fillMaxSize(),
-                                        cornerRadius = 8.dp,
+                                        cornerRadius = 10.dp,
                                         iconSize = 22.dp
                                     )
                                 }
                             }
-                            Spacer(modifier = Modifier.width(12.dp))
+                            Spacer(modifier = Modifier.width(14.dp))
                             Column {
-                                Text(text = album.title, color = AuraOnSurface, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                Text(text = "${album.artist} • ${album.trackCount} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp, maxLines = 1)
+                                Text(text = album.title, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                Text(text = "${album.artist} • ${album.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp, maxLines = 1)
                             }
                         }
                     }
@@ -368,16 +409,17 @@ fun SearchScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
-                                .auraPressable(pressedScale = 0.98f) { onSongClick(song) }
-                                .padding(vertical = 8.dp, horizontal = 4.dp),
+                                .clip(RoundedCornerShape(14.dp))
+                                .auraPressable(pressedScale = 0.985f) { onSongClick(song) }
+                                .padding(vertical = 6.dp, horizontal = 4.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .size(46.dp)
+                                    .size(48.dp)
                                     .clip(RoundedCornerShape(10.dp))
-                                    .background(AuraSurfaceContainerHigh),
+                                    .background(AuraSurfaceBlack)
+                                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(10.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 if (song.artworkUri != null) {
@@ -396,40 +438,43 @@ fun SearchScreen(
                                 }
                             }
 
-                            Spacer(modifier = Modifier.width(12.dp))
+                            Spacer(modifier = Modifier.width(14.dp))
 
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = song.title,
-                                    color = AuraOnSurface,
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.Medium,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                                Text(
-                                    text = "${song.artist} • ${song.album}",
-                                    color = AuraOnSurfaceVariant,
-                                    fontSize = 12.sp,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
+                                Text(text = song.title, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                Spacer(modifier = Modifier.height(2.dp))
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    if (song.isLossless) {
+                                        Text(
+                                            text = "FLAC",
+                                            color = Color(0xFF34D399),
+                                            fontSize = 9.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier
+                                                .clip(RoundedCornerShape(3.dp))
+                                                .background(Color(0xFF34D399).copy(alpha = 0.12f))
+                                                .padding(horizontal = 4.dp, vertical = 1.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                    }
+                                    Text(text = "${song.artist} • ${song.formattedDuration}", color = AuraTextSecondary, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                }
                             }
 
-                            IconButton(onClick = { onToggleFavorite(song) }, modifier = Modifier.size(36.dp)) {
+                            IconButton(onClick = { onToggleFavorite(song) }, modifier = Modifier.size(34.dp)) {
                                 Icon(
                                     imageVector = if (song.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                                     contentDescription = "Favorite",
-                                    tint = if (song.isFavorite) AuraPrimary else AuraOutline,
+                                    tint = if (song.isFavorite) currentAccent else AuraTextTertiary,
                                     modifier = Modifier.size(18.dp)
                                 )
                             }
 
-                            IconButton(onClick = { menuSong = song }, modifier = Modifier.size(36.dp)) {
+                            IconButton(onClick = { menuSong = song }, modifier = Modifier.size(34.dp)) {
                                 Icon(
                                     imageVector = Icons.Default.MoreVert,
                                     contentDescription = "Options",
-                                    tint = AuraOutline,
+                                    tint = AuraTextTertiary,
                                     modifier = Modifier.size(18.dp)
                                 )
                             }
@@ -446,24 +491,58 @@ fun SearchScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clip(RoundedCornerShape(12.dp))
+                                .clip(RoundedCornerShape(14.dp))
                                 .clickable { onFolderClick(folder) }
-                                .padding(vertical = 8.dp, horizontal = 4.dp),
+                                .padding(vertical = 6.dp, horizontal = 4.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Box(
                                 modifier = Modifier
-                                    .size(42.dp)
-                                    .clip(RoundedCornerShape(8.dp))
-                                    .background(AuraSurfaceContainerHigh),
+                                    .size(48.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(AuraSurfaceBlack)
+                                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(10.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Icon(imageVector = Icons.Default.Folder, contentDescription = null, tint = AuraPrimary, modifier = Modifier.size(22.dp))
+                                Icon(imageVector = Icons.Default.Folder, contentDescription = null, tint = currentAccent, modifier = Modifier.size(22.dp))
                             }
-                            Spacer(modifier = Modifier.width(12.dp))
+                            Spacer(modifier = Modifier.width(14.dp))
                             Column {
-                                Text(text = folder.displayName, color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-                                Text(text = "${folder.trackCount} tracks", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                Text(text = folder.displayName, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                                Text(text = "${folder.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp)
+                            }
+                        }
+                    }
+                }
+
+                // Genres Section
+                if ((selectedCategory == "All" || selectedCategory == "Genres") && searchResults.genres.isNotEmpty()) {
+                    item {
+                        SearchSectionHeader(title = "Genres (${searchResults.genres.size})")
+                    }
+                    items(searchResults.genres, key = { "genre_${it.name}" }) { genre ->
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(14.dp))
+                                .clickable { onGenreClick(genre) }
+                                .padding(vertical = 6.dp, horizontal = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(48.dp)
+                                    .clip(RoundedCornerShape(10.dp))
+                                    .background(AuraSurfaceBlack)
+                                    .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(10.dp)),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(imageVector = Icons.Default.AutoAwesome, contentDescription = null, tint = currentAccent, modifier = Modifier.size(22.dp))
+                            }
+                            Spacer(modifier = Modifier.width(14.dp))
+                            Column {
+                                Text(text = genre.name, color = AuraTextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                                Text(text = "${genre.trackCount} tracks", color = AuraTextSecondary, fontSize = 12.sp)
                             }
                         }
                     }
@@ -477,9 +556,9 @@ fun SearchScreen(
 private fun SearchSectionHeader(title: String) {
     Text(
         text = title,
-        color = AuraPrimary,
-        fontSize = 14.sp,
+        color = AuraTextPrimary,
+        fontSize = 16.sp,
         fontWeight = FontWeight.Bold,
-        modifier = Modifier.padding(top = 14.dp, bottom = 6.dp)
+        modifier = Modifier.padding(top = 16.dp, bottom = 6.dp)
     )
 }

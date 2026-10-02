@@ -81,7 +81,7 @@ fun QueueBottomSheet(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
-        containerColor = AuraSurfaceContainer,
+        containerColor = com.example.aura.theme.AuraSurfaceBlack,
         shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp),
         dragHandle = {
             Box(

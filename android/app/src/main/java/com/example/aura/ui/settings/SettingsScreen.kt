@@ -2,6 +2,7 @@ package com.example.aura.ui.settings
 
 import android.net.Uri
 import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -84,6 +85,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -102,23 +104,36 @@ import com.example.aura.domain.model.settings.SettingsCategory
 import com.example.aura.domain.model.settings.SettingsSearchResult
 import com.example.aura.theme.LocalAuraAccent
 import com.example.aura.theme.LocalAuraArtworkCornerRadius
+import com.example.aura.theme.AuraDeepBlack
+import com.example.aura.theme.AuraGlassBorderDefault
+import com.example.aura.theme.AuraGlassHighlightDefault
+import com.example.aura.theme.AuraGlassSurfaceDefault
 import com.example.aura.theme.AuraOnPrimary
 import com.example.aura.theme.AuraOnSurface
 import com.example.aura.theme.AuraOnSurfaceVariant
 import com.example.aura.theme.AuraOutline
 import com.example.aura.theme.AuraPrimary
 import com.example.aura.theme.AuraSecondary
+import com.example.aura.theme.AuraSoftBlack
 import com.example.aura.theme.AuraSurface
+import com.example.aura.theme.AuraSurfaceBlack
 import com.example.aura.theme.AuraSurfaceContainer
 import com.example.aura.theme.AuraSurfaceContainerHigh
 import com.example.aura.theme.AuraSurfaceContainerHighest
 import com.example.aura.theme.AuraSurfaceContainerLow
+import com.example.aura.theme.AuraTextDisabled
+import com.example.aura.theme.AuraTextPrimary
+import com.example.aura.theme.AuraTextSecondary
+import com.example.aura.theme.AuraTextTertiary
+import com.example.aura.theme.auraPressable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(
     folders: List<MusicFolderEntity> = emptyList(),
     userPreferences: UserPreferences? = null,
+    playbackDspSettings: com.example.aura.domain.model.audio.PlaybackSettings = com.example.aura.domain.model.audio.PlaybackSettings(),
+    onUpdatePlaybackSettings: (com.example.aura.domain.model.audio.PlaybackSettings) -> Unit = {},
     onAddFolder: (Uri) -> Unit = {},
     onRemoveFolder: (MusicFolderEntity) -> Unit = {},
     onRescanFolder: (MusicFolderEntity) -> Unit = {},
@@ -157,15 +172,18 @@ fun SettingsScreen(
         .collectAsState(initial = GesturesSettings())
     val hapticSettings by (userPreferences?.hapticFlow ?: flowOf(HapticSettings()))
         .collectAsState(initial = HapticSettings())
+    val notificationSettings by (userPreferences?.notificationFlow ?: flowOf(com.example.aura.domain.model.settings.NotificationSettings()))
+        .collectAsState(initial = com.example.aura.domain.model.settings.NotificationSettings())
     val smartScanSettings by (userPreferences?.smartScanSettingsFlow ?: flowOf(com.example.aura.domain.model.exclusion.SmartScanSettings()))
         .collectAsState(initial = com.example.aura.domain.model.exclusion.SmartScanSettings())
-
     var showExcludedItemsScreen by remember { mutableStateOf(false) }
 
-    var bitPerfect by remember { mutableStateOf(true) }
-    var gapless by remember { mutableStateOf(true) }
-    var crossfadeSeconds by remember { mutableFloatStateOf(0f) }
-    var perSongOffsetMs by remember { mutableFloatStateOf(0f) }
+    BackHandler(enabled = showExcludedItemsScreen) {
+        showExcludedItemsScreen = false
+    }
+    BackHandler(enabled = activeCategory != null && !showExcludedItemsScreen) {
+        activeCategory = null
+    }
 
     // Document Pickers
     val folderPickerLauncher = rememberLauncherForActivityResult(
@@ -319,7 +337,7 @@ fun SettingsScreen(
         ModalBottomSheet(
             onDismissRequest = { activeCategory = null },
             sheetState = sheetState,
-            containerColor = AuraSurfaceContainer
+            containerColor = AuraSurfaceBlack
         ) {
             Column(
                 modifier = Modifier
@@ -372,16 +390,12 @@ fun SettingsScreen(
                             }
                         )
                         SettingsToggleItem(
-                            title = "Bit-Perfect Lossless Output",
-                            subtitle = "Bypasses system resampling for direct DAC playback",
-                            checked = bitPerfect,
-                            onCheckedChange = { bitPerfect = it }
-                        )
-                        SettingsToggleItem(
                             title = "Gapless Playback Engine",
-                            subtitle = "Pre-buffers audio chunks to eliminate silence",
-                            checked = gapless,
-                            onCheckedChange = { gapless = it }
+                            subtitle = "Pre-buffers audio chunks to eliminate silence between tracks",
+                            checked = playbackDspSettings.gaplessEnabled,
+                            onCheckedChange = {
+                                onUpdatePlaybackSettings(playbackDspSettings.copy(gaplessEnabled = it))
+                            }
                         )
                     }
 
@@ -389,17 +403,32 @@ fun SettingsScreen(
                         SettingsToggleItem(
                             title = "Gapless Playback",
                             subtitle = "Eliminates silence between continuous tracks",
-                            checked = gapless,
-                            onCheckedChange = { gapless = it }
+                            checked = playbackDspSettings.gaplessEnabled,
+                            onCheckedChange = {
+                                onUpdatePlaybackSettings(playbackDspSettings.copy(gaplessEnabled = it))
+                            }
                         )
                         Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)) {
                             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                                 Text(text = "Crossfade Duration", color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                                Text(text = if (crossfadeSeconds > 0) "${crossfadeSeconds.toInt()}s" else "Off", color = activeAccent, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                                Text(
+                                    text = if (playbackDspSettings.crossfadeEnabled) "${playbackDspSettings.crossfadeDurationSeconds}s" else "Off",
+                                    color = activeAccent,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
                             }
                             Slider(
-                                value = crossfadeSeconds,
-                                onValueChange = { crossfadeSeconds = it },
+                                value = if (playbackDspSettings.crossfadeEnabled) playbackDspSettings.crossfadeDurationSeconds.toFloat() else 0f,
+                                onValueChange = { v ->
+                                    val secs = v.toInt()
+                                    onUpdatePlaybackSettings(
+                                        playbackDspSettings.copy(
+                                            crossfadeEnabled = secs > 0,
+                                            crossfadeDurationSeconds = secs.coerceAtLeast(1)
+                                        )
+                                    )
+                                },
                                 valueRange = 0f..15f,
                                 steps = 14,
                                 colors = SliderDefaults.colors(thumbColor = activeAccent, activeTrackColor = activeAccent)
@@ -706,31 +735,6 @@ fun SettingsScreen(
                             }
                         }
 
-                        Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp)) {
-                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                                Text(text = "Per-song offset", color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                                Text(text = "${perSongOffsetMs.toInt()} ms", color = activeAccent, fontSize = 13.sp, fontWeight = FontWeight.Bold)
-                            }
-                            Slider(
-                                value = perSongOffsetMs,
-                                onValueChange = { perSongOffsetMs = it },
-                                valueRange = -3000f..3000f,
-                                steps = 59,
-                                colors = SliderDefaults.colors(thumbColor = activeAccent, activeTrackColor = activeAccent)
-                            )
-                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                                Text(
-                                    text = "Reset Per-Song Offset",
-                                    color = activeAccent,
-                                    fontSize = 11.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.clickable {
-                                        perSongOffsetMs = 0f
-                                    }
-                                )
-                            }
-                        }
-
                         Spacer(modifier = Modifier.height(14.dp))
 
                         // 5. Storage
@@ -1002,12 +1006,42 @@ fun SettingsScreen(
 
                     SettingsCategory.GESTURES -> {
                         SettingsSectionHeader("Player Touch & Swipe Gestures")
-                        SettingsClickableItem(title = "Swipe Left", subtitle = "Next Track", onClick = {})
-                        SettingsClickableItem(title = "Swipe Right", subtitle = "Previous Track", onClick = {})
-                        SettingsClickableItem(title = "Swipe Down", subtitle = "Minimize Full Player", onClick = {})
-                        SettingsClickableItem(title = "Swipe Up", subtitle = "Open Playback Queue", onClick = {})
-                        SettingsClickableItem(title = "Artwork Tap", subtitle = "Open Synchronized Lyrics Overlay", onClick = {})
-                        SettingsClickableItem(title = "Artwork Double Tap", subtitle = "Toggle Favorite / Like", onClick = {})
+                        // Read-only display of configured gesture actions from DataStore
+                        val gestureRows = listOf(
+                            "Swipe Left" to gesturesSettings.swipeLeftPlayer,
+                            "Swipe Right" to gesturesSettings.swipeRightPlayer,
+                            "Swipe Down" to "Minimize Full Player",
+                            "Swipe Up" to "Open Playback Queue",
+                            "Artwork Tap" to gesturesSettings.artworkTap,
+                            "Artwork Double Tap" to gesturesSettings.artworkDoubleTap
+                        )
+                        gestureRows.forEach { (gesture, action) ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(text = gesture, color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                                Text(text = action, color = activeAccent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 4.dp)
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(AuraSurfaceContainerLow)
+                                .padding(12.dp)
+                        ) {
+                            Text(
+                                text = "Gesture actions are fixed to AURA's core navigation. Custom gesture remapping is not available in this version.",
+                                color = AuraOnSurfaceVariant,
+                                fontSize = 12.sp
+                            )
+                        }
                     }
 
                     SettingsCategory.LIBRARY -> {
@@ -1259,24 +1293,44 @@ fun SettingsScreen(
                         SettingsToggleItem(
                             title = "Media Playback Controls",
                             subtitle = "Show play, pause, skip buttons on lock screen and notification shade",
-                            checked = true,
-                            onCheckedChange = {}
+                            checked = notificationSettings.showControls,
+                            onCheckedChange = {
+                                coroutineScope.launch {
+                                    userPreferences?.updateNotificationSettings(notificationSettings.copy(showControls = it))
+                                }
+                            }
                         )
                         SettingsToggleItem(
                             title = "Seekbar in Notification",
                             subtitle = "Enables progress scrubber directly in system media notification",
-                            checked = true,
-                            onCheckedChange = {}
+                            checked = notificationSettings.showProgress,
+                            onCheckedChange = {
+                                coroutineScope.launch {
+                                    userPreferences?.updateNotificationSettings(notificationSettings.copy(showProgress = it))
+                                }
+                            }
                         )
                         SettingsToggleItem(
                             title = "Favorite Button in Notification",
-                            subtitle = "Quickly like or favorite currently playing track",
-                            checked = true,
-                            onCheckedChange = {}
+                            subtitle = "Quickly like or favorite the currently playing track",
+                            checked = notificationSettings.showFavorite,
+                            onCheckedChange = {
+                                coroutineScope.launch {
+                                    userPreferences?.updateNotificationSettings(notificationSettings.copy(showFavorite = it))
+                                }
+                            }
                         )
                     }
 
                     SettingsCategory.STORAGE -> {
+                        SettingsClickableItem(
+                            title = "Listening Statistics",
+                            subtitle = "View total play time, most played songs, and listening history",
+                            icon = Icons.Default.Storage,
+                            onClick = {
+                                onOpenStats()
+                            }
+                        )
                         SettingsClickableItem(
                             title = "Clear Cached Lyrics",
                             subtitle = "Frees space by removing downloaded LRC lyrics",
@@ -1293,6 +1347,24 @@ fun SettingsScreen(
                             onClick = {
                                 onRescanLibrary()
                                 Toast.makeText(context, "Scanning library...", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        SettingsSectionHeader("Backup & Restore")
+                        SettingsClickableItem(
+                            title = "Create JSON Backup",
+                            subtitle = "Export playlists, favorites, audio EQ settings, and preferences to a JSON file",
+                            icon = Icons.Default.Upload,
+                            onClick = {
+                                exportBackupLauncher.launch("aura_backup_${System.currentTimeMillis()}.json")
+                            }
+                        )
+                        SettingsClickableItem(
+                            title = "Restore Backup",
+                            subtitle = "Import and restore data from a previously saved AURA JSON file",
+                            icon = Icons.Default.Download,
+                            onClick = {
+                                importBackupLauncher.launch(arrayOf("application/json", "*/*"))
                             }
                         )
                     }
@@ -1410,31 +1482,168 @@ fun SettingsScreen(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
-                                .clip(RoundedCornerShape(16.dp))
-                                .background(AuraSurfaceContainerLow)
-                                .padding(20.dp)
+                                .clip(RoundedCornerShape(24.dp))
+                                .background(AuraSurfaceBlack)
+                                .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(24.dp))
+                                .padding(24.dp)
                         ) {
                             Column(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                androidx.compose.foundation.Image(
-                                    painter = androidx.compose.ui.res.painterResource(id = com.example.aura.R.drawable.aura_logo),
-                                    contentDescription = "AURA Logo",
+                                Box(
                                     modifier = Modifier
-                                        .size(72.dp)
+                                        .size(80.dp)
                                         .clip(CircleShape)
-                                )
-                                Spacer(modifier = Modifier.height(12.dp))
-                                Text(text = "AURA Music Player", color = AuraOnSurface, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                                Text(text = "Production Release • Version 1.0", color = activeAccent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
-                                Spacer(modifier = Modifier.height(16.dp))
-                                Column(modifier = Modifier.fillMaxWidth()) {
-                                    Text(text = "• Audio Engine: Google Media3 ExoPlayer", color = AuraOnSurfaceVariant, fontSize = 12.sp)
-                                    Text(text = "• DSP Engine: AURA 4D Audio Float Processor", color = AuraOnSurfaceVariant, fontSize = 12.sp)
-                                    Text(text = "• Database: SQLite Room Offline-First", color = AuraOnSurfaceVariant, fontSize = 12.sp)
-                                    Text(text = "• UI: 100% Jetpack Compose Native", color = AuraOnSurfaceVariant, fontSize = 12.sp)
+                                        .background(activeAccent.copy(alpha = 0.12f))
+                                        .border(2.dp, activeAccent.copy(alpha = 0.35f), CircleShape),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    androidx.compose.foundation.Image(
+                                        painter = androidx.compose.ui.res.painterResource(id = com.example.aura.R.drawable.aura_logo),
+                                        contentDescription = "AURA Logo",
+                                        modifier = Modifier
+                                            .size(68.dp)
+                                            .clip(CircleShape)
+                                    )
                                 }
+
+                                Spacer(modifier = Modifier.height(14.dp))
+                                Text(
+                                    text = "AURA Music Player",
+                                    color = AuraOnSurface,
+                                    fontSize = 22.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    letterSpacing = (-0.5).sp
+                                )
+                                Spacer(modifier = Modifier.height(6.dp))
+                                Text(
+                                    text = "A cinematic, offline-first music player designed for a clean and immersive listening experience.",
+                                    color = AuraOnSurfaceVariant,
+                                    fontSize = 13.sp,
+                                    textAlign = TextAlign.Center,
+                                    lineHeight = 18.sp,
+                                    modifier = Modifier.padding(horizontal = 12.dp)
+                                )
+
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                                // Version & Build Cards
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .weight(1f)
+                                            .clip(RoundedCornerShape(12.dp))
+                                            .background(AuraSurfaceContainerHigh)
+                                            .padding(vertical = 10.dp, horizontal = 12.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                            Text(text = "VERSION", color = AuraTextTertiary, fontSize = 10.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+                                            Spacer(modifier = Modifier.height(2.dp))
+                                            Text(text = "1.0.0", color = activeAccent, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                                        }
+                                    }
+                                    Box(
+                                        modifier = Modifier
+                                            .weight(1f)
+                                            .clip(RoundedCornerShape(12.dp))
+                                            .background(AuraSurfaceContainerHigh)
+                                            .padding(vertical = 10.dp, horizontal = 12.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                            Text(text = "BUILD", color = AuraTextTertiary, fontSize = 10.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+                                            Spacer(modifier = Modifier.height(2.dp))
+                                            Text(text = "2026.1", color = activeAccent, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                                        }
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                                // Features
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(RoundedCornerShape(14.dp))
+                                        .background(AuraSurfaceContainerLow)
+                                        .padding(16.dp)
+                                ) {
+                                    Text(
+                                        text = "FEATURES",
+                                        color = activeAccent,
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        letterSpacing = 1.5.sp
+                                    )
+                                    Spacer(modifier = Modifier.height(10.dp))
+                                    val features = listOf(
+                                        "Local music playback (MP3, FLAC, WAV, M4A, OGG)",
+                                        "Synchronized & offline lyrics (LRCLIB & embedded LRC)",
+                                        "Smart playlists, favorites, and queue management",
+                                        "Artwork-reactive interface & dynamic theming",
+                                        "10-Band Parametric Equalizer & sound presets",
+                                        "AURA 4D Spatial Audio & acoustics engine",
+                                        "Background playback with lock screen media controls"
+                                    )
+                                    features.forEach { feature ->
+                                        Row(
+                                            modifier = Modifier.padding(vertical = 3.dp),
+                                            verticalAlignment = Alignment.Top
+                                        ) {
+                                            Text(text = "•", color = activeAccent, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                                            Spacer(modifier = Modifier.width(8.dp))
+                                            Text(text = feature, color = AuraOnSurfaceVariant, fontSize = 12.sp, lineHeight = 17.sp)
+                                        }
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.height(20.dp))
+
+                                // Offline & Privacy
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clip(RoundedCornerShape(14.dp))
+                                        .background(AuraSurfaceContainerLow)
+                                        .padding(16.dp)
+                                ) {
+                                    Text(
+                                        text = "OFFLINE & PRIVACY",
+                                        color = activeAccent,
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        letterSpacing = 1.5.sp
+                                    )
+                                    Spacer(modifier = Modifier.height(6.dp))
+                                    Text(
+                                        text = "AURA operates completely offline. Your music library, playback history, statistics, and preferences are stored exclusively on your device. Zero telemetry, zero analytics.",
+                                        color = AuraOnSurfaceVariant,
+                                        fontSize = 12.sp,
+                                        lineHeight = 17.sp
+                                    )
+                                }
+
+                                Spacer(modifier = Modifier.height(24.dp))
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth(0.5f)
+                                        .height(1.dp)
+                                        .background(AuraGlassBorderDefault)
+                                )
+                                Spacer(modifier = Modifier.height(18.dp))
+
+                                Text(
+                                    text = "Created by Pranav",
+                                    color = AuraTextSecondary,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Medium,
+                                    letterSpacing = 0.5.sp
+                                )
                             }
                         }
                     }
@@ -1450,47 +1659,69 @@ fun SettingsScreen(
         state = listState,
         modifier = modifier
             .fillMaxSize()
-            .background(AuraSurface),
-        contentPadding = PaddingValues(bottom = 24.dp, top = 8.dp)
+            .background(AuraDeepBlack),
+        contentPadding = PaddingValues(bottom = 120.dp, top = 14.dp)
     ) {
         item {
-            Text(
-                text = "Settings",
-                color = AuraOnSurface,
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 6.dp)
-            )
+            Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)) {
+                Text(
+                    text = "PREFERENCES",
+                    color = AuraTextTertiary,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 2.sp
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = "Settings",
+                    color = AuraTextPrimary,
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = (-0.8).sp
+                )
+            }
         }
 
-        // Search Bar
+        // Search Bar Glass Capsule
         item {
-            OutlinedTextField(
-                value = searchQuery,
-                onValueChange = { searchQuery = it },
-                placeholder = { Text("Search settings (EQ, lyrics, theme, backup...)", color = AuraOnSurfaceVariant, fontSize = 13.sp) },
-                leadingIcon = { Icon(imageVector = Icons.Default.Search, contentDescription = null, tint = AuraOutline) },
-                trailingIcon = {
-                    if (searchQuery.isNotEmpty()) {
-                        IconButton(onClick = { searchQuery = "" }) {
-                            Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear", tint = AuraOutline)
-                        }
-                    }
-                },
-                singleLine = true,
-                shape = RoundedCornerShape(16.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = activeAccent,
-                    unfocusedBorderColor = AuraOutline.copy(alpha = 0.3f),
-                    focusedContainerColor = AuraSurfaceContainerLow,
-                    unfocusedContainerColor = AuraSurfaceContainerLow,
-                    focusedTextColor = AuraOnSurface,
-                    unfocusedTextColor = AuraOnSurface
-                ),
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-            )
+                    .padding(horizontal = 20.dp, vertical = 8.dp)
+                    .height(52.dp)
+                    .clip(CircleShape)
+                    .background(AuraGlassSurfaceDefault)
+                    .border(1.dp, AuraGlassBorderDefault, CircleShape)
+                    .padding(horizontal = 16.dp),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(imageVector = Icons.Default.Search, contentDescription = null, tint = AuraTextSecondary, modifier = Modifier.size(20.dp))
+                    Spacer(modifier = Modifier.width(10.dp))
+                    androidx.compose.foundation.text.BasicTextField(
+                        value = searchQuery,
+                        onValueChange = { searchQuery = it },
+                        modifier = Modifier.weight(1f),
+                        singleLine = true,
+                        textStyle = androidx.compose.ui.text.TextStyle(
+                            color = AuraTextPrimary,
+                            fontSize = 14.sp
+                        ),
+                        cursorBrush = androidx.compose.ui.graphics.SolidColor(activeAccent),
+                        decorationBox = { innerTextField ->
+                            if (searchQuery.isEmpty()) {
+                                Text("Search settings (EQ, lyrics, theme, backup...)", color = AuraTextTertiary, fontSize = 13.sp)
+                            }
+                            innerTextField()
+                        }
+                    )
+                    if (searchQuery.isNotEmpty()) {
+                        IconButton(onClick = { searchQuery = "" }, modifier = Modifier.size(28.dp)) {
+                            Icon(imageVector = Icons.Default.Clear, contentDescription = "Clear", tint = AuraTextSecondary, modifier = Modifier.size(16.dp))
+                        }
+                    }
+                }
+            }
         }
 
         // If searching, display search results
@@ -1503,7 +1734,7 @@ fun SettingsScreen(
                             .padding(24.dp),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(text = "No settings matching '$searchQuery'", color = AuraOnSurfaceVariant, fontSize = 14.sp)
+                        Text(text = "No settings matching '$searchQuery'", color = AuraTextSecondary, fontSize = 14.sp)
                     }
                 }
             } else {
@@ -1515,14 +1746,14 @@ fun SettingsScreen(
                                 searchQuery = ""
                                 activeCategory = result.category
                             }
-                            .padding(horizontal = 16.dp, vertical = 12.dp),
+                            .padding(horizontal = 20.dp, vertical = 12.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Row(modifier = Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
                             Box(
                                 modifier = Modifier
-                                    .size(36.dp)
+                                    .size(38.dp)
                                     .clip(CircleShape)
                                     .background(activeAccent.copy(alpha = 0.15f)),
                                 contentAlignment = Alignment.Center
@@ -1536,24 +1767,25 @@ fun SettingsScreen(
                             }
                             Spacer(modifier = Modifier.width(14.dp))
                             Column {
-                                Text(text = result.title, color = AuraOnSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                                Text(text = result.subtitle, color = AuraOnSurfaceVariant, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                                Text(text = result.title, color = AuraTextPrimary, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                                Text(text = result.subtitle, color = AuraTextSecondary, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                             }
                         }
-                        Icon(imageVector = Icons.Default.ChevronRight, contentDescription = null, tint = AuraOutline, modifier = Modifier.size(18.dp))
+                        Icon(imageVector = Icons.Default.ChevronRight, contentDescription = null, tint = AuraTextTertiary, modifier = Modifier.size(18.dp))
                     }
                 }
             }
         } else {
-            // Profile & Tier Card
+            // Profile & Tier Glass Card
             item {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(AuraSurfaceContainerLow)
-                        .padding(16.dp)
+                        .padding(horizontal = 20.dp, vertical = 8.dp)
+                        .clip(RoundedCornerShape(22.dp))
+                        .background(AuraSurfaceBlack)
+                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(22.dp))
+                        .padding(18.dp)
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         androidx.compose.foundation.Image(
@@ -1567,10 +1799,11 @@ fun SettingsScreen(
                         Column {
                             Text(
                                 text = "AURA Master",
-                                color = AuraOnSurface,
+                                color = AuraTextPrimary,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold
                             )
+                            Spacer(modifier = Modifier.height(2.dp))
                             Text(
                                 text = "Audiophile Tier • Bit-Perfect Direct",
                                 color = activeAccent,
@@ -1582,16 +1815,27 @@ fun SettingsScreen(
                 }
             }
 
-            // Exactly the 15 Categories defined in SettingsCategory enum
-            items(SettingsCategory.values()) { category ->
+            // 8 Core Settings Sections
+            val primaryCategories = listOf(
+                SettingsCategory.PLAYBACK,
+                SettingsCategory.AUDIO,
+                SettingsCategory.LYRICS,
+                SettingsCategory.APPEARANCE,
+                SettingsCategory.LIBRARY,
+                SettingsCategory.NOTIFICATIONS,
+                SettingsCategory.STORAGE,
+                SettingsCategory.ABOUT
+            )
+            items(primaryCategories) { category ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 4.dp)
+                        .padding(horizontal = 20.dp, vertical = 3.dp)
                         .clip(RoundedCornerShape(16.dp))
-                        .background(AuraSurfaceContainerLow)
-                        .clickable { activeCategory = category }
-                        .padding(horizontal = 16.dp, vertical = 14.dp),
+                        .background(AuraSurfaceBlack)
+                        .border(1.dp, AuraGlassBorderDefault, RoundedCornerShape(16.dp))
+                        .auraPressable(pressedScale = 0.985f) { activeCategory = category }
+                        .padding(horizontal = 16.dp, vertical = 13.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -1601,7 +1845,7 @@ fun SettingsScreen(
                     ) {
                         Box(
                             modifier = Modifier
-                                .size(42.dp)
+                                .size(40.dp)
                                 .clip(CircleShape)
                                 .background(activeAccent.copy(alpha = 0.12f)),
                             contentAlignment = Alignment.Center
@@ -1617,13 +1861,13 @@ fun SettingsScreen(
                         Column {
                             Text(
                                 text = category.title,
-                                color = AuraOnSurface,
+                                color = AuraTextPrimary,
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
                             Text(
                                 text = category.subtitle,
-                                color = AuraOnSurfaceVariant,
+                                color = AuraTextSecondary,
                                 fontSize = 12.sp,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
@@ -1633,8 +1877,27 @@ fun SettingsScreen(
                     Icon(
                         imageVector = Icons.Default.ChevronRight,
                         contentDescription = "Open",
-                        tint = AuraOutline,
+                        tint = AuraTextTertiary,
                         modifier = Modifier.size(18.dp)
+                    )
+                }
+            }
+
+            // Subtle signature at end of Settings
+            item {
+                Spacer(modifier = Modifier.height(32.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 36.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Created by Pranav",
+                        color = AuraTextTertiary,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.Medium,
+                        letterSpacing = 1.sp
                     )
                 }
             }

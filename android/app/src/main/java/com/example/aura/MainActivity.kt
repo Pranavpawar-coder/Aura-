@@ -31,6 +31,8 @@ import com.example.aura.domain.model.settings.AppearanceSettings
 import com.example.aura.theme.AuraTheme
 import com.example.aura.ui.navigation.AuraApp
 import com.example.aura.ui.splash.AuraSplashScreen
+import com.example.aura.data.download.AuraDownloadEngine
+import com.example.aura.ui.viewmodel.CloudDownloaderViewModel
 import com.example.aura.ui.viewmodel.LibraryViewModel
 import com.example.aura.ui.viewmodel.PlayerViewModel
 
@@ -80,6 +82,7 @@ class MainActivity : ComponentActivity() {
 
         val playerManager = AuraPlayerSingleton.getPlayerManager(applicationContext, musicRepository)
         val userPreferences = UserPreferences(applicationContext)
+        val downloadEngine = AuraDownloadEngine.getInstance(applicationContext, musicRepository)
 
         val playerViewModel = ViewModelProvider(
             this,
@@ -102,6 +105,16 @@ class MainActivity : ComponentActivity() {
                 }
             }
         )[LibraryViewModel::class.java]
+
+        val cloudDownloaderViewModel = ViewModelProvider(
+            this,
+            object : ViewModelProvider.Factory {
+                @Suppress("UNCHECKED_CAST")
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                    return CloudDownloaderViewModel(downloadEngine) as T
+                }
+            }
+        )[CloudDownloaderViewModel::class.java]
 
         setContent {
             val appearance by userPreferences.appearanceFlow.collectAsState(initial = AppearanceSettings())
@@ -126,6 +139,7 @@ class MainActivity : ComponentActivity() {
                         AuraApp(
                             playerViewModel = playerViewModel,
                             libraryViewModel = libraryViewModel,
+                            cloudDownloaderViewModel = cloudDownloaderViewModel,
                             userPreferences = userPreferences
                         )
                     }

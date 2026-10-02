@@ -70,10 +70,11 @@ class AuraAudioProcessor : BaseAudioProcessor() {
     @Volatile
     private var balanceGainRight = 1.0f
 
-    // Visualizer tap callback (invoked on audio thread with downsampled floats)
+    // Visualizer tap callback (invoked on audio thread with downsampled floats, throttled to ~30fps)
     var onAudioFrameListener: ((FloatArray) -> Unit)? = null
     private val visualizerBuffer = FloatArray(128)
     private var visualizerSampleCount = 0
+    private var lastVisualizerTimeMs = 0L
 
     init {
         // Initialize 5 default graphic EQ filter slots
@@ -340,8 +341,9 @@ class AuraAudioProcessor : BaseAudioProcessor() {
             l = limOut.first
             r = limOut.second
 
-            // 9. Capture for Visualizer (downsampled)
-            if (visIndex < visualizerBuffer.size && (visualizerSampleCount++ % 8 == 0)) {
+            // 9. Capture for Visualizer (downsampled & throttled to ~30fps)
+            val listener = onAudioFrameListener
+            if (listener != null && visIndex < visualizerBuffer.size && (visualizerSampleCount++ % 16 == 0)) {
                 visualizerBuffer[visIndex++] = (l + r) * 0.5f
             }
 
@@ -355,8 +357,13 @@ class AuraAudioProcessor : BaseAudioProcessor() {
 
         outputBuffer.flip()
 
-        if (visIndex > 0) {
-            onAudioFrameListener?.invoke(visualizerBuffer.copyOf(visIndex))
+        val listener = onAudioFrameListener
+        if (listener != null && visIndex > 0) {
+            val now = System.currentTimeMillis()
+            if (now - lastVisualizerTimeMs >= 32L) {
+                lastVisualizerTimeMs = now
+                listener.invoke(visualizerBuffer.copyOf(visIndex))
+            }
         }
     }
 

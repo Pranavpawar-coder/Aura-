@@ -435,9 +435,13 @@ class UserPreferences(private val context: Context) {
     private val NOTIF_CONTROLS = booleanPreferencesKey("notif_controls")
     private val NOTIF_PROGRESS = booleanPreferencesKey("notif_progress")
     private val NOTIF_FAVORITE = booleanPreferencesKey("notif_favorite")
+    private val NOTIF_COMPACT = booleanPreferencesKey("notif_compact")
+    private val NOTIF_PERSISTENT = booleanPreferencesKey("notif_persistent")
 
     private val HAPTIC_ENABLED = booleanPreferencesKey("haptic_enabled")
     private val HAPTIC_INTENSITY = stringPreferencesKey("haptic_intensity")
+
+    private val ANIM_VIS_ENABLED = booleanPreferencesKey("anim_vis_enabled")
 
     // Flows
     val playbackBehaviorFlow: Flow<PlaybackBehaviorSettings> = context.dataStore.data.map { p ->
@@ -557,7 +561,8 @@ class UserPreferences(private val context: Context) {
         AnimationSettings(
             animationsEnabled = p[ANIM_ENABLED] ?: true,
             animationScale = p[ANIM_SCALE] ?: 1.0f,
-            reduceMotion = p[ANIM_REDUCE_MOTION] ?: false
+            reduceMotion = p[ANIM_REDUCE_MOTION] ?: false,
+            visualizerAnimationEnabled = p[ANIM_VIS_ENABLED] ?: true
         )
     }
 
@@ -566,6 +571,27 @@ class UserPreferences(private val context: Context) {
             p[ANIM_ENABLED] = settings.animationsEnabled
             p[ANIM_SCALE] = settings.animationScale
             p[ANIM_REDUCE_MOTION] = settings.reduceMotion
+            p[ANIM_VIS_ENABLED] = settings.visualizerAnimationEnabled
+        }
+    }
+
+    val notificationFlow: Flow<NotificationSettings> = context.dataStore.data.map { p ->
+        NotificationSettings(
+            showControls = p[NOTIF_CONTROLS] ?: true,
+            showProgress = p[NOTIF_PROGRESS] ?: true,
+            showFavorite = p[NOTIF_FAVORITE] ?: true,
+            compactNotification = p[NOTIF_COMPACT] ?: false,
+            persistentNotification = p[NOTIF_PERSISTENT] ?: true
+        )
+    }
+
+    suspend fun updateNotificationSettings(settings: NotificationSettings) {
+        context.dataStore.edit { p ->
+            p[NOTIF_CONTROLS] = settings.showControls
+            p[NOTIF_PROGRESS] = settings.showProgress
+            p[NOTIF_FAVORITE] = settings.showFavorite
+            p[NOTIF_COMPACT] = settings.compactNotification
+            p[NOTIF_PERSISTENT] = settings.persistentNotification
         }
     }
 

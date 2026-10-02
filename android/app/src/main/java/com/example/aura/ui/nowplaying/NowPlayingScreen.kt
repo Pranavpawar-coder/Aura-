@@ -1,12 +1,15 @@
 package com.example.aura.ui.nowplaying
 
 import android.net.Uri
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
+import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.RepeatMode as AnimRepeatMode
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloat
@@ -94,6 +97,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
@@ -117,6 +121,8 @@ import com.example.aura.domain.model.audio.AudioEffectsState
 import com.example.aura.domain.model.audio.SleepTimerSettings
 import com.example.aura.theme.ArtworkColorExtractor
 import com.example.aura.theme.ArtworkPalette
+import com.example.aura.theme.AuraDeepBlack
+import com.example.aura.theme.AuraSurfaceBlack
 import com.example.aura.theme.AuraMotion
 import com.example.aura.theme.AuraOnPrimary
 import com.example.aura.theme.AuraOnSurface
@@ -129,18 +135,24 @@ import com.example.aura.theme.AuraSurface
 import com.example.aura.theme.AuraSurfaceContainer
 import com.example.aura.theme.AuraSurfaceContainerHigh
 import com.example.aura.theme.AuraSurfaceContainerLow
+import com.example.aura.theme.AuraTextPrimary
+import com.example.aura.theme.AuraTextSecondary
+import com.example.aura.theme.AuraTextTertiary
 import com.example.aura.theme.auraPressable
 import com.example.aura.ui.components.AuraAnimatedFavoriteButton
 import com.example.aura.ui.components.AuraCapsulePlayPauseButton
 import com.example.aura.ui.components.AuraFallbackArtwork
 import com.example.aura.ui.components.AuraGlassPillButton
+import com.example.aura.ui.components.AuraProgressBar
 import com.example.aura.ui.components.AuraScrubber
 import com.example.aura.ui.components.AuraVisualizerView
 import com.example.aura.ui.components.SleepTimerBottomSheet
 import com.example.aura.ui.components.TrackInfoDialog
+import androidx.compose.ui.text.font.FontFamily
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.roundToInt
+
 
 private enum class GestureAxis {
     UNDECIDED,
@@ -217,6 +229,26 @@ fun NowPlayingScreen(
         }
     }
 
+    // Back handling within Now Playing Screen
+    BackHandler(enabled = showTrackInfo) {
+        showTrackInfo = false
+    }
+    BackHandler(enabled = showOptionsMenu && !showTrackInfo) {
+        showOptionsMenu = false
+    }
+    BackHandler(enabled = showSleepTimerSheet && !showTrackInfo && !showOptionsMenu) {
+        showSleepTimerSheet = false
+    }
+    BackHandler(enabled = showQueueSheet && !showTrackInfo && !showOptionsMenu && !showSleepTimerSheet) {
+        showQueueSheet = false
+    }
+    BackHandler(enabled = centerMode != CenterDisplayMode.ARTWORK && !showTrackInfo && !showOptionsMenu && !showSleepTimerSheet && !showQueueSheet) {
+        centerMode = CenterDisplayMode.ARTWORK
+    }
+    BackHandler(enabled = centerMode == CenterDisplayMode.ARTWORK && !showTrackInfo && !showOptionsMenu && !showSleepTimerSheet && !showQueueSheet) {
+        onDismiss()
+    }
+
     if (showTrackInfo) {
         TrackInfoDialog(song = song, onDismiss = { showTrackInfo = false })
     }
@@ -278,15 +310,23 @@ fun NowPlayingScreen(
     }
 
     var playerHeightPx by remember { mutableFloatStateOf(0f) }
+    var playerWidthPx by remember { mutableFloatStateOf(0f) }
     val dragOffsetY = remember { Animatable(0f) }
+    val dragOffsetX = remember { Animatable(0f) }
     var currentAxis by remember { mutableStateOf(GestureAxis.UNDECIDED) }
     var horizontalAccumulator by remember { mutableFloatStateOf(0f) }
     var verticalAccumulator by remember { mutableFloatStateOf(0f) }
 
+    val currentAppearance = com.example.aura.theme.LocalAuraAppearance.current
+    val currentBgStyle = currentAppearance.backgroundStyle
+
     Box(
         modifier = modifier
             .fillMaxSize()
-            .onSizeChanged { playerHeightPx = it.height.toFloat() }
+            .onSizeChanged {
+                playerHeightPx = it.height.toFloat()
+                playerWidthPx = it.width.toFloat()
+            }
             .offset { IntOffset(0, dragOffsetY.value.roundToInt().coerceAtLeast(0)) }
             .background(Color(0xFF0C0706))
             .pointerInput(song.id) {
@@ -303,16 +343,20 @@ fun NowPlayingScreen(
                         if (currentAxis == GestureAxis.UNDECIDED) {
                             val dx = abs(horizontalAccumulator)
                             val dy = abs(verticalAccumulator)
-                            if (dx > dy && dx > 20f) {
+                            if (dx > dy * 1.3f && dx > 25f) {
                                 currentAxis = GestureAxis.HORIZONTAL
                                 change.consume()
-                            } else if (dy > dx && dy > 20f) {
+                            } else if (dy > dx * 1.3f && dy > 25f) {
                                 currentAxis = GestureAxis.VERTICAL
                                 change.consume()
                             }
                         } else {
                             change.consume()
-                            if (currentAxis == GestureAxis.VERTICAL) {
+                            if (currentAxis == GestureAxis.HORIZONTAL) {
+                                coroutineScope.launch {
+                                    dragOffsetX.snapTo(dragOffsetX.value + dragAmount.x)
+                                }
+                            } else if (currentAxis == GestureAxis.VERTICAL) {
                                 if (dragAmount.y < -25f && !showQueueSheet) {
                                     showQueueSheet = true
                                 } else {
@@ -325,10 +369,53 @@ fun NowPlayingScreen(
                     },
                     onDragEnd = {
                         if (currentAxis == GestureAxis.HORIZONTAL) {
-                            if (horizontalAccumulator < -80f) {
-                                onNext()
-                            } else if (horizontalAccumulator > 80f) {
-                                onPrevious()
+                            val threshold = if (playerWidthPx > 0) playerWidthPx * 0.22f else 220f
+                            val currentX = dragOffsetX.value
+                            if (currentX < -threshold) {
+                                // Swipe LEFT -> Next track with smooth cinematic slide
+                                coroutineScope.launch {
+                                    dragOffsetX.animateTo(
+                                        targetValue = -playerWidthPx,
+                                        animationSpec = tween(180, easing = FastOutLinearInEasing)
+                                    )
+                                    onNext()
+                                    dragOffsetX.snapTo(playerWidthPx * 0.35f)
+                                    dragOffsetX.animateTo(
+                                        targetValue = 0f,
+                                        animationSpec = spring(
+                                            dampingRatio = Spring.DampingRatioLowBouncy,
+                                            stiffness = Spring.StiffnessMedium
+                                        )
+                                    )
+                                }
+                            } else if (currentX > threshold) {
+                                // Swipe RIGHT -> Previous track with smooth cinematic slide
+                                coroutineScope.launch {
+                                    dragOffsetX.animateTo(
+                                        targetValue = playerWidthPx,
+                                        animationSpec = tween(180, easing = FastOutLinearInEasing)
+                                    )
+                                    onPrevious()
+                                    dragOffsetX.snapTo(-playerWidthPx * 0.35f)
+                                    dragOffsetX.animateTo(
+                                        targetValue = 0f,
+                                        animationSpec = spring(
+                                            dampingRatio = Spring.DampingRatioLowBouncy,
+                                            stiffness = Spring.StiffnessMedium
+                                        )
+                                    )
+                                }
+                            } else {
+                                // Threshold not reached: spring back smoothly to center
+                                coroutineScope.launch {
+                                    dragOffsetX.animateTo(
+                                        targetValue = 0f,
+                                        animationSpec = spring(
+                                            dampingRatio = Spring.DampingRatioMediumBouncy,
+                                            stiffness = Spring.StiffnessMedium
+                                        )
+                                    )
+                                }
                             }
                         } else if (currentAxis == GestureAxis.VERTICAL) {
                             val threshold = playerHeightPx * 0.25f
@@ -352,6 +439,7 @@ fun NowPlayingScreen(
                     },
                     onDragCancel = {
                         coroutineScope.launch {
+                            dragOffsetX.animateTo(0f, spring())
                             dragOffsetY.animateTo(0f, spring())
                         }
                         currentAxis = GestureAxis.UNDECIDED
@@ -363,50 +451,77 @@ fun NowPlayingScreen(
             .statusBarsPadding()
             .navigationBarsPadding()
     ) {
-        // Atmospheric Background Artwork Blur with Dark Vignette
+        // Atmospheric Background reacting to Background Style preference
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .pointerInput(Unit) {}
         ) {
-            if (song.artworkUri != null) {
-                AsyncImage(
-                    model = song.artworkUri,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .blur(50.dp)
-                )
+            when (currentBgStyle) {
+                "Deep Black" -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xFF000000))
+                    )
+                }
+                "Minimal Dark" -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        Color(0xFF14161F),
+                                        Color(0xFF0B0C10),
+                                        Color(0xFF040507)
+                                    )
+                                )
+                            )
+                    )
+                }
+                else -> {
+                    // "Adaptive Gradient" / Artwork Reactive
+                    if (song.artworkUri != null) {
+                        AsyncImage(
+                            model = song.artworkUri,
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .blur(50.dp)
+                        )
+                    }
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(
+                                        animatedBgStart.copy(alpha = 0.82f),
+                                        animatedBgEnd.copy(alpha = 0.90f),
+                                        Color(0xFF04060C)
+                                    )
+                                )
+                            )
+                    )
+                    // Radial accent aura glow centered on artwork
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .padding(top = 80.dp)
+                            .size(280.dp)
+                            .background(
+                                Brush.radialGradient(
+                                    listOf(
+                                        animatedGlowColor.copy(alpha = 0.22f),
+                                        Color.Transparent
+                                    )
+                                )
+                            )
+                    )
+                }
             }
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                animatedBgStart.copy(alpha = 0.82f),
-                                animatedBgEnd.copy(alpha = 0.90f),
-                                Color(0xFF04060C)
-                            )
-                        )
-                    )
-            )
-            // Radial accent aura glow centered on artwork
-            Box(
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .padding(top = 80.dp)
-                    .size(280.dp)
-                    .background(
-                        Brush.radialGradient(
-                            listOf(
-                                animatedGlowColor.copy(alpha = 0.22f),
-                                Color.Transparent
-                            )
-                        )
-                    )
-            )
         }
 
         // Main Player Container
@@ -428,6 +543,8 @@ fun NowPlayingScreen(
                         effectsState = effectsState,
                         animatedAccent = animatedAccent,
                         animatedGlowColor = animatedGlowColor,
+                        dragOffsetX = dragOffsetX,
+                        playerWidthPx = playerWidthPx,
                         onDismiss = onDismiss,
                         onShowQueue = { showQueueSheet = true },
                         onOpenOptionsMenu = { showOptionsMenu = true },
@@ -440,7 +557,9 @@ fun NowPlayingScreen(
                         onPrevious = onPrevious,
                         onToggleShuffle = onToggleShuffle,
                         onCycleRepeat = onCycleRepeat,
-                        onOpenAudioEffects = onOpenAudioEffects
+                        onOpenAudioEffects = onOpenAudioEffects,
+                        onShowSleepTimer = { showSleepTimerSheet = true },
+                        sleepTimerMinutes = (sleepTimerSettings.remainingSeconds / 60).toInt()
                     )
                 }
                 CenterDisplayMode.LYRICS -> {
@@ -457,9 +576,12 @@ fun NowPlayingScreen(
                         onSeek = onSeek,
                         onPlayPause = onPlayPause,
                         onNext = onNext,
-                        onPrevious = onPrevious
+                        onPrevious = onPrevious,
+                        onToggleShuffle = onToggleShuffle,
+                        onCycleRepeat = onCycleRepeat
                     )
                 }
+
                 CenterDisplayMode.VISUALIZER -> {
                     VisualizerFullStage(
                         audioData = visualizerData,
@@ -474,7 +596,7 @@ fun NowPlayingScreen(
 }
 
 /**
- * Now Playing Main Stage (matching Stitch design and reference Image 2)
+ * Now Playing Main Stage (Cinematic, artwork-driven, matching reference screen)
  */
 @Composable
 private fun NowPlayingMainStage(
@@ -484,6 +606,8 @@ private fun NowPlayingMainStage(
     effectsState: AudioEffectsState,
     animatedAccent: Color,
     animatedGlowColor: Color,
+    dragOffsetX: Animatable<Float, AnimationVector1D>,
+    playerWidthPx: Float,
     onDismiss: () -> Unit,
     onShowQueue: () -> Unit,
     onOpenOptionsMenu: () -> Unit,
@@ -496,7 +620,9 @@ private fun NowPlayingMainStage(
     onPrevious: () -> Unit,
     onToggleShuffle: () -> Unit,
     onCycleRepeat: () -> Unit,
-    onOpenAudioEffects: () -> Unit
+    onOpenAudioEffects: () -> Unit,
+    onShowSleepTimer: () -> Unit,
+    sleepTimerMinutes: Int
 ) {
     Column(
         modifier = Modifier
@@ -506,19 +632,29 @@ private fun NowPlayingMainStage(
     ) {
         // Header Controls
         PlayerTopBar(
-            subtitle = if (song.album.isNotBlank()) song.album else "Offline Library",
+            song = song,
             onMinimize = onDismiss,
             onOpenOptions = onOpenOptionsMenu,
-            onShowQueue = onShowQueue
+            onToggleLyrics = onToggleLyrics
         )
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Center Artwork Showcase
+        // Center Artwork Showcase with interactive swipe translation, scale, and alpha
+        val swipeProgress = (abs(dragOffsetX.value) / (if (playerWidthPx > 0) playerWidthPx else 1000f)).coerceIn(0f, 1f)
+        val swipeAlpha = (1f - swipeProgress * 0.45f).coerceIn(0.55f, 1f)
+        val swipeScale = (1f - swipeProgress * 0.10f).coerceIn(0.90f, 1f)
+
         Box(
             modifier = Modifier
                 .weight(1f)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .offset { IntOffset(dragOffsetX.value.roundToInt(), 0) }
+                .graphicsLayer {
+                    alpha = swipeAlpha
+                    scaleX = swipeScale
+                    scaleY = swipeScale
+                },
             contentAlignment = Alignment.Center
         ) {
             ArtworkDisplay(
@@ -530,7 +666,7 @@ private fun NowPlayingMainStage(
 
         Spacer(modifier = Modifier.height(14.dp))
 
-        // Track Info & Primary Actions Row
+        // Track Info & Primary Actions Row (Title, Artist, Lossless Pill, Favorite, Lyrics)
         TrackInfoAndActionRow(
             song = song,
             isFavorite = song.isFavorite,
@@ -541,8 +677,8 @@ private fun NowPlayingMainStage(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Waveform Scrubber & Progression
-        AuraScrubber(
+        // Fluid Wave Scrubber (Section 10)
+        AuraProgressBar(
             positionMs = playbackState.currentPositionMs,
             durationMs = playbackState.durationMs,
             onSeek = onSeek,
@@ -553,9 +689,13 @@ private fun NowPlayingMainStage(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        // Main Transport Playback Controls (Capsule Play/Pause)
+        // Main Transport Playback Controls (Shuffle, Prev, Glowing Capsule Play/Pause, Next, Repeat)
         PlayerControlsRow(
             playbackStatus = playbackState.status,
+            isShuffle = queueState.isShuffle,
+            repeatMode = queueState.repeatMode,
+            onToggleShuffle = onToggleShuffle,
+            onCycleRepeat = onCycleRepeat,
             onPlayPause = onPlayPause,
             onNext = onNext,
             onPrevious = onPrevious,
@@ -564,15 +704,15 @@ private fun NowPlayingMainStage(
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        // Audio Engine & Mode Footer Dock
+        // Audio Engine & Mode Utility Dock (Queue, Warm EQ, Sleep Timer, Output Target)
         PlayerDockBar(
             song = song,
-            isShuffle = queueState.isShuffle,
-            repeatMode = queueState.repeatMode,
-            onToggleShuffle = onToggleShuffle,
-            onCycleRepeat = onCycleRepeat,
+            queueCount = queueState.songs.size,
+            onShowQueue = onShowQueue,
             onOpenAudioEffects = onOpenAudioEffects,
             isAudioEffectsActive = effectsState.equalizer.enabled || effectsState.spatial4d.enabled || effectsState.bassTreble.bassEnabled,
+            onShowSleepTimer = onShowSleepTimer,
+            sleepTimerMinutes = sleepTimerMinutes,
             accentColor = animatedAccent
         )
 
@@ -581,18 +721,29 @@ private fun NowPlayingMainStage(
 }
 
 /**
- * Header Controls Bar matching Stitch Image 2:
- * Left: Caret down (glass pill)
- * Center: NOW PLAYING uppercase + Subtitle
- * Right: Options (glass pill) + Queue (glass pill)
+ * Header Controls Bar matching reference screen:
+ * Left: Dismiss / Minimize Sheet button (glass pill)
+ * Center: NOW PLAYING (OFFLINE) uppercase with emerald pulsing dot + download status
+ * Right: Lyrics button (glass pill) + Options menu (glass pill)
  */
 @Composable
 private fun PlayerTopBar(
-    subtitle: String,
+    song: Song,
     onMinimize: () -> Unit,
     onOpenOptions: () -> Unit,
-    onShowQueue: () -> Unit
+    onToggleLyrics: () -> Unit
 ) {
+    val infiniteTransition = rememberInfiniteTransition(label = "offline_pulse")
+    val pulseAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.45f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(900),
+            repeatMode = AnimRepeatMode.Reverse
+        ),
+        label = "pulse_alpha"
+    )
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -607,7 +758,7 @@ private fun PlayerTopBar(
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = "Minimize Player",
-                tint = Color.White.copy(alpha = 0.9f),
+                tint = Color.White.copy(alpha = 0.90f),
                 modifier = Modifier.size(26.dp)
             )
         }
@@ -616,18 +767,30 @@ private fun PlayerTopBar(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(horizontal = 8.dp)
         ) {
-            Text(
-                text = "NOW PLAYING",
-                color = AuraOnSurfaceVariant.copy(alpha = 0.85f),
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 2.5.sp
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(6.dp)
+                        .clip(CircleShape)
+                        .background(Color(0xFF34D399).copy(alpha = pulseAlpha))
+                )
+                Text(
+                    text = "NOW PLAYING (OFFLINE)",
+                    color = Color.White.copy(alpha = 0.85f),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    letterSpacing = 2.2.sp
+                )
+            }
             Spacer(modifier = Modifier.height(2.dp))
+            val codecLabel = if (!song.codec.isNullOrBlank()) song.codec.uppercase() else "LOCAL FLAC"
             Text(
-                text = subtitle,
-                color = Color.White.copy(alpha = 0.85f),
-                fontSize = 12.sp,
+                text = "100% Downloaded • $codecLabel",
+                color = AuraTextSecondary,
+                fontSize = 11.sp,
                 fontWeight = FontWeight.Medium,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
@@ -636,13 +799,13 @@ private fun PlayerTopBar(
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             AuraGlassPillButton(
-                onClick = onOpenOptions,
+                onClick = onToggleLyrics,
                 size = 42.dp
             ) {
                 Icon(
-                    imageVector = Icons.Default.MoreHoriz,
-                    contentDescription = "Options",
-                    tint = Color.White.copy(alpha = 0.9f),
+                    imageVector = Icons.Default.FormatQuote,
+                    contentDescription = "Lyrics",
+                    tint = Color.White.copy(alpha = 0.90f),
                     modifier = Modifier.size(22.dp)
                 )
             }
@@ -650,14 +813,14 @@ private fun PlayerTopBar(
             Spacer(modifier = Modifier.width(8.dp))
 
             AuraGlassPillButton(
-                onClick = onShowQueue,
+                onClick = onOpenOptions,
                 size = 42.dp
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.QueueMusic,
-                    contentDescription = "Queue",
-                    tint = Color.White.copy(alpha = 0.85f),
-                    modifier = Modifier.size(20.dp)
+                    imageVector = Icons.Default.MoreHoriz,
+                    contentDescription = "Options",
+                    tint = Color.White.copy(alpha = 0.90f),
+                    modifier = Modifier.size(22.dp)
                 )
             }
         }
@@ -665,7 +828,7 @@ private fun PlayerTopBar(
 }
 
 /**
- * Center Artwork Showcase with Rounded Corners, Ambient Shadow, and Lossless/HQ Badge
+ * Center Artwork Showcase with Rounded Corners, Ambient Shadow, Gloss and Badges
  */
 @Composable
 private fun ArtworkDisplay(
@@ -673,7 +836,7 @@ private fun ArtworkDisplay(
     glowColor: Color,
     onLyricsClick: () -> Unit
 ) {
-    val cornerRadius = 30.dp
+    val cornerRadius = 32.dp
 
     Box(
         modifier = Modifier
@@ -686,10 +849,10 @@ private fun ArtworkDisplay(
             modifier = Modifier
                 .fillMaxSize(0.92f)
                 .shadow(
-                    elevation = 30.dp,
+                    elevation = 32.dp,
                     shape = RoundedCornerShape(cornerRadius),
-                    spotColor = glowColor.copy(alpha = 0.45f),
-                    ambientColor = glowColor.copy(alpha = 0.25f)
+                    spotColor = glowColor.copy(alpha = 0.35f),
+                    ambientColor = glowColor.copy(alpha = 0.20f)
                 )
         )
 
@@ -699,7 +862,7 @@ private fun ArtworkDisplay(
                 .fillMaxSize()
                 .clip(RoundedCornerShape(cornerRadius))
                 .border(1.dp, Color.White.copy(alpha = 0.14f), RoundedCornerShape(cornerRadius))
-                .background(AuraSurfaceContainerHigh)
+                .background(Color(0xFF141414))
                 .auraPressable(pressedScale = 0.98f, onClick = onLyricsClick),
             contentAlignment = Alignment.Center
         ) {
@@ -732,6 +895,34 @@ private fun ArtworkDisplay(
                 }
             }
 
+            // Subtle top-left offline cache tag badge
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+                    .padding(14.dp)
+                    .clip(CircleShape)
+                    .background(Color.Black.copy(alpha = 0.50f))
+                    .border(1.dp, Color.White.copy(alpha = 0.15f), CircleShape)
+                    .padding(horizontal = 10.dp, vertical = 4.dp)
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Headphones,
+                        contentDescription = null,
+                        tint = Color(0xFFFBBF24),
+                        modifier = Modifier.size(11.dp)
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = "OFFLINE CACHE",
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        letterSpacing = 1.sp,
+                        color = Color.White.copy(alpha = 0.92f)
+                    )
+                }
+            }
+
             // Audio Quality Pill Badge Overlay (Top-Right)
             val badgeText = when {
                 song.isLossless -> "LOSSLESS"
@@ -743,14 +934,14 @@ private fun ArtworkDisplay(
                     .align(Alignment.TopEnd)
                     .padding(14.dp)
                     .clip(CircleShape)
-                    .background(Color.Black.copy(alpha = 0.45f))
-                    .border(1.dp, Color.White.copy(alpha = 0.16f), CircleShape)
+                    .background(Color.Black.copy(alpha = 0.50f))
+                    .border(1.dp, Color.White.copy(alpha = 0.15f), CircleShape)
                     .padding(horizontal = 10.dp, vertical = 4.dp)
             ) {
                 Text(
                     text = badgeText,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.ExtraBold,
                     letterSpacing = 1.2.sp,
                     color = Color.White.copy(alpha = 0.92f)
                 )
@@ -760,8 +951,8 @@ private fun ArtworkDisplay(
 }
 
 /**
- * Track Info & Action Row matching Stitch Image 2:
- * Left: Song title & artist
+ * Track Info & Action Row matching reference:
+ * Left: Song title & artist & High-Res Fidelity Pill
  * Right: Heart favorite glass pill & Quotes lyrics glass pill
  */
 @Composable
@@ -788,7 +979,7 @@ private fun TrackInfoAndActionRow(
                 text = song.title,
                 color = Color.White,
                 fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.ExtraBold,
                 letterSpacing = (-0.5).sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
@@ -796,19 +987,51 @@ private fun TrackInfoAndActionRow(
             Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = song.artist,
-                color = Color(0xFFA3A3A3),
+                color = AuraTextSecondary,
                 fontSize = 15.sp,
-                fontWeight = FontWeight.Medium,
+                fontWeight = FontWeight.SemiBold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+            Spacer(modifier = Modifier.height(6.dp))
+            // High-Res Audio Fidelity Pill (matches reference)
+            val sampleRateStr = if (song.sampleRate > 0) "${song.sampleRate / 1000}kHz" else "96kHz"
+            val bitDepthStr = if (song.bitDepth > 0) "${song.bitDepth}-bit" else "24-bit"
+            val codecStr = if (!song.codec.isNullOrBlank()) song.codec.uppercase() else "FLAC"
+            Row(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(6.dp))
+                    .background(Color.White.copy(alpha = 0.08f))
+                    .border(1.dp, Color.White.copy(alpha = 0.12f), RoundedCornerShape(6.dp))
+                    .padding(horizontal = 8.dp, vertical = 3.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = if (song.isLossless) "LOSSLESS" else "HI-RES",
+                    color = Color(0xFFFCD34D),
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 1.sp
+                )
+                Text(
+                    text = " • ",
+                    color = Color.White.copy(alpha = 0.40f),
+                    fontSize = 9.sp
+                )
+                Text(
+                    text = "$bitDepthStr / $sampleRateStr $codecStr",
+                    color = Color.White.copy(alpha = 0.85f),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = FontFamily.Monospace
+                )
+            }
         }
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            // Heart button in glass pill
             AuraGlassPillButton(
                 onClick = onToggleFavorite,
                 size = 44.dp,
@@ -824,7 +1047,6 @@ private fun TrackInfoAndActionRow(
                 )
             }
 
-            // Lyrics button in glass pill
             AuraGlassPillButton(
                 onClick = onToggleLyrics,
                 size = 44.dp
@@ -832,7 +1054,7 @@ private fun TrackInfoAndActionRow(
                 Icon(
                     imageVector = Icons.Default.FormatQuote,
                     contentDescription = "Lyrics",
-                    tint = Color.White.copy(alpha = 0.85f),
+                    tint = Color.White.copy(alpha = 0.90f),
                     modifier = Modifier.size(22.dp)
                 )
             }
@@ -841,11 +1063,16 @@ private fun TrackInfoAndActionRow(
 }
 
 /**
- * Main Transport Playback Controls with Capsule Play/Pause Button
+ * Main Transport Playback Controls:
+ * Shuffle -> Previous -> Capsule Glowing Play/Pause -> Next -> Repeat
  */
 @Composable
 private fun PlayerControlsRow(
     playbackStatus: PlaybackStatus,
+    isShuffle: Boolean,
+    repeatMode: RepeatMode,
+    onToggleShuffle: () -> Unit,
+    onCycleRepeat: () -> Unit,
     onPlayPause: () -> Unit,
     onNext: () -> Unit,
     onPrevious: () -> Unit,
@@ -856,21 +1083,38 @@ private fun PlayerControlsRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp),
+            .padding(horizontal = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
+            onClick = onToggleShuffle,
+            modifier = Modifier
+                .size(44.dp)
+                .auraPressable(pressedScale = 0.88f, hapticFeedback = true, onClick = onToggleShuffle)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Shuffle,
+                contentDescription = "Shuffle",
+                tint = if (isShuffle) accentColor else Color.White.copy(alpha = 0.60f),
+                modifier = Modifier.size(22.dp)
+            )
+        }
+
+        IconButton(
             onClick = onPrevious,
             modifier = Modifier
                 .size(48.dp)
+                .clip(CircleShape)
+                .background(Color.White.copy(alpha = 0.06f))
+                .border(1.dp, Color.White.copy(alpha = 0.08f), CircleShape)
                 .auraPressable(pressedScale = 0.88f, hapticFeedback = true, onClick = onPrevious)
         ) {
             Icon(
                 imageVector = Icons.Default.SkipPrevious,
                 contentDescription = "Previous Song",
-                tint = Color.White.copy(alpha = 0.88f),
-                modifier = Modifier.size(32.dp)
+                tint = Color.White.copy(alpha = 0.90f),
+                modifier = Modifier.size(28.dp)
             )
         }
 
@@ -885,136 +1129,161 @@ private fun PlayerControlsRow(
             onClick = onNext,
             modifier = Modifier
                 .size(48.dp)
+                .clip(CircleShape)
+                .background(Color.White.copy(alpha = 0.06f))
+                .border(1.dp, Color.White.copy(alpha = 0.08f), CircleShape)
                 .auraPressable(pressedScale = 0.88f, hapticFeedback = true, onClick = onNext)
         ) {
             Icon(
                 imageVector = Icons.Default.SkipNext,
                 contentDescription = "Next Song",
-                tint = Color.White.copy(alpha = 0.88f),
-                modifier = Modifier.size(32.dp)
+                tint = Color.White.copy(alpha = 0.90f),
+                modifier = Modifier.size(28.dp)
+            )
+        }
+
+        IconButton(
+            onClick = onCycleRepeat,
+            modifier = Modifier
+                .size(44.dp)
+                .auraPressable(pressedScale = 0.88f, hapticFeedback = true, onClick = onCycleRepeat)
+        ) {
+            Icon(
+                imageVector = if (repeatMode == RepeatMode.ONE) Icons.Default.RepeatOne else Icons.Default.Repeat,
+                contentDescription = "Repeat",
+                tint = if (repeatMode != RepeatMode.OFF) accentColor else Color.White.copy(alpha = 0.60f),
+                modifier = Modifier.size(22.dp)
             )
         }
     }
 }
 
 /**
- * Audio Engine & Footer Dock Bar matching Stitch Image 2:
- * Left: Shuffle (glass pill)
- * Center: HQ / 24/96kHz Audio Sample Rate Capsule
- * Right: Repeat (glass pill) + Audio FX (glass pill)
+ * Audio Engine & Utility Dock Bar matching reference dock:
+ * - Queue [count]
+ * - Warm EQ / Audio FX
+ * - Sleep Timer
+ * - Output Target / Audio Quality
  */
 @Composable
 private fun PlayerDockBar(
     song: Song,
-    isShuffle: Boolean,
-    repeatMode: RepeatMode,
-    onToggleShuffle: () -> Unit,
-    onCycleRepeat: () -> Unit,
+    queueCount: Int,
+    onShowQueue: () -> Unit,
     onOpenAudioEffects: () -> Unit,
     isAudioEffectsActive: Boolean,
+    onShowSleepTimer: () -> Unit,
+    sleepTimerMinutes: Int,
     accentColor: Color
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 4.dp),
+            .clip(RoundedCornerShape(18.dp))
+            .background(Color.White.copy(alpha = 0.06f))
+            .border(1.dp, Color.White.copy(alpha = 0.10f), RoundedCornerShape(18.dp))
+            .padding(horizontal = 14.dp, vertical = 10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Shuffle glass pill
-        AuraGlassPillButton(
-            onClick = onToggleShuffle,
-            size = 42.dp,
-            isActive = isShuffle,
-            activeColor = accentColor
+        // Queue counter
+        Row(
+            modifier = Modifier
+                .auraPressable(pressedScale = 0.94f, hapticFeedback = true, onClick = onShowQueue),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
             Icon(
-                imageVector = Icons.Default.Shuffle,
-                contentDescription = "Shuffle",
-                tint = if (isShuffle) accentColor else AuraOutline,
-                modifier = Modifier.size(20.dp)
+                imageVector = Icons.AutoMirrored.Filled.QueueMusic,
+                contentDescription = "Queue",
+                tint = Color.White.copy(alpha = 0.70f),
+                modifier = Modifier.size(17.dp)
+            )
+            Text(
+                text = "Queue ",
+                color = Color.White.copy(alpha = 0.75f),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Medium
+            )
+            Text(
+                text = "$queueCount",
+                color = Color.White,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold
             )
         }
 
-        // Offline Audio Codec / Sample Rate Capsule
-        val sampleRateStr = if (song.sampleRate > 0) {
-            "${song.sampleRate / 1000}kHz"
-        } else {
-            "24/96kHz"
-        }
-        val codecLabel = if (!song.codec.isNullOrBlank()) song.codec else "HQ"
+        Box(modifier = Modifier.width(1.dp).height(14.dp).background(Color.White.copy(alpha = 0.15f)))
 
-        Box(
-            modifier = Modifier
-                .clip(CircleShape)
-                .background(Color.White.copy(alpha = 0.05f))
-                .border(1.dp, Color.White.copy(alpha = 0.10f), CircleShape)
-                .auraPressable(pressedScale = 0.95f, onClick = onOpenAudioEffects)
-                .padding(horizontal = 14.dp, vertical = 6.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(4.dp))
-                        .background(Color.White.copy(alpha = 0.12f))
-                        .padding(horizontal = 4.dp, vertical = 1.dp)
-                ) {
-                    Text(
-                        text = codecLabel.uppercase(),
-                        fontSize = 9.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        letterSpacing = 1.sp,
-                        color = Color.White
-                    )
-                }
-                Spacer(modifier = Modifier.width(6.dp))
-                Text(
-                    text = sampleRateStr,
-                    fontSize = 11.sp,
-                    fontFamily = androidx.compose.ui.text.font.FontFamily.Monospace,
-                    fontWeight = FontWeight.Medium,
-                    color = Color(0xFFD4D4D8)
-                )
-            }
-        }
-
+        // EQ Shortcut
         Row(
+            modifier = Modifier
+                .auraPressable(pressedScale = 0.94f, hapticFeedback = true, onClick = onOpenAudioEffects),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
         ) {
-            // Repeat glass pill
-            AuraGlassPillButton(
-                onClick = onCycleRepeat,
-                size = 42.dp,
-                isActive = repeatMode != RepeatMode.OFF,
-                activeColor = accentColor
-            ) {
-                Icon(
-                    imageVector = if (repeatMode == RepeatMode.ONE) Icons.Default.RepeatOne else Icons.Default.Repeat,
-                    contentDescription = "Repeat",
-                    tint = if (repeatMode != RepeatMode.OFF) accentColor else AuraOutline,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
+            Icon(
+                imageVector = Icons.Default.Tune,
+                contentDescription = "Equalizer",
+                tint = if (isAudioEffectsActive) Color(0xFFFBBF24) else Color.White.copy(alpha = 0.70f),
+                modifier = Modifier.size(16.dp)
+            )
+            Text(
+                text = if (isAudioEffectsActive) "Warm EQ" else "Audio FX",
+                color = if (isAudioEffectsActive) Color(0xFFFBBF24) else Color.White.copy(alpha = 0.75f),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
 
-            // Audio FX glass pill
-            AuraGlassPillButton(
-                onClick = onOpenAudioEffects,
-                size = 42.dp,
-                isActive = isAudioEffectsActive,
-                activeColor = accentColor
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Tune,
-                    contentDescription = "Audio Effects",
-                    tint = if (isAudioEffectsActive) accentColor else AuraOutline,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
+        Box(modifier = Modifier.width(1.dp).height(14.dp).background(Color.White.copy(alpha = 0.15f)))
+
+        // Sleep Timer
+        Row(
+            modifier = Modifier
+                .auraPressable(pressedScale = 0.94f, hapticFeedback = true, onClick = onShowSleepTimer),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Schedule,
+                contentDescription = "Sleep Timer",
+                tint = if (sleepTimerMinutes > 0) accentColor else Color.White.copy(alpha = 0.70f),
+                modifier = Modifier.size(16.dp)
+            )
+            Text(
+                text = if (sleepTimerMinutes > 0) "${sleepTimerMinutes}m" else "Timer",
+                color = if (sleepTimerMinutes > 0) accentColor else Color.White.copy(alpha = 0.75f),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
+
+        Box(modifier = Modifier.width(1.dp).height(14.dp).background(Color.White.copy(alpha = 0.15f)))
+
+        // Audio Output / Codec
+        Row(
+            modifier = Modifier
+                .auraPressable(pressedScale = 0.94f, hapticFeedback = true, onClick = onOpenAudioEffects),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(5.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Headphones,
+                contentDescription = "Audio Target",
+                tint = Color(0xFF34D399),
+                modifier = Modifier.size(16.dp)
+            )
+            Text(
+                text = if (song.isLossless) "Lossless" else "High-Res",
+                color = Color(0xFF34D399),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
 }
+
 
 /**
  * Synced Lyrics Full Stage (matching Stitch design and reference Image 1):
@@ -1038,7 +1307,9 @@ private fun SyncedLyricsFullStage(
     onSeek: (Float) -> Unit,
     onPlayPause: () -> Unit,
     onNext: () -> Unit,
-    onPrevious: () -> Unit
+    onPrevious: () -> Unit,
+    onToggleShuffle: () -> Unit,
+    onCycleRepeat: () -> Unit
 ) {
     val listState = rememberLazyListState()
     var isFullscreenLyrics by remember { mutableStateOf(false) }
@@ -1282,7 +1553,7 @@ private fun SyncedLyricsFullStage(
         Spacer(modifier = Modifier.height(10.dp))
 
         // Embedded Scrubber & Progression
-        AuraScrubber(
+        AuraProgressBar(
             positionMs = playbackState.currentPositionMs,
             durationMs = playbackState.durationMs,
             onSeek = onSeek,
@@ -1296,6 +1567,10 @@ private fun SyncedLyricsFullStage(
         // Main Transport Controls
         PlayerControlsRow(
             playbackStatus = playbackState.status,
+            isShuffle = queueState.isShuffle,
+            repeatMode = queueState.repeatMode,
+            onToggleShuffle = onToggleShuffle,
+            onCycleRepeat = onCycleRepeat,
             onPlayPause = onPlayPause,
             onNext = onNext,
             onPrevious = onPrevious,
@@ -1387,8 +1662,8 @@ private fun PlayerOptionsMenuSheet(
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
-        containerColor = Color(0xFF140D0A),
-        contentColor = Color.White,
+        containerColor = AuraSurfaceBlack,
+        contentColor = AuraTextPrimary,
         tonalElevation = 0.dp,
         shape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
     ) {
